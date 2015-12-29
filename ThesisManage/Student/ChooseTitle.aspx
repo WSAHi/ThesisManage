@@ -1,10 +1,10 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="ChooseTitle.aspx.cs" Inherits="Student_ChooseTitle" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     可选论文标题:<br />
-    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4"
-        DataSourceID="odsTitle" ForeColor="#333333" GridLines="None" Width="727px" DataKeyNames="TID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True">
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <RowStyle BackColor="#EFF3FB" />
+    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3"
+        DataSourceID="odsTitle" ForeColor="Black" GridLines="Vertical" Width="727px" DataKeyNames="TID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+        <FooterStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
             <asp:TemplateField HeaderText="题目" SortExpression="TitleName">
@@ -68,13 +68,15 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <EditRowStyle BackColor="#2461BF" />
-        <AlternatingRowStyle BackColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <AlternatingRowStyle BackColor="#CCCCCC" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
-    <asp:ObjectDataSource ID="odsTitle" runat="server" SelectMethod="GetTitleList" TypeName="ThesisManage.BLL.TitleManage">
-    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsTitle" runat="server" SelectMethod="GetTitleList" TypeName="ThesisManage.BLL.TitleManage"></asp:ObjectDataSource>
 </asp:Content>
 

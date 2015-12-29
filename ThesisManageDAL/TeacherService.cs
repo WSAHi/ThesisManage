@@ -130,7 +130,7 @@ namespace ThesisManage.DAL
             catch (Exception e)
             {
 
-                Console.WriteLine(e.Message); 
+                Console.WriteLine(e.Message);
             }
             return num;
 
@@ -141,7 +141,7 @@ namespace ThesisManage.DAL
             string sql = string.Format("select * from teacher where TEID in (select TeacherId from Title group by TeacherId)");
             DataTable table = DBHelper.GetDataSet(sql);
             List<Teacher> list = new List<Teacher>();
-            int roleId = 0;            
+            int roleId = 0;
             foreach (DataRow row in table.Rows)
             {
                 Teacher teacher = new Teacher();

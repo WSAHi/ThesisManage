@@ -17,13 +17,13 @@ namespace ThesisManage.BLL
         {
             return adminService.AddAdmins(source, roleId);
         }
-        public string GetAdminById(string loginId,string password)
+        public string GetAdminById(string loginId, string password)
         {
-            Admin admin=adminService.GetAdminById(loginId);
+            Admin admin = adminService.GetAdminById(loginId);
             string mes = null;
             if (!string.IsNullOrEmpty(admin.LoginId))
             {
-                if (password ==admin.LoginPass)
+                if (password == admin.LoginPass)
                 {
                     mes = "成功";
                 }

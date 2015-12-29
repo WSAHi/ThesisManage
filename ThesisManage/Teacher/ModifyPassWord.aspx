@@ -1,10 +1,12 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="ModifyPassWord.aspx.cs" Inherits="Teacher_ModifyPassWord" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <table border="1" style="width: 617px; height: 132px">
         <tr>
             <td bgcolor="#33ffcc" colspan="2" style="height: 23px">
                 <div align="center">
-                    教员密码修改</div>
+                    教员密码修改
+                </div>
             </td>
         </tr>
         <tr>
@@ -38,8 +40,7 @@
             </td>
         </tr>
         <tr>
-            <td align="right" style="width: 122px">
-                &nbsp; &nbsp;</td>
+            <td align="right" style="width: 122px">&nbsp; &nbsp;</td>
             <td align="left" style="width: 580px">
                 <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="修改" />
                 &nbsp;&nbsp; &nbsp;<asp:Button ID="btnEsc" runat="server" OnClick="btnEsc_Click"

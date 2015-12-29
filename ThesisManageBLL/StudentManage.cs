@@ -7,7 +7,7 @@ using System.Data;
 
 namespace ThesisManage.BLL
 {
-   
+
     public class StudentManage
     {
         StudentService studentService = new StudentService();
@@ -23,9 +23,9 @@ namespace ThesisManage.BLL
         {
             return studentService.ModifiyStuSate(sudentState, titleId, studentID);
         }
-        public string StudentLogin(string studentID,string password)
+        public string StudentLogin(string studentID, string password)
         {
-            Student student =studentService.GetStudentByStudentID(studentID);
+            Student student = studentService.GetStudentByStudentID(studentID);
             string mes = null;
             if (!string.IsNullOrEmpty(student.StudentName))
             {
@@ -46,7 +46,7 @@ namespace ThesisManage.BLL
         }
         public int ModifiyStuPass(string newPass, string studentID)
         {
-            return studentService.ModifiyStuPass(newPass,studentID);
+            return studentService.ModifiyStuPass(newPass, studentID);
         }
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {

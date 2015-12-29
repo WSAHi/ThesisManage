@@ -14,25 +14,25 @@ namespace ThesisManage.DAL
         TitleService titleService = new TitleService();
         public int InsertThesis(Thesis thesis)
         {
-            SqlCommand cmd=new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             SqlConnection conn = DBHelper.Connection;
             cmd.Connection = conn;
-              cmd.CommandText="insert into Thesis(StudentId,TitleId,PublishDate,Contents) values(@StudentId,@TitleId,@PublishDate,@Contents)";
-              SqlParameter StudentId=new SqlParameter("@StudentId",System.Data.SqlDbType.Int);
-              StudentId.Value=thesis.Student.SID;
-              cmd.Parameters.Add(StudentId);
-              SqlParameter TitleId=new SqlParameter("@TitleId",System.Data.SqlDbType.Int);
-              TitleId.Value=thesis.Title.TID;
-              cmd.Parameters.Add(TitleId);
-             SqlParameter PublishDate=new SqlParameter("@PublishDate",System.Data.SqlDbType.VarChar,50);
-              PublishDate.Value=thesis.PublishDate;
-              cmd.Parameters.Add(PublishDate);
-               //添加word文件
-              SqlParameter Contents=new SqlParameter("@Contents",System.Data.SqlDbType.Image);//见本段最后注解
-              Contents.Value=thesis.Content;
-              cmd.Parameters.Add(Contents);
-              int num=cmd.ExecuteNonQuery();
-              conn.Close();
+            cmd.CommandText = "insert into Thesis(StudentId,TitleId,PublishDate,Contents) values(@StudentId,@TitleId,@PublishDate,@Contents)";
+            SqlParameter StudentId = new SqlParameter("@StudentId", System.Data.SqlDbType.Int);
+            StudentId.Value = thesis.Student.SID;
+            cmd.Parameters.Add(StudentId);
+            SqlParameter TitleId = new SqlParameter("@TitleId", System.Data.SqlDbType.Int);
+            TitleId.Value = thesis.Title.TID;
+            cmd.Parameters.Add(TitleId);
+            SqlParameter PublishDate = new SqlParameter("@PublishDate", System.Data.SqlDbType.VarChar, 50);
+            PublishDate.Value = thesis.PublishDate;
+            cmd.Parameters.Add(PublishDate);
+            //添加word文件
+            SqlParameter Contents = new SqlParameter("@Contents", System.Data.SqlDbType.Image);//见本段最后注解
+            Contents.Value = thesis.Content;
+            cmd.Parameters.Add(Contents);
+            int num = cmd.ExecuteNonQuery();
+            conn.Close();
             return num;
         }
         public int GetCountsByStuId(int stuId)
@@ -107,18 +107,18 @@ namespace ThesisManage.DAL
             int titleId = 0;
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
-           
+
             string sql = string.Format("select * from Thesis where StudentId={0}", stuId);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
-                thsis.ThesisID =Convert.ToInt32(reader["ThesisID"]);
+                thsis.ThesisID = Convert.ToInt32(reader["ThesisID"]);
                 thsis.PublishDate = reader["PublishDate"].ToString();
-                studentId =Convert.ToInt32(reader["StudentId"]);
+                studentId = Convert.ToInt32(reader["StudentId"]);
                 titleId = Convert.ToInt32(reader["TitleId"]);
                 reader.Close();
-               thsis.Student=studentService.GetStudentBySID(studentId);
-               thsis.Title = titleService.GetTilteByTitleId(titleId);
+                thsis.Student = studentService.GetStudentBySID(studentId);
+                thsis.Title = titleService.GetTilteByTitleId(titleId);
             }
             reader.Close();
             return thsis;
@@ -131,19 +131,19 @@ namespace ThesisManage.DAL
 
             string sql = string.Format("select * from thesis where titleid in (select tid from title where teacherid={0})", TEID);
             List<Thesis> list = new List<Thesis>();
-             DataTable table = DBHelper.GetDataSet(sql);
-             foreach (DataRow rows in table.Rows)
-             {
-                 Thesis thsis = new Thesis();
-                 thsis.ThesisID = Convert.ToInt32(rows["ThesisID"]);
-                 thsis.PublishDate = rows["PublishDate"].ToString();
-                 studentId = Convert.ToInt32(rows["StudentId"]);
-                 titleId = Convert.ToInt32(rows["TitleId"]);
-                 thsis.Student = studentService.GetStudentBySID(studentId);
-                 thsis.Title = titleService.GetTilteByTitleId(titleId);
-                 list.Add(thsis);
-             }
-             return list;
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
+            {
+                Thesis thsis = new Thesis();
+                thsis.ThesisID = Convert.ToInt32(rows["ThesisID"]);
+                thsis.PublishDate = rows["PublishDate"].ToString();
+                studentId = Convert.ToInt32(rows["StudentId"]);
+                titleId = Convert.ToInt32(rows["TitleId"]);
+                thsis.Student = studentService.GetStudentBySID(studentId);
+                thsis.Title = titleService.GetTilteByTitleId(titleId);
+                list.Add(thsis);
+            }
+            return list;
         }
         public Thesis GetThesisById(int id)
         {

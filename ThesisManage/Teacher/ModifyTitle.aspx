@@ -1,17 +1,19 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="ModifyTitle.aspx.cs" Inherits="Teacher_ModifyTitle" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <table border="1" bordercolor="#2e90b0" style="width: 555px; font-family: 楷体_GB2312;
-        height: 204px">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <table border="1" bordercolor="#2e90b0" style="width: 555px; font-family: 楷体_GB2312; height: 204px">
         <tr>
             <td bgcolor="#33ffcc" colspan="2">
                 <div align="center">
-                    上传自定义题目</div>
+                    上传自定义题目
+                </div>
             </td>
         </tr>
         <tr>
             <td style="width: 83px">
                 <div align="right">
-                    题目：</div>
+                    题目：
+                </div>
             </td>
             <td style="width: 23px">
                 <asp:TextBox ID="txtTitile" runat="server" Width="424px"></asp:TextBox>
@@ -22,7 +24,8 @@
         <tr>
             <td style="width: 83px">
                 <div align="right">
-                    描述：</div>
+                    描述：
+                </div>
             </td>
             <td style="width: 23px">
                 <asp:TextBox ID="txtDescription" runat="server" Height="116px" TextMode="MultiLine"
@@ -34,7 +37,8 @@
         <tr>
             <td style="width: 83px">
                 <div align="right">
-                    可选人数：</div>
+                    可选人数：
+                </div>
             </td>
             <td style="width: 23px">
                 <asp:TextBox ID="TextBox1" runat="server" Width="28px"></asp:TextBox>
@@ -46,8 +50,7 @@
             </td>
         </tr>
         <tr>
-            <td style="width: 83px; height: 22px">
-                &nbsp;</td>
+            <td style="width: 83px; height: 22px">&nbsp;</td>
             <td style="width: 23px; height: 22px">
                 <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="修改" />&nbsp;
                 <asp:Button ID="btnEsc" runat="server" OnClick="btnEsc_Click" Style="position: absolute"

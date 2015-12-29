@@ -1,9 +1,9 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="LeaveMessage.aspx.cs" Inherits="Student_LeaveMessage" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:Label ID="Label1" runat="server" Text="消息列表"></asp:Label><br />
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataSourceID="ObjectDataSource1" ForeColor="#333333" GridLines="None" Width="630px" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True">
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <RowStyle BackColor="#EFF3FB" />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3" DataSourceID="ObjectDataSource1" ForeColor="Black" GridLines="Vertical" Width="630px" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+        <FooterStyle BackColor="#CCCCCC" />
         <Columns>
             <asp:BoundField DataField="MID" HeaderText="MID" SortExpression="MID" Visible="False" />
             <asp:TemplateField HeaderText="发送人" SortExpression="Sender">
@@ -48,11 +48,14 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <EditRowStyle BackColor="#2461BF" />
-        <AlternatingRowStyle BackColor="White" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <AlternatingRowStyle BackColor="#CCCCCC" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetStudentMesList"
         TypeName="ThesisManage.BLL.MessageManage">
@@ -65,19 +68,19 @@
         <tr>
             <td style="width: 503px">
                 <div align="left">
-                    发送消息</div>
+                    发送消息
+                </div>
             </td>
         </tr>
         <tr>
-            <td style="width: 503px" valign="top">
-                角色:<asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn"
-                    OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
+            <td style="width: 503px" valign="top">角色:<asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn"
+                OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
                 <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn"
                     OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />&nbsp;<asp:RadioButton
                         ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged"
                         Text="学生" /><br />
                 接受人:<asp:TextBox ID="TextBox5" runat="server" Width="177px"></asp:TextBox>(注：用户名)<asp:Button ID="Button3" runat="server"
-                        OnClick="Button3_Click" Text="查看联系人" /><br />
+                    OnClick="Button3_Click" Text="查看联系人" /><br />
                 <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal" Visible="False" DataKeyField="TEID" OnItemCommand="DataList1_ItemCommand">
                     <ItemTemplate>
                         <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# GetImageUrl(Eval("TEID")) %>' Height="50px" Width="40px" /><br />
@@ -87,8 +90,7 @@
                 <asp:Label ID="Label6" runat="server" Font-Size="Small" ForeColor="Red" Visible="False"></asp:Label></td>
         </tr>
         <tr>
-            <td style="width: 503px">
-                内 容:<br />
+            <td style="width: 503px">内 容:<br />
                 <asp:TextBox ID="TextBox6" runat="server" Height="98px" Width="556px"></asp:TextBox>&nbsp;
             </td>
         </tr>

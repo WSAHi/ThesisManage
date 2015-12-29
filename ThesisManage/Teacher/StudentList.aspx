@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="StudentList.aspx.cs" Inherits="Teacher_StudentList" Title="Untitled Page" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsthesis" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" Width="642px">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsthesis" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" Width="642px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
         <Columns>
             <asp:BoundField DataField="ThesisID" HeaderText="ThesisID" SortExpression="ThesisID"
                 Visible="False" />
@@ -28,7 +29,7 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("PublishDate") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:HyperLinkField DataNavigateUrlFormatString="StudentMessage.aspx?ThesisID={0}" DataNavigateUrlFields="ThesisID" 
+            <asp:HyperLinkField DataNavigateUrlFormatString="StudentMessage.aspx?ThesisID={0}" DataNavigateUrlFields="ThesisID"
                 HeaderText="详细信息" Text="查看" />
             <asp:TemplateField ShowHeader="False">
                 <ItemTemplate>
@@ -37,13 +38,15 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <RowStyle BackColor="#EFF3FB" />
-        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-        <EditRowStyle BackColor="#2461BF" />
-        <AlternatingRowStyle BackColor="White" />
+        <FooterStyle BackColor="#CCCCCC" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+        <AlternatingRowStyle BackColor="#CCCCCC" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle BackColor="#808080" />
+        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithOenTeacher"
         TypeName="ThesisManage.BLL.ThesisManage">

@@ -11,7 +11,7 @@ namespace ThesisManage.DAL
         private static SqlConnection connection;
         public static SqlConnection Connection
         {
-            get 
+            get
             {
                 //string connectionString = "Data Source=.\\Sqlexpress;Initial Catalog=ThesisManage; Integrated Security=True";//uid=sa;Password=sa";
                 string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["OpenConter"].ToString();

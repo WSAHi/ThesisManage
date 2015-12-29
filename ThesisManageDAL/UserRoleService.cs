@@ -12,18 +12,18 @@ namespace ThesisManage.DAL
         //通UID获取UserRole
         public static UserRole GetUserRoleByUid(int uID)
         {
-            UserRole userRole=new UserRole();
+            UserRole userRole = new UserRole();
             string sql = string.Format("select * from UserRole where UID={0}", uID);
             SqlDataReader reader = DBHelper.GetReader(sql);
-            if(reader.Read())
+            if (reader.Read())
             {
-                userRole.UID=Convert.ToInt32( reader["UID"]);
-                userRole.RoleName =(string) reader["RoleName"];
+                userRole.UID = Convert.ToInt32(reader["UID"]);
+                userRole.RoleName = (string)reader["RoleName"];
             }
             reader.Close();
             return userRole;
         }
-       //获取所有的UserRole
+        //获取所有的UserRole
         public static List<UserRole> GetUserRole()
         {
             string sql = string.Format("select * from UserRole ");
@@ -37,6 +37,6 @@ namespace ThesisManage.DAL
                 list.Add(userRole);
             }
             return list;
-        }           
+        }
     }
 }

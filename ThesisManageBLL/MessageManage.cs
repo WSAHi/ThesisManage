@@ -10,16 +10,16 @@ namespace ThesisManage.BLL
     {
         MessageService messageService = new MessageService();
         public List<Message> GetAdminMesList(string choose)
-        { 
+        {
             return messageService.GetAdminMesList(choose);
         }
         public List<Message> GetStudentMesList(int studentId, string choose)
         {
-            return messageService.GetStudentMesList(studentId,choose);
+            return messageService.GetStudentMesList(studentId, choose);
         }
         public List<Message> GetTeacherMesList(int teacherId, string choose)
         {
-            return messageService.GetTeacherMesList(teacherId,choose);
+            return messageService.GetTeacherMesList(teacherId, choose);
         }
         public Message GetMesByMID(int MID)
         {

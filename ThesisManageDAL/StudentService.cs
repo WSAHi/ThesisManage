@@ -258,7 +258,7 @@ namespace ThesisManage.DAL
             return num;
         }
         public int GetHasChooseTitleNum()
-        { 
+        {
             string sql = string.Format("select num=count(*) from student where SudentState=1");
             SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
@@ -276,5 +276,5 @@ namespace ThesisManage.DAL
             return num;
         }
     }
-    
+
 }

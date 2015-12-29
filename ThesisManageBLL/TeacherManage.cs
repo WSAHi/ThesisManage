@@ -9,7 +9,7 @@ namespace ThesisManage.BLL
     public class TeacherManage
     {
         TeacherService teacherService = new TeacherService();
-        public string IsValide(string teacherId,string pass)
+        public string IsValide(string teacherId, string pass)
         {
             Teacher teacher = teacherService.GetTeacherByTeacherId(teacherId);
             string mes = null;
@@ -40,7 +40,7 @@ namespace ThesisManage.BLL
         }
         public int ModifiyPassWord(string pass, int TEID)
         {
-            return teacherService.ModifiyPassWord(pass,TEID);
+            return teacherService.ModifiyPassWord(pass, TEID);
         }
         public int AddTeacher(String teacherID, string teacherName, int roleId)
         {

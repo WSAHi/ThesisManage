@@ -9,7 +9,7 @@ namespace ThesisManage.DAL
 {
     public class TitleService
     {
-       
+
         //学生上传题目
         public int StuAddTitle(string titleName, int studentId, string Description)
         {
@@ -28,18 +28,18 @@ namespace ThesisManage.DAL
         public Title GetTilteByTitleId(int titleId)
         {
             StudentService studentService = new StudentService();
-            TeacherService teacherService=new TeacherService();
-            string sql = string.Format("select * from Title where TID={0}",titleId);
+            TeacherService teacherService = new TeacherService();
+            string sql = string.Format("select * from Title where TID={0}", titleId);
             Title title = new Title();
             int teacherId = 0;
             int studentId = 0;
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
-                title.TID =Convert.ToInt32( reader["TID"]);
+                title.TID = Convert.ToInt32(reader["TID"]);
                 title.TitleName = reader["TitleName"].ToString();
-                title.Counts =Convert.ToInt32( reader["Counts"]);
-                title.State =Convert.ToInt32( reader["State"]);
+                title.Counts = Convert.ToInt32(reader["Counts"]);
+                title.State = Convert.ToInt32(reader["State"]);
                 title.HasChooseNum = Convert.ToInt32(reader["HasChooseNum"]);
                 try
                 {
@@ -92,9 +92,9 @@ namespace ThesisManage.DAL
             return title;
         }
         //修改老师自己上报并未被审核的Title信息
-        public int ModifiyTitle(string titleName,string description, int counts, int tID)
+        public int ModifiyTitle(string titleName, string description, int counts, int tID)
         {
-            string sql = string.Format("update Title set TitleName ='{0}',Description='{1}',Counts={2} where TID={3}", titleName,description, counts, tID);
+            string sql = string.Format("update Title set TitleName ='{0}',Description='{1}',Counts={2} where TID={3}", titleName, description, counts, tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -120,7 +120,7 @@ namespace ThesisManage.DAL
         //删除题目
         public int DeleteTitle(int tID)
         {
-            string sql = string.Format("delete Title where TID={0}",tID);
+            string sql = string.Format("delete Title where TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -129,15 +129,15 @@ namespace ThesisManage.DAL
         {
             StudentService studentService = new StudentService();
             string sql = string.Format("select * from Title where State=1");
-            TeacherService teacherService=new TeacherService();
-            List<Title> list=new List<Title>();
+            TeacherService teacherService = new TeacherService();
+            List<Title> list = new List<Title>();
             int teacherId = 0;
             int studentId = 0;
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
                 Title title = new Title();
-                title.TID =Convert.ToInt32( rows["TID"]);
+                title.TID = Convert.ToInt32(rows["TID"]);
                 title.Counts = Convert.ToInt32(rows["Counts"]);
                 title.TitleName = rows["TitleName"].ToString();
                 title.State = Convert.ToInt32(rows["State"]);
@@ -186,7 +186,7 @@ namespace ThesisManage.DAL
                     teacherId = Convert.ToInt32(rows["TeacherId"]);
                 }
                 catch (Exception)
-                {}
+                { }
                 try
                 {
                     studentId = Convert.ToInt32(rows["StudentId"]);

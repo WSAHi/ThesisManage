@@ -42,9 +42,9 @@ namespace ThesisManage.BLL
         {
             return titleService.DeleteTitle(tID);
         }
-        public int ModifiyTitle(string titleName,string description, int counts, int tID)
+        public int ModifiyTitle(string titleName, string description, int counts, int tID)
         {
-            return titleService.ModifiyTitle(titleName,description,counts,tID);
+            return titleService.ModifiyTitle(titleName, description, counts, tID);
         }
         public int ModifiyTitleState(int tID, int teacherId)
         {
@@ -70,7 +70,8 @@ namespace ThesisManage.BLL
         {
             return titleService.GetTitleCountsSum();
         }
-        public int ModifiyTitleChooseNum(int tID) {
+        public int ModifiyTitleChooseNum(int tID)
+        {
             return titleService.ModifiyTitleChooseNum(tID);
         }
     }

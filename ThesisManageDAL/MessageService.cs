@@ -26,7 +26,7 @@ namespace ThesisManage.DAL
             foreach (DataRow rows in table.Rows)
             {
                 Message message = new Message();
-                message.MID =Convert.ToInt32( rows["MID"]);
+                message.MID = Convert.ToInt32(rows["MID"]);
                 message.Contents = rows["Contents"].ToString();
                 message.MPubDate = rows["MPubDate"].ToString();
                 message.State = Convert.ToInt32(rows["State"]);
@@ -45,7 +45,7 @@ namespace ThesisManage.DAL
                 }
                 catch (Exception)
                 {
-                }             
+                }
                 message.Student = studentService.GetStudentBySID(sId);
                 message.Teacher = teacherService.GetTeacherById(tId);
                 list.Add(message);
@@ -56,10 +56,10 @@ namespace ThesisManage.DAL
         public int AddMessage(Message message)
         {
             string sql = null;
-            if(message.Teacher!=null)
+            if (message.Teacher != null)
             {
                 sql = string.Format("insert into Messages values({0},null,'{1}','{2}',{3},{4},'{5}')",
-               message.Teacher.TEID,message.Contents,message.MPubDate,message.State,message.Sender,message.SenderRole);
+               message.Teacher.TEID, message.Contents, message.MPubDate, message.State, message.Sender, message.SenderRole);
             }
             else if (message.Student != null)
             {
@@ -166,7 +166,7 @@ namespace ThesisManage.DAL
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
-                
+
                 message.MID = Convert.ToInt32(rows["MID"]);
                 message.Contents = rows["Contents"].ToString();
                 message.MPubDate = rows["MPubDate"].ToString();
@@ -200,7 +200,7 @@ namespace ThesisManage.DAL
             return num;
         }
         //ÐÞ¸ÄÐÅÏ¢×´Ì¬
-        public int ModifyMessage(int MID,int state)
+        public int ModifyMessage(int MID, int state)
         {
             string sql = string.Format("update Messages set state={0} where MID={1}", state, MID);
             int num = DBHelper.ExecuteCommand(sql);

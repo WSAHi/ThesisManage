@@ -10,7 +10,7 @@ namespace ThesisManage.BLL
     {
         public static List<UserRole> GetUserRole()
         {
-           return  UserRoleService.GetUserRole();
+            return UserRoleService.GetUserRole();
         }
     }
 }

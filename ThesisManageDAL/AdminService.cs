@@ -13,7 +13,7 @@ namespace ThesisManage.DAL
         //根据管理员Id获取信息
         public Admin GetAdminById(string loginId)
         {
-            string sql = string.Format("select * from Admin where LoginId='{0}'",loginId);
+            string sql = string.Format("select * from Admin where LoginId='{0}'", loginId);
             int roleId = 0;
             Admin admin = new Admin();
             try
@@ -32,23 +32,23 @@ namespace ThesisManage.DAL
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
-            
+
             return admin;
         }
         //修改密码
         public int ModifiyPassWord(string newPassWord, string loginId)
         {
-            string sql = string.Format("update Admin set LoginPass='{0}' where LoginId='{1}'", newPassWord,loginId);
+            string sql = string.Format("update Admin set LoginPass='{0}' where LoginId='{1}'", newPassWord, loginId);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         //添加管理员
         public int AddAdmin(string loginId, int roleId)
         {
-            string sql = string.Format("insert into Admin (loginId,arid) values('{0}',{1})",loginId,roleId);
+            string sql = string.Format("insert into Admin (loginId,arid) values('{0}',{1})", loginId, roleId);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -78,7 +78,7 @@ namespace ThesisManage.DAL
             catch (Exception e)
             {
 
-                Console.WriteLine(e.Message); 
+                Console.WriteLine(e.Message);
             }
             return num;
         }

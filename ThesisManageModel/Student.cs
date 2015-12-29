@@ -15,7 +15,7 @@ namespace ThesisManage.Model
         {
             get { return sID; }
             set { sID = value; }
-        }        
+        }
         private UserRole role;
         /// <summary>
         /// 角色
