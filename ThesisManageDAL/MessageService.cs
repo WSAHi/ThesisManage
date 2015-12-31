@@ -11,7 +11,11 @@ namespace ThesisManage.DAL
     {
         StudentService studentService = new StudentService();
         TeacherService teacherService = new TeacherService();
-        //获取管理员的信息
+        /// <summary>
+        /// 获取管理员信息
+        /// </summary>
+        /// <param name="choose"></param>
+        /// <returns></returns>
         public List<Message> GetAdminMesList(string choose)
         {
             string sql = string.Format("select * from Messages where State=2 or State=3 order by State");
