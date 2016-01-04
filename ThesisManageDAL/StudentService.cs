@@ -50,7 +50,7 @@ namespace ThesisManage.DAL
             return student;
         }
         /// <summary>
-        /// 根据学生Id获取信息
+        /// 根据学生ID获取信息
         /// </summary>
         /// <param name="sID"></param>
         /// <returns></returns>
@@ -89,23 +89,39 @@ namespace ThesisManage.DAL
             reader.Close();
             return student;
         }
-        //修改学生信息
+        /// <summary>
+        /// 修改学生信息
+        /// </summary>
+        /// <param name="studentAddress"></param>
+        /// <param name="studentPhone"></param>
+        /// <param name="studentMail"></param>
+        /// <param name="studentID"></param>
+        /// <returns></returns>
         public int ModifiyStuByStudentID(string studentAddress, string studentPhone, string studentMail, string studentID)
         {
-            string sql = string.Format("update Student set StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' where StudentID='{3}'"
-                , studentAddress, studentPhone, studentMail, studentID);
+            string sql = string.Format("update Student set StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' where StudentID='{3}'" , studentAddress, studentPhone, studentMail, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //修改选题状态
+        /// <summary>
+        /// 修改选题状态
+        /// </summary>
+        /// <param name="sudentState"></param>
+        /// <param name="titleId"></param>
+        /// <param name="studentID"></param>
+        /// <returns></returns>
         public int ModifiyStuSate(int sudentState, int titleId, string studentID)
         {
-            string sql = string.Format("update Student set SudentState={0},STitleID={1} where StudentID='{2}'"
-               , sudentState, titleId, studentID);
+            string sql = string.Format("update Student set SudentState={0},STitleID={1} where StudentID='{2}'" , sudentState, titleId, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //修改学生密码
+        /// <summary>
+        /// 修改学生密码
+        /// </summary>
+        /// <param name="newPass"></param>
+        /// <param name="studentID"></param>
+        /// <returns></returns>
         public int ModifiyStuPass(string newPass, string studentID)
         {
             string sql = string.Format("update Student set StudentPass='{0}' where StudentID='{1}'"
@@ -113,7 +129,14 @@ namespace ThesisManage.DAL
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //增加学生
+        /// <summary>
+        /// 增加学生
+        /// </summary>
+        /// <param name="studentID"></param>
+        /// <param name="studentName"></param>
+        /// <param name="studentClass"></param>
+        /// <param name="roleID"></param>
+        /// <returns></returns>
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
             string sql = string.Format("insert into student (studentID,studentName,studentClass,SRID) values('{0}','{1}','{2}',{3})",
@@ -121,7 +144,10 @@ namespace ThesisManage.DAL
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //获取所有的班级
+        /// <summary>
+        /// 获取所有班级
+        /// </summary>
+        /// <returns></returns>
         public List<Student> GetAllClass()
         {
             string sql = string.Format("select StudentClass from Student group by StudentClass");
@@ -136,7 +162,11 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        //获取指定的列
+        /// <summary>
+        /// 获取指定列
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public DataSet GetStudent(string sql)
         {
             //string sql = string.Format("select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=(select TeacherName from Teacher where TEID=(select TeacherId from title,student where STitleID=TID group by TeacherId)),标题名=(select TitleName from Title where TID=STitleID group by TitleName) from Student where 1=1");
@@ -146,7 +176,11 @@ namespace ThesisManage.DAL
             adapter.Fill(dataset, "student");
             return dataset;
         }
-        //获择选择同一个老师的所有学生
+        /// <summary>
+        /// 获取选择同一个老师的所有学生
+        /// </summary>
+        /// <param name="teid"></param>
+        /// <returns></returns>
         public List<Student> GetStudentWithOenTeacher(int teid)
         {
             List<Student> list = new List<Student>();
@@ -180,7 +214,10 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        //获取上传标题的学员
+        /// <summary>
+        /// 获取上传标题的学生
+        /// </summary>
+        /// <returns></returns>
         public List<Student> GetStudentByUpLoadTitle()
         {
             List<Student> list = new List<Student>();
@@ -214,6 +251,12 @@ namespace ThesisManage.DAL
             }
             return list;
         }
+        /// <summary>
+        /// 批量添加学生
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public int addStudents(string source, int roleId)
         {
             int num = 0;
@@ -245,6 +288,10 @@ namespace ThesisManage.DAL
             }
             return num;
         }
+        /// <summary>
+        /// 获取学生数量
+        /// </summary>
+        /// <returns></returns>
         public int GetStudentCount()
         {
             string sql = string.Format("select num=count(*) from student");
@@ -257,6 +304,10 @@ namespace ThesisManage.DAL
             reader.Close();
             return num;
         }
+        /// <summary>
+        /// 获取已经被选的题目数量
+        /// </summary>
+        /// <returns></returns>
         public int GetHasChooseTitleNum()
         {
             string sql = string.Format("select num=count(*) from student where SudentState=1");
@@ -269,6 +320,11 @@ namespace ThesisManage.DAL
             reader.Close();
             return num;
         }
+        /// <summary>
+        /// 更新题目状态
+        /// </summary>
+        /// <param name="sid"></param>
+        /// <returns></returns>
         public int EscTitleByStudentId(int sid)
         {
             string sql = string.Format("update student set STitleID=null,SudentState=0 where SID={0}", sid);

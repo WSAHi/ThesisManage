@@ -10,7 +10,11 @@ namespace ThesisManage.DAL
 {
     public class TeacherService
     {
-        //根据TeacherId 获取教员信息
+        /// <summary>
+        /// 根据TeacherID获取教师信息
+        /// </summary>
+        /// <param name="tEID"></param>
+        /// <returns></returns>
         public Teacher GetTeacherById(int tEID)
         {
             string sql = string.Format("select * from Teacher where TEID={0}", tEID);
@@ -34,7 +38,13 @@ namespace ThesisManage.DAL
             reader.Close();
             return teacher;
         }
-        //修改信息
+        /// <summary>
+        /// 修改信息
+        /// </summary>
+        /// <param name="teacherAddress"></param>
+        /// <param name="teacherMail"></param>
+        /// <param name="teacherPhone"></param>
+        /// <returns></returns>
         public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
         {
             string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'"
@@ -42,7 +52,11 @@ namespace ThesisManage.DAL
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //根据教员编号获取信息
+        /// <summary>
+        /// 根据教师编号获取信息
+        /// </summary>
+        /// <param name="teacherId"></param>
+        /// <returns></returns>
         public Teacher GetTeacherByTeacherId(string teacherId)
         {
             string sql = string.Format("select * from Teacher where TeacherId='{0}'", teacherId);
@@ -66,7 +80,10 @@ namespace ThesisManage.DAL
             reader.Close();
             return teacher;
         }
-        //获取所有教员
+        /// <summary>
+        /// 获取所有教师
+        /// </summary>
+        /// <returns></returns>
         public List<Teacher> GetTeacherList()
         {
             List<Teacher> list = new List<Teacher>();
@@ -90,20 +107,37 @@ namespace ThesisManage.DAL
             }
             return list;
         }
+        /// <summary>
+        /// 修改密码
+        /// </summary>
+        /// <param name="pass"></param>
+        /// <param name="TEID"></param>
+        /// <returns></returns>
         public int ModifiyPassWord(string pass, int TEID)
         {
             string sql = string.Format("update Teacher set TeacherPass='{0}' where TEID={1}", pass, TEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //添加教员
+        /// <summary>
+        /// 添加教师
+        /// </summary>
+        /// <param name="teacherID"></param>
+        /// <param name="teacherName"></param>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public int AddTeacher(String teacherID, string teacherName, int roleId)
         {
             string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID) values('{0}','{1}',{2}) ", teacherID, teacherName, roleId);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //添加多条数据
+        /// <summary>
+        /// 批量添加教师
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="roleId"></param>
+        /// <returns></returns>
         public int AddTeacher(string source, int roleId)
         {
             int num = 0;
@@ -135,7 +169,10 @@ namespace ThesisManage.DAL
             return num;
 
         }
-        //查询已上传标题的教员
+        /// <summary>
+        /// 查询已上传标题的教师
+        /// </summary>
+        /// <returns></returns>
         public List<Teacher> GetTeacherHasUpLoadTitle()
         {
             string sql = string.Format("select * from teacher where TEID in (select TeacherId from Title group by TeacherId)");
@@ -159,6 +196,11 @@ namespace ThesisManage.DAL
             }
             return list;
         }
+        /// <summary>
+        /// 获取教师表
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public DataSet GetTeacher(string sql)
         {
             SqlDataAdapter adapter = new SqlDataAdapter(sql, DBHelper.Connection);

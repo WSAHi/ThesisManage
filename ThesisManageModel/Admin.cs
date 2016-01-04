@@ -27,7 +27,7 @@ namespace ThesisManage.Model
         }
         private string loginId = string.Empty;
         /// <summary>
-        /// 登入密码
+        /// 登入ID
         /// </summary>
         public string LoginId
         {

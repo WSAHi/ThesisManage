@@ -56,7 +56,11 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        //添加信息
+        /// <summary>
+        /// 添加信息
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public int AddMessage(Message message)
         {
             string sql = null;
@@ -78,7 +82,12 @@ namespace ThesisManage.DAL
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //获取学生的信息
+        /// <summary>
+        /// 获取学生信息
+        /// </summary>
+        /// <param name="studentId"></param>
+        /// <param name="choose"></param>
+        /// <returns></returns>
         public List<Message> GetStudentMesList(int studentId, string choose)
         {
             string sql = string.Format("select * from Messages where MStudentId={0} or State=4 order by MPubDate desc", studentId);
@@ -119,7 +128,12 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        //获取老师的信息
+        /// <summary>
+        /// 获取教师信息
+        /// </summary>
+        /// <param name="teacherId">教师ID</param>
+        /// <param name="choose"></param>
+        /// <returns></returns>
         public List<Message> GetTeacherMesList(int teacherId, string choose)
         {
             string sql = string.Format("select * from Messages where MTeacherId={0}  or State=4 order by MPubDate desc", teacherId);
@@ -160,7 +174,11 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        //根据MID获取message
+        /// <summary>
+        /// 根据MID获取Message
+        /// </summary>
+        /// <param name="MID"></param>
+        /// <returns></returns>
         public Message GetMesByMID(int MID)
         {
             string sql = string.Format("select * from Messages where MID={0}", MID);
@@ -196,14 +214,23 @@ namespace ThesisManage.DAL
             }
             return message;
         }
-        //删除消息
+        /// <summary>
+        /// 删除消息
+        /// </summary>
+        /// <param name="MID"></param>
+        /// <returns></returns>
         public int DeleteMessage(int MID)
         {
             string sql = string.Format("delete Messages where MID={0}", MID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
-        //修改信息状态
+        /// <summary>
+        /// 修改信息状态
+        /// </summary>
+        /// <param name="MID"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
         public int ModifyMessage(int MID, int state)
         {
             string sql = string.Format("update Messages set state={0} where MID={1}", state, MID);

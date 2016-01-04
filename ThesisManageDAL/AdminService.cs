@@ -67,7 +67,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 添加多行数据
+        /// 批量添加管理员
         /// </summary>
         /// <param name="source"></param>
         /// <param name="roleId"></param>

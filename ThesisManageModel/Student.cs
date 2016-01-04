@@ -9,7 +9,7 @@ namespace ThesisManage.Model
     {
         private int sID = 0;
         /// <summary>
-        /// 学生Id
+        /// 学生ID
         /// </summary>
         public int SID
         {

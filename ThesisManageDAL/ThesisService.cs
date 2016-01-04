@@ -12,23 +12,28 @@ namespace ThesisManage.DAL
     {
         StudentService studentService = new StudentService();
         TitleService titleService = new TitleService();
+        /// <summary>
+        /// 添加论文
+        /// </summary>
+        /// <param name="thesis"></param>
+        /// <returns></returns>
         public int InsertThesis(Thesis thesis)
         {
             SqlCommand cmd = new SqlCommand();
             SqlConnection conn = DBHelper.Connection;
             cmd.Connection = conn;
-            cmd.CommandText = "insert into Thesis(StudentId,TitleId,PublishDate,Contents) values(@StudentId,@TitleId,@PublishDate,@Contents)";
-            SqlParameter StudentId = new SqlParameter("@StudentId", System.Data.SqlDbType.Int);
+            cmd.CommandText = "INSERT INTO Thesis(StudentId,TitleId,PublishDate,Contents) VALUES(@StudentId,@TitleId,@PublishDate,@Contents)";
+            SqlParameter StudentId = new SqlParameter("@StudentId", SqlDbType.Int);
             StudentId.Value = thesis.Student.SID;
             cmd.Parameters.Add(StudentId);
-            SqlParameter TitleId = new SqlParameter("@TitleId", System.Data.SqlDbType.Int);
+            SqlParameter TitleId = new SqlParameter("@TitleId", SqlDbType.Int);
             TitleId.Value = thesis.Title.TID;
             cmd.Parameters.Add(TitleId);
-            SqlParameter PublishDate = new SqlParameter("@PublishDate", System.Data.SqlDbType.VarChar, 50);
+            SqlParameter PublishDate = new SqlParameter("@PublishDate", SqlDbType.VarChar, 50);
             PublishDate.Value = thesis.PublishDate;
             cmd.Parameters.Add(PublishDate);
             //添加word文件
-            SqlParameter Contents = new SqlParameter("@Contents", System.Data.SqlDbType.Image);//见本段最后注解
+            SqlParameter Contents = new SqlParameter("@Contents", SqlDbType.Image);//见本段最后注解
             Contents.Value = thesis.Content;
             cmd.Parameters.Add(Contents);
             int num = cmd.ExecuteNonQuery();
@@ -38,7 +43,7 @@ namespace ThesisManage.DAL
         public int GetCountsByStuId(int stuId)
         {
             Thesis thsis = new Thesis();
-            string sql = string.Format("select Contents from Thesis where StudentId={0}", stuId);
+            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentId={0}", stuId);
             SqlDataReader reader = DBHelper.GetReader(sql);
             FileStream fs;
             BinaryWriter bw;
@@ -87,14 +92,14 @@ namespace ThesisManage.DAL
             SqlConnection conn = DBHelper.Connection;
             cmd.Connection = conn;
             cmd.CommandText = "update Thesis set PublishDate=@PublishDate,Contents=@Contents where StudentId=@StudentId";
-            SqlParameter StudentId = new SqlParameter("@StudentId", System.Data.SqlDbType.Int);
+            SqlParameter StudentId = new SqlParameter("@StudentId", SqlDbType.Int);
             StudentId.Value = thesis.Student.SID;
             cmd.Parameters.Add(StudentId);
-            SqlParameter PublishDate = new SqlParameter("@PublishDate", System.Data.SqlDbType.VarChar, 50);
+            SqlParameter PublishDate = new SqlParameter("@PublishDate", SqlDbType.VarChar, 50);
             PublishDate.Value = thesis.PublishDate;
             cmd.Parameters.Add(PublishDate);
             //添加word文件
-            SqlParameter Contents = new SqlParameter("@Contents", System.Data.SqlDbType.Image);//见本段最后注解
+            SqlParameter Contents = new SqlParameter("@Contents", SqlDbType.Image);//见本段最后注解
             Contents.Value = thesis.Content;
             cmd.Parameters.Add(Contents);
             int num = cmd.ExecuteNonQuery();
@@ -123,7 +128,12 @@ namespace ThesisManage.DAL
             reader.Close();
             return thsis;
         }
-        //获取论文，标题是统一老师上传的
+        /// <summary>
+        /// 获取论文
+        /// 标题是统一老师上传的
+        /// </summary>
+        /// <param name="TEID"></param>
+        /// <returns></returns>
         public List<Thesis> GetThesisWithOenTeacher(int TEID)
         {
             int studentId = 0;
