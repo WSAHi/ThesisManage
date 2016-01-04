@@ -14,6 +14,6 @@ public partial class _Default : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         Session.Clear();
-        Response.Redirect("DoLogin.aspx");
+        Response.Redirect("Login.aspx");
     }
 }
