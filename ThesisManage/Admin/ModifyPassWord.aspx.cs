@@ -33,7 +33,7 @@ public partial class Admin_ModifyPassWord : System.Web.UI.Page
             if (admin.LoginPass == txtOldPassWord.Text.Trim())
             {
                 string password = txtNewPassWord.Text.Trim();
-                int num =adminManage.ModifiyPassWord(password, admin.LoginId);
+                int num =adminManage.ModifiyPassWord(password, admin.LoginID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('密码修改成功！');</script>");

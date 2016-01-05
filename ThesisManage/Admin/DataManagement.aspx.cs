@@ -129,7 +129,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         string loginId = TextBox6.Text.Trim();
         int roleID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
         Admin admin = adminManage.GetAdminById(loginId);
-        if (admin.LoginId == "")
+        if (admin.LoginID == "")
         {
             int num = adminManage.AddAdmin(loginId, roleID);
             if (num > 0)
