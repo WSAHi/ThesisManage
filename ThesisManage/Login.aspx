@@ -20,8 +20,9 @@
             font-size:100px;
             color:deepskyblue;
             margin:auto;
-            padding-top:50px;
-            padding-left:300px;
+            padding-top:100px;
+            padding-left:280px;
+            padding-bottom:100px;
             border:5px double deepskyblue;
         }
         #part {
@@ -31,13 +32,14 @@
             font-family:'Microsoft YaHei';
             margin:auto;
             padding-top:25px;
-            padding-left:600px;
+            padding-left:550px;
         }
         #btn {
             font-family:'Microsoft YaHei';
             margin:auto;
             padding-top:20px;
-            padding-left:650px;
+            padding-left:600px;
+            padding-bottom:50px;
         }
     </style>
 </head>
