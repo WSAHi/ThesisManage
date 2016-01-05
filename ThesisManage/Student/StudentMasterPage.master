@@ -5,6 +5,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>无标题页</title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 868px;
+            height: 325px;
+        }
+    </style>
 </head>
 <body style="background-image: url(../Images/bg4.jpg)">
     <form id="form1" runat="server">
@@ -30,7 +36,7 @@
                 </tr>
                 <tr>
                     <td style="height: 323px;" colspan="2" align="center">
-                        <table style="width: 868px; height: 323px; border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: blue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;">
+                        <table style="border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: blue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;" class="auto-style1">
                             <tr>
                                 <td style="width: 210px; border-right: dodgerblue thin solid; border-top: vertical-align: top blue thin solid; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
 

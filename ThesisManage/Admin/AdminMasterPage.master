@@ -5,18 +5,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>无标题页</title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 868px;
+            height: 358px;
+        }
+    </style>
 </head>
 <body style="background-image: url(../Images/bg4.jpg)">
     <form id="form1" runat="server">
         <div>
             <table align="center" border="0" cellpadding="0" cellspacing="0" style="height: 100%; background-image: url(../Images/bg2.gif);" width="1024">
                 <tr>
-                    <td colspan="2" style="height: 177px" align="center">
+                    <td style="height: 177px" align="center">
                         <img src="../Images/head.jpg" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2" style="height: 63px">
+                    <td align="center" style="height: 63px">
                         <table style="width: 868px; width: 868px; height: 1px; border-top-width: thin; border-left-width: thin; border-left-color: dodgerblue; border-bottom-width: thin; border-bottom-color: dodgerblue; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;">
                             <tr>
                                 <td style="width: 868px; height: 23px;">您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
@@ -47,8 +53,8 @@
                     </td>
                 </tr>
                 <tr>
-                    <td style="height: 500px;" colspan="2" align="center">
-                        <table style="width: 868px; height: 500px; border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: dodgerblue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;">
+                    <td style="height: 500px;" align="center">
+                        <table style="border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: dodgerblue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;" class="auto-style1">
                             <tr>
                                 <td style="width: 210px; border-right: dodgerblue thin solid; border-top: dodgerblue thin solid; vertical-align: top; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
 
@@ -74,10 +80,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2" style="height: 153px" align="center">&nbsp;</td>
-                </tr>
-            </table>
+                </table>
         </div>
     </form>
 </body>
