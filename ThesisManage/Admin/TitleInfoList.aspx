@@ -17,8 +17,7 @@
         OnClick="Button1_Click" Text="查询" />&nbsp;<asp:Button ID="Button2" runat="server"
             BackColor="#C0FFFF" BorderColor="#C0FFFF" OnClick="Button2_Click" Text="生成Excel" /><br />
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" CellPadding="3" ForeColor="Black"
-        GridLines="Vertical" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound"
-        PageSize="15" Width="639px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+        GridLines="Vertical" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" Width="639px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
         <FooterStyle BackColor="#CCCCCC" />
         <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
         <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />

@@ -15,7 +15,7 @@
             <td colspan="2" height="23">
                 <asp:GridView ID="GridView1" runat="server" CellPadding="3" DataSourceID="ObjectDataSource2"
                     ForeColor="Black" GridLines="Vertical" OnRowDataBound="GridView1_RowDataBound"
-                    Width="630px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="20" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+                    Width="630px" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" Height="132px">
                     <FooterStyle BackColor="#CCCCCC" />
                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />

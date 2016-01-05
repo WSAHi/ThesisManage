@@ -73,11 +73,11 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         int teid =Convert.ToInt32(ID);
         string imageUrl = string.Empty;
         if (teid%2==0)
-            imageUrl = "~/Images/tu1.gif";
+            imageUrl = "~/Images/1.jpg";
         else if (teid % 3 == 0)
-            imageUrl = "~/Images/tu2.gif";
+            imageUrl = "~/Images/2.jpg";
         else
-            imageUrl = "~/Images/tu3.gif";
+            imageUrl = "~/Images/3.jpg";
         return imageUrl;
     }
     protected void Button1_Click(object sender, EventArgs e)
