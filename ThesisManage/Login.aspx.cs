@@ -37,7 +37,7 @@ public partial class LLogin : System.Web.UI.Page
             if (mes.Trim() == "成功")
             {
                 Admin admin = new Admin();
-                admin.LoginId = loginName;
+                admin.LoginID = loginName;
                 admin.LoginPass = password;
                 Session["admin"] = admin;
                 Response.Redirect("Admin/AuditUpLoadTitle.aspx");
