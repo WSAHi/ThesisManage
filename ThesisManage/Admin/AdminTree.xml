@@ -11,7 +11,7 @@
   </siteMapNode>
   <siteMapNode url="" tltle="系统信息" description="">
     <siteMapNode url="~\Admin\StudentInfoList.aspx" tltle="学生信息" description="" />
-    <siteMapNode url="~\Admin\TeacherInfoList.aspx" tltle="教员信息" description="" />
+    <siteMapNode url="~\Admin\TeacherInfoList.aspx" tltle="教师信息" description="" />
     <siteMapNode url="~\Admin\TitleInfoList.aspx" tltle="标题信息" description="" />
   </siteMapNode>
   <siteMapNode url="" tltle="留言信息" description="">
