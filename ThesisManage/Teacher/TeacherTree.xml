@@ -15,7 +15,6 @@
   <siteMapNode url="" tltle="消息管理" description="">
     <siteMapNode url="~\Teacher\Message.aspx" tltle="消息" description="" />
   </siteMapNode>
-  <siteMapNode url="" tltle="退出登录" description="">
-    <siteMapNode url="~\Default.aspx" tltle="退出登录" description=""/>
+    <siteMapNode url="~\Default.aspx" tltle="退出登录" description="">
   </siteMapNode>
 </siteMapNode>
