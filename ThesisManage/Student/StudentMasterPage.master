@@ -60,12 +60,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="height: 153px" align="center">
-                    <table style="background-image: url(../Images/foot.gif); width: 868px; background-repeat: repeat-x; height: 99px">
-                        <tr>
-                            <td style="width: 100px; height: 88px;"></td>
-                        </tr>
-                    </table>
-                </td>
+                    &nbsp;</td>
             </tr>
         </table>
     </div>
