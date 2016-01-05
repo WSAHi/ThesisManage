@@ -12,14 +12,14 @@ namespace ThesisManage.DAL
     {
         TitleService titleServer = new TitleService();
         /// <summary>
-        /// 根据学号获取学生信息
+        /// 获取学生信息
         /// </summary>
-        /// <param name="studentID"></param>
+        /// <param name="studentID">学生学号</param>
         /// <returns></returns>
         public Student GetStudentByStudentID(string studentID)
         {
-            int userRoleId = 0;//角色Id
-            int titleId = 0;//题目Id
+            int userRoleId = 0;//角色ID
+            int titleId = 0;//题目ID
 
             Student student = new Student();
             string sql = string.Format("select * from Student where StudentID ='{0}'", studentID);
@@ -50,15 +50,14 @@ namespace ThesisManage.DAL
             return student;
         }
         /// <summary>
-        /// 根据学生ID获取信息
+        /// 获取信息
         /// </summary>
-        /// <param name="sID"></param>
+        /// <param name="sID">学生ID</param>
         /// <returns></returns>
-
         public Student GetStudentBySID(int sID)
         {
-            int userRoleId = 0;//角色Id
-            int titleId = 0;//题目Id
+            int userRoleId = 0;//角色ID
+            int titleId = 0;//题目ID
             TitleService titleServer = new TitleService();
             Student student = new Student();
             string sql = string.Format("select * from Student where SID ={0}", sID);
@@ -92,10 +91,10 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改学生信息
         /// </summary>
-        /// <param name="studentAddress"></param>
-        /// <param name="studentPhone"></param>
-        /// <param name="studentMail"></param>
-        /// <param name="studentID"></param>
+        /// <param name="studentAddress">地址</param>
+        /// <param name="studentPhone">电话</param>
+        /// <param name="studentMail">邮箱</param>
+        /// <param name="studentID">学生ID</param>
         /// <returns></returns>
         public int ModifiyStuByStudentID(string studentAddress, string studentPhone, string studentMail, string studentID)
         {
@@ -106,9 +105,9 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改选题状态
         /// </summary>
-        /// <param name="sudentState"></param>
-        /// <param name="titleId"></param>
-        /// <param name="studentID"></param>
+        /// <param name="sudentState">学生状态</param>
+        /// <param name="titleId">题目ID</param>
+        /// <param name="studentID">学生学号</param>
         /// <returns></returns>
         public int ModifiyStuSate(int sudentState, int titleId, string studentID)
         {
@@ -119,8 +118,8 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改学生密码
         /// </summary>
-        /// <param name="newPass"></param>
-        /// <param name="studentID"></param>
+        /// <param name="newPass">新密码</param>
+        /// <param name="studentID">学生学号</param>
         /// <returns></returns>
         public int ModifiyStuPass(string newPass, string studentID)
         {
@@ -132,10 +131,10 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 增加学生
         /// </summary>
-        /// <param name="studentID"></param>
-        /// <param name="studentName"></param>
-        /// <param name="studentClass"></param>
-        /// <param name="roleID"></param>
+        /// <param name="studentID">学生学号</param>
+        /// <param name="studentName">学生姓名</param>
+        /// <param name="studentClass">学生班级</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
@@ -179,14 +178,14 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取选择同一个老师的所有学生
         /// </summary>
-        /// <param name="teid"></param>
+        /// <param name="teacherID">教师编号</param>
         /// <returns></returns>
-        public List<Student> GetStudentWithOenTeacher(int teid)
+        public List<Student> GetStudentWithOenTeacher(int teacherID)
         {
             List<Student> list = new List<Student>();
-            int userRoleId = 0;//角色Id
-            int titleId = 0;//题目Id
-            string sql = string.Format("select * from student where STitleID in (select TID from Title where TeacherId={0})", teid);
+            int userRoleId = 0;//角色ID
+            int titleId = 0;//题目ID
+            string sql = string.Format("select * from student where STitleID in (select TID from Title where TeacherId={0})", teacherID);
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
@@ -215,14 +214,14 @@ namespace ThesisManage.DAL
             return list;
         }
         /// <summary>
-        /// 获取上传标题的学生
+        /// 上传题目的学生
         /// </summary>
         /// <returns></returns>
         public List<Student> GetStudentByUpLoadTitle()
         {
             List<Student> list = new List<Student>();
-            int userRoleId = 0;//角色Id
-            int titleId = 0;//题目Id
+            int userRoleId = 0;//角色ID
+            int titleId = 0;//题目ID
             string sql = string.Format("select * from student where SID in (select StudentId from Title group by StudentId)");
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
@@ -254,10 +253,10 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 批量添加学生
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="roleId"></param>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int addStudents(string source, int roleId)
+        public int addStudents(string source, int roleID)
         {
             int num = 0;
             try
@@ -276,7 +275,7 @@ namespace ThesisManage.DAL
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[2].ToString() + "',";
-                        strSql += roleId + ")";
+                        strSql += roleID + ")";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }
@@ -289,7 +288,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 获取学生数量
+        /// 学生数量
         /// </summary>
         /// <returns></returns>
         public int GetStudentCount()
@@ -305,7 +304,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 获取已经被选的题目数量
+        /// 已经被选的题目数量
         /// </summary>
         /// <returns></returns>
         public int GetHasChooseTitleNum()
@@ -323,11 +322,11 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 更新题目状态
         /// </summary>
-        /// <param name="sid"></param>
+        /// <param name="studentID">学生学号</param>
         /// <returns></returns>
-        public int EscTitleByStudentId(int sid)
+        public int EscTitleByStudentId(int studentID)
         {
-            string sql = string.Format("update student set STitleID=null,SudentState=0 where SID={0}", sid);
+            string sql = string.Format("update student set STitleID=null,SudentState=0 where SID={0}", studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

@@ -12,12 +12,12 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 教师登陆验证
         /// </summary>
-        /// <param name="teacherId"></param>
-        /// <param name="pass"></param>
+        /// <param name="teacherID">教师编号</param>
+        /// <param name="pass">密码</param>
         /// <returns></returns>
-        public string IsValide(string teacherId, string pass)
+        public string IsValide(string teacherID, string pass)
         {
-            Teacher teacher = teacherService.GetTeacherByTeacherId(teacherId);
+            Teacher teacher = teacherService.GetTeacherByTeacherId(teacherID);
             string mes = null;
             if (!string.IsNullOrEmpty(teacher.TeacherName))
             {
@@ -37,20 +37,20 @@ namespace ThesisManage.BLL
             return mes;
         }
         /// <summary>
-        /// 根据教师编号获取信息
+        /// 获取教师信息
         /// </summary>
-        /// <param name="teacherId"></param>
+        /// <param name="teacherID">教师编号</param>
         /// <returns></returns>
-        public Teacher GetTeacherByTeacherId(string teacherId)
+        public Teacher GetTeacherByTeacherId(string teacherID)
         {
-            return teacherService.GetTeacherByTeacherId(teacherId);
+            return teacherService.GetTeacherByTeacherId(teacherID);
         }
         /// <summary>
         /// 修改信息
         /// </summary>
-        /// <param name="teacherAddress"></param>
-        /// <param name="teacherMail"></param>
-        /// <param name="teacherPhone"></param>
+        /// <param name="teacherAddress">地址</param>
+        /// <param name="teacherMail">邮箱</param>
+        /// <param name="teacherPhone">电话</param>
         /// <returns></returns>
         public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
         {
@@ -59,33 +59,33 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="pass"></param>
-        /// <param name="TEID"></param>
+        /// <param name="newPass">新密码</param>
+        /// <param name="teID">教师ID</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string pass, int TEID)
+        public int ModifiyPassWord(string newPass, int teID)
         {
-            return teacherService.ModifiyPassWord(pass, TEID);
+            return teacherService.ModifiyPassWord(newPass, teID);
         }
         /// <summary>
         /// 添加教师
         /// </summary>
-        /// <param name="teacherID"></param>
-        /// <param name="teacherName"></param>
-        /// <param name="roleId"></param>
+        /// <param name="teacherID">教师编号</param>
+        /// <param name="teacherName">教师姓名</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(String teacherID, string teacherName, int roleId)
+        public int AddTeacher(String teacherID, string teacherName, int roleID)
         {
-            return teacherService.AddTeacher(teacherID, teacherName, roleId);
+            return teacherService.AddTeacher(teacherID, teacherName, roleID);
         }
         /// <summary>
         /// 批量添加教师
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="roleId"></param>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(string source, int roleId)
+        public int AddTeacher(string source, int roleID)
         {
-            return teacherService.AddTeacher(source, roleId);
+            return teacherService.AddTeacher(source, roleID);
         }
         /// <summary>
         /// 获取所有教师
@@ -96,9 +96,9 @@ namespace ThesisManage.BLL
             return teacherService.GetTeacherList();
         }
         /// <summary>
-        /// 根据TeacherID获取教师信息
+        /// 获取教师信息
         /// </summary>
-        /// <param name="tEID"></param>
+        /// <param name="tEID">教师ID</param>
         /// <returns></returns>
         public Teacher GetTeacherById(int tEID)
         {

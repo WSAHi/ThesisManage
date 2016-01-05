@@ -40,10 +40,10 @@ namespace ThesisManage.DAL
             conn.Close();
             return num;
         }
-        public int GetCountsByStuId(int stuId)
+        public int GetCountsByStuId(int studentID)
         {
             Thesis thsis = new Thesis();
-            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentId={0}", stuId);
+            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentId={0}", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             FileStream fs;
             BinaryWriter bw;
@@ -86,6 +86,11 @@ namespace ThesisManage.DAL
             reader.Close();
             return num;
         }
+        /// <summary>
+        /// 记录论文相关信息
+        /// </summary>
+        /// <param name="thesis"></param>
+        /// <returns></returns>
         public int UpdateThesisByStuId(Thesis thesis)
         {
             SqlCommand cmd = new SqlCommand();
@@ -106,14 +111,19 @@ namespace ThesisManage.DAL
             conn.Close();
             return num;
         }
-        public Thesis GetThesisByStuId(int stuId)
+        /// <summary>
+        /// 获取论文信息
+        /// </summary>
+        /// <param name="studentID">学生编号</param>
+        /// <returns></returns>
+        public Thesis GetThesisByStuId(int studentID)
         {
             int studentId = 0;
             int titleId = 0;
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
 
-            string sql = string.Format("select * from Thesis where StudentId={0}", stuId);
+            string sql = string.Format("select * from Thesis where StudentId={0}", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
@@ -132,14 +142,14 @@ namespace ThesisManage.DAL
         /// 获取论文
         /// 标题是统一老师上传的
         /// </summary>
-        /// <param name="TEID"></param>
+        /// <param name="teacherID">教师编号</param>
         /// <returns></returns>
-        public List<Thesis> GetThesisWithOenTeacher(int TEID)
+        public List<Thesis> GetThesisWithOenTeacher(int teacherID)
         {
             int studentId = 0;
             int titleId = 0;
 
-            string sql = string.Format("select * from thesis where titleid in (select tid from title where teacherid={0})", TEID);
+            string sql = string.Format("select * from thesis where titleid in (select tid from title where teacherid={0})", teacherID);
             List<Thesis> list = new List<Thesis>();
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
@@ -155,14 +165,19 @@ namespace ThesisManage.DAL
             }
             return list;
         }
-        public Thesis GetThesisById(int id)
+        /// <summary>
+        /// 获取论文相关信息
+        /// </summary>
+        /// <param name="thesisID">论文编号</param>
+        /// <returns></returns>
+        public Thesis GetThesisById(int thesisID)
         {
             int studentId = 0;
             int titleId = 0;
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
 
-            string sql = string.Format("select * from Thesis where ThesisID={0}", id);
+            string sql = string.Format("select * from Thesis where ThesisID={0}", thesisID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
@@ -177,6 +192,10 @@ namespace ThesisManage.DAL
             reader.Close();
             return thsis;
         }
+        /// <summary>
+        /// 获取论文数量
+        /// </summary>
+        /// <returns></returns>
         public int GetThesisCount()
         {
             string sql = string.Format("select num=count(*) from Thesis");
@@ -189,9 +208,14 @@ namespace ThesisManage.DAL
             reader.Close();
             return num;
         }
-        public int DeleteThesisByStudentId(int studentId)
+        /// <summary>
+        /// 删除论文
+        /// </summary>
+        /// <param name="studentID">学生编号</param>
+        /// <returns></returns>
+        public int DeleteThesisByStudentId(int studentID)
         {
-            string sql = string.Format("delete Thesis where StudentId={0}", studentId);
+            string sql = string.Format("delete Thesis where StudentId={0}", studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

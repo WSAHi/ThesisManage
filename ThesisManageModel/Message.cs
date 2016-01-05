@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 消息实体类
+    /// </summary>
     [Serializable]
     public class Message
     {
@@ -18,7 +21,7 @@ namespace ThesisManage.Model
         }
         private Teacher teacher;
         /// <summary>
-        /// 老师
+        /// 教师
         /// </summary>
         public Teacher Teacher
         {
@@ -79,6 +82,5 @@ namespace ThesisManage.Model
             get { return senderRole; }
             set { senderRole = value; }
         }
-
     }
 }

@@ -11,7 +11,7 @@ namespace ThesisManage.DAL
     public class TeacherService
     {
         /// <summary>
-        /// 根据TeacherID获取教师信息
+        /// 获取教师信息
         /// </summary>
         /// <param name="tEID"></param>
         /// <returns></returns>
@@ -41,25 +41,24 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改信息
         /// </summary>
-        /// <param name="teacherAddress"></param>
-        /// <param name="teacherMail"></param>
-        /// <param name="teacherPhone"></param>
+        /// <param name="teacherAddress">地址</param>
+        /// <param name="teacherMail">邮箱</param>
+        /// <param name="teacherPhone">电话</param>
         /// <returns></returns>
         public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
         {
-            string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'"
-                , teacherAddress, teacherMail, teacherPhone);
+            string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'" , teacherAddress, teacherMail, teacherPhone);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
-        /// 根据教师编号获取信息
+        /// 获取教师信息
         /// </summary>
-        /// <param name="teacherId"></param>
+        /// <param name="teacherID">教师编号</param>
         /// <returns></returns>
-        public Teacher GetTeacherByTeacherId(string teacherId)
+        public Teacher GetTeacherByTeacherId(string teacherID)
         {
-            string sql = string.Format("select * from Teacher where TeacherId='{0}'", teacherId);
+            string sql = string.Format("select * from Teacher where TeacherId='{0}'", teacherID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             Teacher teacher = new Teacher();
             int roleId = 0;
@@ -110,35 +109,35 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="pass"></param>
-        /// <param name="TEID"></param>
+        /// <param name="newPass">新密码</param>
+        /// <param name="tEID">教师ID</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string pass, int TEID)
+        public int ModifiyPassWord(string newPass, int tEID)
         {
-            string sql = string.Format("update Teacher set TeacherPass='{0}' where TEID={1}", pass, TEID);
+            string sql = string.Format("update Teacher set TeacherPass='{0}' where TEID={1}", newPass, tEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 添加教师
         /// </summary>
-        /// <param name="teacherID"></param>
-        /// <param name="teacherName"></param>
-        /// <param name="roleId"></param>
+        /// <param name="teacherID">编号</param>
+        /// <param name="teacherName">姓名</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(String teacherID, string teacherName, int roleId)
+        public int AddTeacher(String teacherID, string teacherName, int roleID)
         {
-            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID) values('{0}','{1}',{2}) ", teacherID, teacherName, roleId);
+            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID) values('{0}','{1}',{2}) ", teacherID, teacherName, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 批量添加教师
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="roleId"></param>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(string source, int roleId)
+        public int AddTeacher(string source, int roleID)
         {
             int num = 0;
             try
@@ -156,7 +155,7 @@ namespace ThesisManage.DAL
                         strSql += "insert   into   Teacher(TeacherID,TeacherName,TRID)   values   ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "',";
-                        strSql += roleId + ")";
+                        strSql += roleID + ")";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }

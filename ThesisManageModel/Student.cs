@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 学生实体类
+    /// </summary>
     [Serializable]
     public class Student
     {
@@ -18,7 +21,7 @@ namespace ThesisManage.Model
         }
         private UserRole role;
         /// <summary>
-        /// 角色
+        /// 用户角色
         /// </summary>
         public UserRole Role
         {
@@ -81,7 +84,7 @@ namespace ThesisManage.Model
         }
         private string studentMail = string.Empty;
         /// <summary>
-        /// 学生E-MAIL
+        /// 学生邮箱
         /// </summary>
         public string StudentMail
         {
@@ -106,6 +109,5 @@ namespace ThesisManage.Model
             get { return title; }
             set { title = value; }
         }
-
     }
 }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 用户类型实体类
+    /// </summary>
     [Serializable]
     public class UserRole
     {

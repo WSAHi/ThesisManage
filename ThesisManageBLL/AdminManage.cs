@@ -12,12 +12,12 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 添加管理员
         /// </summary>
-        /// <param name="loginId"></param>
-        /// <param name="roleId"></param>
+        /// <param name="loginID">登陆ID</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddAdmin(string loginId, int roleId)
+        public int AddAdmin(string loginID, int roleID)
         {
-            return adminService.AddAdmin(loginId, roleId);
+            return adminService.AddAdmin(loginID, roleID);
         }
         /// <summary>
         /// 批量添加管理员
@@ -32,16 +32,16 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 管理员登陆验证
         /// </summary>
-        /// <param name="loginId"></param>
-        /// <param name="password"></param>
+        /// <param name="loginID"></param>
+        /// <param name="pass"></param>
         /// <returns></returns>
-        public string GetAdminById(string loginId, string password)
+        public string GetAdminById(string loginID, string pass)
         {
-            Admin admin = adminService.GetAdminById(loginId);
+            Admin admin = adminService.GetAdminById(loginID);
             string mes = null;
-            if (!string.IsNullOrEmpty(admin.LoginId))
+            if (!string.IsNullOrEmpty(admin.LoginID))
             {
-                if (password == admin.LoginPass)
+                if (pass == admin.LoginPass)
                 {
                     mes = "成功";
                 }
@@ -59,21 +59,21 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="newPassWord"></param>
-        /// <param name="loginId"></param>
+        /// <param name="newPass">新密码</param>
+        /// <param name="loginID">登陆ID</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string newPassWord, string loginId)
+        public int ModifiyPassWord(string newPass, string loginID)
         {
-            return adminService.ModifiyPassWord(newPassWord, loginId);
+            return adminService.ModifiyPassWord(newPass, loginID);
         }
         /// <summary>
-        /// 根据管理员ID获取信息
+        /// 获取管理员信息
         /// </summary>
-        /// <param name="loginId"></param>
+        /// <param name="loginID">登陆ID</param>
         /// <returns></returns>
-        public Admin GetAdminById(string loginId)
+        public Admin GetAdminById(string loginID)
         {
-            return adminService.GetAdminById(loginId);
+            return adminService.GetAdminById(loginID);
         }
     }
 }

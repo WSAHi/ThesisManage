@@ -9,7 +9,11 @@ namespace ThesisManage.DAL
 {
     public static class UserRoleService
     {
-        //通UID获取UserRole
+        /// <summary>
+        /// 通UID获取UserRole
+        /// </summary>
+        /// <param name="uID">用户角色ID</param>
+        /// <returns></returns>
         public static UserRole GetUserRoleByUid(int uID)
         {
             UserRole userRole = new UserRole();
@@ -23,7 +27,10 @@ namespace ThesisManage.DAL
             reader.Close();
             return userRole;
         }
-        //获取所有的UserRole
+        /// <summary>
+        /// 获取所有的角色
+        /// </summary>
+        /// <returns></returns>
         public static List<UserRole> GetUserRole()
         {
             string sql = string.Format("select * from UserRole ");

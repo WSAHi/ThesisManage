@@ -11,13 +11,13 @@ namespace ThesisManage.DAL
     public class AdminService
     {
         /// <summary>
-        /// 根据管理员ID获取信息
+        /// 获取管理员信息
         /// </summary>
-        /// <param name="loginId">管理员ID</param>
+        /// <param name="loginID">管理员账号</param>
         /// <returns>管理员信息</returns>
-        public Admin GetAdminById(string loginId)
+        public Admin GetAdminById(string loginID)
         {
-            string sql = string.Format("select * from Admin where LoginId='{0}'", loginId);
+            string sql = string.Format("select * from Admin where LoginId='{0}'", loginID);
             int roleId = 0;
             Admin admin = new Admin();
             try
@@ -26,7 +26,7 @@ namespace ThesisManage.DAL
                 if (reader.Read())
                 {
                     admin.AID = Convert.ToInt32(reader["AID"]);
-                    admin.LoginId = reader["LoginId"].ToString();
+                    admin.LoginID = reader["LoginId"].ToString();
                     admin.LoginPass = reader["LoginPass"].ToString();
                     roleId = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
@@ -46,33 +46,33 @@ namespace ThesisManage.DAL
         /// 修改密码
         /// </summary>
         /// <param name="newPassWord">新密码</param>
-        /// <param name="loginId">登陆ID</param>
+        /// <param name="loginID">登陆账号</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string newPassWord, string loginId)
+        public int ModifiyPassWord(string newPassWord, string loginID)
         {
-            string sql = string.Format("update Admin set LoginPass='{0}' where LoginId='{1}'", newPassWord, loginId);
+            string sql = string.Format("update Admin set LoginPass='{0}' where LoginId='{1}'", newPassWord, loginID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 添加管理员
         /// </summary>
-        /// <param name="loginId">登陆ID</param>
-        /// <param name="roleId">用户类别ID</param>
+        /// <param name="loginID">登陆账号</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddAdmin(string loginId, int roleId)
+        public int AddAdmin(string loginID, int roleID)
         {
-            string sql = string.Format("insert into Admin (loginId,arid) values('{0}',{1})", loginId, roleId);
+            string sql = string.Format("insert into Admin (loginId,arid) values('{0}',{1})", loginID, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 批量添加管理员
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="roleId"></param>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddAdmins(String source, int roleId)
+        public int AddAdmins(String source, int roleID)
         {
             int num = 0;
             try
@@ -89,14 +89,13 @@ namespace ThesisManage.DAL
                     {
                         strSql += "insert   into   Admin(loginId,arid)   values   ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "',";
-                        strSql += roleId + ")";
+                        strSql += roleID + ")";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
             return num;

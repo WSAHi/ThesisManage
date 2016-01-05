@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 管理员实体类
+    /// </summary>
     [Serializable]
     public class Admin
     {
@@ -18,21 +21,21 @@ namespace ThesisManage.Model
         }
         private UserRole userRole;
         /// <summary>
-        /// 角色
+        /// 用户角色
         /// </summary>
         public UserRole UserRole
         {
             get { return userRole; }
             set { userRole = value; }
         }
-        private string loginId = string.Empty;
+        private string loginID = string.Empty;
         /// <summary>
-        /// 登入ID
+        /// 登入账号
         /// </summary>
-        public string LoginId
+        public string LoginID
         {
-            get { return loginId; }
-            set { loginId = value; }
+            get { return loginID; }
+            set { loginID = value; }
         }
         private string loginPass = string.Empty;
         /// <summary>
@@ -43,6 +46,5 @@ namespace ThesisManage.Model
             get { return loginPass; }
             set { loginPass = value; }
         }
-
     }
 }

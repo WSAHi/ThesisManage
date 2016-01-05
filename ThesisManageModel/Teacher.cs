@@ -4,12 +4,15 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 教师实体类
+    /// </summary>
     [Serializable]
     public class Teacher
     {
         private int tEID = 0;
         /// <summary>
-        /// 教员ID
+        /// 教师ID
         /// </summary>
         public int TEID
         {
@@ -45,7 +48,7 @@ namespace ThesisManage.Model
         }
         private string teacherName = string.Empty;
         /// <summary>
-        /// 教员姓名
+        /// 教师姓名
         /// </summary>
         public string TeacherName
         {
@@ -54,7 +57,7 @@ namespace ThesisManage.Model
         }
         private string teacherAddress = string.Empty;
         /// <summary>
-        /// 教员地址
+        /// 教师地址
         /// </summary>
         public string TeacherAddress
         {
@@ -63,7 +66,7 @@ namespace ThesisManage.Model
         }
         private string teacherPhone = string.Empty;
         /// <summary>
-        /// 教员电话
+        /// 教师电话
         /// </summary>
         public string TeacherPhone
         {
@@ -72,7 +75,7 @@ namespace ThesisManage.Model
         }
         private string teacherMail = string.Empty;
         /// <summary>
-        /// 教员E-MAIL
+        /// 教师邮箱
         /// </summary>
         public string TeacherMail
         {
@@ -88,6 +91,5 @@ namespace ThesisManage.Model
             get { return teacherState; }
             set { teacherState = value; }
         }
-
     }
 }

@@ -85,15 +85,15 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取学生信息
         /// </summary>
-        /// <param name="studentId"></param>
+        /// <param name="studentID">学生学号</param>
         /// <param name="choose"></param>
         /// <returns></returns>
-        public List<Message> GetStudentMesList(int studentId, string choose)
+        public List<Message> GetStudentMesList(int studentID, string choose)
         {
-            string sql = string.Format("select * from Messages where MStudentId={0} or State=4 order by MPubDate desc", studentId);
+            string sql = string.Format("select * from Messages where MStudentId={0} or State=4 order by MPubDate desc", studentID);
             if (!string.IsNullOrEmpty(choose))
             {
-                sql = string.Format("select * from Messages where (MStudentId={0} and  State=0) or State=4 order by MPubDate desc", studentId);
+                sql = string.Format("select * from Messages where (MStudentId={0} and  State=0) or State=4 order by MPubDate desc", studentID);
             }
             List<Message> list = new List<Message>();
             int sId = 0;
@@ -131,15 +131,15 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取教师信息
         /// </summary>
-        /// <param name="teacherId">教师ID</param>
+        /// <param name="teacherID">教师编号</param>
         /// <param name="choose"></param>
         /// <returns></returns>
-        public List<Message> GetTeacherMesList(int teacherId, string choose)
+        public List<Message> GetTeacherMesList(int teacherID, string choose)
         {
-            string sql = string.Format("select * from Messages where MTeacherId={0}  or State=4 order by MPubDate desc", teacherId);
+            string sql = string.Format("select * from Messages where MTeacherId={0}  or State=4 order by MPubDate desc", teacherID);
             if (!string.IsNullOrEmpty(choose))
             {
-                sql = string.Format("select * from Messages where (MTeacherId={0} and  State=0) or State=4 order by MPubDate desc", teacherId);
+                sql = string.Format("select * from Messages where (MTeacherId={0} and  State=0) or State=4 order by MPubDate desc", teacherID);
             }
             List<Message> list = new List<Message>();
             int sId = 0;
@@ -177,7 +177,7 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 根据MID获取Message
         /// </summary>
-        /// <param name="MID"></param>
+        /// <param name="MID">MID</param>
         /// <returns></returns>
         public Message GetMesByMID(int MID)
         {

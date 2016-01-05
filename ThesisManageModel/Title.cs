@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ThesisManage.Model
 {
+    /// <summary>
+    /// 论文题目实体类
+    /// </summary>
     [Serializable]
     public class Title
     {
@@ -18,7 +21,7 @@ namespace ThesisManage.Model
         }
         private Teacher teacher;
         /// <summary>
-        /// 标题对应的教员
+        /// 标题对应的教师
         /// </summary>
         public Teacher Teacher
         {
@@ -79,7 +82,5 @@ namespace ThesisManage.Model
             get { return student; }
             set { student = value; }
         }
-
-
     }
 }
