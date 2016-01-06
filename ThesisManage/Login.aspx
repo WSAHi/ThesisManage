@@ -2,46 +2,10 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" >
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>毕业设计选题系统</title>
-    <style type="text/css">
-        body {
-            background-color:aliceblue;
-            border:5px double deepskyblue;
-        }
-        #form1 {
-            background-color:aliceblue;
-            margin:auto;
-            padding:inherit;
-        }
-        #head {
-            font-family:'Microsoft YaHei';
-            font-size:100px;
-            color:deepskyblue;
-            margin:auto;
-            padding-top:100px;
-            padding-left:280px;
-            padding-bottom:100px;
-            border:5px double deepskyblue;
-        }
-        #part {
-            border:5px double deepskyblue;
-        }
-        .login {
-            font-family:'Microsoft YaHei';
-            margin:auto;
-            padding-top:25px;
-            padding-left:550px;
-        }
-        #btn {
-            font-family:'Microsoft YaHei';
-            margin:auto;
-            padding-top:20px;
-            padding-left:600px;
-            padding-bottom:50px;
-        }
-    </style>
+    <link rel="Stylesheet" href="App_Themes/Login.css" type="text/css" />
 </head>
 <body>
     <div id="main">
