@@ -4,42 +4,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>无标题页</title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 868px;
-            height: 325px;
-        }
-    </style>
+    <title>毕业设计选题系统</title>
 </head>
 <body style="background-image: url(../Images/bg.jpg)">
     <form id="form1" runat="server">
         <div>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="height: 100%; background-image: url(../Images/bg.gif);" width="1024">
+            <table align="center" style="background-image: url(../Images/bg.gif);">
                 <tr>
-                    <td colspan="2" style="height: 177px" align="center">
+                    <td align="center">
                         <img src="../Images/head.jpg" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" colspan="2" style="height: 63px">
-
-                        <table style="width: 868px; width: 868px; height: 1px; border-top-width: thin; border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: blue; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;">
+                    <td align="center">
+                        <table>
                             <tr>
-                                <td style="width: 868px">您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                                <td>您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
                                 </asp:SiteMapPath>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
+                                </td>
+                            </tr>
                         </table>
-                        <asp:Label ID="Label1" runat="server" Font-Size="X-Small" ForeColor="Red" Width="371px" Visible="False"></asp:Label>
                     </td>
                 </tr>
                 <tr>
-                    <td style="height: 323px;" colspan="2" align="center">
-                        <table style="border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: blue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;" class="auto-style1">
+                    <td align="center">
+                        <table>
                             <tr>
-                                <td style="width: 210px; border-right: dodgerblue thin solid; border-top: vertical-align: top blue thin solid; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
-
+                                <td>
                                     <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree" ImageSet="BulletedList2" ShowExpandCollapse="False">
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
@@ -52,24 +48,17 @@
                                         <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
                                     </asp:TreeView>
                                     <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Student/StudentTree.xml"></asp:XmlDataSource>
-
-
                                 </td>
-                                <td style="width: 642px; border-right: dodgerblue thin solid; border-top: dodgerblue thin solid; vertical-align: top; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
+                                <td style="width: 650px;">
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>
                                 </td>
                             </tr>
                         </table>
+                    </td>
+                </tr>
+            </table>
         </div>
-        </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="height: 153px" align="center">
-                    &nbsp;</td>
-            </tr>
-        </table>
-    </div>
     </form>
 </body>
 </html>

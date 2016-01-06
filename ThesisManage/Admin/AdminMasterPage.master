@@ -4,60 +4,44 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>无标题页</title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 868px;
-            height: 358px;
-        }
-    </style>
+    <title>毕业设计选题系统</title>
 </head>
 <body style="background-image: url(../Images/bg.jpg)">
     <form id="form1" runat="server">
         <div>
-            <table align="center" border="0" cellpadding="0" cellspacing="0" style="height: 100%; background-image: url(../Images/bg.gif);" width="1024">
+            <table align="center" style="background-image: url(../Images/bg.gif);">
                 <tr>
-                    <td style="height: 177px" align="center">
-                        <img src="../Images/head.jpg" />
+                    <td align="center">
+                        <img alt="" src="../Images/head.jpg" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="center" style="height: 63px">
-                        <table style="width: 868px; width: 868px; height: 1px; border-top-width: thin; border-left-width: thin; border-left-color: dodgerblue; border-bottom-width: thin; border-bottom-color: dodgerblue; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;">
+                    <td align="center">
+                        <table>
                             <tr>
-                                <td style="width: 868px; height: 23px;">您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
+                                <td>您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
                                 </asp:SiteMapPath>
                                 </td>
                             </tr>
                             <tr>
-                                <td style="height: 23px">
-                                    <asp:Label ID="Label2" runat="server" Font-Bold="True" Font-Size="X-Small" ForeColor="Black"
-                                        Text="学生总数:"></asp:Label>
-                                    <asp:Label ID="Label3" runat="server" Font-Size="X-Small" ForeColor="Red" Text="Label"
-                                        Width="42px"></asp:Label>&nbsp; &nbsp;<asp:Label ID="Label4" runat="server" Font-Bold="True"
-                                            Font-Size="X-Small" ForeColor="Black" Text="标题总数:"></asp:Label><asp:Label ID="Label5"
-                                                runat="server" Font-Size="X-Small" ForeColor="Red"></asp:Label>
-                                    &nbsp; &nbsp;<asp:Label ID="Label8" runat="server" Font-Bold="True" Font-Size="X-Small"
-                                        Text="标题可选人数总和:"></asp:Label>
-                                    <asp:Label ID="Label9" runat="server" Font-Size="X-Small" ForeColor="Red"></asp:Label>
-                                    &nbsp; &nbsp;<asp:Label ID="Label6" runat="server" Font-Bold="True" Font-Size="X-Small"
-                                        Text="已选题学生人数:"></asp:Label>
-                                    <asp:Label ID="Label7" runat="server" Font-Size="X-Small" ForeColor="Red"></asp:Label>
-                                    &nbsp;
-                            <asp:Label ID="Label10" runat="server" Font-Bold="True" Font-Size="X-Small" Text="已上传论文学生人数:"></asp:Label>
-                                    <asp:Label ID="Label11" runat="server" Font-Size="X-Small" ForeColor="Red"></asp:Label><br />
-                                    <asp:Label ID="Label1" runat="server" Font-Size="X-Small" ForeColor="Red" Width="363px" Visible="False"></asp:Label>
+                                <td>
+                                    <asp:Label ID="Label2" runat="server" Text="学生总数:"></asp:Label><asp:Label ID="Label3" runat="server"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="Label4" runat="server" Text="标题总数:"></asp:Label><asp:Label ID="Label5" runat="server"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="Label8" runat="server" Text="标题可选人数总和:"></asp:Label><asp:Label ID="Label9" runat="server"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="Label6" runat="server" Text="已选题学生人数:"></asp:Label><asp:Label ID="Label7" runat="server"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="Label10" runat="server" Text="已上传论文学生人数:"></asp:Label><asp:Label ID="Label11" runat="server"></asp:Label>
+                                    <br />
+                                    <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
-                    <td style="height: 500px;" align="center">
-                        <table style="border-left-width: thin; border-left-color: blue; border-bottom-width: thin; border-bottom-color: dodgerblue; border-top-style: solid; border-top-color: dodgerblue; border-right-width: thin; border-right-color: dodgerblue;" class="auto-style1">
+                    <td align="center">
+                        <table>
                             <tr>
-                                <td style="width: 210px; border-right: dodgerblue thin solid; border-top: dodgerblue thin solid; vertical-align: top; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
-
+                                <td>
                                     <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree" ImageSet="BulletedList2" ShowExpandCollapse="False">
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
@@ -70,9 +54,8 @@
                                         <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
                                     </asp:TreeView>
                                     <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Admin/AdminTree.xml"></asp:XmlDataSource>
-
                                 </td>
-                                <td style="width: 642px; border-right: dodgerblue thin solid; border-top: dodgerblue thin solid; vertical-align: top; border-left: dodgerblue thin solid; border-bottom: dodgerblue thin solid;">
+                                <td style="width: 650px;">
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>
                                 </td>
@@ -80,7 +63,7 @@
                         </table>
                     </td>
                 </tr>
-                </table>
+            </table>
         </div>
     </form>
 </body>
