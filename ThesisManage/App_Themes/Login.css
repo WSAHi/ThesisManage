@@ -1,40 +1,20 @@
 ﻿body {
-    background-color: aliceblue;
-    border: 5px double deepskyblue;
-}
-
-#form1 {
-    background-color: aliceblue;
-    margin: auto;
-    padding: inherit;
+    background-color: azure;
 }
 
 #head {
-    font-family: 'Microsoft YaHei';
     font-size: 100px;
-    color: deepskyblue;
-    margin: auto;
-    padding-top: 100px;
-    padding-left: 280px;
-    padding-bottom: 100px;
-    border: 5px double deepskyblue;
+    padding: 50px 265px;
 }
 
-#part {
-    border: 5px double deepskyblue;
+body, #head, #part {
+    border: 5px groove White;
 }
 
 .login {
-    font-family: 'Microsoft YaHei';
-    margin: auto;
-    padding-top: 25px;
-    padding-left: 550px;
+    padding: 20px 550px;
 }
 
 #btn {
-    font-family: 'Microsoft YaHei';
-    margin: auto;
-    padding-top: 20px;
-    padding-left: 600px;
-    padding-bottom: 50px;
+    padding: 20px 600px;
 }
