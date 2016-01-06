@@ -9,14 +9,14 @@
 <body style="background-image: url(../Images/bg.jpg)">
     <form id="form1" runat="server">
         <div>
-            <table align="center" style="height: 100%; background-image: url(../Images/bg.gif);">
+            <table style="background-image: url(../Images/bg.gif);">
                 <tr>
-                    <td align="center">
+                    <td>
                         <img src="../Images/head.jpg" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="center">
+                    <td>
                         <table>
                             <tr>
                                 <td>您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
@@ -28,35 +28,28 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="center">
+                    <td>
                         <table>
                             <tr>
                                 <td>
-                                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree" ImageSet="BulletedList2" ShowExpandCollapse="False">
+                                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                         </DataBindings>
-                                        <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
-                                        <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                                        <ParentNodeStyle Font-Bold="False" />
-                                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
                                     </asp:TreeView>
                                     <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Teacher/TeacherTree.xml"></asp:XmlDataSource>
 
 
                                 </td>
-                                <td style="width: 650px;">
+                                <td>
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>
                                 </td>
                             </tr>
                         </table>
                     </td>
-                </tr>
-                <tr>
-                    <td align="center"></td>
                 </tr>
             </table>
         </div>

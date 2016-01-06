@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="StudentList.aspx.cs" Inherits="Teacher_StudentList" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsthesis" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" Width="642px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsthesis" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
         <Columns>
             <asp:BoundField DataField="ThesisID" HeaderText="ThesisID" SortExpression="ThesisID"
                 Visible="False" />
@@ -38,18 +38,8 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <FooterStyle BackColor="#CCCCCC" />
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-        <AlternatingRowStyle BackColor="#CCCCCC" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#808080" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
-    <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithOenTeacher"
-        TypeName="ThesisManage.BLL.ThesisManage">
+    <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithOenTeacher" TypeName="ThesisManage.BLL.ThesisManage">
         <SelectParameters>
             <asp:SessionParameter Name="TEID" SessionField="TEID" Type="Int32" />
         </SelectParameters>

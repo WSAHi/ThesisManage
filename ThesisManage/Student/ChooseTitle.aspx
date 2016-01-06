@@ -2,9 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     可选论文标题:<br />
-    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3"
-        DataSourceID="odsTitle" ForeColor="Black" GridLines="Vertical" Width="727px" DataKeyNames="TID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-        <FooterStyle BackColor="#CCCCCC" />
+    &nbsp;<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False"
+        DataSourceID="odsTitle" Width="727px" DataKeyNames="TID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True">
         <Columns>
             <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
             <asp:TemplateField HeaderText="题目" SortExpression="TitleName">
@@ -59,23 +58,13 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("State") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:HyperLinkField DataNavigateUrlFields="TID" DataNavigateUrlFormatString="TitleDetial.aspx?TID={0}"
-                HeaderText="详细" Text="查看" />
+            <asp:HyperLinkField DataNavigateUrlFields="TID" DataNavigateUrlFormatString="TitleDetial.aspx?TID={0}" HeaderText="详细" Text="查看" />
             <asp:TemplateField HeaderText="选题" ShowHeader="False">
                 <ItemTemplate>
-                    <asp:Button ID="btnChooseTitle" runat="server" BorderStyle="None" CausesValidation="False"
-                        CommandName="Cho" Text="选题" CommandArgument='<%# Eval("TID") %>' />
+                    <asp:Button ID="btnChooseTitle" runat="server" BorderStyle="None" CausesValidation="False" CommandName="Cho" Text="选题" CommandArgument='<%# Eval("TID") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-        <AlternatingRowStyle BackColor="#CCCCCC" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#808080" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:ObjectDataSource ID="odsTitle" runat="server" SelectMethod="GetTitleList" TypeName="ThesisManage.BLL.TitleManage"></asp:ObjectDataSource>
 </asp:Content>

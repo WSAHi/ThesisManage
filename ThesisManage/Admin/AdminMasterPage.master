@@ -9,14 +9,14 @@
 <body style="background-image: url(../Images/bg.jpg)">
     <form id="form1" runat="server">
         <div>
-            <table align="center" style="background-image: url(../Images/bg.gif);">
+            <table style="background-image: url(../Images/bg.gif);">
                 <tr>
-                    <td align="center">
-                        <img alt="" src="../Images/head.jpg" />
+                    <td>
+                        <img src="../Images/head.jpg" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="center">
+                    <td>
                         <table>
                             <tr>
                                 <td>您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
@@ -25,10 +25,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <asp:Label ID="Label2" runat="server" Text="学生总数:"></asp:Label><asp:Label ID="Label3" runat="server"></asp:Label>&nbsp; &nbsp;
-                                    <asp:Label ID="Label4" runat="server" Text="标题总数:"></asp:Label><asp:Label ID="Label5" runat="server"></asp:Label>&nbsp; &nbsp;
-                                    <asp:Label ID="Label8" runat="server" Text="标题可选人数总和:"></asp:Label><asp:Label ID="Label9" runat="server"></asp:Label>&nbsp; &nbsp;
-                                    <asp:Label ID="Label6" runat="server" Text="已选题学生人数:"></asp:Label><asp:Label ID="Label7" runat="server"></asp:Label>&nbsp; &nbsp;
+                                    <asp:Label ID="Label2" runat="server" Text="学生总数:"></asp:Label><asp:Label ID="Label3" runat="server"></asp:Label>
+                                    <asp:Label ID="Label4" runat="server" Text="标题总数:"></asp:Label><asp:Label ID="Label5" runat="server"></asp:Label>
+                                    <asp:Label ID="Label8" runat="server" Text="标题可选人数总和:"></asp:Label><asp:Label ID="Label9" runat="server"></asp:Label>
+                                    <asp:Label ID="Label6" runat="server" Text="已选题学生人数:"></asp:Label><asp:Label ID="Label7" runat="server"></asp:Label>
                                     <asp:Label ID="Label10" runat="server" Text="已上传论文学生人数:"></asp:Label><asp:Label ID="Label11" runat="server"></asp:Label>
                                     <br />
                                     <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
@@ -38,24 +38,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="center">
+                    <td>
                         <table>
                             <tr>
                                 <td>
-                                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree" ImageSet="BulletedList2" ShowExpandCollapse="False">
+                                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
                                         <DataBindings>
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                             <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
                                         </DataBindings>
-                                        <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
-                                        <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                                        <ParentNodeStyle Font-Bold="False" />
-                                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
                                     </asp:TreeView>
                                     <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Admin/AdminTree.xml"></asp:XmlDataSource>
                                 </td>
-                                <td style="width: 650px;">
+                                <td>
                                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                                     </asp:ContentPlaceHolder>
                                 </td>

@@ -1,39 +1,44 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="StudentMessage.aspx.cs" Inherits="Student_StudentMessage" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <table border="1" bordercolor="#2e90b0" style="font-family: 楷体_GB2312; width: 637px;">
+    <table>
         <tr>
-            <td bgcolor="#66ffcc" colspan="4">
-                <div align="center">
-                    学生基本信息查询
-                </div>
+            <td>学生基本信息查询
             </td>
         </tr>
         <tr>
-            <td align="right" style="width: 103px">学号:</td>
-            <td align="left" style="width: 151px">&nbsp;
-                <asp:Label ID="lbNum" runat="server" Height="22px" Width="123px" Style="position: absolute" Font-Size="Small"></asp:Label>
+            <td>学号:</td>
+            <td>
+                <asp:Label ID="lbNum" runat="server"></asp:Label>
             </td>
-            <td align="right" style="width: 134px">姓名:</td>
-            <td align="left">&nbsp;<asp:Label ID="lbName" runat="server" Font-Size="Small"></asp:Label></td>
+            <td>姓名:</td>
+            <td>
+                <asp:Label ID="lbName" runat="server"></asp:Label></td>
         </tr>
         <tr>
-            <td align="right" style="width: 103px; height: 6px">班级:</td>
-            <td align="left" style="width: 151px; height: 6px">&nbsp;<asp:Label ID="lbClass" runat="server" Width="153px" Font-Size="Small"></asp:Label></td>
-            <td align="right" style="width: 134px; height: 6px">地址:</td>
-            <td align="left" style="height: 6px">&nbsp;<asp:Label ID="lbAddress" runat="server" Font-Size="Small"></asp:Label></td>
+            <td>班级:</td>
+            <td>
+                <asp:Label ID="lbClass" runat="server"></asp:Label></td>
+            <td>地址:</td>
+            <td>
+                <asp:Label ID="lbAddress" runat="server"></asp:Label></td>
         </tr>
         <tr>
-            <td align="right" style="width: 103px">邮箱:</td>
-            <td align="left" style="width: 151px">&nbsp;<asp:Label ID="lbEmail" runat="server" Width="152px" Font-Size="Small"></asp:Label></td>
-            <td align="right" style="width: 134px">联系电话:</td>
-            <td align="left">&nbsp;<asp:Label ID="lbPhone" runat="server" Font-Size="Small"></asp:Label></td>
+            <td>邮箱:</td>
+            <td>
+                <asp:Label ID="lbEmail" runat="server"></asp:Label></td>
+            <td>联系电话:</td>
+            <td>
+                <asp:Label ID="lbPhone" runat="server"></asp:Label></td>
         </tr>
         <tr>
-            <td align="right" style="width: 103px">是否选题:</td>
-            <td align="left" style="width: 151px">&nbsp;<asp:Label ID="lbIsChooseTitle" runat="server" Width="1px" Font-Size="Small"></asp:Label></td>
-            <td align="right" style="width: 134px">&nbsp;<asp:Label ID="lbTitle" runat="server" Text="标题名称:" Width="91px"></asp:Label></td>
-            <td align="left">&nbsp;<asp:Label ID="lbTitleName" runat="server" Width="191px" Font-Size="Small"></asp:Label>
+            <td>是否选题:</td>
+            <td>
+                <asp:Label ID="lbIsChooseTitle" runat="server"></asp:Label></td>
+            <td>
+                <asp:Label ID="lbTitle" runat="server" Text="标题名称:"></asp:Label></td>
+            <td>
+                <asp:Label ID="lbTitleName" runat="server"></asp:Label>
                 <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="退选" /></td>
         </tr>
     </table>

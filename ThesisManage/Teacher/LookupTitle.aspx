@@ -1,9 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="LookupTitle.aspx.cs" Inherits="Teacher_LookupTitle" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3"
-        DataSourceID="odstitlelist" ForeColor="Black" GridLines="Vertical" Width="637px" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-        <FooterStyle BackColor="#CCCCCC" />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odstitlelist"   OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
         <Columns>
             <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
             <asp:BoundField DataField="TitleName" HeaderText="标题名称" SortExpression="TitleName" />
@@ -46,14 +44,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-        <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-        <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-        <AlternatingRowStyle BackColor="#CCCCCC" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#808080" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <asp:ObjectDataSource ID="odstitlelist" runat="server" SelectMethod="GetTitleListByTeacherId"
         TypeName="ThesisManage.BLL.TitleManage">
