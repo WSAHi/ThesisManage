@@ -23,7 +23,7 @@
         <form id="form1" runat="server">
             <div class="jumbotron">
                 <div class="container">
-                    <h1 class="h1  text-center">毕业设计选题系统</h1>
+                    <h1 class="h1  text-center">毕业设计选题系统<small>Thesis Manage</small></h1>
                 </div>
             </div>
             <div class="form-group">
