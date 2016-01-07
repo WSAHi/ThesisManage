@@ -22,16 +22,19 @@
     <div class="container">
         <form id="form1" runat="server">
             <h1 class="h1  text-center">毕业设计选题系统</h1>
-            <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center" placeholder="用户名" required autofocus></asp:TextBox>
-            <br />
-            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control text-center" placeholder="密码" required></asp:TextBox>
-            <br />
-            <asp:DropDownList ID="ddlUserRole" runat="server" DataSourceID="ObjectDataSource1" DataTextField="RoleName" DataValueField="UID" CssClass="form-control text-center"></asp:DropDownList>
-            <br />
-            <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click" CssClass="btn btn-lg btn-primary btn-block" />
-            <asp:Button ID="btnEsc" runat="server" Text="退出" OnClick="btnEsc_Click" CssClass="btn btn-lg btn-primary btn-block" />
-            <br />
-            <asp:Label ID="lbmes" runat="server" CssClass="label-warning"></asp:Label>
+            <div class="form-group">
+                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center" placeholder="用户名" required autofocus></asp:TextBox>
+                <br />
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control text-center" placeholder="密码" required></asp:TextBox>
+                <br />
+                <asp:DropDownList ID="ddlUserRole" runat="server" DataSourceID="ObjectDataSource1" DataTextField="RoleName" DataValueField="UID" CssClass="form-control text-center"></asp:DropDownList>
+                <br />
+            </div>
+            <div class="form-group">
+                <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click" CssClass="btn btn-lg btn-default btn-block" />
+                <br />
+                <asp:Label ID="lbmes" runat="server" CssClass="label-warning"></asp:Label>
+            </div>
         </form>
     </div>
 </body>

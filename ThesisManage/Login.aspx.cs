@@ -81,8 +81,4 @@ public partial class LLogin : System.Web.UI.Page
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请选择用户角色！');</script>");
         }
     }
-    protected void btnEsc_Click(object sender, EventArgs e)
-    {
-        
-    }
 }
