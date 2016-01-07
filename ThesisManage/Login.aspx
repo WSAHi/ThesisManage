@@ -21,7 +21,11 @@
     >
     <div class="container">
         <form id="form1" runat="server">
-            <h1 class="h1  text-center">毕业设计选题系统</h1>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="h1  text-center">毕业设计选题系统</h1>
+                </div>
+            </div>
             <div class="form-group">
                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center input-lg" placeholder="用户名" required autofocus></asp:TextBox>
                 <br />
