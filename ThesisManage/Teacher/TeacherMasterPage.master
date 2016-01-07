@@ -6,15 +6,10 @@
 <head id="Head1" runat="server">
     <title>毕业设计选题</title>
 </head>
-<body style="background-image: url(../Images/bg.jpg)">
+<body>
     <form id="form1" runat="server">
         <div>
-            <table style="background-image: url(../Images/bg.gif);">
-                <tr>
-                    <td>
-                        <img src="../Images/head.jpg" />
-                    </td>
-                </tr>
+            <table>
                 <tr>
                     <td>
                         <table>
