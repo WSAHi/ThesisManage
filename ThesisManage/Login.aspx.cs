@@ -23,7 +23,7 @@ public partial class LLogin : System.Web.UI.Page
             ddlUserRole.DataSourceID = null;
             ddlUserRole.DataSource = UserRoleManage.GetUserRole();
             ddlUserRole.DataBind();
-            ddlUserRole.Items.Insert(0, new ListItem("请选择", "-1"));
+            ddlUserRole.Items.Insert(0, new ListItem("请选择用户类型", "-1"));
         }
     }
     protected void btnLogin_Click(object sender, EventArgs e)
