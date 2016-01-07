@@ -18,7 +18,6 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    >
     <div class="container">
         <form id="form1" runat="server">
             <div class="jumbotron">

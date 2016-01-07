@@ -18,48 +18,27 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
+    <div class="container">
+        <form id="form1" runat="server">
+            <asp:Label ID="Label1" runat="server" Visible="False" CssClass=" control-label label label-warning center-block"></asp:Label>
             <table>
                 <tr>
                     <td>
-                        <table>
-                            <tr>
-                                <td>您现在所在的位置是：<asp:SiteMapPath ID="SiteMapPath1" runat="server">
-                                </asp:SiteMapPath>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
+                        <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
+                            <DataBindings>
+                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
+                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
+                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
+                            </DataBindings>
+                        </asp:TreeView>
+                        <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Student/StudentTree.xml"></asp:XmlDataSource>
                     </td>
-                </tr>
-                <tr>
                     <td>
-                        <table>
-                            <tr>
-                                <td>
-                                    <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
-                                        <DataBindings>
-                                            <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                            <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                            <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                        </DataBindings>
-                                    </asp:TreeView>
-                                    <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Student/StudentTree.xml"></asp:XmlDataSource>
-                                </td>
-                                <td>
-                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-                                </td>
-                            </tr>
-                        </table>
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
                     </td>
                 </tr>
             </table>
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 </html>
