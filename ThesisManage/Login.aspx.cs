@@ -29,8 +29,8 @@ public partial class LLogin : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         String userRole = ddlUserRole.SelectedItem.Text.Trim();
-        string loginName =txtName.Text.Trim();
-        string password = txtPassWord.Text.Trim();
+        string loginName =txtUserName.Text.Trim();
+        string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {
             string mes = adminManage.GetAdminById(loginName, password);
