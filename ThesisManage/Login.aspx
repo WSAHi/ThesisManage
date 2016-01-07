@@ -31,7 +31,7 @@
             <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click" CssClass="btn btn-lg btn-primary btn-block" />
             <asp:Button ID="btnEsc" runat="server" Text="退出" OnClick="btnEsc_Click" CssClass="btn btn-lg btn-primary btn-block" />
             <br />
-            <asp:Label ID="lbmes" runat="server"></asp:Label>
+            <asp:Label ID="lbmes" runat="server" CssClass="label-warning"></asp:Label>
         </form>
     </div>
 </body>
