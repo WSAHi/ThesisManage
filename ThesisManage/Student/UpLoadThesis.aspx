@@ -11,7 +11,7 @@
             </td>
             <td>
                 <asp:FileUpload ID="FileUpload1" runat="server" />
-                <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="FileUpload1" ErrorMessage="*"></asp: FieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FileUpload1" ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FileUpload1" ErrorMessage="请上传.doc文件" ValidationExpression='^([a-zA-Z]\:|\\)\\([^\\]+\\)*[^\/:*?"<>|]+\.doc(l)?$'></asp:RegularExpressionValidator>
             </td>
         </tr>

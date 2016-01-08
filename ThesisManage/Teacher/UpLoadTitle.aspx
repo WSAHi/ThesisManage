@@ -11,7 +11,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtTitile" runat="server"></asp:TextBox>
-                <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp: FieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -19,7 +19,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtDescription" runat="server"></asp:TextBox>
-                <asp: FieldValidator ID=" FieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp: FieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
             </td>
             <td>
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                <asp: FieldValidator ID=" FieldValidator3" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp: FieldValidator>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="请输入整数" ValidationExpression="\d"></asp:RegularExpressionValidator>
             </td>
         </tr>
