@@ -18,7 +18,7 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid-fluid">
         <form id="form1" runat="server">
             <asp:Label ID="Label1" runat="server" Visible="False" CssClass="control-label label label-warning center-block"></asp:Label>
             <table>

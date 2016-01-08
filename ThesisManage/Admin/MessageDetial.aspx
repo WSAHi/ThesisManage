@@ -13,7 +13,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <div class="container-fluid">
+    <div class="container-fluid-fluid">
         <div class="row">
             发送人:<asp:Label ID="Label1" runat="server" CssClass="control-label"></asp:Label>
             [<asp:Label ID="Label2" runat="server" CssClass="control-label"></asp:Label>]

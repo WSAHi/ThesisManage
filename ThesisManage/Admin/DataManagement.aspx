@@ -14,7 +14,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <div class="container-fluid">
+    <div class="container-fluid-fluid">
         <div class="row">
             <h1 class="h1">添加数据</h1>
         </div>
