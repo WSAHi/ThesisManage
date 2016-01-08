@@ -13,11 +13,11 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <div class="container">
-        <div class="row center-block">
+        <div class="row  text-center">
             <asp:Label runat="server" Text="待审核的标题:（点击查看对标题进行审核）" CssClass="control-label"></asp:Label>
         </div>
-        <div class="row center-block">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True">
+        <div class="row">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table">
                 <Columns>
                     <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
                     <asp:BoundField DataField="TitleName" HeaderText="标题" SortExpression="TitleName" />

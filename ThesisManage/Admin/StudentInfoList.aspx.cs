@@ -44,7 +44,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
                 DropDownList1.DataSourceID = null;
                 DropDownList1.DataSource = studentManage.GetAllClass();
                 DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("——班级——", "-1"));
+                DropDownList1.Items.Insert(0, new ListItem("请选择班级", "-1"));
                 DataSet dataset = studentManage.GetStudent(Sql + " union " + Sql2);
                 GridView1.DataSourceID = null;
                 GridView1.DataSource = dataset;

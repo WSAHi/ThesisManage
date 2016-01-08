@@ -16,14 +16,14 @@
         <br />
         <div class="row">
             <div class="col-lg-3">
-                <asp:DropDownList ID="DropDownList1" runat="server" class="form-control">
+                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdown">
                     <asp:ListItem>选课情况</asp:ListItem>
                     <asp:ListItem>已满</asp:ListItem>
                     <asp:ListItem>未满</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class="col-lg-3">
-                <asp:DropDownList ID="DropDownList2" runat="server" class="form-control">
+                <asp:DropDownList ID="DropDownList2" runat="server" CssClass="dropdown">
                     <asp:ListItem>审核状态</asp:ListItem>
                     <asp:ListItem>通过</asp:ListItem>
                     <asp:ListItem>未通过</asp:ListItem>
@@ -38,14 +38,10 @@
         </span>
         <div class="row">
             <div class="col-lg-5">
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="查询" CssClass="form-control btn-info" />
-            </div>
-            <div class="col-lg-5">
-                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="生成Excel" CssClass="form-control btn-info" /><br />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="查询" CssClass="btn" />
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="生成Excel" CssClass="btn" />
             </div>
         </div>
-    </div>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" CssClass="table-bordered col-lg-10 right">
-    </asp:GridView>
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" CssClass="tablet"></asp:GridView>
 </asp:Content>
 
