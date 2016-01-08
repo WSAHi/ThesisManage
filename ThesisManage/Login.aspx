@@ -18,10 +18,10 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <form id="form1" runat="server">
             <div class="jumbotron">
-                <div class="container">
+                <div class="container-fluid">
                     <h1 class="h1  text-center">毕业设计选题系统<small>Thesis Manage</small></h1>
                 </div>
             </div>

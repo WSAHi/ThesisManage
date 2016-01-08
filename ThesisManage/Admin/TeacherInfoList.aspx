@@ -14,7 +14,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Width="250px" placeholder="教师姓名,支持模糊查询"  ></asp:TextBox>
         </div>
