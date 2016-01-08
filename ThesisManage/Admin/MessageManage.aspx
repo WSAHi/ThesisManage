@@ -70,31 +70,31 @@
                 </SelectParameters>
             </asp:ObjectDataSource>
         </div>
-        <div class="row radio">
-            <h4 class="h4">消息接收者类型:</h4>
+        <h4 class="h4">消息接收者类型:</h4>
+        <div class="row">
             <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="系统消息" />
             <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
             <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" />
         </div>
-        <div class="row">
-            <h4 class="h4">发送消息:</h4>
-        </div>
-        <div class="row">
-            接收人:<asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>(注：用户名)
+    <div class="row">
+        <h4 class="h4">发送消息:</h4>
+    </div>
+    <div class="row">
+        接收人:<asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" Width="300px"></asp:TextBox>(注：用户名)
             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="查看联系人" CssClass="btn" />
-            <asp:DataList ID="DataList1" runat="server" DataKeyField="TEID" OnItemCommand="DataList1_ItemCommand" RepeatDirection="Horizontal" Visible="False" RepeatColumns="10">
-                <ItemTemplate>
-                    <asp:ImageButton ID="ImageButton1" runat="server" Height="50px" ImageUrl='<%# GetImageUrl(Eval("TEID")) %>' /><br />
-                    <asp:Label ID="Label5" runat="server" Text='<%# Eval("TeacherName") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:DataList><asp:Label ID="Label6" runat="server" Visible="False"></asp:Label>
-            <asp:Label ID="Label7" runat="server" Text="教员" Visible="False" CssClass="control-label"></asp:Label>
-        </div>
-        <div class="row">
-            内容:<asp:TextBox ID="TextBox6" runat="server" CssClass="form-control" Width="600px"></asp:TextBox>
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" />
-        </div>
+        <asp:DataList ID="DataList1" runat="server" DataKeyField="TEID" OnItemCommand="DataList1_ItemCommand" RepeatDirection="Horizontal" Visible="False" RepeatColumns="10">
+            <ItemTemplate>
+                <asp:ImageButton ID="ImageButton1" runat="server" Height="50px" ImageUrl='<%# GetImageUrl(Eval("TEID")) %>' /><br />
+                <asp:Label ID="Label5" runat="server" Text='<%# Eval("TeacherName") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:DataList><asp:Label ID="Label6" runat="server" Visible="False"></asp:Label>
+        <asp:Label ID="Label7" runat="server" Text="教员" Visible="False" CssClass="control-label"></asp:Label>
+    </div>
+    <div class="row">
+        内容:<asp:TextBox ID="TextBox6" runat="server" CssClass="form-control" Width="600px"></asp:TextBox>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" />
+    </div>
     </div>
 </asp:Content>
 
