@@ -26,9 +26,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center input-lg" placeholder="用户名" required autofocus></asp:TextBox>
+                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center input-lg" placeholder="用户名"   autofocus></asp:TextBox>
                 <br />
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control text-center input-lg" placeholder="密码" required></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control text-center input-lg" placeholder="密码"  ></asp:TextBox>
                 <br />
                 <asp:DropDownList ID="ddlUserRole" runat="server" DataSourceID="ObjectDataSource1" DataTextField="RoleName" DataValueField="UID" CssClass="form-control text-center input-lg"></asp:DropDownList>
                 <br />

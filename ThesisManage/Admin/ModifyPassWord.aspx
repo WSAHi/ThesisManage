@@ -19,16 +19,16 @@
             <h1 class="h1">修改密码:</h1>
         </div>
         <div class="row">
-            <asp:TextBox ID="txtOldPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="原密码" required Width="250px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtOldPassWord" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="txtOldPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="原密码"   Width="250px"></asp:TextBox>
+            <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="txtOldPassWord" ErrorMessage="*"></asp: FieldValidator>
         </div>
         <div class="row">
-            <asp:TextBox ID="txtNewPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="新密码" required Width="250px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtNewPassWord" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="txtNewPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="新密码"   Width="250px"></asp:TextBox>
+            <asp: FieldValidator ID=" FieldValidator2" runat="server" ControlToValidate="txtNewPassWord" ErrorMessage="*"></asp: FieldValidator>
         </div>
         <div class="row">
-            <asp:TextBox ID="txtReNewPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="确认密码" required Width="250px"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtReNewPassWord" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="txtReNewPassWord" runat="server" TextMode="Password" CssClass="form-control" placeholder="确认密码"   Width="250px"></asp:TextBox>
+            <asp: FieldValidator ID=" FieldValidator3" runat="server" ControlToValidate="txtReNewPassWord" ErrorMessage="*"></asp: FieldValidator>
             <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtNewPassWord" ControlToValidate="txtReNewPassWord" ErrorMessage="CompareValidator">两次输入的密码不一样</asp:CompareValidator>
         </div>
         <div class="row">

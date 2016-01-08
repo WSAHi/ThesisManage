@@ -31,7 +31,7 @@
         </div>
         <div class="row col-lg-3">
             内 容:<asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
+            <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp: FieldValidator>
         </div>
         <br />
         <div class="row">

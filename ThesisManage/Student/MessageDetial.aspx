@@ -28,7 +28,7 @@
         <tr>
             <td>内 容:<br />
                 <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp: FieldValidator>
             </td>
         </tr>
         <tr>

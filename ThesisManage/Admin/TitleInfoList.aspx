@@ -27,7 +27,7 @@
                 <asp:ListItem>通过</asp:ListItem>
                 <asp:ListItem>未通过</asp:ListItem>
             </asp:DropDownList>
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="指导老师，支持模糊查询" required Width="250px"></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="指导老师，支持模糊查询"   Width="250px"></asp:TextBox>
         </div>
         <div class="row">
             <div class="col-lg-5">

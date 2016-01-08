@@ -11,7 +11,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtTitile" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp: FieldValidator>
             </td>
         </tr>
         <tr>
@@ -19,7 +19,7 @@
             </td>
             <td>
                 <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
+                <asp: FieldValidator ID=" FieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp: FieldValidator>
             </td>
         </tr>
         <tr>

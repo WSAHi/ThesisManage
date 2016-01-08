@@ -16,7 +16,7 @@
 
     <div class="container">
         <div class="row">
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Width="250px" placeholder="教师姓名,支持模糊查询" required></asp:TextBox>
+            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Width="250px" placeholder="教师姓名,支持模糊查询"  ></asp:TextBox>
         </div>
         <div class="row">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="查询" CssClass="btn" />

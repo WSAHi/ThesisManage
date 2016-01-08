@@ -29,16 +29,16 @@
                 <asp:Panel ID="Panel1" runat="server">
                     <div class="row ">
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="学号" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="学号"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="姓名" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="姓名"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="班级" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="班级"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                     </div>
                     <div class="row">
@@ -50,12 +50,12 @@
                 <asp:Panel ID="Panel2" runat="server">
                     <div class="row">
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="工号" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="工号"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" placeholder="姓名" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" placeholder="姓名"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                     </div>
                     <div class="row">
@@ -67,8 +67,8 @@
                 <asp:Panel ID="Panel3" runat="server">
                     <div class="row">
                         <div class="col-lg-3">
-                            <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control " placeholder="账号" required></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*"></asp:RequiredFieldValidator>
+                            <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control " placeholder="账号"  ></asp:TextBox>
+                            <asp: FieldValidator ID=" FieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*"></asp: FieldValidator>
                         </div>
                     </div>
                     <div class="row">
