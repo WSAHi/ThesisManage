@@ -18,7 +18,7 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container-fluid-fluid">
+    <div class="container-fluid">
         <form id="form1" runat="server">
             <div class="row">
                 <div class="control-label label-info text-center">

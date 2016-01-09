@@ -14,7 +14,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <div class="container-fluid-fluid">
+    <div class="container-fluid">
         <br />
         <div class="row">
             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdown">

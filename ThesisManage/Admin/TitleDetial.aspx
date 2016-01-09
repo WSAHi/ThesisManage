@@ -14,7 +14,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <div class="container-fluid-fluid">
+    <div class="container-fluid">
         <h1 class="h1">标题信息</h1>
         <div class="row">
             标题名:<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
