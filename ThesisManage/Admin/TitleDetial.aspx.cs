@@ -16,47 +16,46 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     TitleManage titleManage = new TitleManage();
     TeacherManage teacherManage = new TeacherManage();
     StudentManage studentManage = new StudentManage();
-    int tID = 0;
     public int TID
     {
         get { return (int)ViewState["TID"]; }
-        set { ViewState["TID"]=value; }
+        set { ViewState["TID"] = value; }
     }
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-                Button1.Attributes.Add("onclick", "return confirm('您确认该标题审核通过吗！');");
-                Admin admin = (Admin)Session["admin"];
-                if (admin == null)
+            Button1.Attributes.Add("onclick", "return confirm('您确认该标题审核通过吗！');");
+            Admin admin = (Admin)Session["admin"];
+            if (admin == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                TID = Convert.ToInt32(Request.QueryString["TID"]);
+                ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
+                if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
-                    Response.Redirect("~/Login.aspx");
+                    DataList1.Visible = false;
+                    Button3.Visible = false;
+                    Label6.Text = title.Teacher.TeacherName;
+                    Label2.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 }
                 else
                 {
-                    TID = Convert.ToInt32(Request.QueryString["TID"]);
-                    ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
-                    if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
-                    {
-                        DataList1.Visible = false;
-                        Button3.Visible = false;
-                        Label6.Text = title.Teacher.TeacherName;
-                        Label2.Text = "教师:[" + title.Teacher.TeacherName + "]";
-                    }
-                    else
-                    {
-                        Label2.Text = "学生:[" + title.Student.StudentName + "]";
-                    }
-                    Label1.Text = title.TitleName;
-                    Label8.Text = title.Description;
-                    Label3.Text = title.Counts.ToString();
-
-                    if (title.State == 0)
-                    {
-                        Label4.Text = "未审核";
-                    }
+                    Label2.Text = "学生:[" + title.Student.StudentName + "]";
                 }
-            
+                Label1.Text = title.TitleName;
+                Label8.Text = title.Description;
+                Label3.Text = title.Counts.ToString();
+
+                if (title.State == 0)
+                {
+                    Label4.Text = "未审核";
+                }
+            }
+
         }
     }
     protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
@@ -70,9 +69,9 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     }
     public string GetImageUrl(object ID)
     {
-        int teid =Convert.ToInt32(ID);
+        int teid = Convert.ToInt32(ID);
         string imageUrl = string.Empty;
-        if (teid%2==0)
+        if (teid % 2 == 0)
             imageUrl = "~/Images/1.jpg";
         else if (teid % 3 == 0)
             imageUrl = "~/Images/2.jpg";
@@ -90,7 +89,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         else
         {
             int num = 0;
-            int teacherId=Convert.ToInt32(Session["key"]);
+            int teacherId = Convert.ToInt32(Session["key"]);
             ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
             Message message = new Message();
             message.Contents = "你上传的标题为[" + Label1.Text + "]通过管理员的审核！";
@@ -109,7 +108,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             {
                 message.Student = title.Student;
                 num = titleManage.ModifiyTitleState(TID, teacherId);
-                studentManage.ModifiyStuSate(1, TID,title.Student.StudentID);
+                studentManage.ModifiyStuSate(1, TID, title.Student.StudentID);
             }
             if (num > 0)
             {

@@ -14,8 +14,6 @@ using ThesisManage.Model;
 public partial class Admin_AdminTest : System.Web.UI.Page
 {
     StudentManage studentManage = new StudentManage();
-    private string sql;// = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=(select TeacherName from Teacher where TEID=(select TeacherId from title,student where STitleID=TID group by TeacherId)),标题名=(select TitleName from Title where TID=STitleID group by TitleName) from Student where 1=1";
-
     public string Sql
     {
         get { return (string)ViewState["sql"]; }
@@ -27,7 +25,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         get { return (string)ViewState["sql2"]; }
         set { ViewState["sql2"] = value; }
     }
-   
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -40,7 +38,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
             else
             {
                 Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
-                Sql2="select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
+                Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
                 DropDownList1.DataSourceID = null;
                 DropDownList1.DataSource = studentManage.GetAllClass();
                 DropDownList1.DataBind();
@@ -64,7 +62,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        
+
         DataSet dataset = studentManage.GetStudent(Sql);
         GridView1.DataSourceID = null;
         GridView1.DataSource = dataset;
@@ -75,7 +73,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
         Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
         string className = DropDownList1.SelectedItem.Text;
-        if (!(className =="——班级——"))
+        if (!(className == "——班级——"))
         {
             Sql = Sql + " and StudentClass='" + className.Trim() + "'";
             Sql2 = Sql2 + " and StudentClass='" + className.Trim() + "'";
@@ -115,7 +113,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         DataSet dataset = studentManage.GetStudent(sql);
         DataTable table = dataset.Tables["student"];
         System.IO.StringWriter sw = new System.IO.StringWriter();
-        sw.WriteLine("学号\t姓名\t班级\t指导老师\t标题名"); 
+        sw.WriteLine("学号\t姓名\t班级\t指导老师\t标题名");
         foreach (DataRow dr in table.Rows)
         {
             sw.WriteLine(dr["学号"] + "\t " + dr["姓名"] + "\t" + dr["班级"] + "\t" + dr["指导老师"] + "\t" + dr["标题名"]);
@@ -126,7 +124,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         Response.ContentType = "application/ms-excel";
         Response.ContentEncoding = System.Text.Encoding.GetEncoding("GBK");
         Response.Write(sw);
-        Response.End(); 
+        Response.End();
 
     }
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
