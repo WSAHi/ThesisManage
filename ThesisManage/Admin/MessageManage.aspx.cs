@@ -146,41 +146,6 @@ public partial class Admin_MessageManage : System.Web.UI.Page
         TextBox5.Text = "";
         TextBox6.Text = "";
     }
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-            List<Teacher> teList = teacherManage.GetTeacherHasUpLoadTitle();
-            if (teList.Count > 0)
-            {
-                if (DataList1.Visible == false)
-                {
-                    DataList1.Visible = true;
-                    Label7.Visible = true;
-                    DataList1.DataSourceID = null;
-                    DataList1.DataSource = teList;
-                    DataList1.DataBind();
-                }
-                else
-                {
-                    DataList1.Visible = false;
-                    Label7.Visible = false;
-                }
-            }
-            else
-            {
-                Label6.Visible = true;
-                Label6.Text = "你还没有联系人！";
-            }
-    }
-    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
-    {
-        int n = e.Item.ItemIndex;
-        DataList1.Items[n].BackColor = System.Drawing.Color.Red;
-        int key = Convert.ToInt32(this.DataList1.DataKeys[n]);
-        Session["key"] = key;
-        Teacher teacher = teacherManage.GetTeacherById(key);
-        TextBox5.Text = teacher.TeacherID;
-        RadioButton1.Checked = true;
-    }
     protected void Button2_Click(object sender, EventArgs e)
     {
         if (TextBox5.Text.Trim() == "")

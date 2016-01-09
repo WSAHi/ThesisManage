@@ -15,16 +15,16 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <div class="container-fluid">
-        <div class="row">
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Width="250px" placeholder="教师姓名,支持模糊查询"  ></asp:TextBox>
-        </div>
-        <div class="row">
+        <h1 class="h1 text-center">教师信息</h1>
+        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Width="250px" placeholder="教师姓名,支持模糊查询"></asp:TextBox>
+        <br />
+        <div class="btn-group">
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="查询" CssClass="btn" />
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="生成Excel" CssClass="btn" />
         </div>
-        <div class="row">
-            <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" CssClass="table"></asp:GridView>
-        </div>
+        <br />
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowDataBound="GridView1_RowDataBound" CssClass="table"></asp:GridView>
     </div>
 </asp:Content>
 

@@ -15,18 +15,20 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <div class="container-fluid">
-        <div class="row">
+        <h1 class="h1 text-center">学生信息</h1>
+        <div class="form-control">
             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource1" DataValueField="StudentClass" DataTextField="StudentClass" CssClass="dropdown"></asp:DropDownList>
             <asp:RadioButton ID="RadioButton1" runat="server" GroupName="btn" Text="已选" />
             <asp:RadioButton ID="RadioButton2" runat="server" GroupName="btn" Text="未选" />
         </div>
-        <div class="row">
+        <br />
+        <div class="btn-group">
             <asp:Button ID="Button2" runat="server" Text="查询" OnClick="Button2_Click" CssClass="btn" />
             <asp:Button ID="Button3" runat="server" Text="生成Excel" OnClick="Button3_Click" CssClass="btn" />
         </div>
-        <div class="row">
-            <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource2" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table"></asp:GridView>
-        </div>
+        <br />
+        <br />
+        <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource2" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table"></asp:GridView>
     </div>
 </asp:Content>
 
