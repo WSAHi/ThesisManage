@@ -20,20 +20,18 @@
 <body>
     <div class="container-fluid">
         <form id="form1" runat="server">
-            <div class="row">
-                <div class="control-label label-info text-center">
-                    <asp:Label ID="Label2" runat="server" Text="学生总数:"></asp:Label><asp:Label ID="Label3" runat="server"></asp:Label>
-                    <asp:Label ID="Label4" runat="server" Text="标题总数:"></asp:Label><asp:Label ID="Label5" runat="server"></asp:Label>
-                    <asp:Label ID="Label8" runat="server" Text="标题可选人数总和:"></asp:Label><asp:Label ID="Label9" runat="server"></asp:Label>
-                    <asp:Label ID="Label6" runat="server" Text="已选题学生人数:"></asp:Label><asp:Label ID="Label7" runat="server"></asp:Label>
-                    <asp:Label ID="Label10" runat="server" Text="已上传论文学生人数:"></asp:Label><asp:Label ID="Label11" runat="server"></asp:Label>
-                    <div class="label-warning">
-                        <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
-                    </div>
+            <div class="control-label label-info text-center">
+                <asp:Label ID="Label2" runat="server" Text="学生总数:"></asp:Label><asp:Label ID="Label3" runat="server"></asp:Label>
+                <asp:Label ID="Label4" runat="server" Text="标题总数:"></asp:Label><asp:Label ID="Label5" runat="server"></asp:Label>
+                <asp:Label ID="Label8" runat="server" Text="标题可选人数总和:"></asp:Label><asp:Label ID="Label9" runat="server"></asp:Label>
+                <asp:Label ID="Label6" runat="server" Text="已选题学生人数:"></asp:Label><asp:Label ID="Label7" runat="server"></asp:Label>
+                <asp:Label ID="Label10" runat="server" Text="已上传论文学生人数:"></asp:Label><asp:Label ID="Label11" runat="server"></asp:Label>
+                <div class="label-warning">
+                    <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
                 </div>
             </div>
             <div class="rows">
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <div class="container-fluid-fluid-fluid">
                         <div class="row-fluid">
                             <div class="span12">
@@ -78,7 +76,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-7">
+            <div class="col-lg-10 center-block">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
             </div>
         </form>
