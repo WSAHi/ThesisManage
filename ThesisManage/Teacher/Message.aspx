@@ -40,25 +40,22 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# panduan(Eval("State")) %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:HyperLinkField DataNavigateUrlFields="MID" DataNavigateUrlFormatString="MessageDetial.aspx?MId={0}"
-                    HeaderText="详细" Text="查看" />
+                <asp:HyperLinkField DataNavigateUrlFields="MID" DataNavigateUrlFormatString="MessageDetial.aspx?MId={0}" HeaderText="详细" Text="查看" />
                 <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("MID") %>'
-                            CommandName="de">删除</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("MID") %>' CommandName="de">删除</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTeacherMesList"
-            TypeName="ThesisManage.BLL.MessageManage">
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTeacherMesList" TypeName="ThesisManage.BLL.MessageManage">
             <SelectParameters>
                 <asp:Parameter Name="teacherId" Type="Int32" />
                 <asp:Parameter Name="choose" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
         <br />
-        <table>
+        <table class="table table-scripted">
             <tr>
                 <td>发送消息
                 </td>
@@ -68,8 +65,8 @@
                 <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
                     <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
                     <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" /><br />
-                    接受人:<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>(注：用户名)
-                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="查看联系人" /><br />
+                    接受人:<asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox>(注：用户名)
+                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="查看联系人" CssClass="btn" /><br />
                     <asp:DataList ID="DataList1" runat="server" DataKeyField="SID" OnItemCommand="DataList1_ItemCommand" RepeatDirection="Horizontal" Visible="False">
                         <ItemTemplate>
                             <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# GetImageUrl(Eval("SID")) %>' /><br />
@@ -80,14 +77,13 @@
             </tr>
             <tr>
                 <td>内 容:<br />
-                    <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>&nbsp;
+                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>&nbsp;
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" />
-                    &nbsp;&nbsp;
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" /></td>
+                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
+                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" /></td>
             </tr>
         </table>
     </div>
