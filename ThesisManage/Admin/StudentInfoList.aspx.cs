@@ -73,7 +73,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
         Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
         string className = DropDownList1.SelectedItem.Text;
-        if (!(className == "——班级——"))
+        if (!(className == "请选择班级"))
         {
             Sql = Sql + " and StudentClass='" + className.Trim() + "'";
             Sql2 = Sql2 + " and StudentClass='" + className.Trim() + "'";
