@@ -59,7 +59,7 @@
                                     <li class="nav-header">留言信息
                                     </li>
                                     <li>
-                                        <a href="MessageManage.aspx">查看留言</a>
+                                        <a href="MessageDetial.aspx">查看留言</a>
                                     </li>
                                     <li class="nav-header">退出系统
                                     </li>
