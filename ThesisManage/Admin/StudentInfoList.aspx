@@ -7,8 +7,11 @@
             <tr>
                 <td>
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="ObjectDataSource1" DataValueField="StudentClass" DataTextField="StudentClass" CssClass="form-control"></asp:DropDownList>
-                    是否选题:<asp:RadioButton ID="RadioButton1" runat="server" GroupName="btn" Text="已选" />
-                    <asp:RadioButton ID="RadioButton2" runat="server" GroupName="btn" Text="未选" />
+                    <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
+                        <asp:ListItem>是否选题</asp:ListItem>
+                        <asp:ListItem Value="1">已选</asp:ListItem>
+                        <asp:ListItem Value="0">未选</asp:ListItem>
+                    </asp:DropDownList>
                     <br />
                     <asp:Button ID="Button2" runat="server" Text="查询" OnClick="Button2_Click" CssClass="btn" />
                     <asp:Button ID="Button3" runat="server" Text="生成Excel" OnClick="Button3_Click" CssClass="btn" />

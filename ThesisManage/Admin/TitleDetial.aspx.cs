@@ -37,8 +37,6 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
                 ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
-                    DataList1.Visible = false;
-                    Button3.Visible = false;
                     Label6.Text = title.Teacher.TeacherName;
                     Label2.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 }
@@ -57,15 +55,6 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
 
         }
-    }
-    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
-    {
-        int n = e.Item.ItemIndex;
-        DataList1.Items[n].BackColor = System.Drawing.Color.Red;
-        int key = Convert.ToInt32(this.DataList1.DataKeys[n]);
-        Session["key"] = key;
-        Teacher teacher = teacherManage.GetTeacherById(key);
-        Label6.Text = teacher.TeacherName;
     }
     public string GetImageUrl(object ID)
     {
@@ -130,17 +119,6 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         }
         else
             Panel1.Visible = true;
-    }
-    protected void Button3_Click(object sender, EventArgs e)
-    {
-        if (DataList1.Visible == true)
-        {
-            DataList1.Visible = false;
-        }
-        else
-        {
-            DataList1.Visible = true;
-        }
     }
     protected void Button4_Click(object sender, EventArgs e)
     {

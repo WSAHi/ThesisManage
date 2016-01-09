@@ -78,26 +78,14 @@ public partial class Admin_AdminTest : System.Web.UI.Page
             Sql = Sql + " and StudentClass='" + className.Trim() + "'";
             Sql2 = Sql2 + " and StudentClass='" + className.Trim() + "'";
         }
-        string isChoose = null;
-        if (RadioButton1.Checked == true)
+        if (DropDownList2.SelectedItem.Value == "1")
         {
-            isChoose = "已选";
+            Sql = Sql + " and STitleID is not null";
+            Sql2 = Sql2 + " and STitleID is not null";
         }
-        else if (RadioButton2.Checked == true)
+        else if (DropDownList2.SelectedItem.Value == "0")
         {
-            isChoose = "未选";
-        }
-        if (!string.IsNullOrEmpty(isChoose))
-        {
-            if (isChoose == "已选")
-            {
-                Sql = Sql + " and STitleID is not null";
-                Sql2 = Sql2 + " and STitleID is not null";
-            }
-            else
-            {
-                Sql = Sql + " and SudentState=0";
-            }
+            Sql = Sql + " and SudentState=0";
         }
         string sql = Sql + " union " + Sql2;
         DataSet dataset = studentManage.GetStudent(sql);
