@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head id="Head1" runat="server">
+<head runat="server">
     <title>毕业设计选题</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" />
@@ -20,24 +20,58 @@
 <body>
     <div class="container-fluid">
         <form id="form1" runat="server">
-            <asp:Label ID="Label1" runat="server" Visible="False" CssClass="control-label label label-warning center-block"></asp:Label>
-            <table>
-                <tr>
-                    <td>
-                        <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
-                            <DataBindings>
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                            </DataBindings>
-                        </asp:TreeView>
-                        <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Teacher/TeacherTree.xml"></asp:XmlDataSource>
-                    </td>
-                    <td>
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-                    </td>
-                </tr>
-            </table>
+            <div class="control-label label-warning text-center">
+                <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
+            </div>
+            <div class="rows">
+                <div class="col-lg-2">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <ul class="nav nav-list">
+                                    <li class="nav-header">个人信息
+                                    </li>
+                                    <li class="active">
+                                        <a href="TeacherMessage.aspx">查看信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyMessage.aspx">修改信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyPassWord.aspx">修改密码</a>
+                                    </li>
+                                    <li class="nav-header">我的学生
+                                    </li>
+                                    <li>
+                                        <a href="StudentList.aspx">学生列表</a>
+                                    </li>
+                                    <li class="nav-header">题目管理
+                                    </li>
+                                    <li class="active">
+                                        <a href="UpLoadTitle.aspx">上传题目</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyTitle.aspx">查看题目</a>
+                                    </li>
+                                    <li class="nav-header">留言信息
+                                    </li>
+                                    <li>
+                                        <a href="Message.aspx">查看留言</a>
+                                    </li>
+                                    <li class="nav-header">退出系统
+                                    </li>
+                                    <li class="active">
+                                        <a href="Default.aspx">退出系统</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 center-block">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
         </form>
     </div>
 </body>
