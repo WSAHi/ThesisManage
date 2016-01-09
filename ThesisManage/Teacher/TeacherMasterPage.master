@@ -51,7 +51,7 @@
                                         <a href="UpLoadTitle.aspx">上传题目</a>
                                     </li>
                                     <li class="active">
-                                        <a href="ModifyTitle.aspx">查看题目</a>
+                                        <a href="LookupTitle.aspx">查看题目</a>
                                     </li>
                                     <li class="nav-header">留言信息
                                     </li>
