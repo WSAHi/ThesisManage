@@ -92,8 +92,6 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         GridView1.DataSourceID = null;
         GridView1.DataSource = dataset;
         GridView1.DataBind();
-        RadioButton1.Checked = false;
-        RadioButton2.Checked = false;
     }
     protected void Button3_Click(object sender, EventArgs e)
     {
