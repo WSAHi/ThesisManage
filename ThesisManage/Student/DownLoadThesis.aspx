@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="ModifyThesis.aspx.cs" Inherits="Student_ModifyThesis" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="DownLoadThesis.aspx.cs" Inherits="Student_ModifyThesis" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:Panel ID="Panel1" runat="server">

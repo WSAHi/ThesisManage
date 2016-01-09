@@ -67,7 +67,9 @@
                                     <li>
                                         <a href="MessageManage.aspx">查看留言</a>
                                     </li>
-                                    <li class="nav-header">
+                                    <li class="nav-header">退出系统
+                                    </li>
+                                    <li class="active">
                                         <a href="Default.aspx">退出系统</a>
                                     </li>
                                 </ul>

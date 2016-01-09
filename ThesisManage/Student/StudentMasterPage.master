@@ -20,24 +20,61 @@
 <body>
     <div class="container-fluid">
         <form id="form1" runat="server">
-            <asp:Label ID="Label1" runat="server" Visible="False" CssClass=" control-label label label-warning center-block"></asp:Label>
-            <table>
-                <tr>
-                    <td>
-                        <asp:TreeView ID="TreeView1" runat="server" DataSourceID="XMLAdtree">
-                            <DataBindings>
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                                <asp:TreeNodeBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="tltle" />
-                            </DataBindings>
-                        </asp:TreeView>
-                        <asp:XmlDataSource ID="XMLAdtree" runat="server" DataFile="~/Student/StudentTree.xml"></asp:XmlDataSource>
-                    </td>
-                    <td>
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-                    </td>
-                </tr>
-            </table>
+            <div class="label label-warning center-block">
+                <asp:Label ID="Label1" runat="server" Visible="False"></asp:Label>
+            </div>
+            <div class="rows">
+                <div class="col-lg-2">
+                    <div class="container-fluid-fluid-fluid">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <ul class="nav nav-list">
+                                    <li class="nav-header">个人信息
+                                    </li>
+                                    <li class="active">
+                                        <a href="StudentMessage.aspx">查看信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyMessage.aspx">修改信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyPassWord.aspx">修改密码</a>
+                                    </li>
+                                    <li class="nav-header">论文信息
+                                    </li>
+                                    <li>
+                                        <a href="UpLoadThesis.aspx">上传论文</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="DownLoadThesis.aspx">下载论文</a>
+                                    </li>
+                                    <li class="nav-header">题目信息
+                                    </li>
+                                    <li class="active">
+                                        <a href="ChooseTitle.aspx">选择题目</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="UpLoadTitle.aspx">上传自定义题目</a>
+                                    </li>
+                                    <li class="nav-header">留言信息
+                                    </li>
+                                    <li>
+                                        <a href="MessageManage.aspx">查看留言</a>
+                                    </li>
+                                    <li class="nav-header">退出系统
+                                    </li>
+                                    <li class="active">
+                                        <a href="Default.aspx">退出系统</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 center-block">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
         </form>
     </div>
 </body>
