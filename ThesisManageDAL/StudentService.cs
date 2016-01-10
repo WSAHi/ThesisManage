@@ -98,7 +98,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuByStudentID(string studentAddress, string studentPhone, string studentMail, string studentID)
         {
-            string sql = string.Format("update Student set StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' where StudentID='{3}'" , studentAddress, studentPhone, studentMail, studentID);
+            string sql = string.Format("update Student set StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' where StudentID='{3}'", studentAddress, studentPhone, studentMail, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -111,7 +111,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuSate(int sudentState, int titleId, string studentID)
         {
-            string sql = string.Format("update Student set SudentState={0},STitleID={1} where StudentID='{2}'" , sudentState, titleId, studentID);
+            string sql = string.Format("update Student set SudentState={0},STitleID={1} where StudentID='{2}'", sudentState, titleId, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -138,8 +138,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
-            string sql = string.Format("insert into student (studentID,studentName,studentClass,SRID) values('{0}','{1}','{2}',{3})",
-                studentID, studentName, studentClass, roleID);
+            string sql = string.Format("insert into student (studentID,studentName,studentClass,SRID,StudentPass) values('{0}','{1}','{2}',{3},'333333')", studentID, studentName, studentClass, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

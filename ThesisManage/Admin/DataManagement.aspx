@@ -9,7 +9,7 @@
                 <td>
                     <table class="table table-striped">
                         <tr>
-                            <td>角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="odsrole" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="form-control">
+                            <td>角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="odsrole" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="ddlUserRole_SelectedIndexChanged" CssClass="form-control">
                             </asp:DropDownList><asp:ObjectDataSource ID="odsrole" runat="server" SelectMethod="GetUserRole" TypeName="ThesisManage.BLL.UserRoleManage"></asp:ObjectDataSource>
                             </td>
                         </tr>
@@ -67,7 +67,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="lblDefaultTeacherPassword" runat="server" Text="添加后的默认密码为：111111"></asp:Label></td>
+                                                    <asp:Label ID="lblDefaultTeacherPassword" runat="server" Text="添加后的默认密码为：222222"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -88,7 +88,7 @@
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtAdminID" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="lblDefaultAdminPassword" runat="server" Text="添加后的默认密码为：222222"></asp:Label></td>
+                                                    <asp:Label ID="lblDefaultAdminPassword" runat="server" Text="添加后的默认密码为：111111"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>

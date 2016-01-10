@@ -127,7 +127,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddTeacher(String teacherID, string teacherName, int roleID)
         {
-            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID) values('{0}','{1}',{2}) ", teacherID, teacherName, roleID);
+            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID,TeacherPass) values('{0}','{1}','{2}','222222') ", teacherID, teacherName, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

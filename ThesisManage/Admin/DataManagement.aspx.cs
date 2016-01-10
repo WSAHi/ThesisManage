@@ -31,7 +31,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
                 ddlUserRole.DataSourceID = null;
                 ddlUserRole.DataSource = UserRoleManage.GetUserRole();
                 ddlUserRole.DataBind();
-                Bind();
+                Panelvisible();
             }
 
         }
@@ -39,7 +39,11 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         btnAddLost.Attributes.Add("onclick", "return confirm('您是要添加【--" + UserRole + "--】表的数据吗？');");
 
     }
-    public void Bind()
+    protected void ddlUserRole_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Panelvisible();
+    }
+    public void Panelvisible()
     {
         string UserRole = ddlUserRole.SelectedItem.Text.Trim();
         if (UserRole == "学生")
@@ -61,20 +65,14 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             Panel3.Visible = true;
         }
     }
-    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    protected void btnAddAdmin_Click(object sender, EventArgs e)
     {
-        Bind();
-    }
-    protected void btnAddStudent_Click(object sender, EventArgs e)
-    {
-        string studentId = txtStudentID.Text.Trim();
-        string studentName = txtStudentName.Text.Trim();
-        string studentClass = txtClass.Text.Trim();
-        Student student = studentManage.GetStudentByStudentID(studentId);
+        string loginID = txtAdminID.Text.Trim();
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        if (student.StudentName == "")
+        Admin admin = adminManage.GetAdminById(loginID);
+        if (admin.LoginID == "")
         {
-            int num = studentManage.AddStudent(studentId, studentName, studentClass, roleID);
+            int num = adminManage.AddAdmin(loginID, roleID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");
@@ -86,15 +84,12 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         }
         else
         {
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的学号已存在！');</script>");
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的管理员帐户号已存在！');</script>");
         }
-
     }
-    protected void btnResetStudent_Click(object sender, EventArgs e)
+    protected void btnResetAdmin_Click(object sender, EventArgs e)
     {
-        txtStudentID.Text = "";
-        txtStudentName.Text = "";
-        txtClass.Text = "";
+        txtAdminID.Text = "";
     }
     protected void btnAddTeacher_Click(object sender, EventArgs e)
     {
@@ -124,14 +119,16 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         txtTeacherID.Text = "";
         txtTeacherName.Text = "";
     }
-    protected void btnAddAdmin_Click(object sender, EventArgs e)
+    protected void btnAddStudent_Click(object sender, EventArgs e)
     {
-        string loginID = txtAdminID.Text.Trim();
+        string studentID = txtStudentID.Text.Trim();
+        string studentName = txtStudentName.Text.Trim();
+        string studentClass = txtClass.Text.Trim();
+        Student student = studentManage.GetStudentByStudentID(studentID);
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        Admin admin = adminManage.GetAdminById(loginID);
-        if (admin.LoginID == "")
+        if (student.StudentName == "")
         {
-            int num = adminManage.AddAdmin(loginID, roleID);
+            int num = studentManage.AddStudent(studentID, studentName, studentClass, roleID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");
@@ -143,12 +140,15 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         }
         else
         {
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的管理员帐户号已存在！');</script>");
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的学号已存在！');</script>");
         }
+
     }
-    protected void btnResetAdmin_Click(object sender, EventArgs e)
+    protected void btnResetStudent_Click(object sender, EventArgs e)
     {
-        txtAdminID.Text = "";
+        txtStudentID.Text = "";
+        txtStudentName.Text = "";
+        txtClass.Text = "";
     }
     protected void btnAddLost_Click(object sender, EventArgs e)
     {
@@ -200,7 +200,5 @@ public partial class Admin_DataManagement : System.Web.UI.Page
                 }
             }
         }
-
-
     }
 }

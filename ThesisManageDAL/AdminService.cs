@@ -62,7 +62,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)
         {
-            string sql = string.Format("insert into Admin (LoginID,ARID) values('{0}',{1})", loginID, roleID);
+            string sql = string.Format("insert into Admin (LoginID,ARID,LoginPassword) values('{0}','{1}','111111')", loginID, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
