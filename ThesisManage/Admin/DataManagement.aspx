@@ -83,8 +83,8 @@
                                                 <td>添加管理员帐户</td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"placeholder="账号"></asp:TextBox>
+                                                <td runat="server">
+                                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control" placeholder="账号"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
