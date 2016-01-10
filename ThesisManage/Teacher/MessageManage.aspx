@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="LeaveMessage.aspx.cs" Inherits="Student_LeaveMessage" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="MessageManage.aspx.cs" Inherits="Teacher_Message" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
@@ -42,8 +42,7 @@
                 <asp:HyperLinkField DataNavigateUrlFields="MID" DataNavigateUrlFormatString="MessageDetial.aspx?MId={0}" HeaderText="详细" Text="查看" />
                 <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("MID") %>'
-                            CommandName="de">删除</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("MID") %>' CommandName="de">删除</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
@@ -54,38 +53,33 @@
                 <asp:Parameter Name="choose" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <table class="table table-striped">
-            <tr>
-                <td>发送消息
-                </td>
-            </tr>
-            <tr>
-                <td>角色:<asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
-                    <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
-                    <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" /><br />
-                    接受人:<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>(注：用户名)<asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="查看联系人" /><br />
-                    <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal" Visible="False" DataKeyField="TEID" OnItemCommand="DataList1_ItemCommand">
-                        <ItemTemplate>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# GetImageUrl(Eval("TEID")) %>' /><br />
-                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("TeacherName") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:DataList>
-                    <asp:Label ID="Label6" runat="server" Visible="False"></asp:Label></td>
-            </tr>
-            <tr>
-                <td>内 容:<br />
-                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="btn-group">
-                        <asp:Button ID="Button2" runat="server" Text="发送" OnClick="Button2_Click" CssClass="btn" />
-                        <asp:Button ID="Button1" runat="server" Text="重置" OnClick="Button1_Click" CssClass="btn" />
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div class="container-fluid text-center">
+            <table class="table table-striped">
+                <tr>
+                    <td>发送消息
+                    </td>
+                </tr>
+                <tr>
+                    <td>消息接收者类型:<asp:RadioButton ID="radiobtnAdmin" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
+                        <asp:RadioButton ID="radiobtnTeacher" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
+                        <asp:RadioButton ID="radiobtnStudent" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" /><br />
+                        <asp:TextBox ID="txtMessageReceiver" runat="server" CssClass="form-control" placeholder="接收人（用户名）"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TextBox ID="txtMessage" runat="server" CssClass="form-control" placeholder="内容"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="btn-group">
+                            <asp:Button ID="btnSend" runat="server" Text="发送" OnClick="Button2_Click" CssClass="btn" />
+                            <asp:Button ID="btnReset" runat="server" Text="重置" OnClick="Button1_Click" CssClass="btn" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </asp:Content>
 

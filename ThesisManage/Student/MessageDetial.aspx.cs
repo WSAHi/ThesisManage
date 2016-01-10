@@ -36,11 +36,11 @@ public partial class Student_MessageDetial : System.Web.UI.Page
                 int MID = Convert.ToInt32(Request.QueryString["MID"]);
                 messageManage.ModifyMessage(MID, 1);
                 mes = messageManage.GetMesByMID(MID);
-                Label1.Text = mes.SenderRole;
-                Label2.Text = NameBind(mes.Sender, mes.SenderRole);
-                Label3.Text = mes.Contents;
-                Label4.Text = "发送时间:" + mes.MPubDate;
-                Label5.Text = NameBind(mes.Sender, mes.SenderRole);
+                lblUserRole.Text = mes.SenderRole;
+                lblUserName.Text = NameBind(mes.Sender, mes.SenderRole);
+                lblMessageComtents.Text = mes.Contents;
+                lblMessageSendTime.Text = "发送时间:" + mes.MPubDate;
+                lblUser.Text = NameBind(mes.Sender, mes.SenderRole);
             }
         }
     }
@@ -55,7 +55,7 @@ public partial class Student_MessageDetial : System.Web.UI.Page
             message.Teacher = null;
             message.Teacher = null;
             message.SenderRole = "学生";
-            message.Contents = TextBox1.Text;
+            message.Contents = txtMessage.Text;
             if (mes.SenderRole == "教师")
             {
                 Teacher teacher = teacherManage.GetTeacherById(mes.Sender);
@@ -78,7 +78,7 @@ public partial class Student_MessageDetial : System.Web.UI.Page
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送成功！');</script>");
-                TextBox1.Text = "";
+                txtMessage.Text = "";
             }
             else
             {
@@ -109,6 +109,6 @@ public partial class Student_MessageDetial : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        TextBox1.Text = "";
+        txtMessage.Text = "";
     }
 }

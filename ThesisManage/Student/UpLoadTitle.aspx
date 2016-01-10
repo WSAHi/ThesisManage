@@ -24,7 +24,7 @@
                 <td>
                     <div class="btn-group">
                         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text=" 提交"  CssClass="btn"/>
-                        <asp:Button ID="btnEsc" runat="server" OnClick="btnEsc_Click" Text="取消" CssClass="btn" />
+                        <asp:Button ID="btnCancel" runat="server" OnClick="btnEsc_Click" Text="取消" CssClass="btn" />
                     </div>
                 </td>
             </tr>

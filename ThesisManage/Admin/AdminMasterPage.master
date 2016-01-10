@@ -27,7 +27,7 @@
                 已选题学生人数:<asp:Label ID="lblHasChooseTitleStudentNum" runat="server"></asp:Label>
                 已上传论文学生人数:<asp:Label ID="lblHasUploadThesisNum" runat="server"></asp:Label>
                 <div class="control-label label-warning text-center">
-                    <asp:Label ID="lblUnReadMessage" runat="server" Visible="False"></asp:Label>
+                    <asp:Label ID="lblUnReadMessageNum" runat="server" Visible="False"></asp:Label>
                 </div>
             </div>
             <div class="rows">
@@ -39,7 +39,7 @@
                                     <li class="nav-header">个人信息
                                     </li>
                                     <li class="active">
-                                        <a href="ModifyPassWord.aspx">修改密码</a>
+                                        <a href="ModifyPassword.aspx">修改密码</a>
                                     </li>
                                     <li class="nav-header">信息审核
                                     </li>

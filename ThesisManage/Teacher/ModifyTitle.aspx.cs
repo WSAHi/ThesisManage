@@ -29,7 +29,7 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
                 ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(titleId);
                 txtTitile.Text = title.TitleName;
                 txtDescription.Text = title.Description;
-                TextBox1.Text = title.Counts.ToString();
+                txtCanChooseNum.Text = title.Counts.ToString();
             }
         }
     }
@@ -41,7 +41,7 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
 
             string titleName = txtTitile.Text;
             string description = txtDescription.Text;
-            int counts =Convert.ToInt32(TextBox1.Text);
+            int counts =Convert.ToInt32(txtCanChooseNum.Text);
             int num = titleManage.ModifiyTitle(titleName, description, counts, teacher.TEID);
             if (num > 0)
             {

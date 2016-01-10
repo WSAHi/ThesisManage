@@ -33,11 +33,11 @@ public partial class Student_TitleDetial : System.Web.UI.Page
             {
                 TID = Convert.ToInt32(Request.QueryString["TID"]);
                 ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
-                Label6.Text = title.Teacher.TeacherName;
-                Label2.Text = "教师:[" + title.Teacher.TeacherName + "]";
-                Label1.Text = title.TitleName;
-                Label8.Text = title.Description;
-                Label3.Text = title.Counts.ToString();
+                lblTeacher.Text = title.Teacher.TeacherName;
+                lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
+                lblTitleName.Text = title.TitleName;
+                lblDescription.Text = title.Description;
+                lblCanChooseNum.Text = title.Counts.ToString();
                 Label4.Text = title.HasChooseNum.ToString();
             }
         }

@@ -30,10 +30,10 @@ public partial class Student_ModifyPassWord : System.Web.UI.Page
         if (Page.IsValid)
         {
             Student student = (Student)Session["student"];
-            if (student.StudentPass == txtOldPassWord.Text.Trim())
+            if (student.StudentPass == txtOldPassword.Text.Trim())
             {
-                string password = txtNewPassWord.Text.Trim();
-                int num = studentManage.ModifiyStuPass(password,student.StudentID);
+                string password = txtNewPassword.Text.Trim();
+                int num = studentManage.ModifiyStuPass(password, student.StudentID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('密码修改成功！');</script>");

@@ -18,22 +18,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblTitle" runat="server"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblTeacher" runat="server"></asp:Label>
                     </td>
                     <td>
-                        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                        <asp:Label ID="lblUploadTime" runat="server"></asp:Label>
                     </td>
                     <td>
-                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" CssClass="btn-link"> 下载到本地</asp:LinkButton>
+                        <asp:LinkButton ID="linkbtnDownload" runat="server" OnClick="LinkButton1_Click" CssClass="btn-link"> 下载到本地</asp:LinkButton>
                     </td>
                 </tr>
             </table>
         </asp:Panel>
-        <asp:Label ID="Label4" runat="server"></asp:Label>
+        <asp:Label ID="lblMessage" runat="server"></asp:Label>
     </div>
-
 </asp:Content>
 

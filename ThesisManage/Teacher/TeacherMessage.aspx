@@ -7,23 +7,23 @@
             <tr>
                 <td>教师号:</td>
                 <td>
-                    <asp:Label ID="lbNum" runat="server"></asp:Label></td>
+                    <asp:Label ID="lblTeacherID" runat="server"></asp:Label></td>
                 <td>姓名:</td>
                 <td>
-                    <asp:Label ID="lbName" runat="server"></asp:Label></td>
+                    <asp:Label ID="lblTeacherName" runat="server"></asp:Label></td>
             </tr>
             <tr>
                 <td>地址:</td>
                 <td>
-                    <asp:Label ID="lbAddress" runat="server"></asp:Label></td>
+                    <asp:Label ID="lblTeacherAddress" runat="server"></asp:Label></td>
                 <td>联系电话:</td>
                 <td>
-                    <asp:Label ID="lbPhone" runat="server"></asp:Label></td>
+                    <asp:Label ID="lblTeacherPhone" runat="server"></asp:Label></td>
             </tr>
             <tr>
                 <td>邮箱:</td>
                 <td>
-                    <asp:Label ID="lbEmail" runat="server"></asp:Label></td>
+                    <asp:Label ID="lblTeacherEmail" runat="server"></asp:Label></td>
             </tr>
         </table>
     </div>

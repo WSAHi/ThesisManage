@@ -25,19 +25,19 @@ public partial class Teacher_ModifyMessage : System.Web.UI.Page
             }
             else
             {
-                lbNum.Text = teacher.TeacherID;
-                lbName.Text = teacher.TeacherName;
-                textAddress.Text = teacher.TeacherAddress;
-                textEmail.Text = teacher.TeacherMail;
-                textphone.Text = teacher.TeacherPhone;
+                lblTeacherID.Text = teacher.TeacherID;
+                lblTeacherName.Text = teacher.TeacherName;
+                txtTeacherAddress.Text = teacher.TeacherAddress;
+                txtTeacherEmail.Text = teacher.TeacherMail;
+                txtTeacherPhone.Text = teacher.TeacherPhone;
             }
         }
     }
     protected void btnsubmint_Click(object sender, EventArgs e)
     {
-        string address = textAddress.Text;
-        string email=textEmail.Text;
-        string phone=textphone.Text;
+        string address = txtTeacherAddress.Text;
+        string email=txtTeacherEmail.Text;
+        string phone=txtTeacherPhone.Text;
         int num = teacherManage.Modifiy(address,email,phone);
         if (num > 0)
         {
@@ -50,8 +50,8 @@ public partial class Teacher_ModifyMessage : System.Web.UI.Page
     }
     protected void btnesc_Click(object sender, EventArgs e)
     {
-        textAddress.Text = "";
-        textEmail.Text = "";
-        textphone.Text = "";
+        txtTeacherAddress.Text = "";
+        txtTeacherEmail.Text = "";
+        txtTeacherPhone.Text = "";
     }
 }

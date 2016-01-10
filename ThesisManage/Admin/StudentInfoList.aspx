@@ -14,8 +14,10 @@
                         <asp:ListItem Value="0">未选</asp:ListItem>
                     </asp:DropDownList>
                     <br />
-                    <asp:Button ID="btnSearch" runat="server" Text="查询" OnClick="Button2_Click" CssClass="btn" />
-                    <asp:Button ID="btnExcel" runat="server" Text="生成Excel" OnClick="Button3_Click" CssClass="btn" />
+                    <div class="btn-group">
+                        <asp:Button ID="btnSearch" runat="server" Text="查询" OnClick="Button2_Click" CssClass="btn" />
+                        <asp:Button ID="btnExcel" runat="server" Text="生成Excel" OnClick="Button3_Click" CssClass="btn" />
+                    </div>
                 </td>
             </tr>
             <tr>

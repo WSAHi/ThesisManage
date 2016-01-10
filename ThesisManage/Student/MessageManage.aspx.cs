@@ -8,12 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Web.UI.HtmlControls;
+using System.Collections.Generic;
 using ThesisManage.Model;
 using ThesisManage.BLL;
 //using System.Web.UI.MobileControls;
-using System.Collections.Generic;
 
-public partial class Teacher_Message : System.Web.UI.Page
+public partial class Student_LeaveMessage : System.Web.UI.Page
 {
     MessageManage messageManage = new MessageManage();
     TeacherManage teacherManage = new TeacherManage();
@@ -23,8 +23,8 @@ public partial class Teacher_Message : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Teacher teacher = (Teacher)Session["teacher"];
-            if (teacher == null)
+            Student student = (Student)Session["student"];
+            if (student == null)
             {
                 Response.Redirect("~/Login.aspx");
             }
@@ -36,9 +36,9 @@ public partial class Teacher_Message : System.Web.UI.Page
     }
     public void bind()
     {
-        Teacher teacher = (Teacher)Session["teacher"];
+        Student student = (Student)Session["student"];
         GridView1.DataSourceID = null;
-        GridView1.DataSource = messageManage.GetTeacherMesList(teacher.TEID, null);
+        GridView1.DataSource = messageManage.GetStudentMesList(student.SID, null);
         GridView1.DataBind();
     }
     public string NameBind(object Id, object role)
@@ -75,18 +75,6 @@ public partial class Teacher_Message : System.Web.UI.Page
             mes = "已读";
         }
         return mes;
-    }
-    public string GetImageUrl(object ID)
-    {
-        int teid = Convert.ToInt32(ID);
-        string imageUrl = string.Empty;
-        if (teid % 2 == 0)
-            imageUrl = "~/Images/1.jpg";
-        else if (teid % 3 == 0)
-            imageUrl = "~/Images/2.jpg";
-        else
-            imageUrl = "~/Images/3.jpg";
-        return imageUrl;
     }
     public string cutContents(object c)
     {
@@ -126,53 +114,31 @@ public partial class Teacher_Message : System.Web.UI.Page
         bind();
 
     }
-
-    protected void Button3_Click(object sender, EventArgs e)
+    public string GetImageUrl(object ID)
     {
-        Teacher teacher =(Teacher)Session["teacher"];
-        List<Student> list = studentManage.GetStudentWithOenTeacher(teacher.TEID);
-        if (list.Count > 0)
-        {
-            DataList1.Visible = true;
-            DataList1.DataSourceID = null;
-            DataList1.DataSource = list;
-            DataList1.DataBind();
-        }
+        int teid = Convert.ToInt32(ID);
+        string imageUrl = string.Empty;
+        if (teid % 2 == 0)
+            imageUrl = "~/Images/1.jpg";
+        else if (teid % 3 == 0)
+            imageUrl = "~/Images/2.jpg";
         else
-        {
-            Label6.Visible = true;
-            Label6.Text = "你还没有联系人！";
-        }
-    }
-    protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
-    {
-        if (RadioButton3.Checked)
-        {
-            TextBox5.Text = "admin";
-            TextBox5.Enabled = false;
-        }
-    }
-    protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
-    {
-        TextBox5.Enabled = true;
-    }
-    protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
-    {
-        TextBox5.Enabled = true;
+            imageUrl = "~/Images/3.jpg";
+        return imageUrl;
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        if (TextBox5.Text.Trim() == "")
+        if (txtMessageReceiver.Text.Trim() == "")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请填写接受人！');</script>");
             return;
         }
-        if (TextBox6.Text.Trim() == "")
+        else if (txtMessage.Text.Trim() == "")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请填写发送的内容！');</script>");
             return;
         }
-        if (RadioButton3.Checked==false && RadioButton2.Checked==false && RadioButton1.Checked==false)
+        if (radiobtnAdmin.Checked == false && radiobtnStudent.Checked == false && radiobtnTeacher.Checked == false)
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请选择用户角色！');</script>");
             return;
@@ -182,21 +148,21 @@ public partial class Teacher_Message : System.Web.UI.Page
             string senderRole = null;
             Teacher teacher = null;
             Student student = null;
-            if (RadioButton3.Checked)
+            if (radiobtnAdmin.Checked)
             {
                 senderRole = "管理员";
             }
-            if (RadioButton1.Checked)
+            if (radiobtnTeacher.Checked)
             {
                 senderRole = "教师";
             }
-            if (RadioButton2.Checked)
+            if (radiobtnStudent.Checked)
             {
                 senderRole = "学生";
             }
             if (senderRole == "教师")
             {
-                teacher = teacherManage.GetTeacherByTeacherId(TextBox5.Text.Trim());
+                teacher = teacherManage.GetTeacherByTeacherId(txtMessageReceiver.Text.Trim());
                 if (teacher.TeacherName == null || teacher.TeacherName == "")
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你的联系人在系统中不存在！');</script>");
@@ -205,65 +171,71 @@ public partial class Teacher_Message : System.Web.UI.Page
             }
             if (senderRole == "学生")
             {
-                student = studentManage.GetStudentByStudentID(TextBox5.Text.Trim());
-                if (student.StudentName == null || student.StudentName=="")
+                student = studentManage.GetStudentByStudentID(txtMessageReceiver.Text.Trim());
+                if (student.StudentName == null || student.StudentName == "")
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你的联系人在系统中不存在！');</script>");
                     return;
                 }
             }
-            
-                Teacher te = (Teacher)Session["teacher"];
-                Message message = new Message();
-                message.Contents = TextBox6.Text.Trim();
-                message.MPubDate = DateTime.Now.ToString();
-                message.Sender = te.TEID;
-                message.SenderRole = "教师";
-                if (senderRole == "学生")
-                {
-                    message.State = 0;
-                    message.Student = student;
-                    message.Teacher = null;
-                }
-                if (senderRole == "教师")
-                {
-                    message.State = 0;
-                    message.Teacher = teacher;
-                    message.Student = null;
-                }
-                if (senderRole == "管理员")
-                {
-                    message.State = 2;
-                    message.Teacher = null;
-                    message.Student = null;
-                }
-                int num = messageManage.AddMessage(message);
-                if (num > 0)
-                {
-                    TextBox5.Text = "";
-                    TextBox6.Text = "";
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送成功！');</script>");
-                }
-                else
-                {
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送失败！');</script>");
-                }
-            
+
+            Student stu = (Student)Session["student"];
+            Message message = new Message();
+            message.Contents = txtMessage.Text.Trim();
+            message.MPubDate = DateTime.Now.ToString();
+            message.Sender = stu.SID;
+            message.SenderRole = "学生";
+            if (senderRole == "学生")
+            {
+                message.State = 0;
+                message.Student = student;
+                message.Teacher = null;
+            }
+            if (senderRole == "教师")
+            {
+                message.State = 0;
+                message.Teacher = teacher;
+                message.Student = null;
+            }
+            if (senderRole == "管理员")
+            {
+                message.State = 2;
+                message.Teacher = null;
+                message.Student = null;
+            }
+            int num = messageManage.AddMessage(message);
+            if (num > 0)
+            {
+                txtMessageReceiver.Text = "";
+                txtMessage.Text = "";
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送成功！');</script>");
+            }
+            else
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送失败！');</script>");
+            }
+
         }
+    }
+    protected void RadioButton3_CheckedChanged(object sender, EventArgs e)
+    {
+        if (radiobtnAdmin.Checked)
+        {
+            txtMessageReceiver.Text = "admin";
+            txtMessageReceiver.Enabled = false;
+        }
+    }
+    protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
+    {
+        txtMessageReceiver.Enabled = true;
+    }
+    protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
+    {
+        txtMessageReceiver.Enabled = true;
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        TextBox5.Text = "";
-        TextBox6.Text = "";
-    }
-    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
-    {
-        int n = e.Item.ItemIndex;
-        DataList1.Items[n].BackColor = System.Drawing.Color.Red;
-        int key = Convert.ToInt32(this.DataList1.DataKeys[n]);
-        Session["key"] = key;
-        Student student = studentManage.GetStudentBySID(key);
-        TextBox5.Text = student.StudentID;
-        RadioButton2.Checked = true;
+        txtMessageReceiver.Text = "";
+        txtMessage.Text = "";
     }
 }

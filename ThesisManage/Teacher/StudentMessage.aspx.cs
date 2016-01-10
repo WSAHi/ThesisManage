@@ -29,23 +29,23 @@ public partial class Teacher_StudentMessage : System.Web.UI.Page
                     int thesisId = Convert.ToInt32(Request.Params["ThesisID"]);
                     Thesis thesis = thesisManage.GetThesisById(thesisId);
                     Student student = thesis.Student;
-                    lbNum.Text = student.StudentID;
-                    lbName.Text = student.StudentName;
-                    lbAddress.Text = student.StudentAddress;
-                    lbClass.Text = student.StudentClass;
-                    lbEmail.Text = student.StudentMail;
-                    lbPhone.Text = student.StudentPhone;
+                    lblStudentID.Text = student.StudentID;
+                    lblStudentName.Text = student.StudentName;
+                    lblStudentAddress.Text = student.StudentAddress;
+                    lblClass.Text = student.StudentClass;
+                    lblStudentEmail.Text = student.StudentMail;
+                    lblStudentPhone.Text = student.StudentPhone;
                     int state = student.SudentState;
                     if (state == 0)
                     {
-                        lbIsChooseTitle.Text = "否";
+                        lbIsOrNoChooseTitle.Text = "否";
                     }
                     else
                     {
-                        lbIsChooseTitle.Text = "是";
+                        lbIsOrNoChooseTitle.Text = "是";
                     }
-                    Label1.Text = thesis.Title.TitleName;
-                    Label2.Text = thesis.PublishDate;
+                    lblTitle.Text = thesis.Title.TitleName;
+                    lblUploadTime.Text = thesis.PublishDate;
                 }
         }
     }

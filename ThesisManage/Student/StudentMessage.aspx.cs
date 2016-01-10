@@ -19,7 +19,7 @@ public partial class Student_StudentMessage : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Button1.Attributes.Add("onclick", "return confirm('您确认要退选该论题吗?');");
+            btnCancelChooseTitle.Attributes.Add("onclick", "return confirm('您确认要退选该论题吗?');");
             Student stu = (Student)Session["student"];
             if (stu == null)
             {
@@ -29,24 +29,24 @@ public partial class Student_StudentMessage : System.Web.UI.Page
             {
                 string studentId = ((Student)Session["student"]).StudentID;
                 Student student = studentManage.GetStudentByStudentID(studentId);
-                lbNum.Text = student.StudentID;
-                lbName.Text = student.StudentName;
-                lbAddress.Text = student.StudentAddress;
-                lbClass.Text = student.StudentClass;
-                lbEmail.Text = student.StudentMail;
-                lbPhone.Text = student.StudentPhone;
+                lblNStudentID.Text = student.StudentID;
+                lblStudentName.Text = student.StudentName;
+                lblStudentAddress.Text = student.StudentAddress;
+                lblClass.Text = student.StudentClass;
+                lblStudnetEmail.Text = student.StudentMail;
+                lblStudentPhone.Text = student.StudentPhone;
                 int state = student.SudentState;
                 if (state == 0)
                 {
-                    lbTitle.Visible = false;
-                    lbTitleName.Visible = false;
-                    Button1.Visible = false;
-                    lbIsChooseTitle.Text = "否";
+                    lblTitle.Visible = false;
+                    lblTitleName.Visible = false;
+                    btnCancelChooseTitle.Visible = false;
+                    lbIISOrNoChooseTitle.Text = "否";
                 }
                 else
                 {
-                    lbIsChooseTitle.Text = "是";
-                    lbTitleName.Text = student.Title.TitleName;
+                    lbIISOrNoChooseTitle.Text = "是";
+                    lblTitleName.Text = student.Title.TitleName;
                 }
             }
         }

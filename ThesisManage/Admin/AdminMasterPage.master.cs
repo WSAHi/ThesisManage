@@ -32,8 +32,8 @@ public partial class Admin_AdminMasterPage : System.Web.UI.MasterPage
         int num = messageManage.GetAdminMesList("未读").Count;
         if (num > 0)
         {
-            lblUnReadMessage.Visible = true;
-            lblUnReadMessage.Text = "你有【" + num.ToString() + "】条未读消息请注意查看！";
+            lblUnReadMessageNum.Visible = true;
+            lblUnReadMessageNum.Text = "你有【" + num.ToString() + "】条未读消息请注意查看！";
         }
     }
 }

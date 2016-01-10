@@ -28,10 +28,10 @@ public partial class Teacher_ModifyPassWord : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         Teacher teacher = (Teacher)Session["teacher"];
-        if (teacher.TeacherPass == txtOldPassWord.Text.Trim())
+        if (teacher.TeacherPass == txtOldPassword.Text.Trim())
         {
-            string password = txtNewPassWord.Text.Trim();
-            int num = teacherManage.ModifiyPassWord(password,teacher.TEID);
+            string password = txtNewPassword.Text.Trim();
+            int num = teacherManage.ModifiyPassWord(password, teacher.TEID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('密码修改成功！');</script>");

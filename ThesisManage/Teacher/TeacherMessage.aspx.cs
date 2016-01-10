@@ -26,11 +26,11 @@ public partial class Teacher_TeacherMessage : System.Web.UI.Page
             else
             {
                 Teacher te = teacherManage.GetTeacherByTeacherId(teacher.TeacherID);
-                lbNum.Text = te.TeacherID;
-                lbName.Text = te.TeacherName;
-                lbEmail.Text = te.TeacherMail;
-                lbAddress.Text = te.TeacherAddress;
-                lbPhone.Text = te.TeacherPhone;
+                lblTeacherID.Text = te.TeacherID;
+                lblTeacherName.Text = te.TeacherName;
+                lblTeacherEmail.Text = te.TeacherMail;
+                lblTeacherAddress.Text = te.TeacherAddress;
+                lblTeacherPhone.Text = te.TeacherPhone;
             }
         }
     }

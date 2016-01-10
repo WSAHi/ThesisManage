@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Teacher/TeacherMasterPage.master" AutoEventWireup="true" CodeFile="Message.aspx.cs" Inherits="Teacher_Message" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Student/StudentMasterPage.master" AutoEventWireup="true" CodeFile="MessageManage.aspx.cs" Inherits="Student_LeaveMessage" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
         <h1 class="h1 text-center">消息列表</h1>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1"
-            OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table table-scripted">
             <Columns>
                 <asp:BoundField DataField="MID" HeaderText="MID" SortExpression="MID" Visible="False" />
                 <asp:TemplateField HeaderText="发送人" SortExpression="Sender">
@@ -48,44 +47,39 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetTeacherMesList" TypeName="ThesisManage.BLL.MessageManage">
+        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetStudentMesList" TypeName="ThesisManage.BLL.MessageManage">
             <SelectParameters>
-                <asp:Parameter Name="teacherId" Type="Int32" />
+                <asp:Parameter Name="studentId" Type="Int32" />
                 <asp:Parameter Name="choose" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <br />
-        <table class="table table-scripted">
-            <tr>
-                <td>发送消息
-                </td>
-            </tr>
-            <tr>
-                <td>角色:
-                <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
-                    <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
-                    <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" /><br />
-                    接受人:<asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox>(注：用户名)
-                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="查看联系人" CssClass="btn" /><br />
-                    <asp:DataList ID="DataList1" runat="server" DataKeyField="SID" OnItemCommand="DataList1_ItemCommand" RepeatDirection="Horizontal" Visible="False">
-                        <ItemTemplate>
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl='<%# GetImageUrl(Eval("SID")) %>' /><br />
-                            <asp:Label ID="Label5" runat="server" Text='<%# Eval("StudentName") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:DataList>
-                    <asp:Label ID="Label6" runat="server" Visible="False"></asp:Label></td>
-            </tr>
-            <tr>
-                <td>内 容:<br />
-                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>&nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
-                    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" /></td>
-            </tr>
-        </table>
+        <div class="container-fluid text-center">
+            <table class="table table-striped">
+                <tr>
+                    <td>发送消息
+                    </td>
+                </tr>
+                <tr>
+                    <td>消息接收者类型:<asp:RadioButton ID="radiobtnAdmin" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="管理员" />
+                        <asp:RadioButton ID="radiobtnTeacher" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
+                        <asp:RadioButton ID="radiobtnStudent" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" /><br />
+                        <asp:TextBox ID="txtMessageReceiver" runat="server" CssClass="form-control" placeholder="接收人（用户名）"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TextBox ID="txtMessage" runat="server" CssClass="form-control" placeholder="内容"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="btn-group">
+                            <asp:Button ID="btnSend" runat="server" Text="发送" OnClick="Button2_Click" CssClass="btn" />
+                            <asp:Button ID="btnReset" runat="server" Text="重置" OnClick="Button1_Click" CssClass="btn" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </asp:Content>
 

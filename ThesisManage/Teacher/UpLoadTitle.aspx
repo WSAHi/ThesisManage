@@ -24,7 +24,7 @@
                 <td>可选人数：
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtCanChooseNum" runat="server" CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="请输入整数" ValidationExpression="\d"></asp:RegularExpressionValidator>
                 </td>
@@ -33,7 +33,7 @@
                 <td></td>
                 <td>
                     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text=" 提交" CssClass="btn" />
-                    <asp:Button ID="btnEsc" runat="server" OnClick="btnEsc_Click" Text="取消" CssClass="btn" />
+                    <asp:Button ID="btnCancel" runat="server" OnClick="btnEsc_Click" Text="取消" CssClass="btn" />
                 </td>
             </tr>
         </table>

@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div class="container-fluid">
+        <h1 class="h1 text-center">回复消息</h1>
         <div class="row">
             <div class="col-lg-2 text-center">
                 发送人:<asp:Label ID="lblUserName" runat="server" CssClass="control-label"></asp:Label>[<asp:Label ID="lblUserRole" runat="server" CssClass="control-label"></asp:Label>]

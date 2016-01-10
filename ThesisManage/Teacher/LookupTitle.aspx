@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odstitlelist" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odstitlelist" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-scripted">
             <Columns>
                 <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
                 <asp:BoundField DataField="TitleName" HeaderText="标题名称" SortExpression="TitleName" />

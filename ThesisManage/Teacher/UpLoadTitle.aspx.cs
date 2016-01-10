@@ -31,7 +31,7 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
             Teacher teacher = (Teacher)Session["teacher"];
                 string title = txtTitile.Text;
                 string Description = txtDescription.Text;
-                int chooseNum =Convert.ToInt32( TextBox1.Text.Trim());
+                int chooseNum =Convert.ToInt32( txtCanChooseNum.Text.Trim());
                 int num = titleManage.TeacherAddTitle(title, teacher.TEID, Description,chooseNum);
                 if (num > 0)
                 {
@@ -44,12 +44,12 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
         }
         txtTitile.Text = "";
         txtDescription.Text = "";
-        TextBox1.Text = "";
+        txtCanChooseNum.Text = "";
     }
     protected void btnEsc_Click(object sender, EventArgs e)
     {
         txtTitile.Text = "";
         txtDescription.Text = "";
-        TextBox1.Text = "";
+        txtCanChooseNum.Text = "";
     }
 }

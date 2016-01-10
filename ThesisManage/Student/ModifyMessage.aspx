@@ -38,9 +38,9 @@
                     <asp:Label ID="lbTitleName" runat="server"></asp:Label></td>
             </tr>
         </table>
-        <div class="input-group-btn text-center">
-            <asp:Button ID="BtnOk" runat="server" OnClick="BtnOk_Click" Text="保存" CssClass="btn" />
-            <asp:Button ID="BtnReSet" runat="server" OnClick="BtnReSet_Click" Text="重置" CssClass="btn" />
+        <div class="btn-group text-center">
+            <asp:Button ID="btnSave" runat="server" OnClick="BtnOk_Click" Text="保存" CssClass="btn" />
+            <asp:Button ID="btnReset" runat="server" OnClick="BtnReSet_Click" Text="重置" CssClass="btn" />
         </div>
     </div>
 </asp:Content>
