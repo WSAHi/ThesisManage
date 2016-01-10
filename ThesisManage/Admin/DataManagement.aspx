@@ -23,21 +23,18 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>学号:</td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="学号"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
-                                                <td>姓名:</td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>班级:</td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="班级"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
@@ -59,14 +56,12 @@
                                                 <td>添加教师帐户</td>
                                             </tr>
                                             <tr>
-                                                <td>教师号:</td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="教师工号"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
-                                                <td>姓名:</td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                             </tr>
@@ -88,9 +83,8 @@
                                                 <td>添加管理员帐户</td>
                                             </tr>
                                             <tr>
-                                                <td>帐号:</td>
-                                                <td runat="server">
-                                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <td>
+                                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"placeholder="账号"></asp:TextBox>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
