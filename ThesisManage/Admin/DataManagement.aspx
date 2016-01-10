@@ -42,10 +42,10 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="btnAddStudent" runat="server" Text="添加" OnClick="BtnOk_Click" CssClass="btn" />
+                                                    <asp:Button ID="btnAddStudent" runat="server" Text="添加" OnClick="btnAddStudent_Click" CssClass="btn" />
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="btnResetStudent" runat="server" Text="重置" OnClick="BtnReSet_Click" CssClass="btn" />
+                                                    <asp:Button ID="btnResetStudent" runat="server" Text="重置" OnClick="btnResetStudent_Click" CssClass="btn" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -71,9 +71,9 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="btnAddTeacher" runat="server" Text="添加" OnClick="btnsubmint_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnAddTeacher" runat="server" Text="添加" OnClick="btnAddTeacher_Click" CssClass="btn" /></td>
                                                 <td>
-                                                    <asp:Button ID="btnResetTeacher" runat="server" Text="重置" OnClick="btnesc_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnResetTeacher" runat="server" Text="重置" OnClick="btnResetTeacher_Click" CssClass="btn" /></td>
                                             </tr>
                                         </table>
                                     </asp:Panel>
@@ -92,9 +92,9 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="btnAddAdmin" runat="server" Text="添加" OnClick="Button1_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnAddAdmin" runat="server" Text="添加" OnClick="btnAddAdmin_Click" CssClass="btn" /></td>
                                                 <td>
-                                                    <asp:Button ID="btnResetAdmin" runat="server" Text="重置" OnClick="Button2_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnResetAdmin" runat="server" Text="重置" OnClick="btnResetAdmin_Click" CssClass="btn" /></td>
                                             </tr>
                                         </table>
                                     </asp:Panel>
@@ -114,7 +114,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="btnAddLost" runat="server" OnClick="Button3_Click" Text="添加" CssClass="btn" /></td>
+                                <asp:Button ID="btnAddLost" runat="server" OnClick="btnAddLost_Click" Text="添加" CssClass="btn" /></td>
                         </tr>
                     </table>
                 </td>

@@ -18,7 +18,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     AdminManage adminManage = new AdminManage();
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+
         if (!IsPostBack)
         {
             Admin admin = (Admin)Session["admin"];
@@ -33,11 +33,11 @@ public partial class Admin_DataManagement : System.Web.UI.Page
                 ddlUserRole.DataBind();
                 Bind();
             }
-            
+
         }
         string UserRole = ddlUserRole.SelectedItem.Text.Trim();
         btnAddLost.Attributes.Add("onclick", "return confirm('您是要添加【--" + UserRole + "--】表的数据吗？');");
-       
+
     }
     public void Bind()
     {
@@ -65,15 +65,15 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     {
         Bind();
     }
-    protected void BtnOk_Click(object sender, EventArgs e)
+    protected void btnAddStudent_Click(object sender, EventArgs e)
     {
         string studentId = txtStudentID.Text.Trim();
         string studentName = txtStudentName.Text.Trim();
         string studentClass = txtClass.Text.Trim();
         Student student = studentManage.GetStudentByStudentID(studentId);
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        if (student.StudentName =="")
-        {           
+        if (student.StudentName == "")
+        {
             int num = studentManage.AddStudent(studentId, studentName, studentClass, roleID);
             if (num > 0)
             {
@@ -90,21 +90,21 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         }
 
     }
-    protected void BtnReSet_Click(object sender, EventArgs e)
+    protected void btnResetStudent_Click(object sender, EventArgs e)
     {
-        txtStudentID.Text="";
-        txtStudentName.Text="";
-        txtClass.Text="";
+        txtStudentID.Text = "";
+        txtStudentName.Text = "";
+        txtClass.Text = "";
     }
-    protected void btnsubmint_Click(object sender, EventArgs e)
+    protected void btnAddTeacher_Click(object sender, EventArgs e)
     {
-        string teacherId = txtTeacherID.Text.Trim();
+        string teacherID = txtTeacherID.Text.Trim();
         string teacherName = txtTeacherName.Text.Trim();
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        Teacher teacher = teacherManage.GetTeacherByTeacherId(teacherId);
+        Teacher teacher = teacherManage.GetTeacherByTeacherId(teacherID);
         if (teacher.TeacherName == "")
         {
-            int num = teacherManage.AddTeacher(teacherId, teacherName, roleID);
+            int num = teacherManage.AddTeacher(teacherID, teacherName, roleID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");
@@ -119,19 +119,19 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的教师号已存在！');</script>");
         }
     }
-    protected void btnesc_Click(object sender, EventArgs e)
+    protected void btnResetTeacher_Click(object sender, EventArgs e)
     {
-        txtTeacherID.Text="";
+        txtTeacherID.Text = "";
         txtTeacherName.Text = "";
     }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnAddAdmin_Click(object sender, EventArgs e)
     {
-        string loginId = txtAdminID.Text.Trim();
+        string loginID = txtAdminID.Text.Trim();
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        Admin admin = adminManage.GetAdminById(loginId);
+        Admin admin = adminManage.GetAdminById(loginID);
         if (admin.LoginID == "")
         {
-            int num = adminManage.AddAdmin(loginId, roleID);
+            int num = adminManage.AddAdmin(loginID, roleID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");
@@ -146,14 +146,14 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你添加的管理员帐户号已存在！');</script>");
         }
     }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnResetAdmin_Click(object sender, EventArgs e)
     {
         txtAdminID.Text = "";
     }
-    protected void Button3_Click(object sender, EventArgs e)
+    protected void btnAddLost_Click(object sender, EventArgs e)
     {
-         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        string roleName=ddlUserRole.SelectedItem.Text.Trim();
+        int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
+        string roleName = ddlUserRole.SelectedItem.Text.Trim();
         string source = this.FileUpload1.PostedFile.FileName;
         string getextend = System.IO.Path.GetExtension(source);
         if (source == String.Empty || getextend != ".xls")

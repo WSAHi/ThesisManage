@@ -17,8 +17,8 @@ namespace ThesisManage.DAL
         /// <returns>管理员信息</returns>
         public Admin GetAdminById(string loginID)
         {
-            string sql = string.Format("select * from Admin where LoginId='{0}'", loginID);
-            int roleId = 0;
+            string sql = string.Format("select * from Admin where LoginID='{0}'", loginID);
+            int roleID = 0;
             Admin admin = new Admin();
             try
             {
@@ -26,11 +26,11 @@ namespace ThesisManage.DAL
                 if (reader.Read())
                 {
                     admin.AID = Convert.ToInt32(reader["AID"]);
-                    admin.LoginID = reader["LoginId"].ToString();
-                    admin.LoginPass = reader["LoginPass"].ToString();
-                    roleId = Convert.ToInt32(reader["ARID"]);
+                    admin.LoginID = reader["LoginID"].ToString();
+                    admin.LoginPass = reader["LoginPassword"].ToString();
+                    roleID = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
-                    admin.UserRole = UserRoleService.GetUserRoleByUid(roleId);
+                    admin.UserRole = UserRoleService.GetUserRoleByUid(roleID);
                 }
                 reader.Close();
             }
@@ -45,12 +45,12 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改密码
         /// </summary>
-        /// <param name="newPassWord">新密码</param>
+        /// <param name="newPassword">新密码</param>
         /// <param name="loginID">登陆账号</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string newPassWord, string loginID)
+        public int ModifiyPassWord(string newPassword, string loginID)
         {
-            string sql = string.Format("update Admin set LoginPass='{0}' where LoginId='{1}'", newPassWord, loginID);
+            string sql = string.Format("update Admin set LoginPassword='{0}' where LoginID='{1}'", newPassword, loginID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -62,7 +62,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)
         {
-            string sql = string.Format("insert into Admin (loginId,arid) values('{0}',{1})", loginID, roleID);
+            string sql = string.Format("insert into Admin (LoginID,ARID) values('{0}',{1})", loginID, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -79,16 +79,16 @@ namespace ThesisManage.DAL
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
-                OleDbDataAdapter myDa = new OleDbDataAdapter("select   *   from   [Sheet1$]", cnnxls);
-                DataSet myDs = new DataSet();
-                myDa.Fill(myDs);
-                if (myDs.Tables[0].Rows.Count > 0)
+                OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
+                DataSet ds = new DataSet();
+                myDa.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
                 {
                     string strSql = "";
-                    for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert   into   Admin(loginId,arid)   values   ('";
-                        strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "',";
+                        strSql += "insert   into   Admin(LoginID,ARID)   values   ('";
+                        strSql += ds.Tables[0].Rows[i].ItemArray[0].ToString() + "',";
                         strSql += roleID + ")";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
