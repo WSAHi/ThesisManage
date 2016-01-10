@@ -2,14 +2,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
-        <h1 class="h1 text-center">添加数据</h1>
+        <h1 class="h1 text-center">&nbsp;&nbsp;&nbsp;&nbsp; 添加数据</h1>
         <table class="table table-scriped">
             <tr>
                 <td>单行添加</td>
                 <td>
-                    <table class="table">
+                    <table class="table table-striped">
                         <tr>
-                            <td>角色:<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="odsrole" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="form-control">
+                            <td>角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="odsrole" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" CssClass="form-control">
                             </asp:DropDownList><asp:ObjectDataSource ID="odsrole" runat="server" SelectMethod="GetUserRole" TypeName="ThesisManage.BLL.UserRoleManage"></asp:ObjectDataSource>
                             </td>
                         </tr>
@@ -24,28 +24,28 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="学号"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtStudentID" runat="server" CssClass="form-control" placeholder="学号"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtStudentID" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtStudentName" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtStudentName" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="班级"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtClass" runat="server" CssClass="form-control" placeholder="班级"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtClass" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="Label1" runat="server" Text="添加后的默认密码为：333333"></asp:Label></td>
+                                                    <asp:Label ID="lblDefaultStudentPassword" runat="server" Text="添加后的默认密码为：333333"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="BtnOk" runat="server" Text="添加" OnClick="BtnOk_Click" CssClass="btn" />
+                                                    <asp:Button ID="btnAddStudent" runat="server" Text="添加" OnClick="BtnOk_Click" CssClass="btn" />
                                                 </td>
                                                 <td>
-                                                    <asp:Button ID="BtnReSet" runat="server" Text="重置" OnClick="BtnReSet_Click" CssClass="btn" />
+                                                    <asp:Button ID="btnResetStudent" runat="server" Text="重置" OnClick="BtnReSet_Click" CssClass="btn" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -57,23 +57,23 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="教师工号"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtTeacherID" runat="server" CssClass="form-control" placeholder="教师工号"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtTeacherID" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtTeacherName" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtTeacherName" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Label ID="Label2" runat="server" Text="添加后的默认密码为：111111"></asp:Label></td>
+                                                    <asp:Label ID="lblDefaultTeacherPassword" runat="server" Text="添加后的默认密码为：111111"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="btnsubmint" runat="server" Text="添加" OnClick="btnsubmint_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnAddTeacher" runat="server" Text="添加" OnClick="btnsubmint_Click" CssClass="btn" /></td>
                                                 <td>
-                                                    <asp:Button ID="btnesc" runat="server" Text="重置" OnClick="btnesc_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnResetTeacher" runat="server" Text="重置" OnClick="btnesc_Click" CssClass="btn" /></td>
                                             </tr>
                                         </table>
                                     </asp:Panel>
@@ -84,21 +84,20 @@
                                             </tr>
                                             <tr>
                                                 <td runat="server">
-                                                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control" placeholder="账号"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                                    <asp:TextBox ID="txtAdminID" runat="server" CssClass="form-control" placeholder="账号"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtAdminID" ErrorMessage="*"></asp:RequiredFieldValidator>
                                                 </td>
                                                 <td>
-                                                    <asp:Label ID="Label3" runat="server" Text="添加后的默认密码为：222222"></asp:Label></td>
+                                                    <asp:Label ID="lblDefaultAdminPassword" runat="server" Text="添加后的默认密码为：222222"></asp:Label></td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <asp:Button ID="Button1" runat="server" Text="添加" OnClick="Button1_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnAddAdmin" runat="server" Text="添加" OnClick="Button1_Click" CssClass="btn" /></td>
                                                 <td>
-                                                    <asp:Button ID="Button2" runat="server" Text="重置" OnClick="Button2_Click" CssClass="btn" /></td>
+                                                    <asp:Button ID="btnResetAdmin" runat="server" Text="重置" OnClick="Button2_Click" CssClass="btn" /></td>
                                             </tr>
                                         </table>
                                     </asp:Panel>
-
                                 </div>
                             </td>
                         </tr>
@@ -115,7 +114,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="添加" CssClass="btn" /></td>
+                                <asp:Button ID="btnAddLost" runat="server" OnClick="Button3_Click" Text="添加" CssClass="btn" /></td>
                         </tr>
                     </table>
                 </td>

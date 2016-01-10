@@ -44,7 +44,7 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lbmes.Text = mes;
+                lblLoginMessage.Text = mes;
             }
         }
         else if (userRole == "教师")
@@ -59,7 +59,7 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lbmes.Text = mes;
+                lblLoginMessage.Text = mes;
             }
         }
         else if (userRole == "学生")
@@ -73,7 +73,7 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lbmes.Text = mes;
+                lblLoginMessage.Text = mes;
             }
         }
         else

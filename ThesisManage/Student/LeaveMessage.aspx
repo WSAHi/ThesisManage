@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
         <h1 class="h1 text-center">消息列表</h1>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table table-scripted">
             <Columns>
                 <asp:BoundField DataField="MID" HeaderText="MID" SortExpression="MID" Visible="False" />
                 <asp:TemplateField HeaderText="发送人" SortExpression="Sender">
@@ -54,7 +54,7 @@
                 <asp:Parameter Name="choose" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <table>
+        <table class="table table-striped">
             <tr>
                 <td>发送消息
                 </td>
@@ -73,15 +73,17 @@
                     <asp:Label ID="Label6" runat="server" Visible="False"></asp:Label></td>
             </tr>
             <tr>
-                <td style="width: 503px">内 容:<br />
-                    <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                <td>内 容:<br />
+                    <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control"></asp:TextBox>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:Button ID="Button2" runat="server" Text="发送" OnClick="Button2_Click" />
-                    &nbsp;&nbsp;
-                <asp:Button ID="Button1" runat="server" Text="重置" OnClick="Button1_Click" /></td>
+                    <div class="btn-group">
+                        <asp:Button ID="Button2" runat="server" Text="发送" OnClick="Button2_Click" CssClass="btn" />
+                        <asp:Button ID="Button1" runat="server" Text="重置" OnClick="Button1_Click" CssClass="btn" />
+                    </div>
+                </td>
             </tr>
         </table>
     </div>

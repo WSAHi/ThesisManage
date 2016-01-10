@@ -28,20 +28,20 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             }
             else
             {
-                DropDownList1.DataSourceID = null;
-                DropDownList1.DataSource = UserRoleManage.GetUserRole();
-                DropDownList1.DataBind();
+                ddlUserRole.DataSourceID = null;
+                ddlUserRole.DataSource = UserRoleManage.GetUserRole();
+                ddlUserRole.DataBind();
                 Bind();
             }
             
         }
-        string UserRole = DropDownList1.SelectedItem.Text.Trim();
-        Button3.Attributes.Add("onclick", "return confirm('您是要添加【--" + UserRole + "--】表的数据吗？');");
+        string UserRole = ddlUserRole.SelectedItem.Text.Trim();
+        btnAddLost.Attributes.Add("onclick", "return confirm('您是要添加【--" + UserRole + "--】表的数据吗？');");
        
     }
     public void Bind()
     {
-        string UserRole = DropDownList1.SelectedItem.Text.Trim();
+        string UserRole = ddlUserRole.SelectedItem.Text.Trim();
         if (UserRole == "学生")
         {
             Panel1.Visible = true;
@@ -67,11 +67,11 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     }
     protected void BtnOk_Click(object sender, EventArgs e)
     {
-        string studentId = TextBox1.Text.Trim();
-        string studentName = TextBox2.Text.Trim();
-        string studentClass = TextBox3.Text.Trim();
+        string studentId = txtStudentID.Text.Trim();
+        string studentName = txtStudentName.Text.Trim();
+        string studentClass = txtClass.Text.Trim();
         Student student = studentManage.GetStudentByStudentID(studentId);
-        int roleID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
+        int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
         if (student.StudentName =="")
         {           
             int num = studentManage.AddStudent(studentId, studentName, studentClass, roleID);
@@ -92,15 +92,15 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     }
     protected void BtnReSet_Click(object sender, EventArgs e)
     {
-        TextBox1.Text="";
-        TextBox2.Text="";
-        TextBox3.Text="";
+        txtStudentID.Text="";
+        txtStudentName.Text="";
+        txtClass.Text="";
     }
     protected void btnsubmint_Click(object sender, EventArgs e)
     {
-        string teacherId = TextBox4.Text.Trim();
-        string teacherName = TextBox5.Text.Trim();
-        int roleID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
+        string teacherId = txtTeacherID.Text.Trim();
+        string teacherName = txtTeacherName.Text.Trim();
+        int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
         Teacher teacher = teacherManage.GetTeacherByTeacherId(teacherId);
         if (teacher.TeacherName == "")
         {
@@ -121,13 +121,13 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     }
     protected void btnesc_Click(object sender, EventArgs e)
     {
-        TextBox4.Text="";
-        TextBox5.Text = "";
+        txtTeacherID.Text="";
+        txtTeacherName.Text = "";
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string loginId = TextBox6.Text.Trim();
-        int roleID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
+        string loginId = txtAdminID.Text.Trim();
+        int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
         Admin admin = adminManage.GetAdminById(loginId);
         if (admin.LoginID == "")
         {
@@ -148,12 +148,12 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        TextBox6.Text = "";
+        txtAdminID.Text = "";
     }
     protected void Button3_Click(object sender, EventArgs e)
     {
-         int roleID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
-        string roleName=DropDownList1.SelectedItem.Text.Trim();
+         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
+        string roleName=ddlUserRole.SelectedItem.Text.Trim();
         string source = this.FileUpload1.PostedFile.FileName;
         string getextend = System.IO.Path.GetExtension(source);
         if (source == String.Empty || getextend != ".xls")

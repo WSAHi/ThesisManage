@@ -129,31 +129,31 @@ public partial class Admin_MessageManage : System.Web.UI.Page
     {
         if (RadioButton3.Checked)
         {
-            TextBox5.Text = "所有用户";
-            TextBox5.Enabled = false;
+            txtMessageReceiver.Text = "所有用户";
+            txtMessageReceiver.Enabled = false;
         }
     }
     protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
     {
-        TextBox5.Enabled = true;
+        txtMessageReceiver.Enabled = true;
     }
     protected void RadioButton2_CheckedChanged(object sender, EventArgs e)
     {
-        TextBox5.Enabled = true;
+        txtMessageReceiver.Enabled = true;
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        TextBox5.Text = "";
-        TextBox6.Text = "";
+        txtMessageReceiver.Text = "";
+        txtMessage.Text = "";
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        if (TextBox5.Text.Trim() == "")
+        if (txtMessageReceiver.Text.Trim() == "")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请填写接受人！');</script>");
             return;
         }
-        else if (TextBox6.Text.Trim() == "")
+        else if (txtMessage.Text.Trim() == "")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请填写发送的内容！');</script>");
             return;
@@ -182,7 +182,7 @@ public partial class Admin_MessageManage : System.Web.UI.Page
             }
             if (senderRole == "教师")
             {
-                teacher = teacherManage.GetTeacherByTeacherId(TextBox5.Text.Trim());
+                teacher = teacherManage.GetTeacherByTeacherId(txtMessageReceiver.Text.Trim());
                 if (teacher.TeacherName == null || teacher.TeacherName == "")
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你的联系人在系统中不存在！');</script>");
@@ -191,7 +191,7 @@ public partial class Admin_MessageManage : System.Web.UI.Page
             }
             if (senderRole == "学生")
             {
-                student = studentManage.GetStudentByStudentID(TextBox5.Text.Trim());
+                student = studentManage.GetStudentByStudentID(txtMessageReceiver.Text.Trim());
                 if (student.StudentName == null || student.StudentName == "")
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你的联系人在系统中不存在！');</script>");
@@ -201,7 +201,7 @@ public partial class Admin_MessageManage : System.Web.UI.Page
 
             Admin ad = (Admin)Session["admin"];
             Message message = new Message();
-            message.Contents = TextBox6.Text.Trim();
+            message.Contents = txtMessage.Text.Trim();
             message.MPubDate = DateTime.Now.ToString();
             message.Sender = ad.AID;
             message.SenderRole = "管理员";
@@ -226,8 +226,8 @@ public partial class Admin_MessageManage : System.Web.UI.Page
             int num = messageManage.AddMessage(message);
             if (num > 0)
             {
-                TextBox5.Text = "";
-                TextBox6.Text = "";
+                txtMessageReceiver.Text = "";
+                txtMessage.Text = "";
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送成功！');</script>");
             }
             else

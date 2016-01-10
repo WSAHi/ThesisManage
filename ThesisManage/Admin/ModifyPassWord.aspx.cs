@@ -30,9 +30,9 @@ public partial class Admin_ModifyPassWord : System.Web.UI.Page
         if (Page.IsValid)
         {
             Admin admin = (Admin)Session["admin"];
-            if (admin.LoginPass == txtOldPassWord.Text.Trim())
+            if (admin.LoginPass == txtOldPassword.Text.Trim())
             {
-                string password = txtNewPassWord.Text.Trim();
+                string password = txtNewPassword.Text.Trim();
                 int num =adminManage.ModifiyPassWord(password, admin.LoginID);
                 if (num > 0)
                 {

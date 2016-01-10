@@ -24,16 +24,16 @@ public partial class Admin_AdminMasterPage : System.Web.UI.MasterPage
         int titleCountSum = titleManage.GetTitleCountsSum();
         int hasChooseTitleStuNum = studentManage.GetHasChooseTitleNum();
         int upLoadThesisStuNum = thesisManage.GetThesisCount();
-        Label3.Text = studentTotalNum.ToString();
-        Label5.Text = titleNum.ToString();
-        Label9.Text = titleCountSum.ToString();
-        Label7.Text = hasChooseTitleStuNum.ToString();
-        Label11.Text = upLoadThesisStuNum.ToString();
+        lblStudentTotaloty.Text = studentTotalNum.ToString();
+        lblTitleTotality.Text = titleNum.ToString();
+        lblTitltCanChooseTotality.Text = titleCountSum.ToString();
+        lblHasChooseTitleStudentNum.Text = hasChooseTitleStuNum.ToString();
+        lblHasUploadThesisNum.Text = upLoadThesisStuNum.ToString();
         int num = messageManage.GetAdminMesList("未读").Count;
         if (num > 0)
         {
-            Label1.Visible = true;
-            Label1.Text = "你有【" + num.ToString() + "】条未读消息请注意查看！";
+            lblUnReadMessage.Visible = true;
+            lblUnReadMessage.Text = "你有【" + num.ToString() + "】条未读消息请注意查看！";
         }
     }
 }

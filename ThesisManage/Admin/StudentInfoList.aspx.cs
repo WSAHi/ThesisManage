@@ -39,10 +39,10 @@ public partial class Admin_AdminTest : System.Web.UI.Page
             {
                 Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
                 Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
-                DropDownList1.DataSourceID = null;
-                DropDownList1.DataSource = studentManage.GetAllClass();
-                DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("请选择班级", "-1"));
+                ddlTeacher.DataSourceID = null;
+                ddlTeacher.DataSource = studentManage.GetAllClass();
+                ddlTeacher.DataBind();
+                ddlTeacher.Items.Insert(0, new ListItem("请选择班级", "-1"));
                 DataSet dataset = studentManage.GetStudent(Sql + " union " + Sql2);
                 GridView1.DataSourceID = null;
                 GridView1.DataSource = dataset;
@@ -72,18 +72,18 @@ public partial class Admin_AdminTest : System.Web.UI.Page
     {
         Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
         Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
-        string className = DropDownList1.SelectedItem.Text;
+        string className = ddlTeacher.SelectedItem.Text;
         if (!(className == "请选择班级"))
         {
             Sql = Sql + " and StudentClass='" + className.Trim() + "'";
             Sql2 = Sql2 + " and StudentClass='" + className.Trim() + "'";
         }
-        if (DropDownList2.SelectedItem.Value == "1")
+        if (ddlISOrNOChooseTitle.SelectedItem.Value == "1")
         {
             Sql = Sql + " and STitleID is not null";
             Sql2 = Sql2 + " and STitleID is not null";
         }
-        else if (DropDownList2.SelectedItem.Value == "0")
+        else if (ddlISOrNOChooseTitle.SelectedItem.Value == "0")
         {
             Sql = Sql + " and SudentState=0";
         }

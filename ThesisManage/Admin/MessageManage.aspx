@@ -2,9 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="container-fluid text-center">
+    <div class="container-fluid">
         <h1 class="h1 text-center">消息列表</h1>
-        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-striped">
             <Columns>
                 <asp:BoundField DataField="MID" HeaderText="MID" SortExpression="MID" Visible="False" />
                 <asp:TemplateField HeaderText="发送人" SortExpression="Sender">
@@ -54,18 +54,20 @@
                 <asp:Parameter Name="choose" Type="String" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <h4 class="h4">消息接收者类型:</h4>
-        <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="系统消息" />
-        <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
-        <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" />
-        <h4 class="h4">发送消息:</h4>
-        <asp:TextBox ID="TextBox5" runat="server" CssClass="form-control" placeholder="接收人（用户名）"></asp:TextBox>
-        <br />
-        <asp:TextBox ID="TextBox6" runat="server" CssClass="form-control" placeholder="内容"></asp:TextBox>
-        <br />
-        <div class="btn-group">
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" />
+        <div class="container-fluid text-center">
+            <h4 class="h4">消息接收者类型:</h4>
+            <asp:RadioButton ID="RadioButton3" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton3_CheckedChanged" Text="系统消息" />
+            <asp:RadioButton ID="RadioButton1" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton1_CheckedChanged" Text="教师" />
+            <asp:RadioButton ID="RadioButton2" runat="server" AutoPostBack="True" GroupName="btn" OnCheckedChanged="RadioButton2_CheckedChanged" Text="学生" />
+            <h4 class="h4">发送消息:</h4>
+            <asp:TextBox ID="txtMessageReceiver" runat="server" CssClass="form-control" placeholder="接收人（用户名）"></asp:TextBox>
+            <br />
+            <asp:TextBox ID="txtMessage" runat="server" CssClass="form-control" placeholder="内容"></asp:TextBox>
+            <br />
+            <div class="btn-group">
+                <asp:Button ID="btnSend" runat="server" OnClick="Button2_Click" Text="发送" CssClass="btn" />
+                <asp:Button ID="btnReset" runat="server" OnClick="Button1_Click" Text="重置" CssClass="btn" />
+            </div>
         </div>
     </div>
 </asp:Content>

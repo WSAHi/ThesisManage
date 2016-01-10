@@ -50,8 +50,8 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Sql = "select 标题=TitleName, 指导老师=teacherName,可选人数=Counts,已选人数=HasChooseNum from Title,Teacher where TEID=Title.TeacherId";
-        string isFull = DropDownList1.SelectedItem.Text;
-        string state = DropDownList2.SelectedItem.Text;
+        string isFull = ddlTitleISCanOrNoChoose.SelectedItem.Text;
+        string state = ddlState.SelectedItem.Text;
         if (isFull != "--选择--")
         {
             if (isFull == "已满")
@@ -74,9 +74,9 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
                 Sql = Sql + " and State=2  ";
             }
         }
-        if (TextBox1.Text.Trim() != "")
+        if (txtTeacher.Text.Trim() != "")
         {
-            Sql = Sql + " and TeacherName like '%" + TextBox1.Text.Trim()+"%'";
+            Sql = Sql + " and TeacherName like '%" + txtTeacher.Text.Trim()+"%'";
         }
         GridView1.DataSourceID = null;
         GridView1.DataSource = titleManage.GetTitle(Sql);

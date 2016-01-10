@@ -4,22 +4,23 @@
 
     <div class="container-fluid">
         <h1 class="h1 text-center">标题信息</h1>
-        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
-            <asp:ListItem>选课情况</asp:ListItem>
+        <asp:DropDownList ID="ddlTitleISCanOrNoChoose" runat="server" CssClass="form-control">
+            <asp:ListItem>题目是否选满</asp:ListItem>
             <asp:ListItem>已满</asp:ListItem>
             <asp:ListItem>未满</asp:ListItem>
         </asp:DropDownList>
-        <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control">
+        <br />
+        <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control">
             <asp:ListItem>审核状态</asp:ListItem>
             <asp:ListItem>通过</asp:ListItem>
             <asp:ListItem>未通过</asp:ListItem>
         </asp:DropDownList>
         <br />
-        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="指导老师，支持模糊查询"></asp:TextBox>
+        <asp:TextBox ID="txtTeacher" runat="server" CssClass="form-control" placeholder="指导老师，支持模糊查询"></asp:TextBox>
         <br />
         <div class="btn-group">
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="查询" CssClass="btn" />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="生成Excel" CssClass="btn" />
+            <asp:Button ID="btnSearch" runat="server" OnClick="Button1_Click" Text="查询" CssClass="btn" />
+            <asp:Button ID="btnExcel" runat="server" OnClick="Button2_Click" Text="生成Excel" CssClass="btn" />
         </div>
         <br />
         <br />

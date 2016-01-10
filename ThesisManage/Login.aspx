@@ -23,16 +23,16 @@
             <div class="jumbotron">
                 <h1 class="h1  text-center">毕业设计选题系统<small>Thesis Manage</small></h1>
             </div>
-            <div class="container">
-                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control" placeholder="用户名"></asp:TextBox>
+            <div class="container text-center">
+                <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center" placeholder="用户名"></asp:TextBox>
                 <br />
-                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="密码"></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control text-center" placeholder="密码"></asp:TextBox>
                 <br />
                 <asp:DropDownList ID="ddlUserRole" runat="server" DataSourceID="ObjectDataSource1" DataTextField="RoleName" DataValueField="UID" CssClass="form-control"></asp:DropDownList>
                 <br />
                 <asp:Button ID="btnLogin" runat="server" Text="登录" OnClick="btnLogin_Click" CssClass="form-control" />
                 <br />
-                <asp:Label ID="lbmes" runat="server" CssClass="label-warning"></asp:Label>
+                <asp:Label ID="lblLoginMessage" runat="server" CssClass="control-label label-warning"></asp:Label>
             </div>
         </form>
     </div>

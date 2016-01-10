@@ -36,11 +36,11 @@ public partial class Admin_MessageDetial : System.Web.UI.Page
                 int MID = Convert.ToInt32(Request.QueryString["MID"]);
                 messageManage.ModifyMessage(MID, 3);
                 mes = messageManage.GetMesByMID(MID);
-                Label1.Text = mes.SenderRole;
-                Label2.Text = NameBind(mes.Sender, mes.SenderRole);
-                Label3.Text = mes.Contents;
-                Label4.Text = "发送时间:" + mes.MPubDate;
-                Label5.Text = NameBind(mes.Sender, mes.SenderRole);
+                lblUserRole.Text = mes.SenderRole;
+                lblUserName.Text = NameBind(mes.Sender, mes.SenderRole);
+                lblMessageComtents.Text = mes.Contents;
+                lblMessageSendTime.Text = "发送时间:" + mes.MPubDate;
+                lblUser.Text = NameBind(mes.Sender, mes.SenderRole);
             }
         }
     }
@@ -53,7 +53,7 @@ public partial class Admin_MessageDetial : System.Web.UI.Page
             Admin admin = (Admin)Session["admin"];
             message.Sender = admin.AID;
             message.SenderRole = "管理员";
-            message.Contents = TextBox1.Text;
+            message.Contents = txtMessage.Text;
             message.Teacher = null;
             message.Student = null;
             if (mes.SenderRole == "教师")
@@ -78,7 +78,7 @@ public partial class Admin_MessageDetial : System.Web.UI.Page
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('发送成功！');</script>");
-                TextBox1.Text = "";
+                txtMessage.Text = "";
             }
             else
             {
@@ -90,7 +90,7 @@ public partial class Admin_MessageDetial : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        TextBox1.Text = "";
+        txtMessage.Text = "";
     }
     public string NameBind(int id, string roleName)
     {

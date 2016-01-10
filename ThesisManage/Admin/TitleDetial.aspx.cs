@@ -25,7 +25,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Button1.Attributes.Add("onclick", "return confirm('您确认该标题审核通过吗！');");
+            btnPass.Attributes.Add("onclick", "return confirm('您确认该标题审核通过吗！');");
             Admin admin = (Admin)Session["admin"];
             if (admin == null)
             {
@@ -37,20 +37,20 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
                 ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
-                    Label6.Text = title.Teacher.TeacherName;
-                    Label2.Text = "教师:[" + title.Teacher.TeacherName + "]";
+                    lblTeacher.Text = title.Teacher.TeacherName;
+                    lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 }
                 else
                 {
-                    Label2.Text = "学生:[" + title.Student.StudentName + "]";
+                    lblUploader.Text = "学生:[" + title.Student.StudentName + "]";
                 }
-                Label1.Text = title.TitleName;
-                Label8.Text = title.Description;
-                Label3.Text = title.Counts.ToString();
+                lblTitleName.Text = title.TitleName;
+                lblDescription.Text = title.Description;
+                lblCanChooseNum.Text = title.Counts.ToString();
 
                 if (title.State == 0)
                 {
-                    Label4.Text = "未审核";
+                    lblState.Text = "未审核";
                 }
             }
 
@@ -71,7 +71,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Admin admin = (Admin)Session["admin"];
-        if (Label6.Text == "")
+        if (lblTeacher.Text == "")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请给该标题指定一个指导老师！');</script>");
         }
@@ -81,7 +81,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             int teacherId = Convert.ToInt32(Session["key"]);
             ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
             Message message = new Message();
-            message.Contents = "你上传的标题为[" + Label1.Text + "]通过管理员的审核！";
+            message.Contents = "你上传的标题为[" + lblTitleName.Text + "]通过管理员的审核！";
             message.MPubDate = DateTime.Now.ToString();
             message.Sender = admin.AID;
             message.SenderRole = "管理员";
@@ -122,13 +122,13 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     }
     protected void Button4_Click(object sender, EventArgs e)
     {
-        if (TextBox1.Text.Trim() != "")
+        if (txtReason.Text.Trim() != "")
         {
             Admin admin = (Admin)Session["admin"];
             int num = titleManage.ModifiyTitleUnState(TID);
             ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
             Message message = new Message();
-            message.Contents = "你上传的标题为[" + Label1.Text + "]未通过管理员的审核！原因是:" + TextBox1.Text;
+            message.Contents = "你上传的标题为[" + lblTitleName.Text + "]未通过管理员的审核！原因是:" + txtReason.Text;
             message.MPubDate = DateTime.Now.ToString();
             message.Sender = admin.AID;
             message.SenderRole = "管理员";

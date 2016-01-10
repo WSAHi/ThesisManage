@@ -51,9 +51,9 @@ public partial class Admin_TeacherInfoList : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Sql = "select 教师号=TeacherID,教师姓名=TeacherName,联系方式=TeacherPhone,邮箱=TeacherMail from teacher where 1=1";
-        if (TextBox1.Text.Trim() != "")
+        if (txtTeacherName.Text.Trim() != "")
         {
-            Sql = Sql + " and TeacherName like '%" + TextBox1.Text.Trim() + "%'";
+            Sql = Sql + " and TeacherName like '%" + txtTeacherName.Text.Trim() + "%'";
         }
         GridView1.DataSourceID = null;
         GridView1.DataSource = teacherManage.GetTeacher(Sql);
