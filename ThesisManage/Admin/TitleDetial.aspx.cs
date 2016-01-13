@@ -80,29 +80,18 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             int num = 0;
             int teacherId = Convert.ToInt32(Session["key"]);
             ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
-            Message message = new Message();
-            message.Contents = "你上传的标题为[" + lblTitleName.Text + "]通过管理员的审核！";
-            message.MPubDate = DateTime.Now.ToString();
-            message.Sender = admin.AID;
-            message.SenderRole = "管理员";
-            message.State = 0;
-            message.Student = null;
-            message.Teacher = null;
+
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
             {
                 num = titleManage.ModifiyTitleState(TID);
-                message.Teacher = title.Teacher;
             }
             else
             {
-                message.Student = title.Student;
                 num = titleManage.ModifiyTitleState(TID, teacherId);
                 studentManage.ModifiyStuSate(1, TID, title.Student.StudentID);
             }
             if (num > 0)
             {
-                MessageManage manageManage = new MessageManage();
-                manageManage.AddMessage(message);
                 Response.Redirect("AuditUpLoadTitle.aspx");
             }
             else
@@ -127,26 +116,9 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             Admin admin = (Admin)Session["admin"];
             int num = titleManage.ModifiyTitleUnState(TID);
             ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
-            Message message = new Message();
-            message.Contents = "你上传的标题为[" + lblTitleName.Text + "]未通过管理员的审核！原因是:" + txtReason.Text;
-            message.MPubDate = DateTime.Now.ToString();
-            message.Sender = admin.AID;
-            message.SenderRole = "管理员";
-            message.State = 0;
-            message.Student = null;
-            message.Teacher = null;
-            if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
-            {
-                message.Teacher = title.Teacher;
-            }
-            else
-            {
-                message.Student = title.Student;
-            }
+
             if (num > 0)
             {
-                MessageManage manageManage = new MessageManage();
-                manageManage.AddMessage(message);
                 Response.Redirect("AuditUpLoadTitle.aspx");
             }
             else

@@ -13,7 +13,6 @@ using ThesisManage.Model;
 
 public partial class Admin_AdminMasterPage : System.Web.UI.MasterPage
 {
-    MessageManage messageManage = new MessageManage();
     StudentManage studentManage = new StudentManage();
     TitleManage titleManage = new TitleManage();
     ThesisManage.BLL.ThesisManage thesisManage = new ThesisManage.BLL.ThesisManage();
@@ -29,11 +28,5 @@ public partial class Admin_AdminMasterPage : System.Web.UI.MasterPage
         lblTitltCanChooseTotality.Text = titleCountSum.ToString();
         lblHasChooseTitleStudentNum.Text = hasChooseTitleStuNum.ToString();
         lblHasUploadThesisNum.Text = upLoadThesisStuNum.ToString();
-        int num = messageManage.GetAdminMesList("未读").Count;
-        if (num > 0)
-        {
-            lblUnReadMessageNum.Visible = true;
-            lblUnReadMessageNum.Text = "你有【" + num.ToString() + "】条未读消息请注意查看！";
-        }
     }
 }

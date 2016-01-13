@@ -20,9 +20,6 @@
 <body>
     <div class="container-fluid">
         <form id="form1" runat="server">
-            <div class="label label-warning center-block">
-                <asp:Label ID="lblUnReadMessageNum" runat="server" Visible="False"></asp:Label>
-            </div>
             <div class="rows">
                 <div class="col-lg-2">
                     <div class="container-fluid">
@@ -55,11 +52,6 @@
                                     </li>
                                     <li class="active">
                                         <a href="UpLoadTitle.aspx">上传自定义题目</a>
-                                    </li>
-                                    <li class="nav-header">留言信息
-                                    </li>
-                                    <li>
-                                        <a href="MessageManage.aspx">查看留言</a>
                                     </li>
                                     <li class="nav-header">退出系统
                                     </li>

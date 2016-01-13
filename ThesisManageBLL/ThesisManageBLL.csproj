@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminManage.cs" />
-    <Compile Include="MessageManage.cs" />
     <Compile Include="StudentManage.cs" />
     <Compile Include="TeacherManage.cs" />
     <Compile Include="ThesisManage.cs" />

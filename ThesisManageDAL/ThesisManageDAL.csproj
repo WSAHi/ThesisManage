@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminService.cs" />
-    <Compile Include="MessageService.cs" />
     <Compile Include="StudentService.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
