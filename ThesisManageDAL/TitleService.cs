@@ -19,7 +19,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int StuAddTitle(string titleName, int studentID, string Description)
         {
-            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,StudentId) values('{0}',1,0,'{1}',{2})", titleName, Description, studentID);
+            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,StudentId,HasChooseNum) values('{0}',1,0,'{1}','{2}',0)", titleName, Description, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -38,7 +38,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 根据TitleID获取题目
+        /// 根据题目ID获取题目信息
         /// </summary>
         /// <param name="tID">题目ID</param>
         /// <returns></returns>
@@ -150,7 +150,7 @@ namespace ThesisManage.DAL
         /// <param name="teacherID"></param>
         /// <param name="tID"></param>
         /// <returns></returns>
-        public int ModifiyTitleState(int teacherID,int tID)
+        public int ModifiyTitleState(int teacherID, int tID)
         {
             string sql = string.Format("update Title set State=1,TeacherId={0},HasChooseNum=1,StudentId=null where TID={1}", teacherID, tID);
             int num = DBHelper.ExecuteCommand(sql);
