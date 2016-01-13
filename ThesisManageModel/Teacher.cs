@@ -19,24 +19,6 @@ namespace ThesisManage.Model
             get { return tEID; }
             set { tEID = value; }
         }
-        private string teacherID = string.Empty;
-        /// <summary>
-        /// 教师编号
-        /// </summary>
-        public string TeacherID
-        {
-            get { return teacherID; }
-            set { teacherID = value; }
-        }
-        private string teacherPass = string.Empty;
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public string TeacherPass
-        {
-            get { return teacherPass; }
-            set { teacherPass = value; }
-        }
         private UserRole userRole;
         /// <summary>
         /// 用户角色
@@ -54,6 +36,24 @@ namespace ThesisManage.Model
         {
             get { return teacherName; }
             set { teacherName = value; }
+        }
+        private string teacherID = string.Empty;
+        /// <summary>
+        /// 教师编号
+        /// </summary>
+        public string TeacherID
+        {
+            get { return teacherID; }
+            set { teacherID = value; }
+        }
+        private string teacherPass = string.Empty;
+        /// <summary>
+        /// 密码
+        /// </summary>
+        public string TeacherPass
+        {
+            get { return teacherPass; }
+            set { teacherPass = value; }
         }
         private string teacherAddress = string.Empty;
         /// <summary>
