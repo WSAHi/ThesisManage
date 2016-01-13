@@ -343,7 +343,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 题目总数量
+        /// 题目默认可选的总人数
         /// </summary>
         /// <returns></returns>
         public int GetTitleCountsSum()
@@ -353,7 +353,14 @@ namespace ThesisManage.DAL
             int num = 0;
             if (reader.Read())
             {
-                num = Convert.ToInt32(reader["num"]);
+                if (!Convert.IsDBNull(reader["num"]))
+                {
+                    num = Convert.ToInt32(reader["num"]);
+                }
+                else
+                {
+                    num = 0;
+                }
             }
             reader.Close();
             return num;
