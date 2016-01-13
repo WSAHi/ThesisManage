@@ -17,8 +17,7 @@
             <br />
             <br />
             <div class="btn-group">
-                <asp:Button ID="btnModify" runat="server" OnClick="btnOK_Click" Text="修改" CssClass="btn" />
-                <asp:Button ID="btnEsc" runat="server" OnClick="btnEsc_Click" Text="退出" CssClass="btn" />
+                <asp:Button ID="btnModify" runat="server" OnClick="btnModify_Click" Text="修改" CssClass="btn" />
             </div>
         </div>
     </div>

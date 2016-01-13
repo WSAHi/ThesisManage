@@ -37,18 +37,7 @@ public partial class Admin_TeacherInfoList : System.Web.UI.Page
             }
         }
     }
-    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            //设置行颜色   
-            e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#ff9900'");
-            //添加自定义属性，当鼠标移走时还原该行的背景色   
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor");
-        }
-        
-    }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
         Sql = "select 教师号=TeacherID,教师姓名=TeacherName,联系方式=TeacherPhone,邮箱=TeacherMail from teacher where 1=1";
         if (txtTeacherName.Text.Trim() != "")
@@ -59,7 +48,7 @@ public partial class Admin_TeacherInfoList : System.Web.UI.Page
         GridView1.DataSource = teacherManage.GetTeacher(Sql);
         GridView1.DataBind();
     }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnExcel_Click(object sender, EventArgs e)
     {
         DataSet dataset = teacherManage.GetTeacher(Sql);
         DataTable table = dataset.Tables["teacher"];
@@ -75,7 +64,7 @@ public partial class Admin_TeacherInfoList : System.Web.UI.Page
         Response.ContentType = "application/ms-excel";
         Response.ContentEncoding = System.Text.Encoding.GetEncoding("GBK");
         Response.Write(sw);
-        Response.End(); 
+        Response.End();
     }
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

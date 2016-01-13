@@ -50,25 +50,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
             }
         }
     }
-    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            //设置行颜色   
-            e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#ff9900'");
-            //添加自定义属性，当鼠标移走时还原该行的背景色   
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor");
-        }
-    }
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-
-        DataSet dataset = studentManage.GetStudent(Sql);
-        GridView1.DataSourceID = null;
-        GridView1.DataSource = dataset;
-        GridView1.DataBind();
-    }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
         Sql = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=teacherName,标题名=titleName from Student,teacher,title where 1=1 and STitleID=TID and TEID=title.TeacherId";
         Sql2 = "select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师='无',标题名='未选题' from Student where SudentState=0";
@@ -93,7 +75,7 @@ public partial class Admin_AdminTest : System.Web.UI.Page
         GridView1.DataSource = dataset;
         GridView1.DataBind();
     }
-    protected void Button3_Click(object sender, EventArgs e)
+    protected void btnExcel_Click(object sender, EventArgs e)
     {
         string sql = Sql + " union " + Sql2;
         DataSet dataset = studentManage.GetStudent(sql);

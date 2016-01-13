@@ -56,19 +56,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
 
         }
     }
-    public string GetImageUrl(object ID)
-    {
-        int teid = Convert.ToInt32(ID);
-        string imageUrl = string.Empty;
-        if (teid % 2 == 0)
-            imageUrl = "~/Images/1.jpg";
-        else if (teid % 3 == 0)
-            imageUrl = "~/Images/2.jpg";
-        else
-            imageUrl = "~/Images/3.jpg";
-        return imageUrl;
-    }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnPass_Click(object sender, EventArgs e)
     {
         Admin admin = (Admin)Session["admin"];
         if (lblTeacher.Text == "")
@@ -100,7 +88,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
         }
     }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnUnPass_Click(object sender, EventArgs e)
     {
         if (Panel1.Visible == true)
         {
@@ -109,7 +97,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         else
             Panel1.Visible = true;
     }
-    protected void Button4_Click(object sender, EventArgs e)
+    protected void btnSubmit_Click(object sender, EventArgs e)
     {
         if (txtReason.Text.Trim() != "")
         {
@@ -131,7 +119,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请注明原因！');</script>");
         }
     }
-    protected void Button5_Click(object sender, EventArgs e)
+    protected void btnCancel_Click(object sender, EventArgs e)
     {
         Panel1.Visible = false;
     }

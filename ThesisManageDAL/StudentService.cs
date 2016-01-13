@@ -167,8 +167,6 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public DataSet GetStudent(string sql)
         {
-            //string sql = string.Format("select 学号=Student.StudentID,姓名=StudentName,班级=StudentClass,指导老师=(select TeacherName from Teacher where TEID=(select TeacherId from title,student where STitleID=TID group by TeacherId)),标题名=(select TitleName from Title where TID=STitleID group by TitleName) from Student where 1=1");
-
             SqlDataAdapter adapter = new SqlDataAdapter(sql, DBHelper.Connection);
             DataSet dataset = new DataSet();
             adapter.Fill(dataset, "student");

@@ -4,7 +4,7 @@
 
     <div class="container-fluid">
         <h1 class="h1 text-center">待审核的标题:（点击查看对标题进行审核）</h1>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table table-striped">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" AllowPaging="True" CssClass="table table-striped">
             <Columns>
                 <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
                 <asp:BoundField DataField="TitleName" HeaderText="标题" SortExpression="TitleName" />

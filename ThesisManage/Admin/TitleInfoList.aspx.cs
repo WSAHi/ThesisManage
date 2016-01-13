@@ -37,22 +37,12 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
             }
         }
     }
-    protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-    {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            //设置行颜色   
-            e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#ff9900'");
-            //添加自定义属性，当鼠标移走时还原该行的背景色   
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor");
-        }
-    }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
         Sql = "select 标题=TitleName, 指导老师=teacherName,可选人数=Counts,已选人数=HasChooseNum from Title,Teacher where TEID=Title.TeacherId";
         string isFull = ddlTitleISCanOrNoChoose.SelectedItem.Text;
         string state = ddlState.SelectedItem.Text;
-        if (isFull != "--选择--")
+        if (isFull != "题目是否选满")
         {
             if (isFull == "已满")
             {
@@ -63,7 +53,7 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
                 Sql = Sql + " and HasChooseNum< Counts ";
             }
         }
-        if (state != "--选择--")
+        if (state != "审核状态")
         {
             if (state == "通过")
             {
@@ -76,14 +66,14 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
         }
         if (txtTeacher.Text.Trim() != "")
         {
-            Sql = Sql + " and TeacherName like '%" + txtTeacher.Text.Trim()+"%'";
+            Sql = Sql + " and TeacherName like '%" + txtTeacher.Text.Trim() + "%'";
         }
         GridView1.DataSourceID = null;
         GridView1.DataSource = titleManage.GetTitle(Sql);
         GridView1.DataBind();
 
     }
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnExcel_Click(object sender, EventArgs e)
     {
         DataSet dataset = titleManage.GetTitle(Sql);
         DataTable table = dataset.Tables["title"];
@@ -99,7 +89,7 @@ public partial class Admin_TitleInfoList : System.Web.UI.Page
         Response.ContentType = "application/ms-excel";
         Response.ContentEncoding = System.Text.Encoding.GetEncoding("GBK");
         Response.Write(sw);
-        Response.End(); 
+        Response.End();
     }
     protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {

@@ -15,14 +15,14 @@
                     </asp:DropDownList>
                     <br />
                     <div class="btn-group">
-                        <asp:Button ID="btnSearch" runat="server" Text="查询" OnClick="Button2_Click" CssClass="btn" />
-                        <asp:Button ID="btnExcel" runat="server" Text="生成Excel" OnClick="Button3_Click" CssClass="btn" />
+                        <asp:Button ID="btnSearch" runat="server" Text="查询" OnClick="btnSearch_Click" CssClass="btn" />
+                        <asp:Button ID="btnExcel" runat="server" Text="生成Excel" OnClick="btnExcel_Click" CssClass="btn" />
                     </div>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource2" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table table-scripted"></asp:GridView>
+                    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource2" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table table-scripted"></asp:GridView>
                 </td>
             </tr>
         </table>

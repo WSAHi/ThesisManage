@@ -25,7 +25,7 @@ public partial class Admin_ModifyPassWord : System.Web.UI.Page
             }
         }
     }
-    protected void btnOK_Click(object sender, EventArgs e)
+    protected void btnModify_Click(object sender, EventArgs e)
     {
         if (Page.IsValid)
         {
@@ -46,9 +46,5 @@ public partial class Admin_ModifyPassWord : System.Web.UI.Page
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('原始密码输入错误！');</script>");
             }
         }
-    }
-    protected void btnEsc_Click(object sender, EventArgs e)
-    {
-
     }
 }
