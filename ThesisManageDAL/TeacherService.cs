@@ -30,10 +30,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherMail = reader["TeacherMail"].ToString();
                 teacher.TeacherPass = reader["TeacherPass"].ToString();
                 teacher.TeacherPhone = reader["TeacherPhone"].ToString();
-                if (!Convert.IsDBNull(reader["TeacherState"]))
-                {
-                    teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
-                }
+                teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
                 roleId = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
                 teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
@@ -74,10 +71,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherMail = reader["TeacherMail"].ToString();
                 teacher.TeacherPass = reader["TeacherPass"].ToString();
                 teacher.TeacherPhone = reader["TeacherPhone"].ToString();
-                if (!Convert.IsDBNull(reader["TeacherState"]))
-                {
-                    teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
-                }
+                teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
                 roleId = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
                 teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
@@ -133,7 +127,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddTeacher(String teacherID, string teacherName, int roleID)
         {
-            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID,TeacherPass) values('{0}','{1}','{2}','222222') ", teacherID, teacherName, roleID);
+            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID,TeacherPass,TeacherState) values('{0}','{1}','{2}','222222','0') ", teacherID, teacherName, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -146,6 +140,7 @@ namespace ThesisManage.DAL
         public int AddTeacher(string source, int roleID)
         {
             int num = 0;
+            int teacherState = 0;
             try
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
@@ -158,10 +153,11 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert   into   Teacher(TeacherID,TeacherName,TRID)   values   ('";
+                        strSql += "insert   into   Teacher(TeacherID,TeacherName,TRID,TeacherState)   values   ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
-                        strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "',";
-                        strSql += roleID + ")";
+                        strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
+                        strSql += roleID + "','";
+                        strSql += teacherState + "')";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }

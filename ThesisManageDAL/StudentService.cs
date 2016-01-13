@@ -138,7 +138,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
-            string sql = string.Format("insert into student (studentID,studentName,studentClass,SRID,StudentPass) values('{0}','{1}','{2}',{3},'333333')", studentID, studentName, studentClass, roleID);
+            string sql = string.Format("insert into student (studentID,studentName,studentClass,SRID,StudentPass,SudentState) values('{0}','{1}','{2}',{3},'333333','0')", studentID, studentName, studentClass, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -256,6 +256,7 @@ namespace ThesisManage.DAL
         public int addStudents(string source, int roleID)
         {
             int num = 0;
+            int studentState = 0;
             try
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
@@ -271,8 +272,9 @@ namespace ThesisManage.DAL
                         strSql += "insert   into   Student(StudentID,StudentName,StudentClass,SRID)   values   ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
-                        strSql += myDs.Tables[0].Rows[i].ItemArray[2].ToString() + "',";
-                        strSql += roleID + ")";
+                        strSql += myDs.Tables[0].Rows[i].ItemArray[2].ToString() + "','";
+                        strSql += roleID + "','";
+                        strSql += studentState + "')";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }
