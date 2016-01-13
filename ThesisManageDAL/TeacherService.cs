@@ -47,7 +47,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
         {
-            string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'" , teacherAddress, teacherMail, teacherPhone);
+            string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'", teacherAddress, teacherMail, teacherPhone);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -71,7 +71,10 @@ namespace ThesisManage.DAL
                 teacher.TeacherMail = reader["TeacherMail"].ToString();
                 teacher.TeacherPass = reader["TeacherPass"].ToString();
                 teacher.TeacherPhone = reader["TeacherPhone"].ToString();
-                teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
+                if (!Convert.IsDBNull(reader["TeacherState"]))
+                {
+                    teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
+                }
                 roleId = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
                 teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
