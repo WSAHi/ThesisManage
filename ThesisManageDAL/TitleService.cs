@@ -33,7 +33,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int TeacherAddTitle(string titleName, int TEID, string Description, int chooseNum)
         {
-            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,TeacherId) values('{0}',{1},0,'{2}',{3})", titleName, chooseNum, Description, TEID);
+            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,TeacherId,HasChooseNum) values('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, TEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
