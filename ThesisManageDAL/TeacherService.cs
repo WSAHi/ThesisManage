@@ -30,7 +30,10 @@ namespace ThesisManage.DAL
                 teacher.TeacherMail = reader["TeacherMail"].ToString();
                 teacher.TeacherPass = reader["TeacherPass"].ToString();
                 teacher.TeacherPhone = reader["TeacherPhone"].ToString();
-                teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
+                if (!Convert.IsDBNull(reader["TeacherState"]))
+                {
+                    teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
+                }
                 roleId = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
                 teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
