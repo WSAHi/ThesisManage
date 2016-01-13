@@ -343,7 +343,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 题目数量
+        /// 题目总数量
         /// </summary>
         /// <returns></returns>
         public int GetTitleCountsSum()
