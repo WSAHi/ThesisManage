@@ -16,7 +16,7 @@
                 <td>描述：
                 </td>
                 <td>
-                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </td>
             </tr>
