@@ -155,8 +155,8 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
         string roleName = ddlUserRole.SelectedItem.Text.Trim();
         string source = this.FileUpload1.PostedFile.FileName;
-        string getextend = System.IO.Path.GetExtension(source);
-        if (source == String.Empty || getextend != ".xls")
+        string getExtension = System.IO.Path.GetExtension(source);
+        if (source == String.Empty || getExtension != ".xls")
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请选择Excel文件！');</script>");
             return;
