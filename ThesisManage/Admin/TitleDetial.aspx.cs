@@ -67,7 +67,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         {
             int num = 0;
             int teacherId = Convert.ToInt32(Session["key"]);
-            ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
+            Title title = titleManage.GetTilteByTitleId(TID);
 
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
             {
