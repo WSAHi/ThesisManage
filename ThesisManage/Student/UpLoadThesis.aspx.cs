@@ -50,7 +50,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
             thesis.PublishDate = time.ToString();
             thesis.Content = wordData;
             int titleId = student.Title.TID;
-            ThesisManage.Model.Title title = titlemanage.GetTilteByTitleId(titleId);
+            Title title = titlemanage.GetTilteByTitleId(titleId);
             thesis.Title = title;
             if (string.IsNullOrEmpty(th.PublishDate))
             {
