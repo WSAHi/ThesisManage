@@ -59,10 +59,11 @@ namespace ThesisManage.BLL
         /// <param name="titleName"></param>
         /// <param name="studentID"></param>
         /// <param name="Description"></param>
+        /// <param name="tEID"></param>
         /// <returns></returns>
-        public int StuAddTitle(string titleName, int studentID, string Description)
+        public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
         {
-            return titleService.StuAddTitle(titleName, studentID, Description);
+            return titleService.StuAddTitle(titleName, studentID, Description, tEID);
         }
         /// <summary>
         /// 教师上传题目

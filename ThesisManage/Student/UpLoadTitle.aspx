@@ -22,6 +22,18 @@
             </tr>
             <tr>
                 <td>
+                    指导教师:
+                </td>
+                <td>
+
+                    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="obsTeacher" DataTextField="TeacherName" DataValueField="TEID" CssClass="form-control">
+                    </asp:DropDownList>
+                    <asp:ObjectDataSource ID="obsTeacher" runat="server" SelectMethod="GetTeacherList" TypeName="ThesisManage.BLL.TeacherManage"></asp:ObjectDataSource>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
                     <div class="btn-group">
                         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text=" 提交"  CssClass="btn"/>
                         <asp:Button ID="btnCancel" runat="server" OnClick="btnEsc_Click" Text="取消" CssClass="btn" />

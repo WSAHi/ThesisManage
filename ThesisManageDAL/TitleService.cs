@@ -16,10 +16,11 @@ namespace ThesisManage.DAL
         /// <param name="titleName"></param>
         /// <param name="studentID"></param>
         /// <param name="Description"></param>
+        /// <param name="tEID"></param>
         /// <returns></returns>
-        public int StuAddTitle(string titleName, int studentID, string Description)
+        public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
         {
-            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,StudentId,HasChooseNum) values('{0}',1,0,'{1}','{2}',0)", titleName, Description, studentID);
+            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,StudentId,HasChooseNum,Teacherid) values('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, tEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

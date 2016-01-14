@@ -33,7 +33,8 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
             {
                 string title = txtTitile.Text;
                 string Description = txtDescription.Text;
-                int num = titleManage.StuAddTitle(title, student.SID, Description);
+                int tEID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
+                int num = titleManage.StuAddTitle(title, student.SID, Description, tEID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交成功，等待管理员进行审核！');</script>");
