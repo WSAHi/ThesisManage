@@ -37,13 +37,13 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
                 ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
-                    lblTeacher.Text = title.Teacher.TeacherName;
                     lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 }
                 else
                 {
                     lblUploader.Text = "学生:[" + title.Student.StudentName + "]";
                 }
+                lblTeacher.Text = title.Teacher.TeacherName;
                 lblTitleName.Text = title.TitleName;
                 lblDescription.Text = title.Description;
                 lblCanChooseNum.Text = title.Counts.ToString();

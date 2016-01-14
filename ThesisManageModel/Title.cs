@@ -5,7 +5,7 @@ using System.Text;
 namespace ThesisManage.Model
 {
     /// <summary>
-    /// 论文题目实体类
+    /// 题目实体类
     /// </summary>
     [Serializable]
     public class Title
