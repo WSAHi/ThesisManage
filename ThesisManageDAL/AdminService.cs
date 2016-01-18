@@ -87,7 +87,7 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert   into   Admin(LoginID,ARID)   values   ('";
+                        strSql += "insert into Admin(LoginID,ARID) values ('";
                         strSql += ds.Tables[0].Rows[i].ItemArray[0].ToString() + "',";
                         strSql += roleID + ")";
                     }
