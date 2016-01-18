@@ -36,7 +36,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
 
         }
         string UserRole = ddlUserRole.SelectedItem.Text.Trim();
-        btnAddLost.Attributes.Add("onclick", "return confirm('您是要添加【--" + UserRole + "--】表的数据吗？');");
+        btnAddLost.Attributes.Add("onclick", "return confirm('您是要添加【" + UserRole + "】表的数据吗？');");
 
     }
     protected void ddlUserRole_SelectedIndexChanged(object sender, EventArgs e)
