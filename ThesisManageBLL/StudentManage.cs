@@ -141,7 +141,7 @@ namespace ThesisManage.BLL
         /// <param name="source">文件</param>
         /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int addStudents(string source, int roleID)
+        public int AddStudents(string source, int roleID)
         {
             return studentService.addStudents(source, roleID);
         }

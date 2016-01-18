@@ -177,7 +177,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             }
             else if (roleName == "学生")
             {
-                int num = studentManage.addStudents(source, roleID);
+                int num = studentManage.AddStudents(source, roleID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");
@@ -189,7 +189,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             }
             else if (roleName == "教师")
             {
-                int num = teacherManage.AddTeacher(source, roleID);
+                int num = teacherManage.AddTeachers(source, roleID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('添加成功！');</script>");

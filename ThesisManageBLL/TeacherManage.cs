@@ -83,7 +83,7 @@ namespace ThesisManage.BLL
         /// <param name="source">文件</param>
         /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(string source, int roleID)
+        public int AddTeachers(string source, int roleID)
         {
             return teacherService.AddTeacher(source, roleID);
         }
