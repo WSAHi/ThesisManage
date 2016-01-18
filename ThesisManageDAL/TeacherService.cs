@@ -145,7 +145,7 @@ namespace ThesisManage.DAL
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
-                OleDbDataAdapter myDa = new OleDbDataAdapter("select   *   from   [Sheet1$]", cnnxls);
+                OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
                 DataSet myDs = new DataSet();
                 myDa.Fill(myDs);
                 if (myDs.Tables[0].Rows.Count > 0)
@@ -153,7 +153,7 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert   into   Teacher(TeacherID,TeacherName,TRID,TeacherState)   values   ('";
+                        strSql += "insert into Teacher(TeacherID,TeacherName,TRID,TeacherState) values ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
                         strSql += roleID + "','";
