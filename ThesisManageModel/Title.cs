@@ -75,7 +75,7 @@ namespace ThesisManage.Model
         }
         private Student student;
         /// <summary>
-        /// 学生
+        /// 标题对应的学生
         /// </summary>
         public Student Student
         {
