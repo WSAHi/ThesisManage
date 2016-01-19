@@ -257,11 +257,12 @@ namespace ThesisManage.DAL
         {
             int num = 0;
             int studentState = 0;
+            string pass = "333333";
             try
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
-                OleDbDataAdapter myDa = new OleDbDataAdapter("select   *   from   [Sheet1$]", cnnxls);
+                OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
                 DataSet myDs = new DataSet();
                 myDa.Fill(myDs);
                 if (myDs.Tables[0].Rows.Count > 0)
@@ -269,12 +270,13 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert   into   Student(StudentID,StudentName,StudentClass,SRID)   values   ('";
+                        strSql += "insert   into   Student(StudentID,StudentName,StudentClass,SRID,StudentPass)   values   ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[2].ToString() + "','";
                         strSql += roleID + "','";
-                        strSql += studentState + "')";
+                        strSql += studentState + "','";
+                        strSql += pass + "')";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }

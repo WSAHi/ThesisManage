@@ -141,6 +141,7 @@ namespace ThesisManage.DAL
         {
             int num = 0;
             int teacherState = 0;
+            string pass = "222222";
             try
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
@@ -153,11 +154,12 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert into Teacher(TeacherID,TeacherName,TRID,TeacherState) values ('";
+                        strSql += "insert into Teacher(TeacherID,TeacherName,TRID,TeacherState,TeacherPass) values ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
                         strSql += roleID + "','";
-                        strSql += teacherState + "')";
+                        strSql += teacherState + "','";
+                        strSql += pass + "')";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }
