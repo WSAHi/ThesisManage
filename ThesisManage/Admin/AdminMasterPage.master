@@ -62,7 +62,7 @@
                                     <li class="nav-header">退出系统
                                     </li>
                                     <li class="active">
-                                        <a href="Default.aspx">退出系统</a>
+                                        <a href="../Default.aspx">退出系统</a>
                                     </li>
                                 </ul>
                             </div>
