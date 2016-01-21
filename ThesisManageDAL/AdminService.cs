@@ -17,7 +17,7 @@ namespace ThesisManage.DAL
         /// <returns>管理员信息</returns>
         public Admin GetAdminById(string loginID)
         {
-            string sql = string.Format("select * from Admin where LoginID='{0}'", loginID);
+            string sql = string.Format("SELECT * FROM Admin WHERE LoginID='{0}'", loginID);
             int roleID = 0;
             Admin admin = new Admin();
             try
@@ -27,7 +27,7 @@ namespace ThesisManage.DAL
                 {
                     admin.AID = Convert.ToInt32(reader["AID"]);
                     admin.LoginID = reader["LoginID"].ToString();
-                    admin.LoginPass = reader["LoginPassword"].ToString();
+                    admin.LoginPass = reader["LoginPass"].ToString();
                     roleID = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
                     admin.UserRole = UserRoleService.GetUserRoleByUid(roleID);
@@ -50,7 +50,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyPassWord(string newPassword, string loginID)
         {
-            string sql = string.Format("update Admin set LoginPassword='{0}' where LoginID='{1}'", newPassword, loginID);
+            string sql = string.Format("UPDATE Admin SET LoginPass='{0}' WHERE LoginID='{1}'", newPassword, loginID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -62,7 +62,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)
         {
-            string sql = string.Format("insert into Admin (LoginID,ARID,LoginPassword) values('{0}','{1}','111111')", loginID, roleID);
+            string sql = string.Format("INSERT INTO Admin (LoginID,ARID,LoginPass) VALUES ('{0}','{1}','111111')", loginID, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -88,7 +88,7 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert into Admin(LoginID,ARID,LoginPassword) values ('";
+                        strSql += "INSERT INTO Admin(LoginID,ARID,LoginPass) VALUES ('";
                         strSql += ds.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += roleID + "','";
                         strSql += pass + "')";
