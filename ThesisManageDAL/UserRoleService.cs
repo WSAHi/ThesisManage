@@ -17,7 +17,7 @@ namespace ThesisManage.DAL
         public static UserRole GetUserRoleByUid(int uID)
         {
             UserRole userRole = new UserRole();
-            string sql = string.Format("select * from UserRole where UID={0}", uID);
+            string sql = string.Format("SELECT * FROM UserRole WHERE UID={0}", uID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
@@ -33,7 +33,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public static List<UserRole> GetUserRole()
         {
-            string sql = string.Format("select * from UserRole ");
+            string sql = string.Format("SELECT * FROM UserRole ");
             List<UserRole> list = new List<UserRole>();
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)

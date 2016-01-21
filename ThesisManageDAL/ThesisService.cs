@@ -22,11 +22,11 @@ namespace ThesisManage.DAL
             SqlCommand cmd = new SqlCommand();
             SqlConnection conn = DBHelper.Connection;
             cmd.Connection = conn;
-            cmd.CommandText = "INSERT INTO Thesis(StudentId,TitleId,PublishDate,Contents) VALUES(@StudentId,@TitleId,@PublishDate,@Contents)";
+            cmd.CommandText = "INSERT INTO Thesis(StudentID,TitleID,PublishDate,Contents) VALUES (@StudentID,@TitleID,@PublishDate,@Contents)";
             SqlParameter StudentId = new SqlParameter("@StudentId", SqlDbType.Int);
             StudentId.Value = thesis.Student.SID;
             cmd.Parameters.Add(StudentId);
-            SqlParameter TitleId = new SqlParameter("@TitleId", SqlDbType.Int);
+            SqlParameter TitleId = new SqlParameter("@TitleID", SqlDbType.Int);
             TitleId.Value = thesis.Title.TID;
             cmd.Parameters.Add(TitleId);
             SqlParameter PublishDate = new SqlParameter("@PublishDate", SqlDbType.VarChar, 50);
@@ -43,7 +43,7 @@ namespace ThesisManage.DAL
         public int GetCountsByStuId(int studentID)
         {
             Thesis thsis = new Thesis();
-            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentId={0}", studentID);
+            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             FileStream fs;
             BinaryWriter bw;
@@ -96,8 +96,8 @@ namespace ThesisManage.DAL
             SqlCommand cmd = new SqlCommand();
             SqlConnection conn = DBHelper.Connection;
             cmd.Connection = conn;
-            cmd.CommandText = "update Thesis set PublishDate=@PublishDate,Contents=@Contents where StudentId=@StudentId";
-            SqlParameter StudentId = new SqlParameter("@StudentId", SqlDbType.Int);
+            cmd.CommandText = "UPDATE Thesis SET PublishDate=@PublishDate,Contents=@Contents where StudentID=@StudentID";
+            SqlParameter StudentId = new SqlParameter("@StudentID", SqlDbType.Int);
             StudentId.Value = thesis.Student.SID;
             cmd.Parameters.Add(StudentId);
             SqlParameter PublishDate = new SqlParameter("@PublishDate", SqlDbType.VarChar, 50);
@@ -123,14 +123,14 @@ namespace ThesisManage.DAL
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
 
-            string sql = string.Format("select * from Thesis where StudentId={0}", studentID);
+            string sql = string.Format("SELECT * FROM Thesis WHERE StudentID={0}", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 thsis.ThesisID = Convert.ToInt32(reader["ThesisID"]);
                 thsis.PublishDate = reader["PublishDate"].ToString();
-                studentId = Convert.ToInt32(reader["StudentId"]);
-                titleId = Convert.ToInt32(reader["TitleId"]);
+                studentId = Convert.ToInt32(reader["StudentID"]);
+                titleId = Convert.ToInt32(reader["TitleID"]);
                 reader.Close();
                 thsis.Student = studentService.GetStudentBySID(studentId);
                 thsis.Title = titleService.GetTilteByTitleId(titleId);
@@ -149,7 +149,7 @@ namespace ThesisManage.DAL
             int studentId = 0;
             int titleId = 0;
 
-            string sql = string.Format("select * from thesis where titleid in (select tid from title where teacherid={0})", teacherID);
+            string sql = string.Format("SELECT * FROM Thesis WHERE TitleID IN (SELECT TID FROM Title WHERE TeacherID={0})", teacherID);
             List<Thesis> list = new List<Thesis>();
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
@@ -157,8 +157,8 @@ namespace ThesisManage.DAL
                 Thesis thsis = new Thesis();
                 thsis.ThesisID = Convert.ToInt32(rows["ThesisID"]);
                 thsis.PublishDate = rows["PublishDate"].ToString();
-                studentId = Convert.ToInt32(rows["StudentId"]);
-                titleId = Convert.ToInt32(rows["TitleId"]);
+                studentId = Convert.ToInt32(rows["StudentID"]);
+                titleId = Convert.ToInt32(rows["TitleID"]);
                 thsis.Student = studentService.GetStudentBySID(studentId);
                 thsis.Title = titleService.GetTilteByTitleId(titleId);
                 list.Add(thsis);
@@ -177,14 +177,14 @@ namespace ThesisManage.DAL
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
 
-            string sql = string.Format("select * from Thesis where ThesisID={0}", thesisID);
+            string sql = string.Format("SELECT * FROM Thesis WHERE ThesisID={0}", thesisID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 thsis.ThesisID = Convert.ToInt32(reader["ThesisID"]);
                 thsis.PublishDate = reader["PublishDate"].ToString();
-                studentId = Convert.ToInt32(reader["StudentId"]);
-                titleId = Convert.ToInt32(reader["TitleId"]);
+                studentId = Convert.ToInt32(reader["StudentID"]);
+                titleId = Convert.ToInt32(reader["TitleID"]);
                 reader.Close();
                 thsis.Student = studentService.GetStudentBySID(studentId);
                 thsis.Title = titleService.GetTilteByTitleId(titleId);
@@ -198,7 +198,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetThesisCount()
         {
-            string sql = string.Format("select num=count(*) from Thesis");
+            string sql = string.Format("SELECT num=COUNT(*) FROM Thesis");
             SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
@@ -215,7 +215,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int DeleteThesisByStudentId(int studentID)
         {
-            string sql = string.Format("delete Thesis where StudentId={0}", studentID);
+            string sql = string.Format("DELETE Thesis WHERE StudentID={0}", studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

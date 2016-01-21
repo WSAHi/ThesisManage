@@ -20,7 +20,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
         {
-            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,StudentId,HasChooseNum,Teacherid) values('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, tEID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, tEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -34,7 +34,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int TeacherAddTitle(string titleName, int TEID, string Description, int chooseNum)
         {
-            string sql = string.Format("insert into Title(TitleName,Counts,State,Description,TeacherId,HasChooseNum) values('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, TEID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, TEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -47,7 +47,7 @@ namespace ThesisManage.DAL
         {
             StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
-            string sql = string.Format("select * from Title where TID={0}", tID);
+            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", tID);
             Title title = new Title();
             int teacherId = 0;
             int studentId = 0;
@@ -61,13 +61,13 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(reader["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(reader["TeacherId"]);
+                    teacherId = Convert.ToInt32(reader["TeacherID"]);
                 }
                 catch (Exception)
                 { }
                 try
                 {
-                    studentId = Convert.ToInt32(reader["StudentId"]);
+                    studentId = Convert.ToInt32(reader["StudentID"]);
                 }
                 catch (Exception)
                 {
@@ -84,7 +84,7 @@ namespace ThesisManage.DAL
         {
             StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
-            string sql = string.Format("select * from Title where TID={0}", tID);
+            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", tID);
             Title title = new Title();
             int teacherId = 0;
             title.Student = null;
@@ -98,7 +98,7 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(reader["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(reader["TeacherId"]);
+                    teacherId = Convert.ToInt32(reader["TeacherID"]);
                 }
                 catch (Exception)
                 { }
@@ -119,7 +119,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitle(string titleName, string Description, int counts, int tID)
         {
-            string sql = string.Format("update Title set TitleName ='{0}',Description='{1}',Counts={2} where TID={3}", titleName, Description, counts, tID);
+            string sql = string.Format("UPDATE Title SET TitleName ='{0}',Description='{1}',Counts={2} WHERE TID={3}", titleName, Description, counts, tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -130,7 +130,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleState(int tID)
         {
-            string sql = string.Format("update Title set State=1 where TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET State=1 WHERE TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -141,7 +141,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleUnState(int tID)
         {
-            string sql = string.Format("update Title set State=2 where TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET State=2 WHERE TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -153,7 +153,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleState(int teacherID, int tID)
         {
-            string sql = string.Format("update Title set State=1,TeacherId={0},HasChooseNum=1,StudentId=null where TID={1}", teacherID, tID);
+            string sql = string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TID={1}", teacherID, tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -164,7 +164,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int DeleteTitle(int tID)
         {
-            string sql = string.Format("delete Title where TID={0}", tID);
+            string sql = string.Format("DELETE Title WHERE TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -175,7 +175,7 @@ namespace ThesisManage.DAL
         public List<Title> GetTitleList()
         {
             StudentService studentService = new StudentService();
-            string sql = string.Format("select * from Title where State=1");
+            string sql = string.Format("SELECT * FROM Title WHERE State=1");
             TeacherService teacherService = new TeacherService();
             List<Title> list = new List<Title>();
             int teacherId = 0;
@@ -191,13 +191,13 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(rows["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(rows["TeacherId"]);
+                    teacherId = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
                 { }
                 try
                 {
-                    studentId = Convert.ToInt32(rows["StudentId"]);
+                    studentId = Convert.ToInt32(rows["StudentID"]);
                 }
                 catch (Exception)
                 {
@@ -216,7 +216,7 @@ namespace ThesisManage.DAL
         public List<Title> GetUnTitleList()
         {
             StudentService studentService = new StudentService();
-            string sql = string.Format("select * from Title where State=0");
+            string sql = string.Format("SELECT * FROM Title WHERE State=0");
             TeacherService teacherService = new TeacherService();
             List<Title> list = new List<Title>();
             int teacherId = 0;
@@ -233,13 +233,13 @@ namespace ThesisManage.DAL
                 title.Description = rows["Description"].ToString();
                 try
                 {
-                    teacherId = Convert.ToInt32(rows["TeacherId"]);
+                    teacherId = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
                 { }
                 try
                 {
-                    studentId = Convert.ToInt32(rows["StudentId"]);
+                    studentId = Convert.ToInt32(rows["StudentID"]);
                 }
                 catch (Exception)
                 {
@@ -251,14 +251,14 @@ namespace ThesisManage.DAL
             return list;
         }
         /// <summary>
-        /// 获取教师上传的题目列表
+        /// 获取题目列表
         /// </summary>
         /// <param name="TeacherId">教师编号</param>
         /// <returns></returns>
         public List<Title> GetTitleListByTeacherId(int TeacherId)
         {
             StudentService studentService = new StudentService();
-            string sql = string.Format("select * from Title where TeacherId={0}", TeacherId);
+            string sql = string.Format("SELECT * FROM Title WHERE TeacherID={0}", TeacherId);
             TeacherService teacherService = new TeacherService();
 
             List<Title> list = new List<Title>();
@@ -276,13 +276,13 @@ namespace ThesisManage.DAL
                 title.Description = rows["Description"].ToString();
                 try
                 {
-                    teacherId = Convert.ToInt32(rows["TeacherId"]);
+                    teacherId = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
                 { }
                 try
                 {
-                    studentId = Convert.ToInt32(rows["StudentId"]);
+                    studentId = Convert.ToInt32(rows["StudentID"]);
                 }
                 catch (Exception)
                 {
@@ -300,7 +300,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleHasChooseNum(int tID)
         {
-            string sql = string.Format("update Title set HasChooseNum=HasChooseNum+1 where TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum+1 WHERE TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -311,7 +311,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleChooseNum(int tID)
         {
-            string sql = string.Format("update Title set HasChooseNum=HasChooseNum-1 where TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum-1 WHERE TID={0}", tID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -333,7 +333,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetTitleCount()
         {
-            string sql = string.Format("select num=count(*) from Title");
+            string sql = string.Format("SELECT num=COUNT(*) FROM Title");
             SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
@@ -349,7 +349,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetTitleCountsSum()
         {
-            string sql = string.Format("select num=sum(Counts)  from title");
+            string sql = string.Format("SELECT num=SUM(Counts) FROM title");
             SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())

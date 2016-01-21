@@ -17,7 +17,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public Teacher GetTeacherById(int tEID)
         {
-            string sql = string.Format("select * from Teacher where TEID={0}", tEID);
+            string sql = string.Format("SELECT * FROM Teacher WHERE TEID={0}", tEID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             Teacher teacher = new Teacher();
             int roleId = 0;
@@ -47,7 +47,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
         {
-            string sql = string.Format("update Teacher set TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'", teacherAddress, teacherMail, teacherPhone);
+            string sql = string.Format("UPDATE Teacher SET TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'", teacherAddress, teacherMail, teacherPhone);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -58,7 +58,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public Teacher GetTeacherByTeacherId(string teacherID)
         {
-            string sql = string.Format("select * from Teacher where TeacherId='{0}'", teacherID);
+            string sql = string.Format("SELECT * FROM Teacher WHERE TeacherID='{0}'", teacherID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             Teacher teacher = new Teacher();
             int roleId = 0;
@@ -86,7 +86,7 @@ namespace ThesisManage.DAL
         public List<Teacher> GetTeacherList()
         {
             List<Teacher> list = new List<Teacher>();
-            string sql = string.Format("select * from Teacher");
+            string sql = string.Format("SELECT * FROM Teacher");
             DataTable table = DBHelper.GetDataSet(sql);
             int roleId = 0;
             foreach (DataRow rows in table.Rows)
@@ -114,7 +114,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyPassWord(string newPass, int tEID)
         {
-            string sql = string.Format("update Teacher set TeacherPass='{0}' where TEID={1}", newPass, tEID);
+            string sql = string.Format("UPDATE Teacher SET TeacherPass='{0}' WHERE TEID={1}", newPass, tEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -127,7 +127,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddTeacher(String teacherID, string teacherName, int roleID)
         {
-            string sql = string.Format("insert into Teacher (TeacherID,TeacherName,TRID,TeacherPass,TeacherState) values('{0}','{1}','{2}','222222','0') ", teacherID, teacherName, roleID);
+            string sql = string.Format("INSERT INTO Teacher (TeacherID,TeacherName,TRID,TeacherPass,TeacherState) VALUES ('{0}','{1}','{2}','222222','0') ", teacherID, teacherName, roleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -146,7 +146,7 @@ namespace ThesisManage.DAL
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
-                OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
+                OleDbDataAdapter myDa = new OleDbDataAdapter("SELECT * FROM [Sheet1$]", cnnxls);
                 DataSet myDs = new DataSet();
                 myDa.Fill(myDs);
                 if (myDs.Tables[0].Rows.Count > 0)
@@ -154,7 +154,7 @@ namespace ThesisManage.DAL
                     string strSql = "";
                     for (int i = 0; i < myDs.Tables[0].Rows.Count; i++)
                     {
-                        strSql += "insert into Teacher(TeacherID,TeacherName,TRID,TeacherState,TeacherPass) values ('";
+                        strSql += "INSERT INTO Teacher(TeacherID,TeacherName,TRID,TeacherState,TeacherPass) VALUES ('";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += myDs.Tables[0].Rows[i].ItemArray[1].ToString() + "','";
                         strSql += roleID + "','";
@@ -178,7 +178,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public List<Teacher> GetTeacherHasUpLoadTitle()
         {
-            string sql = string.Format("select * from teacher where TEID in (select TeacherId from Title group by TeacherId)");
+            string sql = string.Format("SELECT * FROM Teacher WHERE TEID IN (SELECT TeacherID FROM Title GROUP BY TeacherID)");
             DataTable table = DBHelper.GetDataSet(sql);
             List<Teacher> list = new List<Teacher>();
             int roleId = 0;
