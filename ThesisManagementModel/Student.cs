@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ThesisManagementModel;
 
 namespace ThesisManagementModel
 {
@@ -91,6 +92,24 @@ namespace ThesisManagementModel
         {
             get { return studentState; }
             set { studentState = value; }
+        }
+        /// <summary>
+        /// 题目信息
+        /// </summary>
+        private Title title;
+        public Title Title
+        {
+            get { return title; }
+            set { title = value; }
+        }
+        /// <summary>
+        /// 用户角色
+        /// </summary>
+        private int userRole;
+        public int UserRole
+        {
+            get { return userRole; }
+            set { userRole = value; }
         }
     }
 }
