@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85676596-5121-4FE9-91BF-49CD43FC6F9D}</ProjectGuid>
+    <ProjectGuid>{28BED89D-7AF9-4988-AD4B-CD4DAC89647F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ThesisManagementModel</RootNamespace>
