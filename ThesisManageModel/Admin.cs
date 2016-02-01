@@ -12,12 +12,30 @@ namespace ThesisManage.Model
     {
         private int aID = 0;
         /// <summary>
-        /// 管理员ID
+        /// 管理员内码ID
         /// </summary>
         public int AID
         {
             get { return aID; }
             set { aID = value; }
+        }
+        private string loginID = string.Empty;
+        /// <summary>
+        /// 管理员登录账号（ID）
+        /// </summary>
+        public string LoginID
+        {
+            get { return loginID; }
+            set { loginID = value; }
+        }
+        private string loginPass = string.Empty;
+        /// <summary>
+        /// 管理员登录密码
+        /// </summary>
+        public string LoginPass
+        {
+            get { return loginPass; }
+            set { loginPass = value; }
         }
         private UserRole userRole;
         /// <summary>
@@ -27,24 +45,6 @@ namespace ThesisManage.Model
         {
             get { return userRole; }
             set { userRole = value; }
-        }
-        private string loginID = string.Empty;
-        /// <summary>
-        /// 登入账号
-        /// </summary>
-        public string LoginID
-        {
-            get { return loginID; }
-            set { loginID = value; }
-        }
-        private string loginPass = string.Empty;
-        /// <summary>
-        /// 登入密码
-        /// </summary>
-        public string LoginPass
-        {
-            get { return loginPass; }
-            set { loginPass = value; }
         }
     }
 }

@@ -12,30 +12,21 @@ namespace ThesisManage.Model
     {
         private int thesisID = 0;
         /// <summary>
-        /// 论文ID
+        /// 论文内码ID
         /// </summary>
         public int ThesisID
         {
             get { return thesisID; }
             set { thesisID = value; }
         }
-        private Student student;
+        private byte[] content;
         /// <summary>
-        /// 学生
+        /// 内容
         /// </summary>
-        public Student Student
+        public byte[] Content
         {
-            get { return student; }
-            set { student = value; }
-        }
-        private Title title;
-        /// <summary>
-        /// 标题
-        /// </summary>
-        public Title Title
-        {
-            get { return title; }
-            set { title = value; }
+            get { return content; }
+            set { content = value; }
         }
         private string publishDate = string.Empty;
         /// <summary>
@@ -46,14 +37,23 @@ namespace ThesisManage.Model
             get { return publishDate; }
             set { publishDate = value; }
         }
-        private byte[] content;
+        private Title title;
         /// <summary>
-        /// 内容
+        /// 论文所属题目信息
         /// </summary>
-        public byte[] Content
+        public Title Title
         {
-            get { return content; }
-            set { content = value; }
+            get { return title; }
+            set { title = value; }
+        }
+        private Student student;
+        /// <summary>
+        /// 论文所属学生的信息
+        /// </summary>
+        public Student Student
+        {
+            get { return student; }
+            set { student = value; }
         }
     }
 }

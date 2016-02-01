@@ -5,14 +5,14 @@ using System.Text;
 namespace ThesisManage.Model
 {
     /// <summary>
-    /// 用户类型实体类
+    /// 用户角色实体类
     /// </summary>
     [Serializable]
     public class UserRole
     {
         private int uID = 0;
         /// <summary>
-        /// 角色ID
+        /// 用户角色内码ID
         /// </summary>
         public int UID
         {

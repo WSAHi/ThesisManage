@@ -12,21 +12,30 @@ namespace ThesisManage.Model
     {
         private int sID = 0;
         /// <summary>
-        /// 学生ID
+        /// 学生内码ID
         /// </summary>
         public int SID
         {
             get { return sID; }
             set { sID = value; }
         }
-        private UserRole role;
+        private string studentID = string.Empty;
         /// <summary>
-        /// 用户角色
+        /// 学生登陆(学号)ID
         /// </summary>
-        public UserRole Role
+        public string StudentID
         {
-            get { return role; }
-            set { role = value; }
+            get { return studentID; }
+            set { studentID = value; }
+        }
+        private string studentPass = string.Empty;
+        /// <summary>
+        /// 学生登录密码
+        /// </summary>
+        public string StudentPass
+        {
+            get { return studentPass; }
+            set { studentPass = value; }
         }
         private string studentName = string.Empty;
         /// <summary>
@@ -37,24 +46,6 @@ namespace ThesisManage.Model
             get { return studentName; }
             set { studentName = value; }
         }
-        private string studentPass = string.Empty;
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public string StudentPass
-        {
-            get { return studentPass; }
-            set { studentPass = value; }
-        }
-        private string studentID = string.Empty;
-        /// <summary>
-        /// 学号
-        /// </summary>
-        public string StudentID
-        {
-            get { return studentID; }
-            set { studentID = value; }
-        }
         private string studentClass = string.Empty;
         /// <summary>
         /// 学生班级
@@ -64,18 +55,9 @@ namespace ThesisManage.Model
             get { return studentClass; }
             set { studentClass = value; }
         }
-        private string studentAddress = string.Empty;
-        /// <summary>
-        /// 地址
-        /// </summary>
-        public string StudentAddress
-        {
-            get { return studentAddress; }
-            set { studentAddress = value; }
-        }
         private string studentPhone = string.Empty;
         /// <summary>
-        /// 电话
+        /// 学生电话
         /// </summary>
         public string StudentPhone
         {
@@ -91,9 +73,18 @@ namespace ThesisManage.Model
             get { return studentMail; }
             set { studentMail = value; }
         }
+        private string studentAddress = string.Empty;
+        /// <summary>
+        /// 学生地址
+        /// </summary>
+        public string StudentAddress
+        {
+            get { return studentAddress; }
+            set { studentAddress = value; }
+        }
         private int sudentState = 0;
         /// <summary>
-        /// 是否选题
+        /// 学生选题状态
         /// </summary>
         public int SudentState
         {
@@ -102,12 +93,21 @@ namespace ThesisManage.Model
         }
         private Title title;
         /// <summary>
-        /// 学生的选题
+        /// 选题信息
         /// </summary>
         public Title Title
         {
             get { return title; }
             set { title = value; }
+        }
+        private UserRole userRole;
+        /// <summary>
+        /// 用户角色
+        /// </summary>
+        public UserRole Role
+        {
+            get { return userRole; }
+            set { userRole = value; }
         }
     }
 }

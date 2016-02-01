@@ -12,21 +12,30 @@ namespace ThesisManage.Model
     {
         private int tEID = 0;
         /// <summary>
-        /// 教师ID
+        /// 教师内码ID
         /// </summary>
         public int TEID
         {
             get { return tEID; }
             set { tEID = value; }
         }
-        private UserRole userRole;
+        private string teacherID = string.Empty;
         /// <summary>
-        /// 用户角色
+        /// 教师登录（工号）ID
         /// </summary>
-        public UserRole UserRole
+        public string TeacherID
         {
-            get { return userRole; }
-            set { userRole = value; }
+            get { return teacherID; }
+            set { teacherID = value; }
+        }
+        private string teacherPass = string.Empty;
+        /// <summary>
+        /// 教师登录密码
+        /// </summary>
+        public string TeacherPass
+        {
+            get { return teacherPass; }
+            set { teacherPass = value; }
         }
         private string teacherName = string.Empty;
         /// <summary>
@@ -36,33 +45,6 @@ namespace ThesisManage.Model
         {
             get { return teacherName; }
             set { teacherName = value; }
-        }
-        private string teacherID = string.Empty;
-        /// <summary>
-        /// 教师编号
-        /// </summary>
-        public string TeacherID
-        {
-            get { return teacherID; }
-            set { teacherID = value; }
-        }
-        private string teacherPass = string.Empty;
-        /// <summary>
-        /// 密码
-        /// </summary>
-        public string TeacherPass
-        {
-            get { return teacherPass; }
-            set { teacherPass = value; }
-        }
-        private string teacherAddress = string.Empty;
-        /// <summary>
-        /// 教师地址
-        /// </summary>
-        public string TeacherAddress
-        {
-            get { return teacherAddress; }
-            set { teacherAddress = value; }
         }
         private string teacherPhone = string.Empty;
         /// <summary>
@@ -82,14 +64,32 @@ namespace ThesisManage.Model
             get { return teacherMail; }
             set { teacherMail = value; }
         }
+        private string teacherAddress = string.Empty;
+        /// <summary>
+        /// 教师地址
+        /// </summary>
+        public string TeacherAddress
+        {
+            get { return teacherAddress; }
+            set { teacherAddress = value; }
+        }
         private int teacherState = 0;
         /// <summary>
-        /// 招收状态
+        /// 教师的选题是否为选满状态
         /// </summary>
         public int TeacherState
         {
             get { return teacherState; }
             set { teacherState = value; }
+        }
+        private UserRole userRole;
+        /// <summary>
+        /// 用户角色
+        /// </summary>
+        public UserRole UserRole
+        {
+            get { return userRole; }
+            set { userRole = value; }
         }
     }
 }
