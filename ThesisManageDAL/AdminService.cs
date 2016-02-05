@@ -13,7 +13,7 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取管理员信息
         /// </summary>
-        /// <param name="loginID">管理员账号</param>
+        /// <param name="loginID">管理员登录账号（ID）</param>
         /// <returns>管理员信息</returns>
         public Admin GetAdminById(string loginID)
         {
@@ -36,17 +36,15 @@ namespace ThesisManage.DAL
             }
             catch (Exception)
             {
-
                 throw;
             }
-
             return admin;
         }
         /// <summary>
         /// 修改密码
         /// </summary>
         /// <param name="newPassword">新密码</param>
-        /// <param name="loginID">登陆账号</param>
+        /// <param name="loginID">管理员登录账号（ID）</param>
         /// <returns></returns>
         public int ModifiyPassWord(string newPassword, string loginID)
         {
@@ -57,7 +55,7 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 添加管理员
         /// </summary>
-        /// <param name="loginID">登陆账号</param>
+        /// <param name="loginID">管理员登陆账号（ID）</param>
         /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)
