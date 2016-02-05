@@ -21,11 +21,11 @@ namespace ThesisManage.DAL
                     connection = new SqlConnection(connectionString);
                     connection.Open();
                 }
-                else if (connection.State == System.Data.ConnectionState.Closed)
+                else if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
                 }
-                else if (connection.State == System.Data.ConnectionState.Broken)
+                else if (connection.State == ConnectionState.Broken)
                 {
                     connection.Close();
                     connection.Open();
@@ -34,10 +34,10 @@ namespace ThesisManage.DAL
             }
         }
         /// <summary>
-        /// 执行SQL语句
+        /// 对数据库执行的一个TSQL语句或存储过程
         /// </summary>
-        /// <param name="sql">SQL语句</param>
-        /// <returns>受影响的行数</returns>
+        /// <param name="sql">要执行的SQL语句或者存储过程</param>
+        /// <returns>返回执行结果</returns>
         public static int ExecuteCommand(string sql)
         {
             SqlCommand cmd = new SqlCommand(sql, Connection);
@@ -45,9 +45,9 @@ namespace ThesisManage.DAL
             return result;
         }
         /// <summary>
-        /// 执行SQL返回一个SqlDataReader
+        /// 对数据库执行的一个TSQL语句或存储过程
         /// </summary>
-        /// <param name="safeSql">SQL语句</param>
+        /// <param name="safeSql">要执行的SQL语句或者存储过程</param>
         /// <returns>返回一个SqlDataReader</returns>
         public static SqlDataReader GetReader(string safeSql)
         {
@@ -56,9 +56,9 @@ namespace ThesisManage.DAL
             return reader;
         }
         /// <summary>
-        /// 执行SQL返回一个DataSet
+        /// 对数据库执行的一个TSQL语句或存储过程
         /// </summary>
-        /// <param name="safeSql">SQL语句</param>
+        /// <param name="safeSql">要执行的SQL语句或者存储过程</param>
         /// <returns>返回一个DataSet</returns>
         public static DataTable GetDataSet(string safeSql)
         {
