@@ -7,9 +7,6 @@ namespace ThesisManage.DAL
 {
     public static class DBHelper
     {
-        /// <summary>
-        /// 定义变量
-        /// </summary>
         private static SqlConnection connection;
         /// <summary>
         /// 连接数据库
