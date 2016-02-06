@@ -44,7 +44,7 @@ namespace ThesisManage.DAL
                 }
                 reader.Close();
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
-                student.Title = titleServer.GetTiByTitleId(titleID);
+                student.Title = titleServer.GetTiByTitleID(titleID);
             }
             reader.Close();
             return student;
@@ -80,7 +80,7 @@ namespace ThesisManage.DAL
                 { }
                 reader.Close();
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
-                student.Title = titleServer.GetTiByTitleId(titleID);
+                student.Title = titleServer.GetTiByTitleID(titleID);
             }
             reader.Close();
             return student;
@@ -241,7 +241,7 @@ namespace ThesisManage.DAL
                 {
                 }
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
-                student.Title = titleServer.GetTiByTitleId(titleID);
+                student.Title = titleServer.GetTiByTitleID(titleID);
                 list.Add(student);
             }
             return list;
@@ -278,7 +278,7 @@ namespace ThesisManage.DAL
                 {
                 }
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
-                student.Title = titleServer.GetTiByTitleId(titleID);
+                student.Title = titleServer.GetTiByTitleID(titleID);
                 list.Add(student);
             }
             return list;

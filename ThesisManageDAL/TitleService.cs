@@ -30,11 +30,11 @@ namespace ThesisManage.DAL
         /// <param name="titleName">题目名称</param>
         /// <param name="teacherID">教师登录（工号）ID</param>
         /// <param name="Description">题目描述</param>
-        /// <param name="chooseNum">题目已经被选择的数量</param>
+        /// <param name="counts">题目可选择的总数</param>
         /// <returns></returns>
-        public int TeacherAddTitle(string titleName, int teacherID, string Description, int chooseNum)
+        public int TeacherAddTitle(string titleName, int teacherID, string Description, int counts)
         {
-            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, teacherID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, counts, Description, teacherID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -49,8 +49,8 @@ namespace ThesisManage.DAL
             TeacherService teacherService = new TeacherService();
             string sql = string.Format("SELECT * FROM Title WHERE TID={0}", titleID);
             Title title = new Title();
-            int teacherId = 0;
-            int studentId = 0;
+            int teacherID = 0;
+            int studentID = 0;
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
@@ -61,32 +61,37 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(reader["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(reader["TeacherID"]);
+                    teacherID = Convert.ToInt32(reader["TeacherID"]);
                 }
                 catch (Exception)
-                { }
+                {
+                }
                 try
                 {
-                    studentId = Convert.ToInt32(reader["StudentID"]);
+                    studentID = Convert.ToInt32(reader["StudentID"]);
                 }
                 catch (Exception)
                 {
                 }
                 title.Description = reader["Description"].ToString();
                 reader.Close();
-                title.Teacher = teacherService.GetTeacherByID(teacherId);
-                title.Student = studentService.GetStudentBySID(studentId);
+                title.Teacher = teacherService.GetTeacherByID(teacherID);
+                title.Student = studentService.GetStudentBySID(studentID);
             }
             reader.Close();
             return title;
         }
-        public Title GetTiByTitleId(int titleID)
+        /// <summary>
+        /// 根据题目ID获取题目信息
+        /// </summary>
+        /// <param name="titleID">题目ID</param>
+        /// <returns></returns>
+        public Title GetTiByTitleID(int titleID)
         {
-            StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
             string sql = string.Format("SELECT * FROM Title WHERE TID={0}", titleID);
             Title title = new Title();
-            int teacherId = 0;
+            int teacherID = 0;
             title.Student = null;
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
@@ -98,23 +103,24 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(reader["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(reader["TeacherID"]);
+                    teacherID = Convert.ToInt32(reader["TeacherID"]);
                 }
                 catch (Exception)
-                { }
+                {
+                }
                 title.Description = reader["Description"].ToString();
                 reader.Close();
-                title.Teacher = teacherService.GetTeacherByID(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherID);
             }
             reader.Close();
             return title;
         }
         /// <summary>
-        /// 修改教师自己上报并未被审核的题目信息
+        /// 教师修改上报的题目
         /// </summary>
         /// <param name="titleName">题目名称</param>
         /// <param name="Description">题目描述</param>
-        /// <param name="counts">数量</param>
+        /// <param name="counts">题目可选数量</param>
         /// <param name="titleID">题目ID</param>
         /// <returns></returns>
         public int ModifiyTitle(string titleName, string Description, int counts, int titleID)
@@ -137,34 +143,34 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 修改未审核通过的题目状态
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int ModifiyTitleUnState(int tID)
+        public int ModifiyTitleUnState(int titleID)
         {
-            string sql = string.Format("UPDATE Title SET State=2 WHERE TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET State=2 WHERE TID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 修改题目的选择状态
         /// </summary>
-        /// <param name="teacherID"></param>
-        /// <param name="tID"></param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <param name="titleID"></param>
         /// <returns></returns>
-        public int ModifiyTitleState(int teacherID, int tID)
+        public int ModifiyTitleState(int teacherID, int titleID)
         {
-            string sql = string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TID={1}", teacherID, tID);
+            string sql = string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TID={1}", teacherID, titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 删除题目
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int DeleteTitle(int tID)
+        public int DeleteTitle(int titleID)
         {
-            string sql = string.Format("DELETE Title WHERE TID={0}", tID);
+            string sql = string.Format("DELETE Title WHERE TID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -178,8 +184,8 @@ namespace ThesisManage.DAL
             string sql = string.Format("SELECT * FROM Title WHERE State=1");
             TeacherService teacherService = new TeacherService();
             List<Title> list = new List<Title>();
-            int teacherId = 0;
-            int studentId = 0;
+            int teacherID = 0;
+            int studentID = 0;
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
@@ -191,20 +197,21 @@ namespace ThesisManage.DAL
                 title.HasChooseNum = Convert.ToInt32(rows["HasChooseNum"]);
                 try
                 {
-                    teacherId = Convert.ToInt32(rows["TeacherID"]);
+                    teacherID = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
-                { }
+                {
+                }
                 try
                 {
-                    studentId = Convert.ToInt32(rows["StudentID"]);
+                    studentID = Convert.ToInt32(rows["StudentID"]);
                 }
                 catch (Exception)
                 {
                 }
                 title.Description = rows["Description"].ToString();
-                title.Teacher = teacherService.GetTeacherByID(teacherId);
-                title.Student = studentService.GetStudentBySID(studentId);
+                title.Teacher = teacherService.GetTeacherByID(teacherID);
+                title.Student = studentService.GetStudentBySID(studentID);
                 list.Add(title);
             }
             return list;
@@ -219,8 +226,8 @@ namespace ThesisManage.DAL
             string sql = string.Format("SELECT * FROM Title WHERE State=0");
             TeacherService teacherService = new TeacherService();
             List<Title> list = new List<Title>();
-            int teacherId = 0;
-            int studentId = 0;
+            int teacherID = 0;
+            int studentID = 0;
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
@@ -233,19 +240,19 @@ namespace ThesisManage.DAL
                 title.Description = rows["Description"].ToString();
                 try
                 {
-                    teacherId = Convert.ToInt32(rows["TeacherID"]);
+                    teacherID = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
                 { }
                 try
                 {
-                    studentId = Convert.ToInt32(rows["StudentID"]);
+                    studentID = Convert.ToInt32(rows["StudentID"]);
                 }
                 catch (Exception)
                 {
                 }
-                title.Teacher = teacherService.GetTeacherByID(teacherId);
-                title.Student = studentService.GetStudentBySID(studentId);
+                title.Teacher = teacherService.GetTeacherByID(teacherID);
+                title.Student = studentService.GetStudentBySID(studentID);
                 list.Add(title);
             }
             return list;
@@ -253,12 +260,12 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取题目列表
         /// </summary>
-        /// <param name="TeacherId">教师编号</param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns></returns>
-        public List<Title> GetTitleListByTeacherId(int TeacherId)
+        public List<Title> GetTitleListByTeacherId(int teacherID)
         {
             StudentService studentService = new StudentService();
-            string sql = string.Format("SELECT * FROM Title WHERE TeacherID={0}", TeacherId);
+            string sql = string.Format("SELECT * FROM Title WHERE TeacherID={0}", teacherID);
             TeacherService teacherService = new TeacherService();
 
             List<Title> list = new List<Title>();
@@ -279,7 +286,8 @@ namespace ThesisManage.DAL
                     teacherId = Convert.ToInt32(rows["TeacherID"]);
                 }
                 catch (Exception)
-                { }
+                {
+                }
                 try
                 {
                     studentId = Convert.ToInt32(rows["StudentID"]);
@@ -296,27 +304,27 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 更新题目被选择数量（+）
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int ModifiyTitleHasChooseNum(int tID)
+        public int ModifiyTitleHasChooseNum(int titleID)
         {
-            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum+1 WHERE TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum+1 WHERE TID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 更新题目被选择数量（-）
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int ModifiyTitleChooseNum(int tID)
+        public int ModifiyTitleChooseNum(int titleID)
         {
-            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum-1 WHERE TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum-1 WHERE TID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
-        /// 获取题目表
+        /// 获取指定列
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
