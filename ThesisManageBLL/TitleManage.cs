@@ -51,7 +51,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public Title GetTilteByTitleID(int titleID)
         {
-            return titleService.GetTilteByTitleId(titleID);
+            return titleService.GetTilteByTitleID(titleID);
         }
         /// <summary>
         /// 学生上传题目

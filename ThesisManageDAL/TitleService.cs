@@ -11,43 +11,43 @@ namespace ThesisManage.DAL
     {
 
         /// <summary>
-        /// 学生上传题目
+        /// 学生上传自定义题目
         /// </summary>
-        /// <param name="titleName"></param>
-        /// <param name="studentID"></param>
-        /// <param name="Description"></param>
-        /// <param name="tEID"></param>
+        /// <param name="titleName">题目名称</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
+        /// <param name="Description">题目描述</param>
+        /// <param name="teacherID">选择的指导老师的ID（教师登录（工号）ID）</param>
         /// <returns></returns>
-        public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
+        public int StuAddTitle(string titleName, int studentID, string Description, int teacherID)
         {
-            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, tEID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, teacherID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
-        /// 教师上传题目
+        /// 教师上传自定义题目
         /// </summary>
-        /// <param name="titleName"></param>
-        /// <param name="TEID"></param>
-        /// <param name="Description"></param>
-        /// <param name="chooseNum"></param>
+        /// <param name="titleName">题目名称</param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <param name="Description">题目描述</param>
+        /// <param name="chooseNum">题目已经被选择的数量</param>
         /// <returns></returns>
-        public int TeacherAddTitle(string titleName, int TEID, string Description, int chooseNum)
+        public int TeacherAddTitle(string titleName, int teacherID, string Description, int chooseNum)
         {
-            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, TEID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, chooseNum, Description, teacherID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 根据题目ID获取题目信息
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public Title GetTilteByTitleId(int tID)
+        public Title GetTilteByTitleID(int titleID)
         {
             StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
-            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", tID);
+            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", titleID);
             Title title = new Title();
             int teacherId = 0;
             int studentId = 0;
@@ -80,11 +80,11 @@ namespace ThesisManage.DAL
             reader.Close();
             return title;
         }
-        public Title GetTiByTitleId(int tID)
+        public Title GetTiByTitleId(int titleID)
         {
             StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
-            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", tID);
+            string sql = string.Format("SELECT * FROM Title WHERE TID={0}", titleID);
             Title title = new Title();
             int teacherId = 0;
             title.Student = null;
@@ -113,24 +113,24 @@ namespace ThesisManage.DAL
         /// 修改教师自己上报并未被审核的题目信息
         /// </summary>
         /// <param name="titleName">题目名称</param>
-        /// <param name="Description">描述</param>
+        /// <param name="Description">题目描述</param>
         /// <param name="counts">数量</param>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int ModifiyTitle(string titleName, string Description, int counts, int tID)
+        public int ModifiyTitle(string titleName, string Description, int counts, int titleID)
         {
-            string sql = string.Format("UPDATE Title SET TitleName ='{0}',Description='{1}',Counts={2} WHERE TID={3}", titleName, Description, counts, tID);
+            string sql = string.Format("UPDATE Title SET TitleName ='{0}',Description='{1}',Counts={2} WHERE TID={3}", titleName, Description, counts, titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
         /// <summary>
         /// 修改审核通过题目的状态
         /// </summary>
-        /// <param name="tID">题目ID</param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public int ModifiyTitleState(int tID)
+        public int ModifiyTitleState(int titleID)
         {
-            string sql = string.Format("UPDATE Title SET State=1 WHERE TID={0}", tID);
+            string sql = string.Format("UPDATE Title SET State=1 WHERE TID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

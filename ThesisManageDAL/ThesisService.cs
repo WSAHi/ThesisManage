@@ -137,7 +137,7 @@ namespace ThesisManage.DAL
                 titleID = Convert.ToInt32(reader["TitleID"]);
                 reader.Close();
                 thsis.Student = studentService.GetStudentBySID(studentID);
-                thsis.Title = titleService.GetTilteByTitleId(titleID);
+                thsis.Title = titleService.GetTilteByTitleID(titleID);
             }
             reader.Close();
             return thsis;
@@ -162,7 +162,7 @@ namespace ThesisManage.DAL
                 studentID = Convert.ToInt32(rows["StudentID"]);
                 titleID = Convert.ToInt32(rows["TitleID"]);
                 thsis.Student = studentService.GetStudentBySID(studentID);
-                thsis.Title = titleService.GetTilteByTitleId(titleID);
+                thsis.Title = titleService.GetTilteByTitleID(titleID);
                 list.Add(thsis);
             }
             return list;
@@ -189,7 +189,7 @@ namespace ThesisManage.DAL
                 titleID = Convert.ToInt32(reader["TitleID"]);
                 reader.Close();
                 thsis.Student = studentService.GetStudentBySID(studentID);
-                thsis.Title = titleService.GetTilteByTitleId(titleID);
+                thsis.Title = titleService.GetTilteByTitleID(titleID);
             }
             reader.Close();
             return thsis;
