@@ -18,7 +18,6 @@ namespace ThesisManage.DAL
         public Admin GetAdminById(string loginID)
         {
             string sql = string.Format("SELECT * FROM Admin WHERE LoginID='{0}'", loginID);
-            int roleID = 0;
             Admin admin = new Admin();
             try
             {
@@ -28,9 +27,9 @@ namespace ThesisManage.DAL
                     admin.AID = Convert.ToInt32(reader["AID"]);
                     admin.LoginID = reader["LoginID"].ToString();
                     admin.LoginPass = reader["LoginPass"].ToString();
-                    roleID = Convert.ToInt32(reader["ARID"]);
+                    int roleID = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
-                    admin.UserRole = UserRoleService.GetUserRoleByUid(roleID);
+                    admin.UserRole = UserRoleService.GetUserRoleByUid(0);
                 }
                 reader.Close();
             }

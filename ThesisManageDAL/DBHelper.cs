@@ -47,23 +47,23 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 对数据库执行的一个TSQL语句或存储过程
         /// </summary>
-        /// <param name="safeSql">要执行的SQL语句或者存储过程</param>
+        /// <param name="sql">要执行的SQL语句或者存储过程</param>
         /// <returns>返回一个SqlDataReader</returns>
-        public static SqlDataReader GetReader(string safeSql)
+        public static SqlDataReader GetReader(string sql)
         {
-            SqlCommand cmd = new SqlCommand(safeSql, Connection);
+            SqlCommand cmd = new SqlCommand(sql, Connection);
             SqlDataReader reader = cmd.ExecuteReader();
             return reader;
         }
         /// <summary>
         /// 对数据库执行的一个TSQL语句或存储过程
         /// </summary>
-        /// <param name="safeSql">要执行的SQL语句或者存储过程</param>
+        /// <param name="sql">要执行的SQL语句或者存储过程</param>
         /// <returns>返回一个DataSet</returns>
-        public static DataTable GetDataSet(string safeSql)
+        public static DataTable GetDataSet(string sql)
         {
             DataSet ds = new DataSet();
-            SqlCommand cmd = new SqlCommand(safeSql, Connection);
+            SqlCommand cmd = new SqlCommand(sql, Connection);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(ds);
             return ds.Tables[0];
