@@ -10,32 +10,12 @@ namespace ThesisManage.BLL
     {
         AdminService adminService = new AdminService();
         /// <summary>
-        /// 添加管理员
-        /// </summary>
-        /// <param name="loginID">登陆ID</param>
-        /// <param name="roleID">用户角色ID</param>
-        /// <returns></returns>
-        public int AddAdmin(string loginID, int roleID)
-        {
-            return adminService.AddAdmin(loginID, roleID);
-        }
-        /// <summary>
-        /// 批量添加管理员
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="roleId"></param>
-        /// <returns></returns>
-        public int AddAdmins(String source, int roleId)
-        {
-            return adminService.AddAdmins(source, roleId);
-        }
-        /// <summary>
         /// 管理员登陆验证
         /// </summary>
-        /// <param name="loginID"></param>
-        /// <param name="pass"></param>
+        /// <param name="loginID">管理员登录ID</param>
+        /// <param name="pass">管理员登录密码</param>
         /// <returns></returns>
-        public string GetAdminById(string loginID, string pass)
+        public string GetAdminByID(string loginID, string pass)
         {
             Admin admin = adminService.GetAdminByID(loginID);
             string promptingMessage = string.Empty;
@@ -62,7 +42,7 @@ namespace ThesisManage.BLL
         /// <param name="newPass">新密码</param>
         /// <param name="loginID">登陆ID</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string newPass, string loginID)
+        public int ModifiyPassword(string newPass, string loginID)
         {
             return adminService.ModifiyPassword(newPass, loginID);
         }
@@ -71,9 +51,29 @@ namespace ThesisManage.BLL
         /// </summary>
         /// <param name="loginID">登陆ID</param>
         /// <returns></returns>
-        public Admin GetAdminById(string loginID)
+        public Admin GetAdminByID(string loginID)
         {
             return adminService.GetAdminByID(loginID);
+        }
+        /// <summary>
+        /// 添加管理员
+        /// </summary>
+        /// <param name="loginID">管理员登录ID</param>
+        /// <param name="roleID">用户角色ID</param>
+        /// <returns></returns>
+        public int AddAdmin(string loginID, int roleID)
+        {
+            return adminService.AddAdmin(loginID, roleID);
+        }
+        /// <summary>
+        /// 批量添加管理员
+        /// </summary>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
+        /// <returns></returns>
+        public int AddAdmins(String source, int roleID)
+        {
+            return adminService.AddAdmins(source, roleID);
         }
     }
 }

@@ -32,7 +32,7 @@ public partial class Student_TitleDetial : System.Web.UI.Page
             else
             {
                 TID = Convert.ToInt32(Request.QueryString["TID"]);
-                ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(TID);
+                ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(TID);
                 lblTeacher.Text = title.Teacher.TeacherName;
                 lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 lblTitleName.Text = title.TitleName;

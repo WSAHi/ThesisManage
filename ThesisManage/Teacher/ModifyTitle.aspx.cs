@@ -26,7 +26,7 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
             else
             {
                 int titleId =Convert.ToInt32( Request.Params["titleId"]);
-                ThesisManage.Model.Title title = titleManage.GetTilteByTitleId(titleId);
+                ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleId);
                 txtTitile.Text = title.TitleName;
                 txtDescription.Text = title.Description;
                 txtCanChooseNum.Text = title.Counts.ToString();

@@ -34,7 +34,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             else
             {
                 TID = Convert.ToInt32(Request.QueryString["TID"]);
-                Title title = titleManage.GetTilteByTitleId(TID);
+                Title title = titleManage.GetTilteByTitleID(TID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
                     lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
@@ -67,7 +67,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         {
             int num = 0;
             int teacherId = Convert.ToInt32(Session["key"]);
-            Title title = titleManage.GetTilteByTitleId(TID);
+            Title title = titleManage.GetTilteByTitleID(TID);
 
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
             {
@@ -103,7 +103,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         {
             Admin admin = (Admin)Session["admin"];
             int num = titleManage.ModifiyTitleUnState(TID);
-            Title title = titleManage.GetTilteByTitleId(TID);
+            Title title = titleManage.GetTilteByTitleID(TID);
 
             if (num > 0)
             {

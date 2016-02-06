@@ -46,7 +46,7 @@ public partial class Student_ChooseTitle : System.Web.UI.Page
         if (studentState == 0)
         {
             int TitleId = Convert.ToInt32(e.CommandArgument);
-            Title title = titleManage.GetTilteByTitleId(TitleId);
+            Title title = titleManage.GetTilteByTitleID(TitleId);
             if (title.HasChooseNum < title.Counts)
             {
                 int num = studentManage.ModifiyStuSate(1, TitleId, studentId);

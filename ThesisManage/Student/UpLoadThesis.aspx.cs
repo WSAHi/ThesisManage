@@ -37,7 +37,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
         Student student = (Student)Session["student"];
         if (student.Title.TitleName != null && student.Title.TitleName != "")
         {
-            Thesis th = thesisManage.GetThesisByStuId(student.SID);
+            Thesis th = thesisManage.GetThesisByStuID(student.SID);
             Stream worddatastream = FileUpload1.PostedFile.InputStream;
             int worddatalen = FileUpload1.PostedFile.ContentLength;
             string wordtype = FileUpload1.PostedFile.ContentType;
@@ -50,7 +50,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
             thesis.PublishDate = time.ToString();
             thesis.Content = wordData;
             int titleId = student.Title.TID;
-            Title title = titlemanage.GetTilteByTitleId(titleId);
+            Title title = titlemanage.GetTilteByTitleID(titleId);
             thesis.Title = title;
             if (string.IsNullOrEmpty(th.PublishDate))
             {
@@ -68,7 +68,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
             else
             {
                 btnUpLoad.Attributes.Add("onclick", "return confirm('你已上传论文，确定要重新上传吗？');");
-                thesisManage.DeleteThesisByStudentId(student.SID);
+                thesisManage.DeleteThesisByStudentID(student.SID);
                 int num = thesisManage.InsertThesis(thesis);
                 if (num > 0)
                 {

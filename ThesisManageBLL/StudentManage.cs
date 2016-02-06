@@ -12,9 +12,46 @@ namespace ThesisManage.BLL
     {
         StudentService studentService = new StudentService();
         /// <summary>
-        /// 获取学生信息
+        /// 学生登陆验证
         /// </summary>
         /// <param name="studentID">学生学号</param>
+        /// <param name="pass">密码</param>
+        /// <returns></returns>
+        public string StudentLogin(string studentID, string pass)
+        {
+            Student student = studentService.GetStudentByStudentID(studentID);
+            string promptingMessage = null;
+            if (!string.IsNullOrEmpty(student.StudentName))
+            {
+                if (pass == student.StudentPass)
+                {
+                    promptingMessage = "成功";
+                }
+                else
+                {
+                    promptingMessage = "密码错误！";
+                }
+            }
+            else
+            {
+                promptingMessage = "该用户名不存在！";
+            }
+            return promptingMessage;
+        }
+        /// <summary>
+        /// 修改学生密码
+        /// </summary>
+        /// <param name="newPass">新密码</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
+        /// <returns></returns>
+        public int ModifiyStuPassword(string newPass, string studentID)
+        {
+            return studentService.ModifiyStuPassword(newPass, studentID);
+        }
+        /// <summary>
+        /// 根据学生登录（学号）ID获取学生信息
+        /// </summary>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
         public Student GetStudentByStudentID(string studentID)
         {
@@ -26,64 +63,27 @@ namespace ThesisManage.BLL
         /// <param name="studentAddress">地址</param>
         /// <param name="studentPhone">电话</param>
         /// <param name="studentMail">邮箱</param>
-        /// <param name="studentID">学生学号</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
         public int ModifiyStuByStudentID(string studentAddress, string studentPhone, string studentMail, string studentID)
         {
             return studentService.ModifiyStuByStudentID(studentAddress, studentPhone, studentMail, studentID);
         }
         /// <summary>
-        /// 修改选题状态
+        /// 修改学生选题状态
         /// </summary>
         /// <param name="sudentState">选题状态</param>
         /// <param name="titleID">题目ID</param>
-        /// <param name="studentID">学生学号</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
         public int ModifiyStuSate(int sudentState, int titleID, string studentID)
         {
             return studentService.ModifiyStuSate(sudentState, titleID, studentID);
         }
         /// <summary>
-        /// 学生登陆验证
-        /// </summary>
-        /// <param name="studentID">学生学号</param>
-        /// <param name="pass">密码</param>
-        /// <returns></returns>
-        public string StudentLogin(string studentID, string pass)
-        {
-            Student student = studentService.GetStudentByStudentID(studentID);
-            string mes = null;
-            if (!string.IsNullOrEmpty(student.StudentName))
-            {
-                if (pass == student.StudentPass)
-                {
-                    mes = "成功";
-                }
-                else
-                {
-                    mes = "密码错误！";
-                }
-            }
-            else
-            {
-                mes = "该用户名不存在！";
-            }
-            return mes;
-        }
-        /// <summary>
-        /// 修改学生密码
-        /// </summary>
-        /// <param name="newPass">新密码</param>
-        /// <param name="studentID">学生编号</param>
-        /// <returns></returns>
-        public int ModifiyStuPass(string newPass, string studentID)
-        {
-            return studentService.ModifiyStuPassword(newPass, studentID);
-        }
-        /// <summary>
         /// 增加学生
         /// </summary>
-        /// <param name="studentID">学生学号</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <param name="studentName">学生姓名</param>
         /// <param name="studentClass">学生班级</param>
         /// <param name="roleID">用户角色ID</param>
@@ -91,6 +91,16 @@ namespace ThesisManage.BLL
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
             return studentService.AddStudent(studentID, studentName, studentClass, roleID);
+        }
+        /// <summary>
+        /// 批量添加学生
+        /// </summary>
+        /// <param name="source">文件</param>
+        /// <param name="roleID">用户角色ID</param>
+        /// <returns></returns>
+        public int AddStudents(string source, int roleID)
+        {
+            return studentService.AddStudents(source, roleID);
         }
         /// <summary>
         /// 获取所有班级
@@ -110,9 +120,9 @@ namespace ThesisManage.BLL
             return studentService.GetStudent(sql);
         }
         /// <summary>
-        /// 获取学生信息
+        /// 根据学生内码ID获取学生信息
         /// </summary>
-        /// <param name="sID">学生ID</param>
+        /// <param name="sID">学生内码ID</param>
         /// <returns></returns>
         public Student GetStudentBySID(int sID)
         {
@@ -121,14 +131,14 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 获取选择同一个老师的所有学生
         /// </summary>
-        /// <param name="teID">教师ID</param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns></returns>
-        public List<Student> GetStudentWithOenTeacher(int teID)
+        public List<Student> GetStudentWithTeacher(int teacherID)
         {
-            return studentService.GetStudentWithTeacher(teID);
+            return studentService.GetStudentWithTeacher(teacherID);
         }
         /// <summary>
-        /// 获取上传标题的学生
+        /// 获取上传自定义题目的学生
         /// </summary>
         /// <returns></returns>
         public List<Student> GetStudentByUpLoadTitle()
@@ -136,17 +146,7 @@ namespace ThesisManage.BLL
             return studentService.GetStudentByUpLoadTitle();
         }
         /// <summary>
-        /// 批量添加学生
-        /// </summary>
-        /// <param name="source">文件</param>
-        /// <param name="roleID">用户角色ID</param>
-        /// <returns></returns>
-        public int AddStudents(string source, int roleID)
-        {
-            return studentService.AddStudents(source, roleID);
-        }
-        /// <summary>
-        /// 获取学生数量
+        /// 获取学生总数
         /// </summary>
         /// <returns></returns>
         public int GetStudentCount()
@@ -154,7 +154,7 @@ namespace ThesisManage.BLL
             return studentService.GetStudentCount();
         }
         /// <summary>
-        /// 获取已经被选的题目数量
+        /// 获取已选题目的数量
         /// </summary>
         /// <returns></returns>
         public int GetHasChooseTitleNum()
@@ -164,11 +164,11 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 更新题目状态
         /// </summary>
-        /// <param name="sID">学生ID</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
-        public int EscTitleByStudentId(int sID)
+        public int EscTitleByStudentId(int studentID)
         {
-            return studentService.EscTitleByStudentID(sID);
+            return studentService.EscTitleByStudentID(studentID);
         }
     }
 }

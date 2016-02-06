@@ -27,11 +27,11 @@ public partial class Student_ModifyThesis : System.Web.UI.Page
             else
             {
                 Student student = (Student)Session["student"];
-                Thesis th = thesisManage.GetThesisByStuId(student.SID);
+                Thesis th = thesisManage.GetThesisByStuID(student.SID);
                 if (!string.IsNullOrEmpty(th.PublishDate))
                 {
-                    Thesis thesis = thesisManage.GetThesisByStuId(student.SID);
-                    Title title = titleManage.GetTilteByTitleId(thesis.Title.TID);
+                    Thesis thesis = thesisManage.GetThesisByStuID(student.SID);
+                    Title title = titleManage.GetTilteByTitleID(thesis.Title.TID);
                     lblTitle.Text = thesis.Title.TitleName;
                     lblUploadTime.Text = thesis.PublishDate;
                     lblTeacher.Text = title.Teacher.TeacherName;
@@ -48,7 +48,7 @@ public partial class Student_ModifyThesis : System.Web.UI.Page
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
         Student student = (Student)Session["student"];
-        int num = thesisManage.GetCountsByStuId(student.SID);
+        int num = thesisManage.GetCountsByStuID(student.SID);
         System.IO.FileStream r = new System.IO.FileStream("ThesisManage\\毕业论文.doc", System.IO.FileMode.Open);
         //设置基本信息 
         Response.Buffer = false;

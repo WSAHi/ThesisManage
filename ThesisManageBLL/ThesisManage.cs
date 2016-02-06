@@ -10,53 +10,58 @@ namespace ThesisManage.BLL
     {
         ThesisService thesisService = new ThesisService();
         /// <summary>
-        /// 添加论文
+        /// 插入论文相关信息
         /// </summary>
-        /// <param name="thesis"></param>
+        /// <param name="thesis">论文信息</param>
         /// <returns></returns>
         public int InsertThesis(Thesis thesis)
         {
             return thesisService.InsertThesis(thesis);
         }
-        public int GetCountsByStuId(int stuId)
+        /// <summary>
+        /// 根据学生登录（学号）ID获取论文内容
+        /// </summary>
+        /// <param name="studentID">学生登录（学号）ID</param>
+        /// <returns></returns>
+        public int GetCountsByStuID(int studentID)
         {
-            return thesisService.GetCountsByStuID(stuId);
+            return thesisService.GetCountsByStuID(studentID);
         }
         /// <summary>
-        /// 获取论文信息
+        /// 根据学生登录（学号）ID获取论文信息
         /// </summary>
-        /// <param name="stuID"></param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
-        public Thesis GetThesisByStuId(int stuID)
+        public Thesis GetThesisByStuID(int studentID)
         {
-            return thesisService.GetThesisByStuID(stuID);
+            return thesisService.GetThesisByStuID(studentID);
         }
         /// <summary>
         /// 记录论文相关信息
         /// </summary>
-        /// <param name="thesis"></param>
+        /// <param name="thesis">论文信息</param>
         /// <returns></returns>
-        public int UpdateThesisByStuId(Thesis thesis)
+        public int UpdateThesisByStuID(Thesis thesis)
         {
             return thesisService.UpdateThesisByStuID(thesis);
         }
         /// <summary>
-        /// 获取论文，题目是老师同一上传的
+        /// 根据某教师上传的题目ID获取与该题目有关的论文信息
         /// </summary>
-        /// <param name="tEID">教师ID</param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns></returns>
-        public List<Thesis> GetThesisWithOenTeacher(int tEID)
+        public List<Thesis> GetThesisWithOenTeacher(int teacherID)
         {
-            return thesisService.GetThesisWithTeacher(tEID);
+            return thesisService.GetThesisWithTeacher(teacherID);
         }
         /// <summary>
-        /// 获取论文相关信息
+        /// 根据论文ID获取论文相关信息
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="thesisID">论文ID</param>
         /// <returns></returns>
-        public Thesis GetThesisById(int id)
+        public Thesis GetThesisByID(int thesisID)
         {
-            return thesisService.GetThesisById(id);
+            return thesisService.GetThesisById(thesisID);
         }
         /// <summary>
         /// 获取论文数量
@@ -67,13 +72,13 @@ namespace ThesisManage.BLL
             return thesisService.GetThesisCount();
         }
         /// <summary>
-        /// 删除论文
+        /// 根据学生登录（学号）ID删除论文信息
         /// </summary>
-        /// <param name="studentId"></param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
-        public int DeleteThesisByStudentId(int studentId)
+        public int DeleteThesisByStudentID(int studentID)
         {
-            return thesisService.DeleteThesisByStudentID(studentId);
+            return thesisService.DeleteThesisByStudentID(studentID);
         }
     }
 }

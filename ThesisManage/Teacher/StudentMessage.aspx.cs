@@ -27,7 +27,7 @@ public partial class Teacher_StudentMessage : System.Web.UI.Page
                 else
                 {
                     int thesisId = Convert.ToInt32(Request.Params["ThesisID"]);
-                    Thesis thesis = thesisManage.GetThesisById(thesisId);
+                    Thesis thesis = thesisManage.GetThesisByID(thesisId);
                     Student student = thesis.Student;
                     lblStudentID.Text = student.StudentID;
                     lblStudentName.Text = student.StudentName;
@@ -52,8 +52,8 @@ public partial class Teacher_StudentMessage : System.Web.UI.Page
     protected void LinkButton1_Click(object sender, EventArgs e)
     {
         int thesisId = Convert.ToInt32(Request.Params["ThesisID"]);
-        Thesis thesis = thesisManage.GetThesisById(thesisId);
-        int num = thesisManage.GetCountsByStuId(thesis.Student.SID);
+        Thesis thesis = thesisManage.GetThesisByID(thesisId);
+        int num = thesisManage.GetCountsByStuID(thesis.Student.SID);
         System.IO.FileStream r = new System.IO.FileStream("ThesisManage\\毕业论文.doc", System.IO.FileMode.Open);
         //设置基本信息 
         Response.Buffer = false;

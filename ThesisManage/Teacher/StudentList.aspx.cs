@@ -38,8 +38,8 @@ public partial class Teacher_StudentList : System.Web.UI.Page
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         int thesisId = Convert.ToInt32(e.CommandArgument);
-        Thesis thesis = thesisManage.GetThesisById(thesisId);
-        int num = thesisManage.GetCountsByStuId(thesis.Student.SID);
+        Thesis thesis = thesisManage.GetThesisByID(thesisId);
+        int num = thesisManage.GetCountsByStuID(thesis.Student.SID);
         System.IO.FileStream r = new System.IO.FileStream("ThesisManage\\毕业论文.doc", System.IO.FileMode.Open);
         //设置基本信息 
         Response.Buffer = false;

@@ -31,7 +31,7 @@ public partial class Teacher_ModifyPassWord : System.Web.UI.Page
         if (teacher.TeacherPass == txtOldPassword.Text.Trim())
         {
             string password = txtNewPassword.Text.Trim();
-            int num = teacherManage.ModifiyPassWord(password, teacher.TEID);
+            int num = teacherManage.ModifiyPassword(password, teacher.TEID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('密码修改成功！');</script>");

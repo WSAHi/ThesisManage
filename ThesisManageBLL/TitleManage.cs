@@ -45,11 +45,11 @@ namespace ThesisManage.BLL
             return titleService.ModifiyTitleChooseNum(tID);
         }
         /// <summary>
-        /// 根据TitleID获取题目
+        /// 根据题目ID获取题目
         /// </summary>
-        /// <param name="titleID"></param>
+        /// <param name="titleID">题目ID</param>
         /// <returns></returns>
-        public Title GetTilteByTitleId(int titleID)
+        public Title GetTilteByTitleID(int titleID)
         {
             return titleService.GetTilteByTitleId(titleID);
         }

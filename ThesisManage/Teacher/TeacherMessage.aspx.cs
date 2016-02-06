@@ -25,7 +25,7 @@ public partial class Teacher_TeacherMessage : System.Web.UI.Page
             }
             else
             {
-                Teacher te = teacherManage.GetTeacherByTeacherId(teacher.TeacherID);
+                Teacher te = teacherManage.GetTeacherByTeacherID(teacher.TeacherID);
                 lblTeacherID.Text = te.TeacherID;
                 lblTeacherName.Text = te.TeacherName;
                 lblTeacherEmail.Text = te.TeacherMail;

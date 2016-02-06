@@ -33,7 +33,7 @@ public partial class LLogin : System.Web.UI.Page
         string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {
-            string mes = adminManage.GetAdminById(loginName, password);
+            string mes = adminManage.GetAdminByID(loginName, password);
             if (mes.Trim() == "成功")
             {
                 Admin admin = new Admin();
@@ -52,7 +52,7 @@ public partial class LLogin : System.Web.UI.Page
             string mes = teacherManage.IsValide(loginName, password);
             if (mes.Trim() == "成功")
             {
-                Teacher teacher = teacherManage.GetTeacherByTeacherId(loginName);
+                Teacher teacher = teacherManage.GetTeacherByTeacherID(loginName);
                 Session["teacher"] = teacher;
                 Session["TEID"] = teacher.TEID;
                 Response.Redirect("Teacher/TeacherMessage.aspx");

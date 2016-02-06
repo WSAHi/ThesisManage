@@ -13,45 +13,9 @@ namespace ThesisManage.DAL
         TitleService titleServer = new TitleService();
         Student student = new Student();
         /// <summary>
-        /// 根据学生登录（学号）ID获取学生信息
+        /// 根据学生内码ID获取学生信息
         /// </summary>
-        /// <param name="studentID">学生登录（学号）ID/param>
-        /// <returns>学生信息</returns>
-        public Student GetStudentByStudentID(string studentID)
-        {
-            int userRoleID = 0;//用户角色ID
-            int titleID = 0;//题目ID
-            string sql = string.Format("SELECT * FROM Student WHERE StudentID ='{0}'", studentID);
-            SqlDataReader reader = DBHelper.GetReader(sql);
-            if (reader.Read())
-            {
-                student.SID = Convert.ToInt32(reader["SID"]);
-                student.StudentAddress = reader["StudentAddress"].ToString();
-                student.StudentClass = reader["StudentClass"].ToString();
-                student.StudentMail = reader["StudentMail"].ToString();
-                student.StudentName = reader["StudentName"].ToString();
-                student.SudentState = Convert.ToInt32(reader["SudentState"]);
-                student.StudentID = reader["StudentID"].ToString();
-                student.StudentPass = reader["StudentPass"].ToString();
-                student.StudentPhone = reader["StudentPhone"].ToString();
-                userRoleID = Convert.ToInt32(reader["SRID"]);
-                try
-                {
-                    titleID = Convert.ToInt32(reader["STitleID"]);
-                }
-                catch (Exception)
-                { }
-                reader.Close();
-                student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
-                student.Title = titleServer.GetTiByTitleId(titleID);
-            }
-            reader.Close();
-            return student;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sID">根据学生内码ID获取学生信息</param>
+        /// <param name="sID">学生内码ID</param>
         /// <returns>学生信息</returns>
         public Student GetStudentBySID(int sID)
         {
@@ -78,6 +42,42 @@ namespace ThesisManage.DAL
                 catch (Exception)
                 {
                 }
+                reader.Close();
+                student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
+                student.Title = titleServer.GetTiByTitleId(titleID);
+            }
+            reader.Close();
+            return student;
+        }
+        /// <summary>
+        /// 根据学生登录（学号）ID获取学生信息
+        /// </summary>
+        /// <param name="studentID">学生登录（学号）ID</param>
+        /// <returns>学生信息</returns>
+        public Student GetStudentByStudentID(string studentID)
+        {
+            int userRoleID = 0;//用户角色ID
+            int titleID = 0;//题目ID
+            string sql = string.Format("SELECT * FROM Student WHERE StudentID ='{0}'", studentID);
+            SqlDataReader reader = DBHelper.GetReader(sql);
+            if (reader.Read())
+            {
+                student.SID = Convert.ToInt32(reader["SID"]);
+                student.StudentAddress = reader["StudentAddress"].ToString();
+                student.StudentClass = reader["StudentClass"].ToString();
+                student.StudentMail = reader["StudentMail"].ToString();
+                student.StudentName = reader["StudentName"].ToString();
+                student.SudentState = Convert.ToInt32(reader["SudentState"]);
+                student.StudentID = reader["StudentID"].ToString();
+                student.StudentPass = reader["StudentPass"].ToString();
+                student.StudentPhone = reader["StudentPhone"].ToString();
+                userRoleID = Convert.ToInt32(reader["SRID"]);
+                try
+                {
+                    titleID = Convert.ToInt32(reader["STitleID"]);
+                }
+                catch (Exception)
+                { }
                 reader.Close();
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
                 student.Title = titleServer.GetTiByTitleId(titleID);
@@ -211,7 +211,7 @@ namespace ThesisManage.DAL
         /// <summary>
         /// 获取选择同一个老师的所有学生
         /// </summary>
-        /// <param name="teacherID">教师编号</param>
+        /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns>选择同一个老师的学生的信息</returns>
         public List<Student> GetStudentWithTeacher(int teacherID)
         {
@@ -319,7 +319,7 @@ namespace ThesisManage.DAL
         /// 更新题目状态
         /// </summary>
         /// <param name="studentID">学生登录（学号）ID</param>
-        /// <returns>受影响的行数</returns>
+        /// <returns></returns>
         public int EscTitleByStudentID(int studentID)
         {
             string sql = string.Format("UPDATE Student SET STitleID=null,SudentState=0 WHERE SID={0}", studentID);

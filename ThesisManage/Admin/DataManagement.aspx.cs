@@ -69,7 +69,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
     {
         string loginID = txtAdminID.Text.Trim();
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        Admin admin = adminManage.GetAdminById(loginID);
+        Admin admin = adminManage.GetAdminByID(loginID);
         if (admin.LoginID == "")
         {
             int num = adminManage.AddAdmin(loginID, roleID);
@@ -96,7 +96,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
         string teacherID = txtTeacherID.Text.Trim();
         string teacherName = txtTeacherName.Text.Trim();
         int roleID = Convert.ToInt32(ddlUserRole.SelectedItem.Value.Trim());
-        Teacher teacher = teacherManage.GetTeacherByTeacherId(teacherID);
+        Teacher teacher = teacherManage.GetTeacherByTeacherID(teacherID);
         if (teacher.TeacherName == "")
         {
             int num = teacherManage.AddTeacher(teacherID, teacherName, roleID);

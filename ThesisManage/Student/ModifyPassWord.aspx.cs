@@ -33,7 +33,7 @@ public partial class Student_ModifyPassWord : System.Web.UI.Page
             if (student.StudentPass == txtOldPassword.Text.Trim())
             {
                 string password = txtNewPassword.Text.Trim();
-                int num = studentManage.ModifiyStuPass(password, student.StudentID);
+                int num = studentManage.ModifiyStuPassword(password, student.StudentID);
                 if (num > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('密码修改成功！');</script>");
