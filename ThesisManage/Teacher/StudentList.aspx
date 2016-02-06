@@ -43,7 +43,7 @@
         </asp:GridView>
         <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithTeacher" TypeName="ThesisManage.BLL.ThesisManage">
             <SelectParameters>
-                <asp:SessionParameter Name="TEID" SessionField="TEID" Type="Int32" />
+                <asp:SessionParameter Name="titleID" SessionField="titleID" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
     </div>
