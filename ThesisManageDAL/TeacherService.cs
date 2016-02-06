@@ -33,7 +33,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
                 roleID = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleID);
+                teacher.UserRole = UserRoleService.GetUserRoleByUID(roleID);
             }
             reader.Close();
             return teacher;
@@ -61,7 +61,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
                 roleId = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
+                teacher.UserRole = UserRoleService.GetUserRoleByUID(roleId);
             }
             reader.Close();
             return teacher;
@@ -113,7 +113,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherPhone = rows["TeacherPhone"].ToString();
                 teacher.TeacherState = Convert.ToInt32(rows["TeacherState"]);
                 roleID = Convert.ToInt32(rows["TRID"]);
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleID);
+                teacher.UserRole = UserRoleService.GetUserRoleByUID(roleID);
                 list.Add(teacher);
             }
             return list;
@@ -193,7 +193,7 @@ namespace ThesisManage.DAL
                 teacher.TeacherPhone = row["TeacherPhone"].ToString();
                 teacher.TeacherState = Convert.ToInt32(row["TeacherState"]);
                 roleId = Convert.ToInt32(row["TRID"]);
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
+                teacher.UserRole = UserRoleService.GetUserRoleByUID(roleId);
                 list.Add(teacher);
             }
             return list;

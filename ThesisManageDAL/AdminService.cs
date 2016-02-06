@@ -29,7 +29,7 @@ namespace ThesisManage.DAL
                     admin.LoginPass = reader["LoginPass"].ToString();
                     int roleID = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
-                    admin.UserRole = UserRoleService.GetUserRoleByUid(roleID);
+                    admin.UserRole = UserRoleService.GetUserRoleByUID(roleID);
                 }
                 reader.Close();
             }

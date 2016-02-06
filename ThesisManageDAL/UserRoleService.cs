@@ -14,7 +14,7 @@ namespace ThesisManage.DAL
         /// </summary>
         /// <param name="uID">用户角色ID</param>
         /// <returns></returns>
-        public static UserRole GetUserRoleByUid(int uID)
+        public static UserRole GetUserRoleByUID(int uID)
         {
             UserRole userRole = new UserRole();
             string sql = string.Format("SELECT * FROM UserRole WHERE UID={0}", uID);
