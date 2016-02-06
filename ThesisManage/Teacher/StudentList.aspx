@@ -41,7 +41,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithOenTeacher" TypeName="ThesisManage.BLL.ThesisManage">
+        <asp:ObjectDataSource ID="odsthesis" runat="server" SelectMethod="GetThesisWithTeacher" TypeName="ThesisManage.BLL.ThesisManage">
             <SelectParameters>
                 <asp:SessionParameter Name="TEID" SessionField="TEID" Type="Int32" />
             </SelectParameters>
