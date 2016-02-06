@@ -72,7 +72,6 @@ namespace ThesisManage.DAL
         public int AddAdmins(String source, int roleID)
         {
             int num = 0;
-            string pass = "111111";
             try
             {
                 string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
@@ -88,7 +87,7 @@ namespace ThesisManage.DAL
                         strSql += "INSERT INTO Admin(LoginID,ARID,LoginPass) VALUES ('";
                         strSql += ds.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += roleID + "','";
-                        strSql += pass + "')";
+                        strSql += "111111" + "')";
                     }
                     num = DBHelper.ExecuteCommand(strSql);
                 }
