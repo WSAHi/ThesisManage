@@ -48,11 +48,11 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 根据某教师上传的题目ID获取与该题目有关的论文信息
         /// </summary>
-        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <param name="TEID">教师登录（工号）ID</param>
         /// <returns></returns>
-        public List<Thesis> GetThesisWithOenTeacher(int teacherID)
+        public List<Thesis> GetThesisWithTeacher(int TEID)
         {
-            return thesisService.GetThesisWithTeacher(teacherID);
+            return thesisService.GetThesisWithTeacher(TEID);
         }
         /// <summary>
         /// 根据论文ID获取论文相关信息
