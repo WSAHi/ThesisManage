@@ -20,7 +20,7 @@ namespace ThesisManage.BLL
         }
         public int GetCountsByStuId(int stuId)
         {
-            return thesisService.GetCountsByStuId(stuId);
+            return thesisService.GetCountsByStuID(stuId);
         }
         /// <summary>
         /// 获取论文信息
@@ -29,7 +29,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public Thesis GetThesisByStuId(int stuID)
         {
-            return thesisService.GetThesisByStuId(stuID);
+            return thesisService.GetThesisByStuID(stuID);
         }
         /// <summary>
         /// 记录论文相关信息
@@ -38,7 +38,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int UpdateThesisByStuId(Thesis thesis)
         {
-            return thesisService.UpdateThesisByStuId(thesis);
+            return thesisService.UpdateThesisByStuID(thesis);
         }
         /// <summary>
         /// 获取论文，题目是老师同一上传的
@@ -47,7 +47,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public List<Thesis> GetThesisWithOenTeacher(int tEID)
         {
-            return thesisService.GetThesisWithOenTeacher(tEID);
+            return thesisService.GetThesisWithTeacher(tEID);
         }
         /// <summary>
         /// 获取论文相关信息
@@ -73,7 +73,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int DeleteThesisByStudentId(int studentId)
         {
-            return thesisService.DeleteThesisByStudentId(studentId);
+            return thesisService.DeleteThesisByStudentID(studentId);
         }
     }
 }

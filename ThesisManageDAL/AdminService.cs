@@ -15,7 +15,7 @@ namespace ThesisManage.DAL
         /// </summary>
         /// <param name="loginID">管理员登录账号（ID）</param>
         /// <returns>管理员信息</returns>
-        public Admin GetAdminById(string loginID)
+        public Admin GetAdminByID(string loginID)
         {
             string sql = string.Format("SELECT * FROM Admin WHERE LoginID='{0}'", loginID);
             Admin admin = new Admin();
@@ -29,7 +29,7 @@ namespace ThesisManage.DAL
                     admin.LoginPass = reader["LoginPass"].ToString();
                     int roleID = Convert.ToInt32(reader["ARID"]);
                     reader.Close();
-                    admin.UserRole = UserRoleService.GetUserRoleByUid(0);
+                    admin.UserRole = UserRoleService.GetUserRoleByUid(roleID);
                 }
                 reader.Close();
             }
@@ -45,7 +45,7 @@ namespace ThesisManage.DAL
         /// <param name="newPassword">新密码</param>
         /// <param name="loginID">管理员登录账号（ID）</param>
         /// <returns></returns>
-        public int ModifiyPassWord(string newPassword, string loginID)
+        public int ModifiyPassword(string newPassword, string loginID)
         {
             string sql = string.Format("UPDATE Admin SET LoginPass='{0}' WHERE LoginID='{1}'", newPassword, loginID);
             int num = DBHelper.ExecuteCommand(sql);

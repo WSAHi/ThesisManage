@@ -78,7 +78,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int ModifiyStuPass(string newPass, string studentID)
         {
-            return studentService.ModifiyStuPass(newPass, studentID);
+            return studentService.ModifiyStuPassword(newPass, studentID);
         }
         /// <summary>
         /// 增加学生
@@ -125,7 +125,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public List<Student> GetStudentWithOenTeacher(int teID)
         {
-            return studentService.GetStudentWithOenTeacher(teID);
+            return studentService.GetStudentWithTeacher(teID);
         }
         /// <summary>
         /// 获取上传标题的学生
@@ -143,7 +143,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int AddStudents(string source, int roleID)
         {
-            return studentService.addStudents(source, roleID);
+            return studentService.AddStudents(source, roleID);
         }
         /// <summary>
         /// 获取学生数量
@@ -168,7 +168,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int EscTitleByStudentId(int sID)
         {
-            return studentService.EscTitleByStudentId(sID);
+            return studentService.EscTitleByStudentID(sID);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public string GetAdminById(string loginID, string pass)
         {
-            Admin admin = adminService.GetAdminById(loginID);
+            Admin admin = adminService.GetAdminByID(loginID);
             string promptingMessage = string.Empty;
             if (!string.IsNullOrEmpty(admin.LoginID))
             {
@@ -64,7 +64,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int ModifiyPassWord(string newPass, string loginID)
         {
-            return adminService.ModifiyPassWord(newPass, loginID);
+            return adminService.ModifiyPassword(newPass, loginID);
         }
         /// <summary>
         /// 获取管理员信息
@@ -73,7 +73,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public Admin GetAdminById(string loginID)
         {
-            return adminService.GetAdminById(loginID);
+            return adminService.GetAdminByID(loginID);
         }
     }
 }

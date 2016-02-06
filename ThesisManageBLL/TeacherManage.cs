@@ -64,7 +64,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int ModifiyPassWord(string newPass, int teID)
         {
-            return teacherService.ModifiyPassWord(newPass, teID);
+            return teacherService.ModifiyPassword(newPass, teID);
         }
         /// <summary>
         /// 添加教师
@@ -85,7 +85,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public int AddTeachers(string source, int roleID)
         {
-            return teacherService.AddTeacher(source, roleID);
+            return teacherService.AddTeachers(source, roleID);
         }
         /// <summary>
         /// 获取所有教师
@@ -102,7 +102,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public Teacher GetTeacherById(int tEID)
         {
-            return teacherService.GetTeacherById(tEID);
+            return teacherService.GetTeacherByID(tEID);
         }
         /// <summary>
         /// 查询已上传标题的教师

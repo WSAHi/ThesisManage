@@ -10,7 +10,7 @@ namespace ThesisManage.DAL
     public static class UserRoleService
     {
         /// <summary>
-        /// 通UID获取UserRole
+        /// 通UID获取用户角色信息
         /// </summary>
         /// <param name="uID">用户角色ID</param>
         /// <returns></returns>
@@ -28,7 +28,7 @@ namespace ThesisManage.DAL
             return userRole;
         }
         /// <summary>
-        /// 获取所有的角色
+        /// 获取所有的用户角色
         /// </summary>
         /// <returns></returns>
         public static List<UserRole> GetUserRole()

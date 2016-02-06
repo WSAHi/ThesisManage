@@ -11,16 +11,16 @@ namespace ThesisManage.DAL
     public class TeacherService
     {
         /// <summary>
-        /// 获取教师信息
+        /// 根据教师内码ID获取教师信息
         /// </summary>
-        /// <param name="tEID"></param>
-        /// <returns></returns>
-        public Teacher GetTeacherById(int tEID)
+        /// <param name="tEID">教师内码ID</param>
+        /// <returns>教师信息</returns>
+        public Teacher GetTeacherByID(int tEID)
         {
             string sql = string.Format("SELECT * FROM Teacher WHERE TEID={0}", tEID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             Teacher teacher = new Teacher();
-            int roleId = 0;
+            int roleID = 0;
             if (reader.Read())
             {
                 teacher.TEID = Convert.ToInt32(reader["TEID"]);
@@ -31,31 +31,18 @@ namespace ThesisManage.DAL
                 teacher.TeacherPass = reader["TeacherPass"].ToString();
                 teacher.TeacherPhone = reader["TeacherPhone"].ToString();
                 teacher.TeacherState = Convert.ToInt32(reader["TeacherState"]);
-                roleId = Convert.ToInt32(reader["TRID"]);
+                roleID = Convert.ToInt32(reader["TRID"]);
                 reader.Close();
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
+                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleID);
             }
             reader.Close();
             return teacher;
         }
         /// <summary>
-        /// 修改信息
+        /// 根据教师登录（工号）ID获取教师信息
         /// </summary>
-        /// <param name="teacherAddress">地址</param>
-        /// <param name="teacherMail">邮箱</param>
-        /// <param name="teacherPhone">电话</param>
-        /// <returns></returns>
-        public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
-        {
-            string sql = string.Format("UPDATE Teacher SET TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'", teacherAddress, teacherMail, teacherPhone);
-            int num = DBHelper.ExecuteCommand(sql);
-            return num;
-        }
-        /// <summary>
-        /// 获取教师信息
-        /// </summary>
-        /// <param name="teacherID">教师编号</param>
-        /// <returns></returns>
+        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <returns>教师信息</returns>
         public Teacher GetTeacherByTeacherId(string teacherID)
         {
             string sql = string.Format("SELECT * FROM Teacher WHERE TeacherID='{0}'", teacherID);
@@ -80,6 +67,31 @@ namespace ThesisManage.DAL
             return teacher;
         }
         /// <summary>
+        /// 修改教师密码
+        /// </summary>
+        /// <param name="newPass">新密码</param>
+        /// <param name="tEID">教师ID</param>
+        /// <returns></returns>
+        public int ModifiyPassword(string newPass, int tEID)
+        {
+            string sql = string.Format("UPDATE Teacher SET TeacherPass='{0}' WHERE TEID={1}", newPass, tEID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
+        }
+        /// <summary>
+        /// 修改教师信息
+        /// </summary>
+        /// <param name="teacherAddress">地址</param>
+        /// <param name="teacherMail">邮箱</param>
+        /// <param name="teacherPhone">电话</param>
+        /// <returns></returns>
+        public int Modifiy(string teacherAddress, string teacherMail, string teacherPhone)
+        {
+            string sql = string.Format("UPDATE Teacher SET TeacherAddress='{0}',TeacherMail='{1}',TeacherPhone='{2}'", teacherAddress, teacherMail, teacherPhone);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
+        }
+        /// <summary>
         /// 获取所有教师
         /// </summary>
         /// <returns></returns>
@@ -88,7 +100,7 @@ namespace ThesisManage.DAL
             List<Teacher> list = new List<Teacher>();
             string sql = string.Format("SELECT * FROM Teacher");
             DataTable table = DBHelper.GetDataSet(sql);
-            int roleId = 0;
+            int roleID = 0;
             foreach (DataRow rows in table.Rows)
             {
                 Teacher teacher = new Teacher();
@@ -100,23 +112,11 @@ namespace ThesisManage.DAL
                 teacher.TeacherPass = rows["TeacherPass"].ToString();
                 teacher.TeacherPhone = rows["TeacherPhone"].ToString();
                 teacher.TeacherState = Convert.ToInt32(rows["TeacherState"]);
-                roleId = Convert.ToInt32(rows["TRID"]);
-                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleId);
+                roleID = Convert.ToInt32(rows["TRID"]);
+                teacher.UserRole = UserRoleService.GetUserRoleByUid(roleID);
                 list.Add(teacher);
             }
             return list;
-        }
-        /// <summary>
-        /// 修改密码
-        /// </summary>
-        /// <param name="newPass">新密码</param>
-        /// <param name="tEID">教师ID</param>
-        /// <returns></returns>
-        public int ModifiyPassWord(string newPass, int tEID)
-        {
-            string sql = string.Format("UPDATE Teacher SET TeacherPass='{0}' WHERE TEID={1}", newPass, tEID);
-            int num = DBHelper.ExecuteCommand(sql);
-            return num;
         }
         /// <summary>
         /// 添加教师
@@ -137,7 +137,7 @@ namespace ThesisManage.DAL
         /// <param name="source">文件</param>
         /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
-        public int AddTeacher(string source, int roleID)
+        public int AddTeachers(string source, int roleID)
         {
             int num = 0;
             int teacherState = 0;
@@ -166,7 +166,6 @@ namespace ThesisManage.DAL
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
             return num;
@@ -200,7 +199,7 @@ namespace ThesisManage.DAL
             return list;
         }
         /// <summary>
-        /// 获取教师表
+        /// 获取指定列
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
@@ -211,7 +210,5 @@ namespace ThesisManage.DAL
             adapter.Fill(dataset, "teacher");
             return dataset;
         }
-
-
     }
 }

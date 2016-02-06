@@ -74,7 +74,7 @@ namespace ThesisManage.DAL
                 }
                 title.Description = reader["Description"].ToString();
                 reader.Close();
-                title.Teacher = teacherService.GetTeacherById(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherId);
                 title.Student = studentService.GetStudentBySID(studentId);
             }
             reader.Close();
@@ -104,7 +104,7 @@ namespace ThesisManage.DAL
                 { }
                 title.Description = reader["Description"].ToString();
                 reader.Close();
-                title.Teacher = teacherService.GetTeacherById(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherId);
             }
             reader.Close();
             return title;
@@ -203,7 +203,7 @@ namespace ThesisManage.DAL
                 {
                 }
                 title.Description = rows["Description"].ToString();
-                title.Teacher = teacherService.GetTeacherById(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherId);
                 title.Student = studentService.GetStudentBySID(studentId);
                 list.Add(title);
             }
@@ -244,7 +244,7 @@ namespace ThesisManage.DAL
                 catch (Exception)
                 {
                 }
-                title.Teacher = teacherService.GetTeacherById(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherId);
                 title.Student = studentService.GetStudentBySID(studentId);
                 list.Add(title);
             }
@@ -287,7 +287,7 @@ namespace ThesisManage.DAL
                 catch (Exception)
                 {
                 }
-                title.Teacher = teacherService.GetTeacherById(teacherId);
+                title.Teacher = teacherService.GetTeacherByID(teacherId);
                 title.Student = studentService.GetStudentBySID(studentId);
                 list.Add(title);
             }
