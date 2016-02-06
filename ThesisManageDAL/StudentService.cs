@@ -11,17 +11,16 @@ namespace ThesisManage.DAL
     public class StudentService
     {
         TitleService titleServer = new TitleService();
+        Student student = new Student();
         /// <summary>
         /// 获取学生信息
         /// </summary>
-        /// <param name="studentID">学生学号</param>
-        /// <returns></returns>
+        /// <param name="studentID">学生登录（学号）ID/param>
+        /// <returns>学生信息</returns>
         public Student GetStudentByStudentID(string studentID)
         {
             int userRoleId = 0;//角色ID
             int titleId = 0;//题目ID
-
-            Student student = new Student();
             string sql = string.Format("SELECT * FROM Student WHERE StudentID ='{0}'", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
@@ -44,7 +43,7 @@ namespace ThesisManage.DAL
                 { }
                 reader.Close();
                 student.Role = UserRoleService.GetUserRoleByUid(userRoleId);
-                student.Title = titleServer.GetTiByTitleId(titleId);
+                student.Title = titleServer.GetTiByTitleId(0);
             }
             reader.Close();
             return student;
@@ -58,8 +57,6 @@ namespace ThesisManage.DAL
         {
             int userRoleId = 0;//角色ID
             int titleId = 0;//题目ID
-            TitleService titleServer = new TitleService();
-            Student student = new Student();
             string sql = string.Format("SELECT * FROM Student WHERE SID ={0}", sID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
@@ -123,8 +120,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuPass(string newPass, string studentID)
         {
-            string sql = string.Format("UPDATE Student SET StudentPass='{0}' WHERE StudentID='{1}'"
-               , newPass, studentID);
+            string sql = string.Format("UPDATE Student SET StudentPass='{0}' WHERE StudentID='{1}'", newPass, studentID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
