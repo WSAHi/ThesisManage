@@ -38,23 +38,23 @@ namespace ThesisManage.BLL
         public string GetAdminById(string loginID, string pass)
         {
             Admin admin = adminService.GetAdminById(loginID);
-            string mes = null;
+            string promptingMessage = string.Empty;
             if (!string.IsNullOrEmpty(admin.LoginID))
             {
                 if (pass == admin.LoginPass)
                 {
-                    mes = "成功";
+                    promptingMessage = "成功";
                 }
                 else
                 {
-                    mes = "密码错误！";
+                    promptingMessage = "密码错误！";
                 }
             }
             else
             {
-                mes = "该用户名不存在！";
+                promptingMessage = "该用户名不存在！";
             }
-            return mes;
+            return promptingMessage;
         }
         /// <summary>
         /// 修改密码
