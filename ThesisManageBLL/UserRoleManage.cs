@@ -12,9 +12,9 @@ namespace ThesisManage.BLL
         /// 获取所有的用户角色
         /// </summary>
         /// <returns></returns>
-        public static List<UserRole> GetUserRole()
+        public static List<UserRole> GetALLUserRole()
         {
-            return UserRoleService.GetUserRole();
+            return UserRoleService.GetAllUserRole();
         }
     }
 }

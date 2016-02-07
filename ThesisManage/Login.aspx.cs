@@ -21,7 +21,7 @@ public partial class LLogin : System.Web.UI.Page
         if (!IsPostBack)
         {
             ddlUserRole.DataSourceID = null;
-            ddlUserRole.DataSource = UserRoleManage.GetUserRole();
+            ddlUserRole.DataSource = UserRoleManage.GetALLUserRole();
             ddlUserRole.DataBind();
             ddlUserRole.Items.Insert(0, new ListItem("请选择用户类型", "-1"));
         }

@@ -31,7 +31,7 @@ namespace ThesisManage.DAL
         /// 获取所有的用户角色
         /// </summary>
         /// <returns></returns>
-        public static List<UserRole> GetUserRole()
+        public static List<UserRole> GetAllUserRole()
         {
             string getUserRoleSQL = string.Format("SELECT * FROM UserRole");
             List<UserRole> userRoleList = new List<UserRole>();
