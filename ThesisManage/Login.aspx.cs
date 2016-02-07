@@ -33,7 +33,7 @@ public partial class LLogin : System.Web.UI.Page
         string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {
-            string message = adminManage.GetAdminByID(loginName, password);
+            string message = adminManage.AdminSSO(loginName, password);
             if (message.Trim() == "成功")
             {
                 Admin admin = new Admin();
@@ -49,7 +49,7 @@ public partial class LLogin : System.Web.UI.Page
         }
         else if (userRole == "教师")
         {
-            string message = teacherManage.IsValide(loginName, password);
+            string message = teacherManage.TeacherSSO(loginName, password);
             if (message.Trim() == "成功")
             {
                 Teacher teacher = teacherManage.GetTeacherByTeacherID(loginName);
@@ -64,7 +64,7 @@ public partial class LLogin : System.Web.UI.Page
         }
         else if (userRole == "学生")
         {
-            string message = studentManage.StudentLogin(loginName, password);
+            string message = studentManage.StudentSSO(loginName, password);
             if (message.Trim() == "成功")
             {
                 Student student = studentManage.GetStudentByStudentID(loginName);

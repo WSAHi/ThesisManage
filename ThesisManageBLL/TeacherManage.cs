@@ -15,7 +15,7 @@ namespace ThesisManage.BLL
         /// <param name="teacherID">教师登录（工号）ID</param>
         /// <param name="pass">教师登录密码</param>
         /// <returns></returns>
-        public string IsValide(string teacherID, string pass)
+        public string TeacherSSO(string teacherID, string pass)
         {
             Teacher teacher = teacherService.GetTeacherByTeacherID(teacherID);
             string promptingMessage = null;

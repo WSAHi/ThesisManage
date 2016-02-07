@@ -17,7 +17,7 @@ namespace ThesisManage.BLL
         /// <param name="studentID">学生登录（学号）ID</param>
         /// <param name="pass">密码</param>
         /// <returns></returns>
-        public string StudentLogin(string studentID, string pass)
+        public string StudentSSO(string studentID, string pass)
         {
             Student student = studentService.GetStudentByStudentID(studentID);
             string promptingMessage = null;

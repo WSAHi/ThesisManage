@@ -15,7 +15,7 @@ namespace ThesisManage.BLL
         /// <param name="loginID">管理员登录（账号）ID</param>
         /// <param name="pass">管理员登录密码</param>
         /// <returns></returns>
-        public string GetAdminByID(string loginID, string pass)
+        public string AdminSSO(string loginID, string pass)
         {
             Admin admin = adminService.GetAdminByID(loginID);
             string promptingMessage = string.Empty;
