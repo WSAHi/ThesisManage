@@ -12,7 +12,7 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 管理员登陆验证
         /// </summary>
-        /// <param name="loginID">管理员登录ID</param>
+        /// <param name="loginID">管理员登录（账号）ID</param>
         /// <param name="pass">管理员登录密码</param>
         /// <returns></returns>
         public string GetAdminByID(string loginID, string pass)
@@ -58,7 +58,7 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 添加管理员
         /// </summary>
-        /// <param name="loginID">管理员登录ID</param>
+        /// <param name="loginID">管理员登录（账号）ID</param>
         /// <param name="roleID">用户角色ID</param>
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)

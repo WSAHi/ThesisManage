@@ -14,7 +14,7 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 学生登陆验证
         /// </summary>
-        /// <param name="studentID">学生学号</param>
+        /// <param name="studentID">学生登录（学号）ID</param>
         /// <param name="pass">密码</param>
         /// <returns></returns>
         public string StudentLogin(string studentID, string pass)
@@ -72,7 +72,7 @@ namespace ThesisManage.BLL
         /// <summary>
         /// 修改学生选题状态
         /// </summary>
-        /// <param name="sudentState">选题状态</param>
+        /// <param name="sudentState">是否选题</param>
         /// <param name="titleID">题目ID</param>
         /// <param name="studentID">学生登录（学号）ID</param>
         /// <returns></returns>
