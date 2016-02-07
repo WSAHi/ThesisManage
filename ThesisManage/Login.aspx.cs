@@ -28,8 +28,8 @@ public partial class LLogin : System.Web.UI.Page
     }
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        String userRole = ddlUserRole.SelectedItem.Text.Trim();
-        string loginName =txtUserName.Text.Trim();
+        string userRole = ddlUserRole.SelectedItem.Text.Trim();
+        string loginName = txtUserName.Text.Trim();
         string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {

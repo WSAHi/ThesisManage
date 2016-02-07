@@ -17,14 +17,14 @@ namespace ThesisManage.DAL
         public static UserRole GetUserRoleByUID(int uID)
         {
             UserRole userRole = new UserRole();
-            string sql = string.Format("SELECT * FROM UserRole WHERE UID={0}", uID);
-            SqlDataReader reader = DBHelper.GetReader(sql);
-            if (reader.Read())
+            string getUserRoleByUIDSQL = string.Format("SELECT * FROM UserRole WHERE UID={0}", uID);
+            SqlDataReader userRoleByUIDSQLReader = DBHelper.GetReader(getUserRoleByUIDSQL);
+            if (userRoleByUIDSQLReader.Read())
             {
-                userRole.UID = Convert.ToInt32(reader["UID"]);
-                userRole.RoleName = (string)reader["RoleName"];
+                userRole.UID = Convert.ToInt32(userRoleByUIDSQLReader["UID"]);
+                userRole.RoleName = (string)userRoleByUIDSQLReader["RoleName"];
             }
-            reader.Close();
+            userRoleByUIDSQLReader.Close();
             return userRole;
         }
         /// <summary>
@@ -33,17 +33,17 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public static List<UserRole> GetUserRole()
         {
-            string sql = string.Format("SELECT * FROM UserRole ");
-            List<UserRole> list = new List<UserRole>();
-            DataTable table = DBHelper.GetDataSet(sql);
-            foreach (DataRow rows in table.Rows)
+            string getUserRoleSQL = string.Format("SELECT * FROM UserRole");
+            List<UserRole> userRoleList = new List<UserRole>();
+            DataTable userRoleTable = DBHelper.GetDataSet(getUserRoleSQL);
+            foreach (DataRow userRoleRows in userRoleTable.Rows)
             {
                 UserRole userRole = new UserRole();
-                userRole.UID = Convert.ToInt32(rows["UID"]);
-                userRole.RoleName = (string)rows["RoleName"];
-                list.Add(userRole);
+                userRole.UID = Convert.ToInt32(userRoleRows["UID"]);
+                userRole.RoleName = (string)userRoleRows["RoleName"];
+                userRoleList.Add(userRole);
             }
-            return list;
+            return userRoleList;
         }
     }
 }
