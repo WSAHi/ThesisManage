@@ -33,8 +33,8 @@ public partial class LLogin : System.Web.UI.Page
         string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {
-            string mes = adminManage.GetAdminByID(loginName, password);
-            if (mes.Trim() == "成功")
+            string message = adminManage.GetAdminByID(loginName, password);
+            if (message.Trim() == "成功")
             {
                 Admin admin = new Admin();
                 admin.LoginID = loginName;
@@ -44,13 +44,13 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lblLoginMessage.Text = mes;
+                lblLoginMessage.Text = message;
             }
         }
         else if (userRole == "教师")
         {
-            string mes = teacherManage.IsValide(loginName, password);
-            if (mes.Trim() == "成功")
+            string message = teacherManage.IsValide(loginName, password);
+            if (message.Trim() == "成功")
             {
                 Teacher teacher = teacherManage.GetTeacherByTeacherID(loginName);
                 Session["teacher"] = teacher;
@@ -59,13 +59,13 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lblLoginMessage.Text = mes;
+                lblLoginMessage.Text = message;
             }
         }
         else if (userRole == "学生")
         {
-            string mes = studentManage.StudentLogin(loginName, password);
-            if (mes.Trim() == "成功")
+            string message = studentManage.StudentLogin(loginName, password);
+            if (message.Trim() == "成功")
             {
                 Student student = studentManage.GetStudentByStudentID(loginName);
                 Session["student"] = student;
@@ -73,7 +73,7 @@ public partial class LLogin : System.Web.UI.Page
             }
             else
             {
-                lblLoginMessage.Text = mes;
+                lblLoginMessage.Text = message;
             }
         }
         else
