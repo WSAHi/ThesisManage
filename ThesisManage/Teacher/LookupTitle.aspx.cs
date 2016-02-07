@@ -26,7 +26,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
             else
             {
                 GridView1.DataSourceID = null;
-                GridView1.DataSource = titleManage.GetTitleListByTeacherId(teacher.TEID);
+                GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
                 GridView1.DataBind();
             }
         }
@@ -35,7 +35,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
     {
         Teacher teacher = (Teacher)Session["teacher"];
         GridView1.DataSourceID = null;
-        GridView1.DataSource = titleManage.GetTitleListByTeacherId(teacher.TEID);
+        GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
         GridView1.DataBind();
     }
     public string cutContents(object c)
