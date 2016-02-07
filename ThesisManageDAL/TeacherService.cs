@@ -43,7 +43,7 @@ namespace ThesisManage.DAL
         /// </summary>
         /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns>教师信息</returns>
-        public Teacher GetTeacherByTeacherId(string teacherID)
+        public Teacher GetTeacherByTeacherID(string teacherID)
         {
             string sql = string.Format("SELECT * FROM Teacher WHERE TeacherID='{0}'", teacherID);
             SqlDataReader reader = DBHelper.GetReader(sql);

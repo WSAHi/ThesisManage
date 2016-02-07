@@ -17,7 +17,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public string IsValide(string teacherID, string pass)
         {
-            Teacher teacher = teacherService.GetTeacherByTeacherId(teacherID);
+            Teacher teacher = teacherService.GetTeacherByTeacherID(teacherID);
             string promptingMessage = null;
             if (!string.IsNullOrEmpty(teacher.TeacherName))
             {
@@ -43,7 +43,7 @@ namespace ThesisManage.BLL
         /// <returns></returns>
         public Teacher GetTeacherByTeacherID(string teacherID)
         {
-            return teacherService.GetTeacherByTeacherId(teacherID);
+            return teacherService.GetTeacherByTeacherID(teacherID);
         }
         /// <summary>
         /// 修改教师信息
