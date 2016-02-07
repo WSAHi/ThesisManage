@@ -16,5 +16,10 @@ namespace ThesisManage.BLL
         {
             return UserRoleService.GetAllUserRole();
         }
+
+        public static object GetAllUserRole()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
