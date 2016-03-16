@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("微软中国")]
 [assembly: AssemblyProduct("ThesisManageBLL")]
-[assembly: AssemblyCopyright("版权所有 (C) 微软中国 2009")]
+[assembly: AssemblyCopyright("版权所有 (C) 微软中国 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
