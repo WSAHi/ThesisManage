@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ThesisManageBLL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("微软中国")]
-[assembly: AssemblyProduct("ThesisManageBLL")]
-[assembly: AssemblyCopyright("版权所有 (C) 微软中国 2015")]
+[assembly: AssemblyCompany("WSA")]
+[assembly: AssemblyProduct("毕业设计选题系统")]
+[assembly: AssemblyCopyright("版权所有 (C) WSA 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
