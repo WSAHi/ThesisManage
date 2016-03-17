@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 题目实体类
     /// </summary>
-    [Serializable]
     public class Title
     {
         private int tID = 0;

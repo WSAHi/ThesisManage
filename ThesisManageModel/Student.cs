@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 学生实体类
     /// </summary>
-    [Serializable]
     public class Student
     {
         private int sID = 0;

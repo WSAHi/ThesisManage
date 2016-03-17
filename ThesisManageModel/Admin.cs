@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 管理员实体类
     /// </summary>
-    [Serializable]
     public class Admin
     {
         private int aID = 0;

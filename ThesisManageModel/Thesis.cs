@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 论文实体类
     /// </summary>
-    [Serializable]
     public class Thesis
     {
         private int thesisID = 0;

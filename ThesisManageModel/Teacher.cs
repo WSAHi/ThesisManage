@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 教师实体类
     /// </summary>
-    [Serializable]
     public class Teacher
     {
         private int tEID = 0;

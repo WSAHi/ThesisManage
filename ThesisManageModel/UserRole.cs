@@ -7,7 +7,6 @@ namespace ThesisManage.Model
     /// <summary>
     /// 用户角色实体类
     /// </summary>
-    [Serializable]
     public class UserRole
     {
         private int uID = 0;
