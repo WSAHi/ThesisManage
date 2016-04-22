@@ -29,7 +29,7 @@ public partial class Admin_DataManagement : System.Web.UI.Page
             else
             {
                 ddlUserRole.DataSourceID = null;
-                ddlUserRole.DataSource = UserRoleManage.GetAllUserRole();
+                ddlUserRole.DataSource = UserRoleManage.GetALLUserRole();
                 ddlUserRole.DataBind();
                 Panelvisible();
             }
