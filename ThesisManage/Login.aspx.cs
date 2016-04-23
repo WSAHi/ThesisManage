@@ -11,7 +11,7 @@ using System.Web.UI.HtmlControls;
 using ThesisManage.BLL;
 using ThesisManage.Model;
 
-public partial class LLogin : System.Web.UI.Page
+public partial class Login : System.Web.UI.Page
 {
     StudentManage studentManage = new StudentManage();
     TeacherManage teacherManage = new TeacherManage();
