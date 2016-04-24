@@ -17,8 +17,7 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            Teacher teacher = (Teacher)Session["teacher"];
-            if (teacher == null)
+            if ((Teacher)base.Session["teacher"] == null)
             {
                 Response.Redirect("~/Login.aspx");
             }
@@ -28,12 +27,7 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
     {
         if (Page.IsValid)
         {
-            Teacher teacher = (Teacher)Session["teacher"];
-            string title = txtTitile.Text;
-            string Description = txtDescription.Text;
-            int chooseNum = Convert.ToInt32(txtCanChooseNum.Text.Trim());
-            int num = titleManage.TeacherAddTitle(title, teacher.TEID, Description, chooseNum);
-            if (num > 0)
+            if (titleManage.TeacherAddTitle(txtTitileName.Text, ((Teacher)base.Session["teacher"]).TEID, txtDescription.Text, Convert.ToInt32(txtCanChooseNum.Text.Trim())) > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交成功，等待管理员进行审核！');</script>");
             }
@@ -42,13 +36,13 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交失败！');</script>");
             }
         }
-        txtTitile.Text = "";
+        txtTitileName.Text = "";
         txtDescription.Text = "";
         txtCanChooseNum.Text = "";
     }
     protected void btnEsc_Click(object sender, EventArgs e)
     {
-        txtTitile.Text = "";
+        txtTitileName.Text = "";
         txtDescription.Text = "";
         txtCanChooseNum.Text = "";
     }

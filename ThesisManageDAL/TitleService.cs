@@ -28,13 +28,13 @@ namespace ThesisManage.DAL
         /// 教师上传自定义题目
         /// </summary>
         /// <param name="titleName">题目名称</param>
-        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <param name="TEID">教师内码</param>
         /// <param name="Description">题目描述</param>
         /// <param name="counts">题目可选择的总数</param>
         /// <returns></returns>
-        public int TeacherAddTitle(string titleName, int teacherID, string Description, int counts)
+        public int TeacherAddTitle(string titleName, int TEID, string Description, int counts)
         {
-            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, counts, Description, teacherID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, counts, Description, TEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

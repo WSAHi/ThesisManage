@@ -8,7 +8,7 @@
                 <td>题目：
                 </td>
                 <td>
-                    <asp:TextBox ID="txtTitile" runat="server" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtTitileName" runat="server" CssClass="form-control"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
                 </td>
             </tr>
