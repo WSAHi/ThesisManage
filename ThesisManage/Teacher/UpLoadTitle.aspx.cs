@@ -29,18 +29,18 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
         if (Page.IsValid)
         {
             Teacher teacher = (Teacher)Session["teacher"];
-                string title = txtTitile.Text;
-                string Description = txtDescription.Text;
-                int chooseNum =Convert.ToInt32( txtCanChooseNum.Text.Trim());
-                int num = titleManage.TeacherAddTitle(title, teacher.TEID, Description,chooseNum);
-                if (num > 0)
-                {
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交成功，等待管理员进行审核！');</script>");
-                }
-                else
-                {
-                    this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交失败！');</script>");
-                }
+            string title = txtTitile.Text;
+            string Description = txtDescription.Text;
+            int chooseNum = Convert.ToInt32(txtCanChooseNum.Text.Trim());
+            int num = titleManage.TeacherAddTitle(title, teacher.TEID, Description, chooseNum);
+            if (num > 0)
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交成功，等待管理员进行审核！');</script>");
+            }
+            else
+            {
+                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('提交失败！');</script>");
+            }
         }
         txtTitile.Text = "";
         txtDescription.Text = "";
