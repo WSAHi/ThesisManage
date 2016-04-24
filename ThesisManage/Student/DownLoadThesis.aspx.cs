@@ -31,7 +31,7 @@ public partial class Student_ModifyThesis : System.Web.UI.Page
                 if (!string.IsNullOrEmpty(th.PublishDate))
                 {
                     Thesis thesis = thesisManage.GetThesisByStuID(student.SID);
-                    Title title = titleManage.GetTilteByTitleID(thesis.Title.TID);
+                    Title title = titleManage.GetTilteByTitleID(thesis.Title.TitleID);
                     lblTitle.Text = thesis.Title.TitleName;
                     lblUploadTime.Text = thesis.PublishDate;
                     lblTeacher.Text = title.Teacher.TeacherName;

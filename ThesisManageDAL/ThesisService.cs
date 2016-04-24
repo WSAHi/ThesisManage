@@ -26,9 +26,9 @@ namespace ThesisManage.DAL
             SqlParameter SID = new SqlParameter("@StudentID", SqlDbType.Int);
             SID.Value = thesis.Student.SID;
             cmd.Parameters.Add(SID);
-            SqlParameter TID = new SqlParameter("@TitleID", SqlDbType.Int);
-            TID.Value = thesis.Title.TID;
-            cmd.Parameters.Add(TID);
+            SqlParameter TitleID = new SqlParameter("@TitleID", SqlDbType.Int);
+            TitleID.Value = thesis.Title.TitleID;
+            cmd.Parameters.Add(TitleID);
             SqlParameter PublishDate = new SqlParameter("@PublishDate", SqlDbType.VarChar, 50);
             PublishDate.Value = thesis.PublishDate;
             cmd.Parameters.Add(PublishDate);
@@ -151,7 +151,7 @@ namespace ThesisManage.DAL
         {
             int studentID = 0;
             int titleID = 0;
-            string sql = string.Format("SELECT * FROM Thesis WHERE TitleID IN (SELECT TID FROM Title WHERE TeacherID={0})", teacherID);
+            string sql = string.Format("SELECT * FROM Thesis WHERE TitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID);
             List<Thesis> list = new List<Thesis>();
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)

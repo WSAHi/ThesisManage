@@ -55,7 +55,7 @@ public partial class Student_StudentMessage : System.Web.UI.Page
     {
         Student stu = (Student)Session["student"];
         TitleManage titleManage = new TitleManage();
-        titleManage.ModifiyTitleChooseNum(stu.Title.TID);
+        titleManage.ModifiyTitleChooseNum(stu.Title.TitleID);
         int num = studentManage.EscTitleByStudentId(stu.SID);
         ThesisManage.BLL.ThesisManage thesisManage = new ThesisManage.BLL.ThesisManage();
         int num2=thesisManage.DeleteThesisByStudentID(stu.SID);

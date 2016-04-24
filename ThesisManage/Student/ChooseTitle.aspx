@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
         <h1 class="h1 text-center">可选论文题目</h1>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" kDataKeyNames="TID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table table-striped">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odsTitle" kDataKeyNames="TitleID" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" AllowPaging="True" CssClass="table table-striped">
             <Columns>
-                <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
+                <asp:BoundField DataField="TitleID" HeaderText="TitleID" SortExpression="TitleID" Visible="False" />
                 <asp:TemplateField HeaderText="题目" SortExpression="TitleName">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("TitleName") %>'></asp:TextBox>
@@ -58,10 +58,10 @@
                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("State") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:HyperLinkField DataNavigateUrlFields="TID" DataNavigateUrlFormatString="TitleDetial.aspx?TID={0}" HeaderText="详细" Text="查看" />
+                <asp:HyperLinkField DataNavigateUrlFields="TitleID" DataNavigateUrlFormatString="TitleDetial.aspx?TitleID={0}" HeaderText="详细" Text="查看" />
                 <asp:TemplateField HeaderText="选题" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:Button ID="btnChooseTitle" runat="server" BorderStyle="None" CausesValidation="False" CommandName="Cho" Text="选题" CommandArgument='<%# Eval("TID") %>' CssClass="btn" />
+                        <asp:Button ID="btnChooseTitle" runat="server" BorderStyle="None" CausesValidation="False" CommandName="Cho" Text="选题" CommandArgument='<%# Eval("TitleID") %>' CssClass="btn" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
