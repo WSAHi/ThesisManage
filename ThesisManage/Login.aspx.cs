@@ -29,15 +29,15 @@ public partial class Login : System.Web.UI.Page
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         string userRole = ddlUserRole.SelectedItem.Text.Trim();
-        string loginName = txtUserName.Text.Trim();
+        string loginID = txtUserName.Text.Trim();
         string password = txtPassword.Text.Trim();
         if (userRole == "管理员")
         {
-            string message = adminManage.AdminSSO(loginName, password);
+            string message = adminManage.AdminSSO(loginID, password);
             if (message.Trim() == "成功")
             {
                 Admin admin = new Admin();
-                admin.LoginID = loginName;
+                admin.LoginID = loginID;
                 admin.LoginPass = password;
                 Session["admin"] = admin;
                 Response.Redirect("Admin/AuditUpLoadTitle.aspx");
@@ -49,10 +49,10 @@ public partial class Login : System.Web.UI.Page
         }
         else if (userRole == "教师")
         {
-            string message = teacherManage.TeacherSSO(loginName, password);
+            string message = teacherManage.TeacherSSO(loginID, password);
             if (message.Trim() == "成功")
             {
-                Teacher teacher = teacherManage.GetTeacherByTeacherID(loginName);
+                Teacher teacher = teacherManage.GetTeacherByTeacherID(loginID);
                 Session["teacher"] = teacher;
                 Session["TEID"] = teacher.TEID;
                 Response.Redirect("Teacher/TeacherMessage.aspx");
@@ -64,10 +64,10 @@ public partial class Login : System.Web.UI.Page
         }
         else if (userRole == "学生")
         {
-            string message = studentManage.StudentSSO(loginName, password);
+            string message = studentManage.StudentSSO(loginID, password);
             if (message.Trim() == "成功")
             {
-                Student student = studentManage.GetStudentByStudentID(loginName);
+                Student student = studentManage.GetStudentByStudentID(loginID);
                 Session["student"] = student;
                 Response.Redirect("Student/StudentMessage.aspx");
             }
