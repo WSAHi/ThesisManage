@@ -37,22 +37,15 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
         Student student = (Student)Session["student"];
         if (student.Title.TitleName != null && student.Title.TitleName != "")
         {
-            Thesis th = thesisManage.GetThesisByStuID(student.SID);
-            Stream worddatastream = FileUpload1.PostedFile.InputStream;
-            int worddatalen = FileUpload1.PostedFile.ContentLength;
             string wordtype = FileUpload1.PostedFile.ContentType;
             string name = this.FileUpload1.PostedFile.FileName;
-            DateTime time = DateTime.Now;
-            byte[] wordData = new byte[worddatalen];
-            int n = worddatastream.Read(wordData, 0, worddatalen);
+            int n = FileUpload1.PostedFile.InputStream.Read(new byte[FileUpload1.PostedFile.ContentLength], 0, FileUpload1.PostedFile.ContentLength);
             Thesis thesis = new Thesis();
             thesis.Student = student;
-            thesis.PublishDate = time.ToString();
-            thesis.Content = wordData;
-            int titleId = student.Title.TID;
-            Title title = titlemanage.GetTilteByTitleID(titleId);
-            thesis.Title = title;
-            if (string.IsNullOrEmpty(th.PublishDate))
+            thesis.PublishDate = DateTime.Now.ToString();
+            thesis.Content = (new byte[FileUpload1.PostedFile.ContentLength]);
+            thesis.Title = titlemanage.GetTilteByTitleID(student.Title.TID);
+            if (string.IsNullOrEmpty(thesisManage.GetThesisByStuID(student.SID).PublishDate))
             {
 
                 int isUpLoadOk = thesisManage.InsertThesis(thesis);
@@ -69,8 +62,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
             {
                 btnUpLoad.Attributes.Add("onclick", "return confirm('你已上传论文，确定要重新上传吗？');");
                 thesisManage.DeleteThesisByStudentID(student.SID);
-                int num = thesisManage.InsertThesis(thesis);
-                if (num > 0)
+                if (thesisManage.InsertThesis(thesis) > 0)
                 {
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('论文重新上传成功！');</script>");
                 }
