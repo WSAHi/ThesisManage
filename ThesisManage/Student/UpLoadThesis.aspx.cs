@@ -44,7 +44,7 @@ public partial class Student_UpLoadThesis : System.Web.UI.Page
             thesis.Student = student;
             thesis.PublishDate = DateTime.Now.ToString();
             thesis.Content = (new byte[FileUpload1.PostedFile.ContentLength]);
-            thesis.Title = titlemanage.GetTilteByTitleID(student.Title.TitleID);
+            thesis.Title = titlemanage.GetTilteByTitleID(student.Title.TID);
             if (string.IsNullOrEmpty(thesisManage.GetThesisByStuID(student.SID).PublishDate))
             {
 

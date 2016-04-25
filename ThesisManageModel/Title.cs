@@ -9,14 +9,14 @@ namespace ThesisManage.Model
     /// </summary>
     public class Title
     {
-        private int titleID = 0;
+        private int tID = 0;
         /// <summary>
         /// 题目内码ID
         /// </summary>
-        public int TitleID
+        public int TID
         {
-            get { return titleID; }
-            set { titleID = value; }
+            get { return tID; }
+            set { tID = value; }
         }
         private string titleName = string.Empty;
         /// <summary>

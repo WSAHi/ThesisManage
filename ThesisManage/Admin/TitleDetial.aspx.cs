@@ -16,10 +16,10 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     TitleManage titleManage = new TitleManage();
     TeacherManage teacherManage = new TeacherManage();
     StudentManage studentManage = new StudentManage();
-    public int TitleID
+    public int TID
     {
-        get { return (int)ViewState["TitleID"]; }
-        set { ViewState["TitleID"] = value; }
+        get { return (int)ViewState["TID"]; }
+        set { ViewState["TID"] = value; }
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -33,8 +33,8 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
             else
             {
-                TitleID = Convert.ToInt32(Request.QueryString["TtitleID"]);
-                Title title = titleManage.GetTilteByTitleID(TitleID);
+                TID = Convert.ToInt32(Request.QueryString["TID"]);
+                Title title = titleManage.GetTilteByTitleID(TID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
                     lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
@@ -67,16 +67,16 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         {
             int num = 0;
             int teacherId = Convert.ToInt32(Session["key"]);
-            Title title = titleManage.GetTilteByTitleID(TitleID);
+            Title title = titleManage.GetTilteByTitleID(TID);
 
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
             {
-                num = titleManage.ModifiyTitleState(TitleID);
+                num = titleManage.ModifiyTitleState(TID);
             }
             else
             {
-                num = titleManage.ModifiyTitleState(TitleID, teacherId);
-                studentManage.ModifiyStuSate(1, TitleID, title.Student.StudentID);
+                num = titleManage.ModifiyTitleState(TID, teacherId);
+                studentManage.ModifiyStuSate(1, TID, title.Student.StudentID);
             }
             if (num > 0)
             {
@@ -102,8 +102,8 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         if (txtReason.Text.Trim() != "")
         {
             Admin admin = (Admin)Session["admin"];
-            int num = titleManage.ModifiyTitleUnState(TitleID);
-            Title title = titleManage.GetTilteByTitleID(TitleID);
+            int num = titleManage.ModifiyTitleUnState(TID);
+            Title title = titleManage.GetTilteByTitleID(TID);
 
             if (num > 0)
             {

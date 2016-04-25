@@ -15,10 +15,10 @@ public partial class Student_TitleDetial : System.Web.UI.Page
 {
     TitleManage titleManage = new TitleManage();
     StudentManage studentManage = new StudentManage();
-    public int TitleID
+    public int TID
     {
-        get { return (int)ViewState["TitleID"]; }
-        set { ViewState["TitleID"] = value; }
+        get { return (int)ViewState["TID"]; }
+        set { ViewState["TID"] = value; }
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -31,8 +31,8 @@ public partial class Student_TitleDetial : System.Web.UI.Page
             }
             else
             {
-                TitleID = Convert.ToInt32(Request.QueryString["TitleID"]);
-                ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(TitleID);
+                TID = Convert.ToInt32(Request.QueryString["TID"]);
+                ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(TID);
                 lblTeacher.Text = title.Teacher.TeacherName;
                 lblUploader.Text = "教师:[" + title.Teacher.TeacherName + "]";
                 lblTitleName.Text = title.TitleName;
@@ -44,14 +44,19 @@ public partial class Student_TitleDetial : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
-        if (((Student)base.Session["student"]).SudentState == 0)
+        String studentId = ((Student)Session["student"]).StudentID;
+        int studentState = ((Student)Session["student"]).SudentState;
+        if (studentState == 0)
         {
-            if (studentManage.ModifiyStuSate(1, TitleID, ((Student)base.Session["student"]).StudentID) > 0)
+            int TitleId = TID;
+            int num = studentManage.ModifiyStuSate(1, TitleId, studentId);
+            if (num > 0)
             {
-                if (titleManage.ModifiyTitleHasChooseNum(TitleID) > 0)
+                int num1 = titleManage.ModifiyTitleHasChooseNum(TitleId);
+                if (num1 > 0)
                 {
 
-                    Student student = studentManage.GetStudentByStudentID(((Student)base.Session["student"]).StudentID);
+                    Student student = studentManage.GetStudentByStudentID(studentId);
                     Session.Remove("student");
                     Session["student"] = student;                    
                     this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('选题成功！');window.location.href='StudentMessage.aspx';</script>");

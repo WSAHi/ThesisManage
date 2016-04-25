@@ -31,7 +31,7 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
             Student student = (Student)Session["student"];
             if (string.IsNullOrEmpty(student.Title.TitleName))
             {
-                string title = txtTitleName.Text;
+                string title = txtTitile.Text;
                 string Description = txtDescription.Text;
                 int tEID = Convert.ToInt32(DropDownList1.SelectedItem.Value.Trim());
                 int num = titleManage.StuAddTitle(title, student.SID, Description, tEID);
@@ -52,7 +52,7 @@ public partial class Student_UpLoadTitle : System.Web.UI.Page
     }
     protected void btnEsc_Click(object sender, EventArgs e)
     {
-        txtTitleName.Text = "";
+        txtTitile.Text = "";
         txtDescription.Text = "";
     }
 }

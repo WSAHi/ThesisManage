@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odstitlelist" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-scripted">
             <Columns>
-                <asp:BoundField DataField="TitleID" HeaderText="TitleID" SortExpression="TitleID" Visible="False" />
+                <asp:BoundField DataField="TID" HeaderText="TID" SortExpression="TID" Visible="False" />
                 <asp:BoundField DataField="TitleName" HeaderText="标题名称" SortExpression="TitleName" />
                 <asp:TemplateField HeaderText="描述" SortExpression="Description">
                     <EditItemTemplate>
@@ -34,13 +34,13 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("TitleID") %>'
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("TID") %>'
                             CommandName="de">删除</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="修改">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("TitleID") %>'
+                        <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("TID") %>'
                             CommandName="ed">修改</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
