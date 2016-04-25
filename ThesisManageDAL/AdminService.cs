@@ -18,11 +18,10 @@ namespace ThesisManage.DAL
         public Admin GetAdminByID(string loginID)
         {
             int roleID = 0;
-            string sql = string.Format("SELECT * FROM Admin WHERE LoginID='{0}'", loginID);
             Admin admin = new Admin();
             try
             {
-                SqlDataReader reader = DBHelper.GetReader(sql);
+                SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Admin WHERE LoginID='{0}'", loginID));
                 if (reader.Read())
                 {
                     admin.AID = Convert.ToInt32(reader["AID"]);
@@ -48,9 +47,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyPassword(string newPassword, string loginID)
         {
-            string sql = string.Format("UPDATE Admin SET LoginPass='{0}' WHERE LoginID='{1}'", newPassword, loginID);
-            int num = DBHelper.ExecuteCommand(sql);
-            return num;
+            return DBHelper.ExecuteCommand(string.Format("UPDATE Admin SET LoginPass='{0}' WHERE LoginID='{1}'", newPassword, loginID));
         }
         /// <summary>
         /// 添加管理员
@@ -60,9 +57,7 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddAdmin(string loginID, int roleID)
         {
-            string sql = string.Format("INSERT INTO Admin (LoginID,ARID,LoginPass) VALUES ('{0}','{1}','111111')", loginID, roleID);
-            int num = DBHelper.ExecuteCommand(sql);
-            return num;
+            return DBHelper.ExecuteCommand(string.Format("INSERT INTO Admin (LoginID,ARID,LoginPass) VALUES ('{0}','{1}','111111')", loginID, roleID));
         }
         /// <summary>
         /// 批量添加管理员
@@ -75,18 +70,14 @@ namespace ThesisManage.DAL
             int num = 0;
             try
             {
-                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
-                OleDbConnection cnnxls = new OleDbConnection(strConn);
-                OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
-                DataSet ds = new DataSet();
-                myDa.Fill(ds);
-                if (ds.Tables[0].Rows.Count > 0)
+                new OleDbDataAdapter("select * from [Sheet1$]", new OleDbConnection(string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source))).Fill(new DataSet());
+                if (new DataSet().Tables[0].Rows.Count > 0)
                 {
                     string strSql = "";
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    for (int i = 0; i < new DataSet().Tables[0].Rows.Count; i++)
                     {
                         strSql += "INSERT INTO Admin(LoginID,ARID,LoginPass) VALUES ('";
-                        strSql += ds.Tables[0].Rows[i].ItemArray[0].ToString() + "','";
+                        strSql += new DataSet().Tables[0].Rows[i].ItemArray[0].ToString() + "','";
                         strSql += roleID + "','";
                         strSql += "111111" + "')";
                     }
