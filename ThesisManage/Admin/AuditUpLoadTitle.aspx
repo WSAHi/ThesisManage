@@ -13,7 +13,7 @@
                         <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label3" runat="server" Text='<%# cutContents(Eval("Description")) %>'></asp:Label>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Contents(Eval("Description")) %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="教师" SortExpression="Teacher">

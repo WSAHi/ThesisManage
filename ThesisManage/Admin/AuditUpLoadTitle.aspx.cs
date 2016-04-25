@@ -33,7 +33,7 @@ public partial class Admin_Default : System.Web.UI.Page
             sta = "审核未通过";
         return sta;
     }
-    public string cutContents(object c)
+    public string Contents(object c)
     {
         string contents = c.ToString();
         string content = null;
