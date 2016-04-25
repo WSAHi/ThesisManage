@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
-using System.Configuration;
 namespace ThesisManage.DAL
 {
     public static class DBHelper
@@ -16,9 +15,10 @@ namespace ThesisManage.DAL
         {
             get
             {
+                string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["OpenConter"].ToString();
                 if (connection == null)
                 {
-                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OpenConter"].ToString());
+                    connection = new SqlConnection(connectionString);
                     connection.Open();
                 }
                 else if (connection.State == ConnectionState.Closed)
@@ -40,7 +40,9 @@ namespace ThesisManage.DAL
         /// <returns>返回执行结果</returns>
         public static int ExecuteCommand(string sql)
         {
-            return new SqlCommand(sql, Connection).ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            int result = cmd.ExecuteNonQuery();
+            return result;
         }
         /// <summary>
         /// 对数据库执行的一个TSQL语句或存储过程
@@ -49,7 +51,9 @@ namespace ThesisManage.DAL
         /// <returns>返回一个SqlDataReader</returns>
         public static SqlDataReader GetReader(string sql)
         {
-            return new SqlCommand(sql, Connection).ExecuteReader();
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+            return reader;
         }
         /// <summary>
         /// 对数据库执行的一个TSQL语句或存储过程
@@ -58,8 +62,11 @@ namespace ThesisManage.DAL
         /// <returns>返回一个DataSet</returns>
         public static DataTable GetDataSet(string sql)
         {
-            new SqlDataAdapter(new SqlCommand(sql, Connection)).Fill(new DataSet());
-            return new DataSet().Tables[0];
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            return ds.Tables[0];
         }
     }
 }
