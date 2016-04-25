@@ -58,8 +58,11 @@ namespace ThesisManage.DAL
         /// <returns>·µ»ØÒ»¸öDataSet</returns>
         public static DataTable GetDataSet(string sql)
         {
-            new SqlDataAdapter(new SqlCommand(sql, Connection)).Fill(new DataSet());
-            return new DataSet().Tables[0];
+            DataSet ds = new DataSet();
+            SqlCommand cmd = new SqlCommand(sql, Connection);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            return ds.Tables[0];
         }
     }
 }
