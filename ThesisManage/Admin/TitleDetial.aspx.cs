@@ -33,7 +33,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
             else
             {
-                TitleID = Convert.ToInt32(Request.QueryString["TtitleID"]);
+                TitleID = Convert.ToInt32(Request.QueryString["TitleID"]);
                 Title title = titleManage.GetTilteByTitleID(TitleID);
                 if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
                 {
