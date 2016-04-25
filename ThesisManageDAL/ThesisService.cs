@@ -20,7 +20,8 @@ namespace ThesisManage.DAL
         public int InsertThesis(Thesis thesis)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = DBHelper.Connection;
+            SqlConnection conn = DBHelper.Connection;
+            cmd.Connection = conn;
             cmd.CommandText = "INSERT INTO Thesis(StudentID,TitleID,PublishDate,Contents) VALUES (@StudentID,@TitleID,@PublishDate,@Contents)";
             SqlParameter SID = new SqlParameter("@StudentID", SqlDbType.Int);
             SID.Value = thesis.Student.SID;
@@ -36,7 +37,7 @@ namespace ThesisManage.DAL
             Contents.Value = thesis.Content;
             cmd.Parameters.Add(Contents);
             int num = cmd.ExecuteNonQuery();
-            DBHelper.Connection.Close();
+            conn.Close();
             return num;
         }
         /// <summary>
@@ -47,7 +48,8 @@ namespace ThesisManage.DAL
         public int UpdateThesisByStuID(Thesis thesis)
         {
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = DBHelper.Connection;
+            SqlConnection conn = DBHelper.Connection;
+            cmd.Connection = conn;
             cmd.CommandText = "UPDATE Thesis SET PublishDate=@PublishDate,Contents=@Contents where StudentID=@StudentID";
             SqlParameter SID = new SqlParameter("@StudentID", SqlDbType.Int);
             SID.Value = thesis.Student.SID;
@@ -60,7 +62,7 @@ namespace ThesisManage.DAL
             Contents.Value = thesis.Content;
             cmd.Parameters.Add(Contents);
             int num = cmd.ExecuteNonQuery();
-            DBHelper.Connection.Close();
+            conn.Close();
             return num;
         }
         /// <summary>
@@ -71,6 +73,8 @@ namespace ThesisManage.DAL
         public int GetCountsByStuID(int studentID)
         {
             Thesis thsis = new Thesis();
+            string sql = string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID);
+            SqlDataReader reader = DBHelper.GetReader(sql);
             FileStream fileStream;
             BinaryWriter binaryWriter;
             int num = 0;
@@ -84,7 +88,7 @@ namespace ThesisManage.DAL
             long startIndex;
             //FileStream对象将封装的文件的相对路径或绝对路径
             string filePath = @"ThesisManage\毕业论文.doc";
-            while (DBHelper.GetReader(string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID)).Read())
+            while (reader.Read())
             {
                 //outbyte = (byte[])reader["Contents"];
                 num = 1;
@@ -92,7 +96,7 @@ namespace ThesisManage.DAL
                 binaryWriter = new BinaryWriter(fileStream);
                 startIndex = 0;
                 //将字节流读入outbyte缓冲区中并返回读取的字节数
-                reval = DBHelper.GetReader(string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID)).GetBytes(0, startIndex, outbyte, 0, buffersize);
+                reval = reader.GetBytes(0, startIndex, outbyte, 0, buffersize);
                 //当读取的字节流达到缓冲区允许的最大长度时要卸载缓冲区内的数据并将数据写入文件
                 while (reval == buffersize)
                 {
@@ -100,7 +104,7 @@ namespace ThesisManage.DAL
                     binaryWriter.Flush();
                     //重新设定开始读取的位置，并继续读取和写数据
                     startIndex += buffersize;
-                    reval = DBHelper.GetReader(string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID)).GetBytes(0, startIndex, outbyte, 0, buffersize);
+                    reval = reader.GetBytes(0, startIndex, outbyte, 0, buffersize);
                 }
                 //将缓冲区内最后剩余的数据写入文件
                 binaryWriter.Write(outbyte, 0, (int)reval - 1);
@@ -109,7 +113,7 @@ namespace ThesisManage.DAL
                 fileStream.Close();
 
             }
-            DBHelper.GetReader(string.Format("SELECT Contents FROM Thesis WHERE StudentID={0}", studentID)).Close();
+            reader.Close();
             return num;
         }
         /// <summary>
@@ -122,6 +126,7 @@ namespace ThesisManage.DAL
             int titleID = 0;
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
+
             string sql = string.Format("SELECT * FROM Thesis WHERE StudentID={0}", studentID);
             SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
@@ -146,8 +151,10 @@ namespace ThesisManage.DAL
         {
             int studentID = 0;
             int titleID = 0;
+            string sql = string.Format("SELECT * FROM Thesis WHERE TitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID);
             List<Thesis> list = new List<Thesis>();
-            foreach (DataRow rows in DBHelper.GetDataSet(string.Format("SELECT * FROM Thesis WHERE TitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID)).Rows)
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
             {
                 Thesis thsis = new Thesis();
                 thsis.ThesisID = Convert.ToInt32(rows["ThesisID"]);
@@ -172,7 +179,8 @@ namespace ThesisManage.DAL
             Thesis thsis = new Thesis();
             StudentService studentService = new StudentService();
 
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Thesis WHERE ThesisID={0}", thesisID));
+            string sql = string.Format("SELECT * FROM Thesis WHERE ThesisID={0}", thesisID);
+            SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 thsis.ThesisID = Convert.ToInt32(reader["ThesisID"]);
@@ -192,7 +200,8 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetThesisCount()
         {
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT num=COUNT(*) FROM Thesis"));
+            string sql = string.Format("SELECT num=COUNT(*) FROM Thesis");
+            SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
             {
@@ -208,7 +217,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int DeleteThesisByStudentID(int studentID)
         {
-            return DBHelper.ExecuteCommand(string.Format("DELETE Thesis WHERE StudentID={0}", studentID));
+            string sql = string.Format("DELETE Thesis WHERE StudentID={0}", studentID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
     }
 }

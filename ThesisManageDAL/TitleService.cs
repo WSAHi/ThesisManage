@@ -20,7 +20,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int StuAddTitle(string titleName, int studentID, string Description, int teacherID)
         {
-            return DBHelper.ExecuteCommand(string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, teacherID));
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, teacherID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 教师上传自定义题目
@@ -32,7 +34,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int TeacherAddTitle(string titleName, int TEID, string Description, int counts)
         {
-            return DBHelper.ExecuteCommand(string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, counts, Description, TEID));
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,TeacherID,HasChooseNum) VALUES ('{0}','{1}',0,'{2}','{3}',0)", titleName, counts, Description, TEID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 根据题目ID获取题目信息
@@ -43,10 +47,11 @@ namespace ThesisManage.DAL
         {
             StudentService studentService = new StudentService();
             TeacherService teacherService = new TeacherService();
+            string sql = string.Format("SELECT * FROM Title WHERE TitleID={0}", titleID);
             Title title = new Title();
             int teacherID = 0;
             int studentID = 0;
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Title WHERE TitleID={0}", titleID));
+            SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 title.TitleID = Convert.ToInt32(reader["TitleID"]);
@@ -84,10 +89,11 @@ namespace ThesisManage.DAL
         public Title GetTiByTitleID(int titleID)
         {
             TeacherService teacherService = new TeacherService();
+            string sql = string.Format("SELECT * FROM Title WHERE TitleID={0}", titleID);
             Title title = new Title();
             int teacherID = 0;
             title.Student = null;
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Title WHERE TitleID={0}", titleID));
+            SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 title.TitleID = Convert.ToInt32(reader["TitleID"]);
@@ -119,7 +125,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitle(string titleName, string Description, int counts, int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET TitleName ='{0}',Description='{1}',Counts={2} WHERE TitleID={3}", titleName, Description, counts, titleID));
+            string sql = string.Format("UPDATE Title SET TitleName ='{0}',Description='{1}',Counts={2} WHERE TitleID={3}", titleName, Description, counts, titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 修改审核通过题目的状态
@@ -128,7 +136,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleState(int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET State=1 WHERE TitleID={0}", titleID));
+            string sql = string.Format("UPDATE Title SET State=1 WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 修改未审核通过的题目状态
@@ -137,7 +147,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleUnState(int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET State=2 WHERE TitleID={0}", titleID));
+            string sql = string.Format("UPDATE Title SET State=2 WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 修改题目的选择状态
@@ -147,7 +159,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleState(int teacherID, int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TitleID={1}", teacherID, titleID));
+            string sql = string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TitleID={1}", teacherID, titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 删除题目
@@ -156,7 +170,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int DeleteTitle(int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("DELETE Title WHERE TitleID={0}", titleID));
+            string sql = string.Format("DELETE Title WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 获取可选的题目列表
@@ -165,11 +181,13 @@ namespace ThesisManage.DAL
         public List<Title> GetTitleList()
         {
             StudentService studentService = new StudentService();
+            string sql = string.Format("SELECT * FROM Title WHERE State=1");
             TeacherService teacherService = new TeacherService();
             List<Title> list = new List<Title>();
             int teacherID = 0;
             int studentID = 0;
-            foreach (DataRow rows in DBHelper.GetDataSet(string.Format("SELECT * FROM Title WHERE State=1")).Rows)
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
             {
                 Title title = new Title();
                 title.TitleID = Convert.ToInt32(rows["TitleID"]);
@@ -247,12 +265,13 @@ namespace ThesisManage.DAL
         public List<Title> GetTitleListByTeacherId(int teacherID)
         {
             StudentService studentService = new StudentService();
+            string sql = string.Format("SELECT * FROM Title WHERE TeacherID={0}", teacherID);
             TeacherService teacherService = new TeacherService();
 
             List<Title> list = new List<Title>();
             int teacherId = 0;
             int studentId = 0;
-            DataTable table = DBHelper.GetDataSet(string.Format("SELECT * FROM Title WHERE TeacherID={0}", teacherID));
+            DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
                 Title title = new Title();
@@ -289,7 +308,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleHasChooseNum(int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET HasChooseNum=HasChooseNum+1 WHERE TitleID={0}", titleID));
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum+1 WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 更新题目被选择数量（-）
@@ -298,7 +319,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyTitleChooseNum(int titleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Title SET HasChooseNum=HasChooseNum-1 WHERE TitleID={0}", titleID));
+            string sql = string.Format("UPDATE Title SET HasChooseNum=HasChooseNum-1 WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 获取指定列
@@ -307,8 +330,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public DataSet GetTitle(string sql)
         {
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, DBHelper.Connection);
             DataSet dataset = new DataSet();
-            new SqlDataAdapter(sql, DBHelper.Connection).Fill(dataset, "title");
+            adapter.Fill(dataset, "title");
             return dataset;
         }
         /// <summary>
@@ -317,7 +341,8 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetTitleCount()
         {
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT num=COUNT(*) FROM Title"));
+            string sql = string.Format("SELECT num=COUNT(*) FROM Title");
+            SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
             {
@@ -332,7 +357,8 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int GetTitleCountsSum()
         {
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT num=SUM(Counts) FROM title"));
+            string sql = string.Format("SELECT num=SUM(Counts) FROM title");
+            SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
             {

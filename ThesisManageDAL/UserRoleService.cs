@@ -17,13 +17,14 @@ namespace ThesisManage.DAL
         public static UserRole GetUserRoleByUID(int uID)
         {
             UserRole userRole = new UserRole();
-            SqlDataReader sqlDataReader = DBHelper.GetReader(string.Format("SELECT * FROM UserRole WHERE UID={0}", uID));
-            if (sqlDataReader.Read())
+            string getUserRoleByUIDSQL = string.Format("SELECT * FROM UserRole WHERE UID={0}", uID);
+            SqlDataReader userRoleByUIDSQLReader = DBHelper.GetReader(getUserRoleByUIDSQL);
+            if (userRoleByUIDSQLReader.Read())
             {
-                userRole.UID = Convert.ToInt32(sqlDataReader["UID"]);
-                userRole.RoleName = (string)sqlDataReader["RoleName"];
+                userRole.UID = Convert.ToInt32(userRoleByUIDSQLReader["UID"]);
+                userRole.RoleName = (string)userRoleByUIDSQLReader["RoleName"];
             }
-            sqlDataReader.Close();
+            userRoleByUIDSQLReader.Close();
             return userRole;
         }
         /// <summary>
@@ -32,15 +33,17 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public static List<UserRole> GetAllUserRole()
         {
-            DataTable dataTable = DBHelper.GetDataSet(string.Format("SELECT * FROM UserRole"));
-            foreach (DataRow userRoleRows in dataTable.Rows)
+            string getUserRoleSQL = string.Format("SELECT * FROM UserRole");
+            List<UserRole> userRoleList = new List<UserRole>();
+            DataTable userRoleTable = DBHelper.GetDataSet(getUserRoleSQL);
+            foreach (DataRow userRoleRows in userRoleTable.Rows)
             {
                 UserRole userRole = new UserRole();
                 userRole.UID = Convert.ToInt32(userRoleRows["UID"]);
                 userRole.RoleName = (string)userRoleRows["RoleName"];
-                new List<UserRole>().Add(userRole);
+                userRoleList.Add(userRole);
             }
-            return new List<UserRole>();
+            return userRoleList;
         }
     }
 }

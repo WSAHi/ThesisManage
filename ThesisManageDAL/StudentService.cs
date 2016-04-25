@@ -21,7 +21,8 @@ namespace ThesisManage.DAL
         {
             int userRoleID = 0;//用户角色ID
             int titleID = 0;//题目ID
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Student WHERE SID ={0}", sID));
+            string sql = string.Format("SELECT * FROM Student WHERE SID ={0}", sID);
+            SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 student.SID = Convert.ToInt32(reader["SID"]);
@@ -57,7 +58,8 @@ namespace ThesisManage.DAL
         {
             int userRoleID = 0;//用户角色ID
             int titleID = 0;//题目ID
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT * FROM Student WHERE StudentID ='{0}'", studentID));
+            string sql = string.Format("SELECT * FROM Student WHERE StudentID ='{0}'", studentID);
+            SqlDataReader reader = DBHelper.GetReader(sql);
             if (reader.Read())
             {
                 student.SID = Convert.ToInt32(reader["SID"]);
@@ -91,7 +93,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuPassword(string newPass, string studentID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Student SET StudentPass='{0}' WHERE StudentID='{1}'", newPass, studentID));
+            string sql = string.Format("UPDATE Student SET StudentPass='{0}' WHERE StudentID='{1}'", newPass, studentID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 修改学生信息
@@ -103,7 +107,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuByStudentID(string studentAddress, string studentPhone, string studentMail, string studentID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Student SET StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' WHERE StudentID='{3}'", studentAddress, studentPhone, studentMail, studentID));
+            string sql = string.Format("UPDATE Student SET StudentAddress='{0}',StudentPhone='{1}',StudentMail='{2}' WHERE StudentID='{3}'", studentAddress, studentPhone, studentMail, studentID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 修改学生选题状态
@@ -114,7 +120,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int ModifiyStuSate(int sudentState, int titleID, string studentID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Student SET SudentState={0},STitleID={1} WHERE StudentID='{2}'", sudentState, titleID, studentID));
+            string sql = string.Format("UPDATE Student SET SudentState={0},STitleID={1} WHERE StudentID='{2}'", sudentState, titleID, studentID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 增加学生
@@ -126,7 +134,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int AddStudent(string studentID, string studentName, string studentClass, int roleID)
         {
-            return DBHelper.ExecuteCommand(string.Format("INSERT INTO Student (StudentID,StudentName,StudentClass,SRID,StudentPass,SudentState) VALUES ('{0}','{1}','{2}',{3},'333333','0')", studentID, studentName, studentClass, roleID));
+            string sql = string.Format("INSERT INTO Student (StudentID,StudentName,StudentClass,SRID,StudentPass,SudentState) VALUES ('{0}','{1}','{2}',{3},'333333','0')", studentID, studentName, studentClass, roleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
         /// <summary>
         /// 批量添加学生
@@ -141,8 +151,11 @@ namespace ThesisManage.DAL
             string pass = "333333";
             try
             {
+                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
+                OleDbConnection cnnxls = new OleDbConnection(strConn);
+                OleDbDataAdapter myDa = new OleDbDataAdapter("SELECT * FROM [Sheet1$]", cnnxls);
                 DataSet myDs = new DataSet();
-                new OleDbDataAdapter("SELECT * FROM [Sheet1$]", new OleDbConnection(string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source))).Fill(myDs);
+                myDa.Fill(myDs);
                 if (myDs.Tables[0].Rows.Count > 0)
                 {
                     string strSql = "";
@@ -171,8 +184,10 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public List<Student> GetAllClass()
         {
-            var list = new List<Student>();
-            foreach (DataRow rows in DBHelper.GetDataSet(string.Format("SELECT StudentClass FROM Student GROUP BY StudentClass")).Rows)
+            string sql = string.Format("SELECT StudentClass FROM Student GROUP BY StudentClass");
+            List<Student> list = new List<Student>();
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
             {
                 Student student = new Student();
                 string className = rows["StudentClass"].ToString();
@@ -188,9 +203,10 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public DataSet GetStudent(string sql)
         {
-            var dataSet = new DataSet();
-            new SqlDataAdapter(sql, DBHelper.Connection).Fill(dataSet, "student");
-            return dataSet;
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, DBHelper.Connection);
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset, "student");
+            return dataset;
         }
         /// <summary>
         /// 获取选择同一个老师的所有学生
@@ -199,10 +215,12 @@ namespace ThesisManage.DAL
         /// <returns>选择同一个老师的学生的信息</returns>
         public List<Student> GetStudentWithTeacher(int teacherID)
         {
+            List<Student> list = new List<Student>();
             int userRoleID = 0;//用户角色ID
             int titleID = 0;//题目ID
-            var list = new List<Student>();
-            foreach (DataRow rows in DBHelper.GetDataSet(string.Format("SELECT * FROM Student WHERE STitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID)).Rows)
+            string sql = string.Format("SELECT * FROM Student WHERE STitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID);
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
             {
                 Student student = new Student();
                 student.SID = Convert.ToInt32(rows["SID"]);
@@ -234,10 +252,12 @@ namespace ThesisManage.DAL
         /// <returns>上传自定义题目的学生信息</returns>
         public List<Student> GetStudentByUpLoadTitle()
         {
+            List<Student> list = new List<Student>();
             int userRoleID = 0;//用户角色ID
             int titleID = 0;//题目ID
-            var list = new List<Student>();
-            foreach (DataRow rows in DBHelper.GetDataSet(string.Format("SELECT * FROM Student WHERE SID IN (SELECT StudentID FROM Title GROUP BY StudentID)")).Rows)
+            string sql = string.Format("SELECT * FROM Student WHERE SID IN (SELECT StudentID FROM Title GROUP BY StudentID)");
+            DataTable table = DBHelper.GetDataSet(sql);
+            foreach (DataRow rows in table.Rows)
             {
                 Student student = new Student();
                 student.SID = Convert.ToInt32(rows["SID"]);
@@ -255,7 +275,8 @@ namespace ThesisManage.DAL
                     titleID = Convert.ToInt32(rows["STitleID"]);
                 }
                 catch (Exception)
-                { }
+                {
+                }
                 student.Role = UserRoleService.GetUserRoleByUID(userRoleID);
                 student.Title = titleServer.GetTiByTitleID(titleID);
                 list.Add(student);
@@ -268,7 +289,8 @@ namespace ThesisManage.DAL
         /// <returns>学生总数</returns>
         public int GetStudentCount()
         {
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT num=COUNT(*) FROM Student"));
+            string sql = string.Format("SELECT num=COUNT(*) FROM Student");
+            SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
             {
@@ -283,7 +305,8 @@ namespace ThesisManage.DAL
         /// <returns>已经选题的学生数量</returns>
         public int GetHasChooseTitleNum()
         {
-            SqlDataReader reader = DBHelper.GetReader(string.Format("SELECT num=COUNT(*) FROM Student WHERE SudentState=1"));
+            string sql = string.Format("SELECT num=COUNT(*) FROM Student WHERE SudentState=1");
+            SqlDataReader reader = DBHelper.GetReader(sql);
             int num = 0;
             if (reader.Read())
             {
@@ -299,7 +322,9 @@ namespace ThesisManage.DAL
         /// <returns></returns>
         public int EscTitleByStudentID(int studentID)
         {
-            return DBHelper.ExecuteCommand(string.Format("UPDATE Student SET STitleID=null,SudentState=0 WHERE SID={0}", studentID));
+            string sql = string.Format("UPDATE Student SET STitleID=null,SudentState=0 WHERE SID={0}", studentID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
         }
     }
 }
