@@ -218,7 +218,7 @@ namespace ThesisManage.DAL
             List<Student> list = new List<Student>();
             int userRoleID = 0;//用户角色ID
             int titleID = 0;//题目ID
-            string sql = string.Format("SELECT * FROM Student WHERE STitleID IN (SELECT TID FROM Title WHERE TeacherID={0})", teacherID);
+            string sql = string.Format("SELECT * FROM Student WHERE STitleID IN (SELECT TitleID FROM Title WHERE TeacherID={0})", teacherID);
             DataTable table = DBHelper.GetDataSet(sql);
             foreach (DataRow rows in table.Rows)
             {
