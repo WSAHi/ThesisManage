@@ -42,7 +42,7 @@ public partial class Student_TitleDetial : System.Web.UI.Page
             }
         }
     }
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnChoose_Click(object sender, EventArgs e)
     {
         if (((Student)base.Session["student"]).SudentState == 0)
         {
