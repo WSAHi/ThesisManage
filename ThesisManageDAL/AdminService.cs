@@ -75,7 +75,7 @@ namespace ThesisManage.DAL
             int num = 0;
             try
             {
-                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
+                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=No;'", source);
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
                 OleDbDataAdapter myDa = new OleDbDataAdapter("select * from [Sheet1$]", cnnxls);
                 DataSet ds = new DataSet();

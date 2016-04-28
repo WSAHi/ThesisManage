@@ -144,7 +144,17 @@ namespace ThesisManage.DAL
             string pass = "222222";
             try
             {
-                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=Yes;'", source);
+                string strConn = string.Format("Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties= 'Excel 8.0;Imex=2;HDR=No;'", source);
+                /*
+                 * 参数HDR的值：HDR = Yes，这代表第一行是标题，不做为数据使用 ，如果用HDR = NO，则表示第一行不是标题，做为数据来使用。系统默认的是YES
+                 * 参数Excel 8.0，对于Excel 97以上版本都用Excel 8.0
+                 * IMEX(IMport EXport mode)设置
+                   IMEX 有三种模式：0 is Export mode；1 is Import mode；2 is Linked mode(full update capabilities)
+                   当 IMEX = 0 时为“汇出模式”，这个模式开启的 Excel 档案只能用来做“写入”用途。
+                   当 IMEX = 1 时为“汇入模式”，这个模式开启的 Excel 档案只能用来做“读取”用途。
+                   当 IMEX = 2 时为“连結模式”，这个模式开启的 Excel 档案可同时支援“读取”与“写入”用途。
+                   意义如下: 0-输出模式;1-输入模式;2-链接模式(完全更新能力)
+                   */
                 OleDbConnection cnnxls = new OleDbConnection(strConn);
                 OleDbDataAdapter myDa = new OleDbDataAdapter("SELECT * FROM [Sheet1$]", cnnxls);
                 DataSet myDs = new DataSet();
