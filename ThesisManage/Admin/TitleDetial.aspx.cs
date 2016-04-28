@@ -66,7 +66,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         else
         {
             int num = 0;
-            int teacherId = Convert.ToInt32(Session["key"]);
+            int teacherID = Convert.ToInt32(Session["key"]);
             Title title = titleManage.GetTilteByTitleID(TitleID);
 
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
@@ -75,7 +75,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
             else
             {
-                num = titleManage.ModifiyTitleState(TitleID, teacherId);
+                num = titleManage.ModifiyTitleState(TitleID, teacherID);
                 studentManage.ModifiyStuSate(1, TitleID, title.Student.StudentID);
             }
             if (num > 0)
@@ -90,37 +90,17 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
     }
     protected void btnUnPass_Click(object sender, EventArgs e)
     {
-        if (Panel1.Visible == true)
-        {
-            Panel1.Visible = false;
-        }
-        else
-            Panel1.Visible = true;
-    }
-    protected void btnSubmit_Click(object sender, EventArgs e)
-    {
-        if (txtReason.Text.Trim() != "")
-        {
-            Admin admin = (Admin)Session["admin"];
-            int num = titleManage.ModifiyTitleUnState(TitleID);
-            Title title = titleManage.GetTilteByTitleID(TitleID);
+        Admin admin = (Admin)Session["admin"];
+        int num = titleManage.ModifiyTitleUnState(TitleID);
+        Title title = titleManage.GetTilteByTitleID(TitleID);
 
-            if (num > 0)
-            {
-                Response.Redirect("AuditUpLoadTitle.aspx");
-            }
-            else
-            {
-                this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('操作失败！');</script>");
-            }
+        if (num > 0)
+        {
+            Response.Redirect("AuditUpLoadTitle.aspx");
         }
         else
         {
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('请注明原因！');</script>");
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('操作失败！');</script>");
         }
-    }
-    protected void btnCancel_Click(object sender, EventArgs e)
-    {
-        Panel1.Visible = false;
     }
 }

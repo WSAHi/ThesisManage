@@ -44,24 +44,6 @@
                 <td>
                     <asp:Button ID="btnPass" runat="server" Text="通过" OnClick="btnPass_Click" CssClass="btn" />
                     <asp:Button ID="btnUnPass" runat="server" Text="不通过" OnClick="btnUnPass_Click" CssClass="btn" />
-                    <asp:Panel ID="Panel1" runat="server" Visible="False">
-                        <table class="table table-scriped">
-                            <tr>
-                                <td>请写明原因</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <asp:TextBox ID="txtReason" runat="server" CssClass="form-control"></asp:TextBox></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="提交" CssClass="btn" />
-                                    <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="取消" CssClass="btn" /></td>
-                            </tr>
-                        </table>
-                    </asp:Panel>
                 </td>
             </tr>
         </table>
