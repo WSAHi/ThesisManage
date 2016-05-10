@@ -22,7 +22,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource2" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table table-scripted"></asp:GridView>
+                    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table table-scripted"></asp:GridView>
                 </td>
             </tr>
         </table>
