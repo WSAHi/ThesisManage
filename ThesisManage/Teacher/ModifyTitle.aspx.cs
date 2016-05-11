@@ -35,13 +35,13 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-        Teacher teacher = (Teacher)Session["teacher"];
         if (Page.IsValid)
         {
+            int titleID = Convert.ToInt32(Request.Params["titleID"]);
             string titleName = txtTitile.Text;
             string description = txtDescription.Text;
             int counts = Convert.ToInt32(txtCanChooseNum.Text);
-            int num = titleManage.ModifiyTitle(titleName, description, counts, teacher.TEID);
+            int num = titleManage.ModifiyTitle(titleName, description, counts, titleID);
             if (num > 0)
             {
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('修改成功！');window.location.href='LookupTitle.aspx';</script>");
