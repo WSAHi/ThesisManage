@@ -12,7 +12,7 @@
         <br />
         可选人数：<asp:TextBox ID="txtCanChooseNum" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtTitile" ErrorMessage="*"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCanChooseNum" ErrorMessage="请输入整数" ValidationExpression="\d"></asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCanChooseNum" ErrorMessage="请输入整数" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
         <br />
         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="修改" CssClass="form-control" />
         <br />
