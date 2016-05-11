@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
-        <h1 class="h1 text-center">&nbsp;&nbsp;&nbsp;&nbsp; 添加数据</h1>
+        <h1 class="h1 text-center">添加数据</h1>
         <table class="table table-scriped">
             <tr>
                 <td>单行添加</td>
