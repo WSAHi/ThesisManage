@@ -18,11 +18,9 @@
         <br />
         <asp:TextBox ID="txtTeacher" runat="server" CssClass="form-control" placeholder="指导老师，支持模糊查询"></asp:TextBox>
         <br />
-        <div class="btn-group">
-            <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="查询" CssClass="btn" />
-            <asp:Button ID="btnExcel" runat="server" OnClick="btnExcel_Click" Text="生成Excel" CssClass="btn" />
-        </div>
+        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="查询" CssClass="form-control" />
         <br />
+        <asp:Button ID="btnExcel" runat="server" OnClick="btnExcel_Click" Text="生成Excel" CssClass="form-control" />
         <br />
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" CssClass="table"></asp:GridView>
     </div>
