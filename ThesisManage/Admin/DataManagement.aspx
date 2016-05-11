@@ -6,6 +6,7 @@
         角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="ddlUserRole_SelectedIndexChanged" CssClass="form-control">
         </asp:DropDownList>
         <asp:ObjectDataSource ID="ObjectDataSource" runat="server" SelectMethod="GetALLUserRole" TypeName="ThesisManage.BLL.UserRoleManage"></asp:ObjectDataSource>
+        <br />
         <div class="panel-group">
             <asp:Panel ID="Panel1" runat="server" CssClass="panel">
                 添加学生用户（默认密码：6个3）
