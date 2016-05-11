@@ -27,13 +27,7 @@ public partial class Teacher_StudentList : System.Web.UI.Page
     }
     protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
     {
-        if (e.Row.RowType == DataControlRowType.DataRow)
-        {
-            //设置行颜色   
-            e.Row.Attributes.Add("onmouseover", "currentcolor=this.style.backgroundColor;this.style.backgroundColor='#ff9900'");
-            //添加自定义属性，当鼠标移走时还原该行的背景色   
-            e.Row.Attributes.Add("onmouseout", "this.style.backgroundColor=currentcolor");
-        }
+
     }
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
