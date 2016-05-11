@@ -12,17 +12,11 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%#  cutContents(Eval("Description"))%>'></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text='<%# cutContents(Eval("Description"))%>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="Counts" HeaderText="可选人数" SortExpression="Counts">
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:BoundField>
-                <asp:BoundField DataField="HasChooseNum" HeaderText="已选人数" SortExpression="HasChooseNum">
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:BoundField>
+                <asp:BoundField DataField="Counts" HeaderText="可选人数" SortExpression="Counts"></asp:BoundField>
+                <asp:BoundField DataField="HasChooseNum" HeaderText="已选人数" SortExpression="HasChooseNum"></asp:BoundField>
                 <asp:TemplateField HeaderText="审核状态" SortExpression="State">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("State") %>'></asp:TextBox>
@@ -30,8 +24,6 @@
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# panduan( Eval("State")) %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
