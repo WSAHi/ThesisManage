@@ -18,19 +18,15 @@
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# JudgeState( Eval("State")) %>'></asp:Label>
                     </ItemTemplate>
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="删除">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("TitleID") %>'
-                            CommandName="de">删除</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Eval("TitleID") %>' CommandName="delete">删除</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="修改">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("TitleID") %>'
-                            CommandName="ed">修改</asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CommandArgument='<%# Eval("TitleID") %>' CommandName="update">修改</asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

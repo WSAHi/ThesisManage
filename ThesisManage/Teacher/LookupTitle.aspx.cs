@@ -25,18 +25,9 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
             }
             else
             {
-                GridView1.DataSourceID = null;
-                GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
-                GridView1.DataBind();
+                Bind();
             }
         }
-    }
-    public void Bind()
-    {
-        Teacher teacher = (Teacher)Session["teacher"];
-        GridView1.DataSourceID = null;
-        GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
-        GridView1.DataBind();
     }
     public string JudgeState(object s)
     {
@@ -63,7 +54,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
         string cmd = e.CommandName;
         int titleId = Convert.ToInt32(e.CommandArgument);
         ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleId);
-        if (cmd == "de")
+        if (cmd == "delete")
         {           
             if (title.State == 0 || title.State == 2)
             {
@@ -75,7 +66,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
                 this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('该标题已通过审核，不能删除！');</script>");
             }
         }
-        if (cmd == "ed")
+        if (cmd == "update")
         {
             if (title.State ==1)
             {
@@ -86,5 +77,12 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
                 Page.Server.Transfer("ModifyTitle.aspx?titleId=" + titleId);
             }
         }
+    }
+    public void Bind()
+    {
+        Teacher teacher = (Teacher)Session["teacher"];
+        GridView1.DataSourceID = null;
+        GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
+        GridView1.DataBind();
     }
 }
