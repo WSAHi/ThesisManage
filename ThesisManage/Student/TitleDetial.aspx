@@ -41,7 +41,8 @@
                 </td>
             </tr>
         </table>
-        <asp:Button ID="btnChoose" runat="server" OnClick="btnChoose_Click" Text="选题" CssClass="btn center-block" />
+        <br />
+        <asp:Button ID="btnChoose" runat="server" OnClick="btnChoose_Click" Text="选题" CssClass="form-control" />
     </div>
 </asp:Content>
 
