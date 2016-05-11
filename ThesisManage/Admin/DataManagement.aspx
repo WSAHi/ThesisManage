@@ -9,8 +9,9 @@
                 <td>
                     <table class="table table-striped">
                         <tr>
-                            <td>角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="odsrole" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="ddlUserRole_SelectedIndexChanged" CssClass="form-control">
-                            </asp:DropDownList><asp:ObjectDataSource ID="odsrole" runat="server" SelectMethod="GetUserRole" TypeName="ThesisManage.BLL.UserRoleManage"></asp:ObjectDataSource>
+                            <td>角色:<asp:DropDownList ID="ddlUserRole" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource" DataTextField="RoleName" DataValueField="UID" OnSelectedIndexChanged="ddlUserRole_SelectedIndexChanged" CssClass="form-control">
+                            </asp:DropDownList>
+                                <asp:ObjectDataSource ID="ObjectDataSource" runat="server" SelectMethod="GetALLUserRole" TypeName="ThesisManage.BLL.UserRoleManage"></asp:ObjectDataSource>
                             </td>
                         </tr>
                         <tr>
