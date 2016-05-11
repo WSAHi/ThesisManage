@@ -28,10 +28,6 @@
                     <HeaderStyle HorizontalAlign="Center" />
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:BoundField>
-                <asp:BoundField DataField="HasChooseNum" HeaderText="总人数" SortExpression="HasChooseNum">
-                    <HeaderStyle HorizontalAlign="Center" />
-                    <ItemStyle HorizontalAlign="Center" />
-                </asp:BoundField>
                 <asp:TemplateField HeaderText="审核状态" SortExpression="State">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("State") %>'></asp:TextBox>
