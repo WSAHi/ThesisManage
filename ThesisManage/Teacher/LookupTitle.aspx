@@ -22,7 +22,7 @@
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("State") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label2" runat="server" Text='<%# panduan( Eval("State")) %>'></asp:Label>
+                        <asp:Label ID="Label2" runat="server" Text='<%# JudgeState( Eval("State")) %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="删除">

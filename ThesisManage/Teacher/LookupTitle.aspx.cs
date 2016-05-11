@@ -38,7 +38,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
         GridView1.DataSource = titleManage.GetTitleListByTeacherID(teacher.TEID);
         GridView1.DataBind();
     }
-    public string panduan(object s)
+    public string JudgeState(object s)
     {
         int state = Convert.ToInt32(s);
         string sta = null;
@@ -61,13 +61,13 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
     protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         string cmd = e.CommandName;
-        int titleId = Convert.ToInt32(e.CommandArgument);
-        ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleId);
+        int titleID = Convert.ToInt32(e.CommandArgument);
+        ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleID);
         if (cmd == "de")
         {
             if (title.State == 0 || title.State == 2)
             {
-                titleManage.DeleteTitle(titleId);
+                titleManage.DeleteTitle(titleID);
                 Bind();
             }
             else
@@ -83,7 +83,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
             }
             else
             {
-                Page.Server.Transfer("ModifyTitle.aspx?titleId=" + titleId);
+                Page.Server.Transfer("ModifyTitle.aspx?titleId=" + titleID);
             }
         }
     }
