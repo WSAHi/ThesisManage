@@ -23,6 +23,7 @@
             <asp:Panel ID="Panel2" runat="server" CssClass="panel">
                 添加教师帐户（默认密码：6个2）
                 <asp:TextBox ID="txtTeacherID" runat="server" CssClass="form-control" placeholder="教师工号"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtStudentID" ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="txtTeacherName" runat="server" CssClass="form-control" placeholder="姓名"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtTeacherName" ErrorMessage="*"></asp:RequiredFieldValidator>
                 <asp:Button ID="btnAddTeacher" runat="server" Text="添加" OnClick="btnAddTeacher_Click" CssClass="form-control" />
