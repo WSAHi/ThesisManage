@@ -53,7 +53,6 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
                     lblState.Text = "未审核";
                 }
             }
-
         }
     }
     protected void btnPass_Click(object sender, EventArgs e)
