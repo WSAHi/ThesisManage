@@ -12,7 +12,7 @@
                 <asp:BoundField DataField="Counts" HeaderText="可选数量" SortExpression="Counts" />
                 <asp:TemplateField HeaderText="审核状态" SortExpression="State">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("State") %>'></asp:TextBox>
+                        <asp:Label ID="TextBox1" runat="server" Text='<%# Bind("State") %>'></asp:Label>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# JudgeState(Eval("State")) %>'></asp:Label>
