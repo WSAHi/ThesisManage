@@ -21,7 +21,7 @@ public partial class Admin_Default : System.Web.UI.Page
             Response.Redirect("~/Login.aspx");
         }
     }
-    public string panduan(object s)
+    public string JudgeState(object s)
     {
         int state = Convert.ToInt32(s);
         string sta = null;
@@ -32,18 +32,5 @@ public partial class Admin_Default : System.Web.UI.Page
         else if (state == 2)
             sta = "审核未通过";
         return sta;
-    }
-    public string Contents(object c)
-    {
-        string contents = c.ToString();
-        string content = null;
-        if (contents.Length > 10)
-        {
-            content = contents.Substring(0, 10);
-            content = content + "...";
-        }
-        else
-            content = contents;
-        return content;
     }
 }
