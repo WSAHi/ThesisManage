@@ -324,7 +324,7 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 获取指定列
+        /// 根据条件获取课题信息列表
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
