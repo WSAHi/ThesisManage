@@ -24,16 +24,11 @@
                 <td>邮箱:</td>
                 <td>
                     <asp:TextBox ID="txtTeacherEmail" runat="server" CssClass="form-control"></asp:TextBox></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>
-                    <asp:Button ID="btnSubmint" runat="server" OnClick="btnsubmint_Click" Text="提交" CssClass="btn" /></td>
-                <td>
-                    <asp:Button ID="btnCancel" runat="server" OnClick="btnesc_Click" Text="取消" CssClass="btn" /></td>
             </tr>
         </table>
+        <asp:Button ID="btnSubmint" runat="server" OnClick="btnsubmint_Click" Text="提交" CssClass="form-control" />
+        <br />
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnesc_Click" Text="取消" CssClass="form-control" />
     </div>
 </asp:Content>
 
