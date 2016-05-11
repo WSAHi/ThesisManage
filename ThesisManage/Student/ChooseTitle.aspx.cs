@@ -74,19 +74,5 @@ public partial class Student_ChooseTitle : System.Web.UI.Page
         {
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "", "<script>alert('你已选题，请别重选！');</script>");
         }
-       
-    }
-    public string cutContents(object c)
-    {
-        string contents = c.ToString();
-        string content = null;
-        if (contents.Length > 10)
-        {
-            content = contents.Substring(0, 10);
-            content = content + "...";
-        }
-        else
-            content = contents;
-        return content;
     }
 }
