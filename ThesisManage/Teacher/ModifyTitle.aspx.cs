@@ -25,8 +25,8 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
             }
             else
             {
-                int titleId =Convert.ToInt32( Request.Params["titleId"]);
-                ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleId);
+                int titleID = Convert.ToInt32(Request.Params["titleID"]);
+                Title title = titleManage.GetTilteByTitleID(titleID);
                 txtTitile.Text = title.TitleName;
                 txtDescription.Text = title.Description;
                 txtCanChooseNum.Text = title.Counts.ToString();
@@ -35,13 +35,12 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
-         Teacher teacher = (Teacher)Session["teacher"];
+        Teacher teacher = (Teacher)Session["teacher"];
         if (Page.IsValid)
         {
-
             string titleName = txtTitile.Text;
             string description = txtDescription.Text;
-            int counts =Convert.ToInt32(txtCanChooseNum.Text);
+            int counts = Convert.ToInt32(txtCanChooseNum.Text);
             int num = titleManage.ModifiyTitle(titleName, description, counts, teacher.TEID);
             if (num > 0)
             {
@@ -55,6 +54,6 @@ public partial class Teacher_ModifyTitle : System.Web.UI.Page
     }
     protected void btnEsc_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("LookupTitle.aspx");
     }
 }
