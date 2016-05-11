@@ -39,14 +39,11 @@
                     <asp:Label ID="lblTeacher" runat="server"></asp:Label><br />
                 </td>
             </tr>
-            <tr>
-                <td>审核:</td>
-                <td>
-                    <asp:Button ID="btnPass" runat="server" Text="通过" OnClick="btnPass_Click" CssClass="btn" />
-                    <asp:Button ID="btnUnPass" runat="server" Text="不通过" OnClick="btnUnPass_Click" CssClass="btn" />
-                </td>
-            </tr>
         </table>
+        <asp:Button ID="btnPass" runat="server" Text="通过" OnClick="btnPass_Click" CssClass="form-control" />
+        <br />
+        <br />
+        <asp:Button ID="btnUnPass" runat="server" Text="不通过" OnClick="btnUnPass_Click" CssClass="form-control" />
     </div>
 </asp:Content>
 
