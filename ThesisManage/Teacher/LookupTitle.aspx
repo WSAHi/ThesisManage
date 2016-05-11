@@ -12,7 +12,7 @@
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# cutContents(Eval("Description"))%>'></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("Description")%>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:BoundField DataField="Counts" HeaderText="可选人数" SortExpression="Counts"></asp:BoundField>
