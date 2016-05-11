@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <div class="container-fluid">
-        <h1 class="h1 text-center">待审核的标题:（点击查看对标题进行审核）</h1>
+        <h1 class="h1 text-center">待审核的标题</h1>
         <asp:GridView ID="GridView2" runat="server" AllowPaging="True" AutoGenerateColumns="False" CssClass="table" DataSourceID="ObjectDataSource">
             <Columns>
                 <asp:BoundField DataField="TitleID" HeaderText="TitleID" SortExpression="TitleID" Visible="False" />
