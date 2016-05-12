@@ -62,7 +62,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
     {
         string cmd = e.CommandName;
         int titleID = Convert.ToInt32(e.CommandArgument);
-        ThesisManage.Model.Title title = titleManage.GetTilteByTitleID(titleID);
+        Title title = titleManage.GetTilteByTitleID(titleID);
         if (cmd == "de")
         {
             if (title.State == 0 || title.State == 2)
