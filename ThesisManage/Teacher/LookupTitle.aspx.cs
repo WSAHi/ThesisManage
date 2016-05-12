@@ -83,7 +83,7 @@ public partial class Teacher_LookupTitle : System.Web.UI.Page
             }
             else
             {
-                Page.Server.Transfer("ModifyTitle.aspx?titleId=" + titleID);
+                Page.Server.Transfer("ModifyTitle.aspx?titleID=" + titleID);
             }
         }
     }
