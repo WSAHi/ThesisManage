@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container-fluid">
         <h1 class="h1 text-center">查看题目</h1>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="odstitlelist" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-scripted">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="table table-scripted">
             <Columns>
                 <asp:BoundField DataField="TitleID" HeaderText="TitleID" SortExpression="TitleID" Visible="False" />
                 <asp:BoundField DataField="TitleName" HeaderText="标题名称" SortExpression="TitleName" />
@@ -39,7 +39,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="odstitlelist" runat="server" SelectMethod="GetTitleListByTeacherId"
+        <asp:ObjectDataSource ID="ObjectDataSource" runat="server" SelectMethod="GetTitleListByTeacherId"
             TypeName="ThesisManage.BLL.TitleManage">
             <SelectParameters>
                 <asp:Parameter Name="TeacherId" Type="Int32" />
