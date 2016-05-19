@@ -13,7 +13,7 @@
                 <asp:HyperLinkField DataNavigateUrlFields="TitleID" DataNavigateUrlFormatString="TitleDetial.aspx?TitleID={0}" HeaderText="详细" Text="查看" />
                 <asp:TemplateField HeaderText="选题" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:Button ID="btnChooseTitle" runat="server" Text="选题" CommandArgument='<%# Eval("TitleID") %>' CssClass="btn" />
+                        <asp:Button ID="btnChooseTitle" runat="server" Text="选题" CommandArgument='<%# Eval("TitleID") %>' CssClass="btn btn-link" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

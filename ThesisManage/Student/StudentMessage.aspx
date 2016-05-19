@@ -37,7 +37,7 @@
                     <asp:Label ID="lblTitle" runat="server" Text="标题名称:"></asp:Label></td>
                 <td>
                     <asp:Label ID="lblTitleName" runat="server"></asp:Label>
-                    <asp:Button ID="btnCancelChooseTitle" runat="server" OnClick="Button1_Click" Text="退选" CssClass="btn" /></td>
+                    <asp:Button ID="btnCancelChooseTitle" runat="server" OnClick="Button1_Click" Text="退选" CssClass="btn btn-link" /></td>
             </tr>
         </table>
     </div>
