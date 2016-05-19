@@ -65,7 +65,6 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
         else
         {
             int num = 0;
-            int teacherID = Convert.ToInt32(Session["key"]);
             Title title = titleManage.GetTilteByTitleID(TitleID);
 
             if (title.Student == null || title.Student.StudentName == "" || title.Student.StudentName == null)
@@ -74,7 +73,7 @@ public partial class Admin_TitleDetial : System.Web.UI.Page
             }
             else
             {
-                num = titleManage.ModifiyTitleState(TitleID, teacherID);
+                num = titleManage.ModifiyStudentTitleState(TitleID);
                 studentManage.ModifiyStuSate(1, TitleID, title.Student.StudentID);
             }
             if (num > 0)

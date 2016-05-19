@@ -59,11 +59,11 @@ namespace ThesisManage.BLL
         /// <param name="titleName">题目名称</param>
         /// <param name="studentID">学生登陆（学号）ID</param>
         /// <param name="Description">题目描述</param>
-        /// <param name="teacherID">选择的指导老师的ID</param>
+        /// <param name="tEID">选择的指导老师的ID</param>
         /// <returns></returns>
-        public int StuAddTitle(string titleName, int studentID, string Description, int teacherID)
+        public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
         {
-            return titleService.StuAddTitle(titleName, studentID, Description, teacherID);
+            return titleService.StuAddTitle(titleName, studentID, Description, tEID);
         }
         /// <summary>
         /// 教师上传自定义题目
@@ -113,9 +113,9 @@ namespace ThesisManage.BLL
         /// <param name="titleID">题目ID</param>
         /// <param name="teacherID">教师登录（工号）ID</param>
         /// <returns></returns>
-        public int ModifiyTitleState(int titleID, int teacherID)
+        public int ModifiyStudentTitleState(int titleID)
         {
-            return titleService.ModifiyTitleState(titleID, teacherID);
+            return titleService.ModifiyStudentTitleState(titleID);
         }
         /// <summary>
         /// 修改审核通过的题目状态

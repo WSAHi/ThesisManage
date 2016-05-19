@@ -16,11 +16,11 @@ namespace ThesisManage.DAL
         /// <param name="titleName">题目名称</param>
         /// <param name="studentID">学生登录（学号）ID</param>
         /// <param name="Description">题目描述</param>
-        /// <param name="teacherID">选择的指导老师的ID（教师登录（工号）ID）</param>
+        /// <param name="tEID">选择的指导老师的ID</param>
         /// <returns></returns>
-        public int StuAddTitle(string titleName, int studentID, string Description, int teacherID)
+        public int StuAddTitle(string titleName, int studentID, string Description, int tEID)
         {
-            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, teacherID);
+            string sql = string.Format("INSERT INTO Title(TitleName,Counts,State,Description,StudentID,HasChooseNum,TeacherID) VALUES ('{0}',1,0,'{1}','{2}',0,'{3}')", titleName, Description, studentID, tEID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -130,13 +130,25 @@ namespace ThesisManage.DAL
             return num;
         }
         /// <summary>
-        /// 修改审核通过题目的状态
+        /// 修改审核通过题目的状态（教师上传的题目）
         /// </summary>
         /// <param name="titleID">题目ID</param>
         /// <returns></returns>
         public int ModifiyTitleState(int titleID)
         {
             string sql = string.Format("UPDATE Title SET State=1 WHERE TitleID={0}", titleID);
+            int num = DBHelper.ExecuteCommand(sql);
+            return num;
+        }
+        /// <summary>
+        /// 修改审核通过题目的状态（学生上传的自定义题目）
+        /// </summary>
+        /// <param name="teacherID">教师登录（工号）ID</param>
+        /// <param name="titleID"></param>
+        /// <returns></returns>
+        public int ModifiyStudentTitleState(int titleID)
+        {
+            string sql = string.Format("UPDATE Title SET State=1,HasChooseNum=1 where TitleID={0}", titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }
@@ -148,18 +160,6 @@ namespace ThesisManage.DAL
         public int ModifiyTitleUnState(int titleID)
         {
             string sql = string.Format("UPDATE Title SET State=2 WHERE TitleID={0}", titleID);
-            int num = DBHelper.ExecuteCommand(sql);
-            return num;
-        }
-        /// <summary>
-        /// 修改题目的选择状态
-        /// </summary>
-        /// <param name="teacherID">教师登录（工号）ID</param>
-        /// <param name="titleID"></param>
-        /// <returns></returns>
-        public int ModifiyTitleState(int teacherID, int titleID)
-        {
-            string sql = string.Format("UPDATE Title SET State=1,TeacherID={0},HasChooseNum=1,StudentID=null where TitleID={1}", teacherID, titleID);
             int num = DBHelper.ExecuteCommand(sql);
             return num;
         }

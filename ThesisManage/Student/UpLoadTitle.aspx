@@ -10,8 +10,8 @@
         描述：<asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" CssClass="form-control"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtDescription" ErrorMessage="*"></asp:RequiredFieldValidator>
         <br />
-        指导教师:<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="obsTeacher" DataTextField="TeacherName" DataValueField="TEID" CssClass="form-control"></asp:DropDownList>
-        <asp:ObjectDataSource ID="obsTeacher" runat="server" SelectMethod="GetTeacherList" TypeName="ThesisManage.BLL.TeacherManage"></asp:ObjectDataSource>
+        指导教师:<asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="ObjectDataSource" DataTextField="TeacherName" DataValueField="TEID" CssClass="form-control"></asp:DropDownList>
+        <asp:ObjectDataSource ID="ObjectDataSource" runat="server" SelectMethod="GetTeacherList" TypeName="ThesisManage.BLL.TeacherManage"></asp:ObjectDataSource>
         <br />
         <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text=" 提交" CssClass="form-control" />
         <br />
