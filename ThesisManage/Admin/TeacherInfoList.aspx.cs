@@ -60,7 +60,7 @@ public partial class Admin_TeacherInfoList : System.Web.UI.Page
         }
         sw.Close();
         Response.Charset = "GBK";
-        Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("教员信息表.xls", System.Text.Encoding.GetEncoding("UTF-8")));
+        Response.AddHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode("教师信息表.xls", System.Text.Encoding.GetEncoding("UTF-8")));
         Response.ContentType = "application/ms-excel";
         Response.ContentEncoding = System.Text.Encoding.GetEncoding("GBK");
         Response.Write(sw);
