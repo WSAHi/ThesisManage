@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="Admin_AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>毕业设计选题系统</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="../Scripts/jquery-2.2.3.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <form id="form1" runat="server">
+            <div class="control-label label-info text-center">
+                学生总数:<asp:Label ID="lblStudentTotaloty" runat="server"></asp:Label>
+                题目总数:<asp:Label ID="lblTitleTotality" runat="server"></asp:Label>
+                题目可选人数总和:<asp:Label ID="lblTitltCanChooseTotality" runat="server"></asp:Label>
+                已选题学生人数:<asp:Label ID="lblHasChooseTitleStudentNum" runat="server"></asp:Label>
+                已上传论文学生人数:<asp:Label ID="lblHasUploadThesisNum" runat="server"></asp:Label>
+            </div>
+            <div class="rows">
+                <div class="col-lg-2">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <ul class="nav nav-list">
+                                    <li class="nav-header">个人信息
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyPassword.aspx">修改密码</a>
+                                    </li>
+                                    <li class="nav-header">信息审核
+                                    </li>
+                                    <li>
+                                        <a href="AuditUpLoadTitle.aspx">审核新题目</a>
+                                    </li>
+                                    <li class="nav-header">数据管理
+                                    </li>
+                                    <li>
+                                        <a href="DataManagement.aspx">添加数据</a>
+                                    </li>
+                                    <li class="nav-header">系统信息
+                                    </li>
+                                    <li>
+                                        <a href="TeacherInfoList.aspx">教师信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="StudentInfoList.aspx">学生信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="TitleInfoList.aspx">标题信息</a>
+                                    </li>
+                                    <li class="nav-header">退出系统
+                                    </li>
+                                    <li class="active">
+                                        <a href="../Default.aspx">退出系统</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 center-block">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

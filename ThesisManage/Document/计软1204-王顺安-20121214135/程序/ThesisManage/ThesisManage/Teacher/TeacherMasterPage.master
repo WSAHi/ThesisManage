@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="TeacherMasterPage.master.cs" Inherits="Admin_AdminMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>毕业设计选题系统</title>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="../Scripts/jquery-2.2.3.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../Scripts/bootstrap.min.js"></script>
+
+
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        <form id="form1" runat="server">
+            <div class="rows">
+                <div class="col-lg-2">
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <ul class="nav nav-list">
+                                    <li class="nav-header">个人信息
+                                    </li>
+                                    <li class="active">
+                                        <a href="TeacherMessage.aspx">查看信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyMessage.aspx">修改信息</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="ModifyPassword.aspx">修改密码</a>
+                                    </li>
+                                    <li class="nav-header">我的学生
+                                    </li>
+                                    <li>
+                                        <a href="StudentList.aspx">学生列表</a>
+                                    </li>
+                                    <li class="nav-header">题目管理
+                                    </li>
+                                    <li class="active">
+                                        <a href="UpLoadTitle.aspx">上传题目</a>
+                                    </li>
+                                    <li class="active">
+                                        <a href="LookupTitle.aspx">查看题目</a>
+                                    </li>
+                                    <li class="nav-header">退出系统
+                                    </li>
+                                    <li class="active">
+                                        <a href="../Default.aspx">退出系统</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 center-block">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
