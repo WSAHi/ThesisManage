@@ -22,7 +22,7 @@
     <div class="container-fluid">
         <form id="form1" runat="server">
             <div class="jumbotron">
-                <h1 class="h1  text-center">毕业设计选题系统<small>Thesis Manage</small></h1>
+                <h1 class="h1 text-center">毕业设计选题系统<small>Thesis Manage</small></h1>
             </div>
             <div class="container text-center">
                 <asp:TextBox ID="txtUserName" runat="server" CssClass="form-control text-center" placeholder="用户名"></asp:TextBox>
